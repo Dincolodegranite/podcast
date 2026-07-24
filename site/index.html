@@ -88,6 +88,7 @@ html{scrollbar-width:thin;scrollbar-color:#c9a25a #0f1113}
 ::-webkit-scrollbar-thumb:hover{background:#e3c07d}
 ::selection{background:#c9a25a;color:#0f1113}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,[role="button"]:focus-visible{outline:2px solid rgba(227,192,125,.75);outline-offset:3px;border-radius:6px}
 </style>
 <script>
 (function(){
@@ -897,7 +898,7 @@ document.addEventListener('pointerout', function(e){
   </div>
   <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="harta_title">CÂT DE DEPARTE EȘTI DE CASĂ?</h2>
   <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin-bottom:28px" data-i18n="harta_sub">Scrie orașul în care trăiești și vezi drumul până acasă.</div>
-  <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);background:rgba(245,246,247,.035);border:1px solid rgba(201,162,90,.18);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)">
+  <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
     <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.5),transparent);pointer-events:none"></div>
     <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;max-width:560px;z-index:5">
       <div style="position:relative;flex:1;min-width:220px">
@@ -938,13 +939,13 @@ document.addEventListener('pointerout', function(e){
     <a class="ep-card" data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease both">
       <span class="ep-line"></span>
       <span class="ep-yt-thumb">
-        <img data-ep-img="1" src="assets/ep-cover-london.jpg" alt="Episodul 1 — în curând">
+        <img loading="lazy" decoding="async" data-ep-img="1" src="assets/ep-cover-london.jpg" alt="Episodul 1 — în curând">
         <span class="ep-yt-shade"></span>
         <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
         <span data-ep-status="1" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
-        <img src="assets/logo.jpg" alt="" class="ep-avatar">
+        <img loading="lazy" decoding="async" src="assets/logo.jpg" alt="" class="ep-avatar">
         <span class="ep-yt-text">
           <span data-ep-title="1" class="ep-yt-title" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
           <span class="ep-yt-meta">Dincolo de Granițe · <span data-ep-badge="1">EP. 01</span></span>
@@ -954,13 +955,13 @@ document.addEventListener('pointerout', function(e){
     <a class="ep-card" data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease .12s both">
       <span class="ep-line"></span>
       <span class="ep-yt-thumb">
-        <img data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="Episodul 2 — în curând">
+        <img loading="lazy" decoding="async" data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="Episodul 2 — în curând">
         <span class="ep-yt-shade"></span>
         <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
         <span data-ep-status="2" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
-        <img src="assets/logo.jpg" alt="" class="ep-avatar">
+        <img loading="lazy" decoding="async" src="assets/logo.jpg" alt="" class="ep-avatar">
         <span class="ep-yt-text">
           <span data-ep-title="2" class="ep-yt-title" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
           <span class="ep-yt-meta">Dincolo de Granițe · <span data-ep-badge="2">EP. 02</span></span>
@@ -970,13 +971,13 @@ document.addEventListener('pointerout', function(e){
     <a class="ep-card" data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease .24s both">
       <span class="ep-line"></span>
       <span class="ep-yt-thumb">
-        <img data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="Episodul 3 — în curând">
+        <img loading="lazy" decoding="async" data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="Episodul 3 — în curând">
         <span class="ep-yt-shade"></span>
         <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
         <span data-ep-status="3" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
-        <img src="assets/logo.jpg" alt="" class="ep-avatar">
+        <img loading="lazy" decoding="async" src="assets/logo.jpg" alt="" class="ep-avatar">
         <span class="ep-yt-text">
           <span data-ep-title="3" class="ep-yt-title" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
           <span class="ep-yt-meta">Dincolo de Granițe · <span data-ep-badge="3">EP. 03</span></span>
@@ -984,7 +985,7 @@ document.addEventListener('pointerout', function(e){
       </span>
     </a>
   </div>
-  <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:clamp(56px,8vw,88px);padding:44px 32px;background:rgba(245,246,247,.035);border:1px solid rgba(201,162,90,.18);border-radius:28px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)">
+  <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:clamp(56px,8vw,88px);padding:44px 32px;border:1px solid transparent;border-radius:28px;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
     <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent)"></div>
     <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:6px">
       <span style="font:600 11px Inter;letter-spacing:.26em;color:#c9a25a" data-i18n="count_label">PRIMUL EPISOD ÎN</span>
@@ -1028,7 +1029,7 @@ document.addEventListener('pointerout', function(e){
       <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;min-width:160px;border:1px solid rgba(201,162,90,.4);color:#c9a25a;font:600 12px Inter;letter-spacing:.05em;border-radius:999px;transition:all .3s ease;cursor:pointer;text-decoration:none;white-space:nowrap" style-hover="background:rgba(201,162,90,.16);border-color:#e3c07d" style-active="background:rgba(201,162,90,.26);border-color:#e3c07d;transform:scale(0.96)"><span data-i18n="playlist_open_channel">DESCHIDE CANALUL</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
     </div>
   </div>
-  <div style="position:relative;width:1100px;max-width:100%;box-sizing:border-box;margin:0 auto;border-radius:26px;overflow:hidden;background:linear-gradient(180deg,#15171b,#101214);border:1px solid rgba(201,162,90,.25);box-shadow:0 50px 100px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06)">
+  <div style="position:relative;width:1100px;max-width:100%;box-sizing:border-box;margin:0 auto;border-radius:26px;overflow:hidden;border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.5),rgba(201,162,90,.12) 34%,rgba(201,162,90,.08) 66%,rgba(227,192,125,.3) 100%) border-box;box-shadow:0 50px 100px rgba(0,0,0,.5)">
     <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent);pointer-events:none"></div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px clamp(14px,3vw,28px);background:rgba(201,162,90,.07);border-bottom:1px solid rgba(201,162,90,.22)">
       <div style="display:inline-flex;align-items:center;gap:11px">
@@ -1051,7 +1052,7 @@ document.addEventListener('pointerout', function(e){
     <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="1">EP. 01</span>
       <span style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
-        <img data-ep-img="1" src="assets/ep-cover-london.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <img loading="lazy" decoding="async" data-ep-img="1" src="assets/ep-cover-london.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
@@ -1066,7 +1067,7 @@ document.addEventListener('pointerout', function(e){
     <a data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="2">EP. 02</span>
       <span style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
-        <img data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <img loading="lazy" decoding="async" data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
@@ -1081,7 +1082,7 @@ document.addEventListener('pointerout', function(e){
     <a data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="3">EP. 03</span>
       <span style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
-        <img data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <img loading="lazy" decoding="async" data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
@@ -1134,7 +1135,7 @@ document.addEventListener('pointerout', function(e){
       <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(201,162,90,.25);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.08);transform:translateY(-2px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
     </div>
   </div>
-  <div style="margin-top:28px;padding:26px 28px;border:1px solid rgba(201,162,90,.3);border-radius:20px;background:linear-gradient(135deg,rgba(201,162,90,.1),rgba(201,162,90,.02))">
+  <div style="margin-top:28px;padding:26px 28px;border:1px solid transparent;border-radius:20px;background:linear-gradient(135deg,rgba(35,32,24,.9),rgba(20,21,24,.95)) padding-box,linear-gradient(170deg,rgba(227,192,125,.55),rgba(201,162,90,.14) 35%,rgba(201,162,90,.10) 65%,rgba(227,192,125,.32) 100%) border-box">
     <div style="font:400 clamp(20px,3.4vw,26px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7" data-i18n="guest_title">VREI SĂ FII INVITAT LA PODCAST?</div>
     <div style="font:400 14px/1.6 Inter;color:rgba(245,246,247,.6);margin-top:6px;max-width:640px" data-i18n="guest_desc">Construiești ceva în Marea Britanie — o afacere, o carieră, un proiect? Sau cunoști pe cineva cu o poveste neobișnuită? Scrie-ne.</div>
     <form data-guest-form style="display:flex;flex-direction:column;gap:10px;margin-top:18px">
