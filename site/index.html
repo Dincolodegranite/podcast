@@ -58,6 +58,15 @@ a:hover{color:#e3c07d}
 @keyframes fadeInDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes dividerTrace{0%{top:-38%}100%{top:100%}}
 @keyframes boardFlip{0%,86%,100%{transform:rotateX(0)}90%{transform:rotateX(86deg)}95%{transform:rotateX(-14deg)}}
+.ep-card{position:relative;display:flex;flex-direction:column;height:100%;background:#131518;border:1px solid rgba(201,162,90,.16);border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 18px 40px rgba(0,0,0,.35);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease,border-color .4s ease}
+.ep-card:hover{transform:translateY(-8px);box-shadow:0 32px 64px rgba(0,0,0,.5);border-color:rgba(201,162,90,.5)}
+.ep-card .ep-line{position:absolute;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#e3c07d,#c9a25a);z-index:3;transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.ep-card:hover .ep-line{width:100%}
+.ep-card .ep-media{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#0b0c0e;flex:none}
+.ep-card .ep-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform .6s cubic-bezier(.2,.8,.2,1);filter:saturate(.92)}
+.ep-card:hover .ep-media img{transform:scale(1.055)}
+.ep-card .ep-cta-arrow{display:inline-block;transition:transform .3s ease}
+.ep-card:hover .ep-cta-arrow{transform:translateX(5px)}
 html{scrollbar-width:thin;scrollbar-color:#c9a25a #0f1113}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:#0f1113}
@@ -521,7 +530,7 @@ document.addEventListener('pointerout', function(e){
   function applyEpisodesGap(){
     var grid = document.querySelector('[data-episodes-grid]');
     if(!grid) return;
-    grid.style.gap = window.innerWidth < 640 ? '120px' : '44px';
+    grid.style.gap = window.innerWidth < 640 ? '40px' : '28px';
   }
   window.addEventListener('resize', applyEpisodesGap, { passive: true });
   window.addEventListener('load', applyEpisodesGap);
@@ -562,7 +571,7 @@ document.addEventListener('pointerout', function(e){
       nav_harta:"HARTA", harta_label:"HARTA DIASPOREI", harta_title:"CÂT DE DEPARTE EȘTI DE CASĂ?", harta_sub:"Scrie orașul în care trăiești și vezi drumul până acasă.", harta_placeholder:"Orașul tău (ex. London, Dubai...)", harta_btn:"ARATĂ-MI", harta_notfound:"Nu găsesc orașul — încearcă un oraș mare din apropiere.", harta_legend_home:"ACASĂ", harta_legend_guests:"PROPUNERI DE INVITAȚI", harta_km_label:"PÂNĂ ACASĂ", harta_line:"Distanța nu șterge povestea. O face mai puternică.", harta_cta:"PROPUNE-ȚI POVESTEA",
       count_label:"PRIMUL EPISOD ÎN", count_d:"ZILE", count_h:"ORE", count_m:"MIN", count_s:"SEC",
       board_title:"PLECĂRI · EPISOADE", board_lon:"LONDRA", board_buc:"BUCUREȘTI", board_gate:"POARTA", board_boarding:"ÎMBARCARE DESCHISĂ", board_col_flight:"ZBOR", board_col_story:"POVESTEA", board_col_status:"STATUS",
-      board_project_label:"PROIECT", scale_label:"SCARĂ 1:1 — POVESTE REALĂ", ep_view_link:"VEZI →",
+      board_project_label:"PROIECT", scale_label:"SCARĂ 1:1 — POVESTE REALĂ", ep_view_link:"VEZI →", ep_view:"VEZI EPISODUL",
       newsletter_consent:'Prin abonare ești de acord cu <a href="privacy.html" style="color:#c9a25a">politica de confidențialitate</a>. Te poți dezabona oricând.', footer_privacy:"Confidențialitate",
       footer_copyright:"© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu", loader_text:"SE ÎNCARCĂ"
     },
@@ -596,7 +605,7 @@ document.addEventListener('pointerout', function(e){
       nav_harta:"MAP", harta_label:"DIASPORA MAP", harta_title:"HOW FAR ARE YOU FROM HOME?", harta_sub:"Type the city you live in and see the road home.", harta_placeholder:"Your city (e.g. London, Dubai...)", harta_btn:"SHOW ME", harta_notfound:"City not found — try a bigger city nearby.", harta_legend_home:"HOME", harta_legend_guests:"GUEST APPLICATIONS", harta_km_label:"FROM HOME", harta_line:"Distance doesn't erase the story. It makes it stronger.", harta_cta:"SHARE YOUR STORY",
       count_label:"FIRST EPISODE IN", count_d:"DAYS", count_h:"HRS", count_m:"MIN", count_s:"SEC",
       board_title:"DEPARTURES · EPISODES", board_lon:"LONDON", board_buc:"BUCHAREST", board_gate:"GATE", board_boarding:"NOW BOARDING", board_col_flight:"FLIGHT", board_col_story:"THE STORY", board_col_status:"STATUS",
-      board_project_label:"PROJECT", scale_label:"SCALE 1:1 — REAL STORY", ep_view_link:"WATCH →",
+      board_project_label:"PROJECT", scale_label:"SCALE 1:1 — REAL STORY", ep_view_link:"WATCH →", ep_view:"WATCH EPISODE",
       newsletter_consent:'By subscribing you agree to the <a href="privacy.html" style="color:#c9a25a">privacy policy</a>. You can unsubscribe anytime.', footer_privacy:"Privacy",
       footer_copyright:"© 2026 Dincolo de Granițe · A podcast by Peter Baghiu", loader_text:"LOADING"
     }
@@ -911,91 +920,58 @@ document.addEventListener('pointerout', function(e){
       <h2 style="margin:0;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="episoade_title">PRIMELE EPISOADE</h2>
     </div>
   </div>
-  <div data-episodes-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:44px">
-    <div style="position:relative;display:flex;flex-direction:column;height:100%;background:repeating-linear-gradient(0deg,rgba(201,162,90,.05) 0 1px,transparent 1px 24px),repeating-linear-gradient(90deg,rgba(201,162,90,.05) 0 1px,transparent 1px 24px),#14171a;border:1px solid rgba(201,162,90,.28);padding:24px;border-radius:8px;cursor:pointer;animation:fadeIn .8s ease both;box-shadow:0 14px 32px rgba(0,0,0,.3);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.4);border-color:rgba(201,162,90,.6)">
-      <span style="position:absolute;top:9px;left:9px;width:11px;height:11px;border-top:1.5px solid rgba(201,162,90,.55);border-left:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;top:9px;right:9px;width:11px;height:11px;border-top:1.5px solid rgba(201,162,90,.55);border-right:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;bottom:9px;left:9px;width:11px;height:11px;border-bottom:1.5px solid rgba(201,162,90,.55);border-left:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;bottom:9px;right:9px;width:11px;height:11px;border-bottom:1.5px solid rgba(201,162,90,.55);border-right:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <div style="position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-        <span style="font:700 10.5px 'Courier New',monospace;letter-spacing:.1em;color:rgba(227,192,125,.9)"><span data-i18n="board_project_label">PROIECT</span> Nº 01</span>
-        <span style="font:600 9px 'Courier New',monospace;letter-spacing:.08em;color:rgba(245,246,247,.28)">DDG—EP01</span>
-      </div>
-      <div style="position:relative;display:flex;align-items:center;gap:7px;margin-bottom:10px;opacity:.6">
-        <span style="flex:1;height:1px;background-image:repeating-linear-gradient(90deg,rgba(201,162,90,.6) 0,rgba(201,162,90,.6) 1px,transparent 1px,transparent 6px)"></span>
-        <span style="font:600 8px 'Courier New',monospace;letter-spacing:.06em;color:rgba(227,192,125,.65);white-space:nowrap" data-i18n="scale_label">SCARĂ 1:1 — POVESTE REALĂ</span>
-      </div>
-      <div style="position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(201,162,90,.28);border-radius:5px;overflow:hidden;margin-bottom:18px;background:#000">
-        <img data-ep-img="1" src="assets/ep-cover-london.jpg" alt="Episodul 1 — în curând" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05)">
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.1),rgba(15,17,19,.6))"></div>
-        <span data-ep-badge="1" style="position:absolute;top:9px;left:9px;padding:3px 8px;border-radius:3px;background:rgba(15,17,19,.75);border:1px solid rgba(201,162,90,.4);color:#e3c07d;font:700 10px 'Courier New',monospace;letter-spacing:.08em;pointer-events:none;z-index:1">EP. 01</span>
-      </div>
-      <div data-ep-title="1" style="position:relative;font:600 19px Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</div>
-      <div style="position:relative;display:flex;gap:8px;margin-top:10px">
-        <span style="font:700 13px 'Courier New',monospace;color:rgba(201,162,90,.55);flex:none;line-height:1.6">»</span>
-        <div data-ep-desc="1" style="font:400 14.5px/1.6 Inter;color:rgba(245,246,247,.6)" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</div>
-      </div>
-      <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:18px;border-top:1px dashed rgba(201,162,90,.3)">
-        <span data-ep-status="1" data-i18n="coming_soon" style="display:inline-block;padding:5px 12px;border:1.5px double rgba(201,162,90,.55);border-radius:3px;background:rgba(201,162,90,.07);color:#e3c07d;font:700 10px Inter;letter-spacing:.1em;transform:rotate(-5deg);white-space:nowrap">ÎN CURÂND</span>
-        <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="font:700 11.5px Inter;letter-spacing:.04em;color:#c9a25a;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap" style-hover="color:#e3c07d" data-i18n="ep_view_link">VEZI →</a>
-      </div>
-    </div>
-    <div style="position:relative;display:flex;flex-direction:column;height:100%;background:repeating-linear-gradient(0deg,rgba(201,162,90,.05) 0 1px,transparent 1px 24px),repeating-linear-gradient(90deg,rgba(201,162,90,.05) 0 1px,transparent 1px 24px),#14171a;border:1px solid rgba(201,162,90,.28);padding:24px;border-radius:8px;cursor:pointer;animation:fadeIn .8s ease both;box-shadow:0 14px 32px rgba(0,0,0,.3);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.4);border-color:rgba(201,162,90,.6)">
-      <span style="position:absolute;top:9px;left:9px;width:11px;height:11px;border-top:1.5px solid rgba(201,162,90,.55);border-left:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;top:9px;right:9px;width:11px;height:11px;border-top:1.5px solid rgba(201,162,90,.55);border-right:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;bottom:9px;left:9px;width:11px;height:11px;border-bottom:1.5px solid rgba(201,162,90,.55);border-left:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;bottom:9px;right:9px;width:11px;height:11px;border-bottom:1.5px solid rgba(201,162,90,.55);border-right:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <div style="position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-        <span style="font:700 10.5px 'Courier New',monospace;letter-spacing:.1em;color:rgba(227,192,125,.9)"><span data-i18n="board_project_label">PROIECT</span> Nº 02</span>
-        <span style="font:600 9px 'Courier New',monospace;letter-spacing:.08em;color:rgba(245,246,247,.28)">DDG—EP02</span>
-      </div>
-      <div style="position:relative;display:flex;align-items:center;gap:7px;margin-bottom:10px;opacity:.6">
-        <span style="flex:1;height:1px;background-image:repeating-linear-gradient(90deg,rgba(201,162,90,.6) 0,rgba(201,162,90,.6) 1px,transparent 1px,transparent 6px)"></span>
-        <span style="font:600 8px 'Courier New',monospace;letter-spacing:.06em;color:rgba(227,192,125,.65);white-space:nowrap" data-i18n="scale_label">SCARĂ 1:1 — POVESTE REALĂ</span>
-      </div>
-      <div style="position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(201,162,90,.28);border-radius:5px;overflow:hidden;margin-bottom:18px;background:#000">
-        <img data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="Episodul 2 — în curând" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05)">
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.1),rgba(15,17,19,.6))"></div>
-        <span data-ep-badge="2" style="position:absolute;top:9px;left:9px;padding:3px 8px;border-radius:3px;background:rgba(15,17,19,.75);border:1px solid rgba(201,162,90,.4);color:#e3c07d;font:700 10px 'Courier New',monospace;letter-spacing:.08em;pointer-events:none;z-index:1">EP. 02</span>
-      </div>
-      <div data-ep-title="2" style="position:relative;font:600 19px Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</div>
-      <div style="position:relative;display:flex;gap:8px;margin-top:10px">
-        <span style="font:700 13px 'Courier New',monospace;color:rgba(201,162,90,.55);flex:none;line-height:1.6">»</span>
-        <div data-ep-desc="2" style="font:400 14.5px/1.6 Inter;color:rgba(245,246,247,.6)" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</div>
-      </div>
-      <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:18px;border-top:1px dashed rgba(201,162,90,.3)">
-        <span data-ep-status="2" data-i18n="coming_soon" style="display:inline-block;padding:5px 12px;border:1.5px double rgba(201,162,90,.55);border-radius:3px;background:rgba(201,162,90,.07);color:#e3c07d;font:700 10px Inter;letter-spacing:.1em;transform:rotate(-5deg);white-space:nowrap">ÎN CURÂND</span>
-        <a data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="font:700 11.5px Inter;letter-spacing:.04em;color:#c9a25a;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap" style-hover="color:#e3c07d" data-i18n="ep_view_link">VEZI →</a>
-      </div>
-    </div>
-    <div style="position:relative;display:flex;flex-direction:column;height:100%;background:repeating-linear-gradient(0deg,rgba(201,162,90,.05) 0 1px,transparent 1px 24px),repeating-linear-gradient(90deg,rgba(201,162,90,.05) 0 1px,transparent 1px 24px),#14171a;border:1px solid rgba(201,162,90,.28);padding:24px;border-radius:8px;cursor:pointer;animation:fadeIn .8s ease both;box-shadow:0 14px 32px rgba(0,0,0,.3);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.4);border-color:rgba(201,162,90,.6)">
-      <span style="position:absolute;top:9px;left:9px;width:11px;height:11px;border-top:1.5px solid rgba(201,162,90,.55);border-left:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;top:9px;right:9px;width:11px;height:11px;border-top:1.5px solid rgba(201,162,90,.55);border-right:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;bottom:9px;left:9px;width:11px;height:11px;border-bottom:1.5px solid rgba(201,162,90,.55);border-left:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <span style="position:absolute;bottom:9px;right:9px;width:11px;height:11px;border-bottom:1.5px solid rgba(201,162,90,.55);border-right:1.5px solid rgba(201,162,90,.55);pointer-events:none"></span>
-      <div style="position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-        <span style="font:700 10.5px 'Courier New',monospace;letter-spacing:.1em;color:rgba(227,192,125,.9)"><span data-i18n="board_project_label">PROIECT</span> Nº 03</span>
-        <span style="font:600 9px 'Courier New',monospace;letter-spacing:.08em;color:rgba(245,246,247,.28)">DDG—EP03</span>
-      </div>
-      <div style="position:relative;display:flex;align-items:center;gap:7px;margin-bottom:10px;opacity:.6">
-        <span style="flex:1;height:1px;background-image:repeating-linear-gradient(90deg,rgba(201,162,90,.6) 0,rgba(201,162,90,.6) 1px,transparent 1px,transparent 6px)"></span>
-        <span style="font:600 8px 'Courier New',monospace;letter-spacing:.06em;color:rgba(227,192,125,.65);white-space:nowrap" data-i18n="scale_label">SCARĂ 1:1 — POVESTE REALĂ</span>
-      </div>
-      <div style="position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(201,162,90,.28);border-radius:5px;overflow:hidden;margin-bottom:18px;background:#000">
-        <img data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="Episodul 3 — în curând" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05)">
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.1),rgba(15,17,19,.6))"></div>
-        <span data-ep-badge="3" style="position:absolute;top:9px;left:9px;padding:3px 8px;border-radius:3px;background:rgba(15,17,19,.75);border:1px solid rgba(201,162,90,.4);color:#e3c07d;font:700 10px 'Courier New',monospace;letter-spacing:.08em;pointer-events:none;z-index:1">EP. 03</span>
-      </div>
-      <div data-ep-title="3" style="position:relative;font:600 19px Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</div>
-      <div style="position:relative;display:flex;gap:8px;margin-top:10px">
-        <span style="font:700 13px 'Courier New',monospace;color:rgba(201,162,90,.55);flex:none;line-height:1.6">»</span>
-        <div data-ep-desc="3" style="font:400 14.5px/1.6 Inter;color:rgba(245,246,247,.6)" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</div>
-      </div>
-      <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:18px;border-top:1px dashed rgba(201,162,90,.3)">
-        <span data-ep-status="3" data-i18n="coming_soon" style="display:inline-block;padding:5px 12px;border:1.5px double rgba(201,162,90,.55);border-radius:3px;background:rgba(201,162,90,.07);color:#e3c07d;font:700 10px Inter;letter-spacing:.1em;transform:rotate(-5deg);white-space:nowrap">ÎN CURÂND</span>
-        <a data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="font:700 11.5px Inter;letter-spacing:.04em;color:#c9a25a;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap" style-hover="color:#e3c07d" data-i18n="ep_view_link">VEZI →</a>
-      </div>
-    </div>
+  <div data-episodes-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px">
+    <a class="ep-card" data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease both">
+      <span class="ep-line"></span>
+      <span class="ep-media">
+        <img data-ep-img="1" src="assets/ep-cover-london.jpg" alt="Episodul 1 — în curând">
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(15,17,19,.88) 100%);pointer-events:none"></span>
+        <span data-ep-badge="1" style="position:absolute;left:18px;bottom:14px;font:400 16px/1 'Bebas Neue';letter-spacing:.16em;color:rgba(245,246,247,.95);text-shadow:0 2px 12px rgba(0,0,0,.6)">EP. 01</span>
+        <span data-ep-status="1" data-i18n="coming_soon" style="position:absolute;top:14px;right:14px;padding:5px 13px;border-radius:999px;border:1px solid rgba(227,192,125,.45);background:rgba(15,17,19,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#e3c07d;font:700 9.5px Inter;letter-spacing:.12em">ÎN CURÂND</span>
+      </span>
+      <span style="display:flex;flex-direction:column;flex:1;padding:22px 24px 24px">
+        <span data-ep-title="1" style="font:600 19px/1.35 Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="1" style="font:400 14px/1.65 Inter;color:rgba(245,246,247,.55);margin-top:9px" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
+        <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:20px">
+          <span style="width:34px;height:1px;background:linear-gradient(90deg,#c9a25a,transparent)"></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;font:700 11.5px Inter;letter-spacing:.08em;color:#c9a25a"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+        </span>
+      </span>
+    </a>
+    <a class="ep-card" data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease .12s both">
+      <span class="ep-line"></span>
+      <span class="ep-media">
+        <img data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="Episodul 2 — în curând">
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(15,17,19,.88) 100%);pointer-events:none"></span>
+        <span data-ep-badge="2" style="position:absolute;left:18px;bottom:14px;font:400 16px/1 'Bebas Neue';letter-spacing:.16em;color:rgba(245,246,247,.95);text-shadow:0 2px 12px rgba(0,0,0,.6)">EP. 02</span>
+        <span data-ep-status="2" data-i18n="coming_soon" style="position:absolute;top:14px;right:14px;padding:5px 13px;border-radius:999px;border:1px solid rgba(227,192,125,.45);background:rgba(15,17,19,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#e3c07d;font:700 9.5px Inter;letter-spacing:.12em">ÎN CURÂND</span>
+      </span>
+      <span style="display:flex;flex-direction:column;flex:1;padding:22px 24px 24px">
+        <span data-ep-title="2" style="font:600 19px/1.35 Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="2" style="font:400 14px/1.65 Inter;color:rgba(245,246,247,.55);margin-top:9px" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
+        <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:20px">
+          <span style="width:34px;height:1px;background:linear-gradient(90deg,#c9a25a,transparent)"></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;font:700 11.5px Inter;letter-spacing:.08em;color:#c9a25a"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+        </span>
+      </span>
+    </a>
+    <a class="ep-card" data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease .24s both">
+      <span class="ep-line"></span>
+      <span class="ep-media">
+        <img data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="Episodul 3 — în curând">
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(15,17,19,.88) 100%);pointer-events:none"></span>
+        <span data-ep-badge="3" style="position:absolute;left:18px;bottom:14px;font:400 16px/1 'Bebas Neue';letter-spacing:.16em;color:rgba(245,246,247,.95);text-shadow:0 2px 12px rgba(0,0,0,.6)">EP. 03</span>
+        <span data-ep-status="3" data-i18n="coming_soon" style="position:absolute;top:14px;right:14px;padding:5px 13px;border-radius:999px;border:1px solid rgba(227,192,125,.45);background:rgba(15,17,19,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#e3c07d;font:700 9.5px Inter;letter-spacing:.12em">ÎN CURÂND</span>
+      </span>
+      <span style="display:flex;flex-direction:column;flex:1;padding:22px 24px 24px">
+        <span data-ep-title="3" style="font:600 19px/1.35 Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="3" style="font:400 14px/1.65 Inter;color:rgba(245,246,247,.55);margin-top:9px" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
+        <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:20px">
+          <span style="width:34px;height:1px;background:linear-gradient(90deg,#c9a25a,transparent)"></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;font:700 11.5px Inter;letter-spacing:.08em;color:#c9a25a"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+        </span>
+      </span>
+    </a>
   </div>
   <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:clamp(56px,8vw,88px);padding:44px 32px;background:rgba(245,246,247,.035);border:1px solid rgba(201,162,90,.18);border-radius:28px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)">
     <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent)"></div>
