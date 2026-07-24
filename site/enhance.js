@@ -280,7 +280,8 @@ function initMap(){
     raf = requestAnimationFrame(loop);
   }
   size();
-  window.addEventListener('resize', size, { passive: true });
+  draw(performance.now()); /* synchronous first paint — never a blank map */
+  window.addEventListener('resize', function(){ size(); draw(performance.now()); }, { passive: true });
   if(window.IntersectionObserver){
     new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }, { rootMargin: '100px' }).observe(canvas);
   } else { visible = true; }
