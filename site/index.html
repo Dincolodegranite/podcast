@@ -58,27 +58,21 @@ a:hover{color:#e3c07d}
 @keyframes fadeInDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes dividerTrace{0%{top:-38%}100%{top:100%}}
 @keyframes boardFlip{0%,86%,100%{transform:rotateX(0)}90%{transform:rotateX(86deg)}95%{transform:rotateX(-14deg)}}
-.ep-grid{display:grid;grid-template-columns:1fr;gap:28px}
-@media (min-width:900px){.ep-grid{grid-template-columns:1.55fr 1fr}.ep-feat{grid-row:1 / span 2}}
+.ep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+@media (min-width:1000px){.ep-grid{grid-template-columns:repeat(3,1fr)}}
 .ep-card{position:relative;display:flex;flex-direction:column;background:#131518;border:1px solid rgba(201,162,90,.16);border-radius:20px;overflow:hidden;text-decoration:none;box-shadow:0 18px 40px rgba(0,0,0,.35);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease,border-color .4s ease}
-.ep-card:hover{transform:translateY(-6px);box-shadow:0 32px 64px rgba(0,0,0,.5);border-color:rgba(201,162,90,.5)}
+.ep-card:hover{transform:translateY(-8px);box-shadow:0 32px 64px rgba(0,0,0,.5);border-color:rgba(201,162,90,.5)}
 .ep-line{position:absolute;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#e3c07d,#c9a25a);z-index:4;transition:width .55s cubic-bezier(.2,.8,.2,1)}
 .ep-card:hover .ep-line{width:100%}
-.ep-feat{min-height:460px;justify-content:flex-end}
-@media (min-width:900px){.ep-feat{min-height:600px}}
+.ep-poster{min-height:430px;justify-content:flex-end}
+@media (min-width:1000px){.ep-poster{min-height:500px}}
 .ep-media-fill{position:absolute;inset:0;overflow:hidden}
-.ep-media-fill img,.ep-thumb img{width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform .7s cubic-bezier(.2,.8,.2,1);filter:saturate(.92)}
-.ep-card:hover .ep-media-fill img,.ep-card:hover .ep-thumb img{transform:scale(1.05)}
-.ep-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.05) 30%,rgba(15,17,19,.55) 62%,rgba(15,17,19,.96) 100%)}
-.ep-feat-body{position:relative;z-index:2;display:flex;flex-direction:column;gap:10px;padding:28px}
-.ep-compact{flex-direction:row;align-items:stretch}
-.ep-thumb{position:relative;width:42%;min-width:150px;flex:none;overflow:hidden}
-.ep-thumb img{position:absolute;inset:0}
-.ep-compact-body{display:flex;flex-direction:column;flex:1;min-width:0;padding:20px 22px}
-.ep-clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ep-media-fill img{width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform .7s cubic-bezier(.2,.8,.2,1);filter:saturate(.92)}
+.ep-card:hover .ep-media-fill img{transform:scale(1.05)}
+.ep-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.02) 32%,rgba(15,17,19,.55) 62%,rgba(15,17,19,.97) 100%)}
+.ep-body{position:relative;z-index:2;display:flex;flex-direction:column;gap:9px;padding:24px}
 .ep-cta-arrow{display:inline-block;transition:transform .3s ease}
 .ep-card:hover .ep-cta-arrow{transform:translateX(5px)}
-@media (max-width:559px){.ep-compact{flex-direction:column}.ep-thumb{width:100%;min-width:0;aspect-ratio:16/9}}
 html{scrollbar-width:thin;scrollbar-color:#c9a25a #0f1113}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:#0f1113}
@@ -933,42 +927,49 @@ document.addEventListener('pointerout', function(e){
     </div>
   </div>
   <div data-episodes-grid class="ep-grid">
-    <a class="ep-card ep-feat" data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease both">
+    <a class="ep-card ep-poster" data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease both">
       <span class="ep-line"></span>
       <span class="ep-media-fill"><img data-ep-img="1" src="assets/ep-cover-london.jpg" alt="Episodul 1 — în curând"></span>
       <span class="ep-scrim"></span>
       <span data-ep-status="1" data-i18n="coming_soon" style="position:absolute;top:16px;right:16px;z-index:3;padding:5px 13px;border-radius:999px;border:1px solid rgba(227,192,125,.45);background:rgba(15,17,19,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#e3c07d;font:700 9.5px Inter;letter-spacing:.12em">ÎN CURÂND</span>
-      <span class="ep-feat-body">
-        <span data-ep-badge="1" style="font:400 15px/1 'Bebas Neue';letter-spacing:.2em;color:rgba(227,192,125,.95)">EP. 01</span>
-        <span data-ep-title="1" style="font:600 clamp(22px,3vw,30px)/1.25 Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
-        <span data-ep-desc="1" style="font:400 14.5px/1.65 Inter;color:rgba(245,246,247,.68);max-width:520px" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
-        <span style="display:inline-flex;align-items:center;gap:8px;font:700 11.5px Inter;letter-spacing:.08em;color:#c9a25a;margin-top:8px"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+      <span class="ep-body">
+        <span data-ep-badge="1" style="font:400 14px/1 'Bebas Neue';letter-spacing:.22em;color:rgba(227,192,125,.95)">EP. 01</span>
+        <span data-ep-title="1" style="font:600 20px/1.3 Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="1" style="font:400 13.5px/1.6 Inter;color:rgba(245,246,247,.62)" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
+        <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding-top:14px;border-top:1px solid rgba(245,246,247,.12)">
+          <span style="width:30px;height:1px;background:linear-gradient(90deg,#c9a25a,transparent)"></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;font:700 11px Inter;letter-spacing:.08em;color:#c9a25a"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+        </span>
       </span>
     </a>
-    <a class="ep-card ep-compact" data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease .12s both">
+    <a class="ep-card ep-poster" data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease .12s both">
       <span class="ep-line"></span>
-      <span class="ep-thumb">
-        <img data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="Episodul 2 — în curând">
-        <span data-ep-status="2" data-i18n="coming_soon" style="position:absolute;top:10px;right:10px;z-index:2;padding:4px 10px;border-radius:999px;border:1px solid rgba(227,192,125,.45);background:rgba(15,17,19,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#e3c07d;font:700 8.5px Inter;letter-spacing:.1em">ÎN CURÂND</span>
-      </span>
-      <span class="ep-compact-body">
-        <span data-ep-badge="2" style="font:400 12.5px/1 'Bebas Neue';letter-spacing:.2em;color:rgba(227,192,125,.9)">EP. 02</span>
-        <span data-ep-title="2" style="font:600 16.5px/1.35 Inter;color:#f5f6f7;margin-top:8px" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
-        <span data-ep-desc="2" class="ep-clamp2" style="font:400 13px/1.6 Inter;color:rgba(245,246,247,.55);margin-top:7px" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
-        <span style="display:inline-flex;align-items:center;gap:7px;font:700 10.5px Inter;letter-spacing:.08em;color:#c9a25a;margin-top:auto;padding-top:14px"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+      <span class="ep-media-fill"><img data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="Episodul 2 — în curând"></span>
+      <span class="ep-scrim"></span>
+      <span data-ep-status="2" data-i18n="coming_soon" style="position:absolute;top:16px;right:16px;z-index:3;padding:5px 13px;border-radius:999px;border:1px solid rgba(227,192,125,.45);background:rgba(15,17,19,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#e3c07d;font:700 9.5px Inter;letter-spacing:.12em">ÎN CURÂND</span>
+      <span class="ep-body">
+        <span data-ep-badge="2" style="font:400 14px/1 'Bebas Neue';letter-spacing:.22em;color:rgba(227,192,125,.95)">EP. 02</span>
+        <span data-ep-title="2" style="font:600 20px/1.3 Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="2" style="font:400 13.5px/1.6 Inter;color:rgba(245,246,247,.62)" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
+        <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding-top:14px;border-top:1px solid rgba(245,246,247,.12)">
+          <span style="width:30px;height:1px;background:linear-gradient(90deg,#c9a25a,transparent)"></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;font:700 11px Inter;letter-spacing:.08em;color:#c9a25a"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+        </span>
       </span>
     </a>
-    <a class="ep-card ep-compact" data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease .24s both">
+    <a class="ep-card ep-poster" data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease .24s both">
       <span class="ep-line"></span>
-      <span class="ep-thumb">
-        <img data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="Episodul 3 — în curând">
-        <span data-ep-status="3" data-i18n="coming_soon" style="position:absolute;top:10px;right:10px;z-index:2;padding:4px 10px;border-radius:999px;border:1px solid rgba(227,192,125,.45);background:rgba(15,17,19,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#e3c07d;font:700 8.5px Inter;letter-spacing:.1em">ÎN CURÂND</span>
-      </span>
-      <span class="ep-compact-body">
-        <span data-ep-badge="3" style="font:400 12.5px/1 'Bebas Neue';letter-spacing:.2em;color:rgba(227,192,125,.9)">EP. 03</span>
-        <span data-ep-title="3" style="font:600 16.5px/1.35 Inter;color:#f5f6f7;margin-top:8px" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
-        <span data-ep-desc="3" class="ep-clamp2" style="font:400 13px/1.6 Inter;color:rgba(245,246,247,.55);margin-top:7px" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
-        <span style="display:inline-flex;align-items:center;gap:7px;font:700 10.5px Inter;letter-spacing:.08em;color:#c9a25a;margin-top:auto;padding-top:14px"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+      <span class="ep-media-fill"><img data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="Episodul 3 — în curând"></span>
+      <span class="ep-scrim"></span>
+      <span data-ep-status="3" data-i18n="coming_soon" style="position:absolute;top:16px;right:16px;z-index:3;padding:5px 13px;border-radius:999px;border:1px solid rgba(227,192,125,.45);background:rgba(15,17,19,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#e3c07d;font:700 9.5px Inter;letter-spacing:.12em">ÎN CURÂND</span>
+      <span class="ep-body">
+        <span data-ep-badge="3" style="font:400 14px/1 'Bebas Neue';letter-spacing:.22em;color:rgba(227,192,125,.95)">EP. 03</span>
+        <span data-ep-title="3" style="font:600 20px/1.3 Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="3" style="font:400 13.5px/1.6 Inter;color:rgba(245,246,247,.62)" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
+        <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding-top:14px;border-top:1px solid rgba(245,246,247,.12)">
+          <span style="width:30px;height:1px;background:linear-gradient(90deg,#c9a25a,transparent)"></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;font:700 11px Inter;letter-spacing:.08em;color:#c9a25a"><span data-i18n="ep_view">VEZI EPISODUL</span><span class="ep-cta-arrow" aria-hidden="true">→</span></span>
+        </span>
       </span>
     </a>
   </div>
