@@ -364,6 +364,24 @@ function initCountdown(){
   tick();
 }
 
+/* ── Departures board clocks (London / Bucharest) ──────────────── */
+function initBoard(){
+  var lon = document.querySelector('[data-clock-lon]');
+  var buc = document.querySelector('[data-clock-buc]');
+  if(!lon || !buc) return;
+  function fmt(tz){
+    try {
+      return new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz }).format(new Date());
+    } catch(e){ return '--:--'; }
+  }
+  function tick(){
+    lon.textContent = fmt('Europe/London');
+    buc.textContent = fmt('Europe/Bucharest');
+  }
+  tick();
+  setInterval(tick, 15000);
+}
+
 /* ── Scroll reveals ────────────────────────────────────────────── */
 function initReveals(){
   var els = document.querySelectorAll('[data-reveal]');
@@ -432,6 +450,7 @@ var iv = setInterval(function(){
     clearInterval(iv);
     try { initMap(); } catch(e){ console.warn('harta init:', e); }
     try { initCountdown(); } catch(e){ console.warn('countdown init:', e); }
+    try { initBoard(); } catch(e){}
     try { initReveals(); } catch(e){}
     try { initCursor(); } catch(e){}
   } else if(tries > 100){ clearInterval(iv); }
