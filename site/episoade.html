@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Episoade — Dincolo de Granițe · Podcast cu Peter Baghiu</title>
+<meta name="description" content="Toate episoadele Dincolo de Granițe — conversații cu românii care construiesc ceva în Marea Britanie. Primul episod, în curând.">
+<link rel="canonical" href="https://www.dincolodegranite.com/episoade">
+<meta name="theme-color" content="#0f1113">
+<link rel="icon" href="assets/logo.jpg" type="image/jpeg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Episoade — Dincolo de Granițe">
+<meta property="og:description" content="Toate episoadele podcastului despre românii care construiesc ceva în Marea Britanie.">
+<meta property="og:url" content="https://www.dincolodegranite.com/episoade">
+<meta property="og:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pages.css">
+</head>
+<body>
+
+<nav class="pnav"><div class="pnav-in">
+  <a class="pbrand" href="index.html"><img src="assets/logo.jpg" alt="Dincolo de Granițe"><span>DINCOLO DE GRANIȚE</span></a>
+  <div class="plinks">
+    <a href="index.html">Acasă</a>
+    <a href="despre.html">Despre</a>
+    <a class="on" href="episoade.html">Episoade</a>
+    <a href="invitati.html">Invitați</a>
+    <a class="yt" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener">YouTube ↗</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <header class="phead">
+    <span class="eyebrow">Episoade</span>
+    <h1>Arhiva conversațiilor</h1>
+    <p class="lede">Fiecare episod: un român, un drum, o construcție și lecțiile de pe parcurs.</p>
+  </header>
+
+  <section>
+    <div id="ep-archive" class="ep-grid" aria-live="polite"></div>
+
+    <div id="ep-empty" class="gcard" style="display:none;text-align:center;padding:clamp(36px,7vw,60px)">
+      <div style="font:400 26px 'Bebas Neue';letter-spacing:.08em;color:#e3c07d;margin-bottom:8px">PRIMUL EPISOD — SEPTEMBRIE 2026</div>
+      <p style="max-width:52ch;margin:0 auto 20px">Filmările sunt în pregătire. Abonează-te pe YouTube sau lasă-ți emailul pe pagina principală și afli primul când apare.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-gold" href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener">Abonează-te pe YouTube</a>
+        <a class="btn btn-ghost" href="index.html#episoade">Anunță-mă pe email</a>
+      </div>
+    </div>
+
+    <div id="ep-error" class="gcard" style="display:none;text-align:center">
+      <p style="margin:0">Nu am putut încărca episoadele. <a href="episoade.html">Reîncearcă</a> sau mergi direct pe <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener">canalul de YouTube</a>.</p>
+    </div>
+  </section>
+</div>
+
+<footer class="pfoot"><div class="wrap pfoot-in">
+  <span>© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</span>
+  <span><a href="index.html">Acasă</a> · <a href="despre.html">Despre</a> · <a href="invitati.html">Invitați</a> · <a href="privacy.html">Confidențialitate</a></span>
+</div></footer>
+
+<script>
+(function(){
+  var SUPA_URL = 'https://fgwsmrwhuzkvrixcgovk.supabase.co';
+  var SUPA_KEY = 'sb_publishable_6uORl4ZKPYpCU_cdcAfudw_YOmcbnDQ';
+  var FALLBACK_COVERS = ['assets/ep-cover-london.jpg','assets/ep-cover-nyc.jpg','assets/ep-cover-dubai.jpg'];
+  var grid = document.getElementById('ep-archive');
+  var empty = document.getElementById('ep-empty');
+  var errBox = document.getElementById('ep-error');
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function card(ep, i){
+    var a = document.createElement('a');
+    a.className = 'ep-card';
+    a.href = ep.youtube_url || 'https://www.youtube.com/@dincolo.de.granite';
+    a.target = '_blank'; a.rel = 'noopener';
+
+    var thumb = document.createElement('span'); thumb.className = 'ep-yt-thumb';
+    var img = document.createElement('img');
+    img.loading = 'lazy'; img.decoding = 'async';
+    img.src = ep.cover_url || FALLBACK_COVERS[i % FALLBACK_COVERS.length];
+    img.alt = ep.title;
+    var shade = document.createElement('span'); shade.className = 'ep-yt-shade';
+    var play = document.createElement('span'); play.className = 'ep-play';
+    play.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg>';
+    var dur = document.createElement('span'); dur.className = 'ep-dur live';
+    dur.textContent = 'VIZIONEAZĂ';
+    thumb.appendChild(img); thumb.appendChild(shade); thumb.appendChild(play); thumb.appendChild(dur);
+
+    var body = document.createElement('span'); body.className = 'ep-yt-body';
+    var av = document.createElement('img'); av.className = 'ep-avatar';
+    av.loading = 'lazy'; av.decoding = 'async'; av.src = 'assets/logo.jpg'; av.alt = '';
+    var txt = document.createElement('span'); txt.className = 'ep-yt-text';
+    var t = document.createElement('span'); t.className = 'ep-yt-title'; t.textContent = ep.title;
+    var m = document.createElement('span'); m.className = 'ep-yt-meta';
+    var b = document.createElement('b'); b.textContent = 'EP. ' + pad(ep.episode_number);
+    m.appendChild(document.createTextNode('Dincolo de Granițe · '));
+    m.appendChild(b);
+    txt.appendChild(t); txt.appendChild(m);
+    if(ep.description){
+      var d = document.createElement('span');
+      d.style.cssText = 'font:400 12.5px/1.55 Inter;color:rgba(245,246,247,.45);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden';
+      d.textContent = ep.description;
+      txt.appendChild(d);
+    }
+    body.appendChild(av); body.appendChild(txt);
+    a.appendChild(thumb); a.appendChild(body);
+    return a;
+  }
+
+  fetch(SUPA_URL + '/rest/v1/episodes?select=*&published=eq.true&order=episode_number.desc', {
+    headers: { 'apikey': SUPA_KEY }
+  }).then(function(r){
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }).then(function(eps){
+    if(!eps || !eps.length){ empty.style.display = 'block'; return; }
+    eps.forEach(function(ep, i){ grid.appendChild(card(ep, i)); });
+  }).catch(function(){
+    errBox.style.display = 'block';
+  });
+})();
+</script>
+
+</body>
+</html>
