@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dincolo de Granițe — Podcast cu Peter Baghiu</title>
-<meta name="description" content="Dincolo de Granițe — podcastul lui Peter Baghiu despre povești reale, curaj și reînceputuri dincolo de aparențe. Ascultă episoadele pe YouTube.">
+<meta name="description" content="Dincolo de Granițe — podcastul lui Peter Baghiu cu românii din diaspora: povești reale despre curaj și reînceputuri. Primul episod se lansează în curând pe YouTube.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.dincolodegranite.com/">
 <meta name="theme-color" content="#0f1113">
@@ -16,14 +16,15 @@
 <meta property="og:url" content="https://www.dincolodegranite.com/">
 <meta property="og:title" content="Dincolo de Granițe — Podcast cu Peter Baghiu">
 <meta property="og:description" content="Podcastul lui Peter Baghiu despre povești reale, curaj și reînceputuri dincolo de aparențe și judecăți.">
-<meta property="og:image" content="https://www.dincolodegranite.com/assets/banner.png">
-<meta property="og:image:width" content="1942">
-<meta property="og:image:height" content="809">
+<meta property="og:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="500">
 <meta property="og:image:alt" content="Dincolo de Granițe — Podcast cu Peter Baghiu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dincolo de Granițe — Podcast cu Peter Baghiu">
 <meta name="twitter:description" content="Podcastul lui Peter Baghiu despre povești reale, curaj și reînceputuri dincolo de aparențe și judecăți.">
-<meta name="twitter:image" content="https://www.dincolodegranite.com/assets/banner.png">
+<meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","logo":"https://www.dincolodegranite.com/assets/logo.jpg","email":"contact@dincolodegranite.com","founder":{"@type":"Person","name":"Peter Baghiu"},"sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite","https://facebook.com/dincolo.de.granite","https://tiktok.com/@dincolo.de.granite"]},{"@type":"WebSite","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","inLanguage":"ro"}]}</script>
 <script src="./support.js"></script>
 </head>
 <body style="background:#0f1113;margin:0">
@@ -61,6 +62,7 @@ html{scrollbar-width:thin;scrollbar-color:#c9a25a #0f1113}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#c9a25a,#8a6f3a);border-radius:6px;border:2px solid #0f1113}
 ::-webkit-scrollbar-thumb:hover{background:#e3c07d}
 ::selection{background:#c9a25a;color:#0f1113}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 </style>
 <script>
 (function(){
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function(){
   setTimeout(function(){
     var __loaderEl = document.querySelector('[data-loader]');
     if(__loaderEl){ __loaderEl.style.setProperty('display', 'none', 'important'); }
-  }, 2300);
+  }, 1300);
   setTimeout(function(){
     var __pillEl = document.querySelector('[data-nav-pill]');
     if(__pillEl){ __pillEl.style.animation = 'none'; __pillEl.style.opacity = '1'; }
@@ -267,23 +269,6 @@ document.addEventListener('submit', function(e){
     if(__btn){ __btn.textContent = __btnLabel; __btn.disabled = false; }
   });
 });
-(function(){
-  var __trySetupHeroHint = function(){
-    var __slotEl = document.getElementById('hero-cover');
-    var __hintEl = document.querySelector('[data-hero-hint]');
-    if(!__slotEl || !__hintEl) return false;
-    var __sync = function(){
-      __hintEl.style.opacity = __slotEl.hasAttribute('data-filled') ? '0' : '1';
-    };
-    __sync();
-    new MutationObserver(__sync).observe(__slotEl, { attributes: true, attributeFilter: ['data-filled'] });
-    return true;
-  };
-  if(!__trySetupHeroHint()){
-    var __heroHintIv = setInterval(function(){ if(__trySetupHeroHint()) clearInterval(__heroHintIv); }, 300);
-    setTimeout(function(){ clearInterval(__heroHintIv); }, 20000);
-  }
-})();
 document.addEventListener('pointermove', function(e){
   var __mEl = e.target.closest && e.target.closest('[data-magnetic]');
   if(!__mEl) return;
@@ -468,10 +453,10 @@ document.addEventListener('pointerout', function(e){
   var I18N = {
     ro: {
       nav_despre:"DESPRE", nav_episoade:"EPISOADE", nav_playlist:"PLAYLIST", nav_contact:"CONTACT", nav_subscribe:"ABONEAZĂ-TE",
-      hero_hint:"TRAGE PROPRIA VOASTRĂ POZĂ AICI", hero_badge:"UN PODCAST DE PETER BAGHIU",
+      hero_badge:"UN PODCAST DE PETER BAGHIU",
       hero_subtitle:"Fiecare om are o poveste adevărată.<br>Aici o spune fără filtru.",
-      hero_cta_listen:"ASCULTĂ ACUM", hero_cta_about:"DESPRE PODCAST",
-      label_podcast:"PODCAST", hero_card_label:"PODCAST", host_name:"Peter Baghiu", host_role:"Gazda podcastului Dincolo de Granițe",
+      hero_cta_listen:"ABONEAZĂ-TE PE YOUTUBE", hero_cta_about:"DESPRE PODCAST",
+      label_podcast:"PODCAST", hero_card_label:"GAZDĂ", host_name:"Peter Baghiu", host_role:"Gazda podcastului Dincolo de Granițe",
       hero_card_quote:"„O conversație despre curaj și reînceputuri dincolo de graniță.”", follow_on:"URMĂREȘTE PE",
       marquee_1:"POVEȘTI REALE", marquee_2:"CONVERSAȚII SINCERE", marquee_3:"EMOȚII AUTENTICE",
       section_label_despre:"DESPRE", despre_title:"POVEȘTI CARE<br>TREC GRANIȚE",
@@ -482,23 +467,25 @@ document.addEventListener('pointerout', function(e){
       despre_li4:"Despre succes și eșec.", despre_li5:"Despre ce înseamnă să o iei de la capăt într-o altă țară.",
       despre_li6:"Și despre toate granițele – vizibile și invizibile – pe care le traversăm pentru a deveni cine suntem.",
       despre_closing:"Pentru că, uneori, cea mai importantă schimbare începe în momentul în care alegem să ascultăm.",
-      label_live:"LIVE", episoade_title:"CELE MAI RECENTE EPISOADE", ep_title_placeholder:"Titlu episod — în curând",
+      label_live:"SEZONUL 1", episoade_title:"PRIMELE EPISOADE", ep_title_placeholder:"Titlu episod — în curând",
       ep1_desc:"O conversație despre curaj și reînceputuri dincolo de graniță.", ep2_desc:"Povestea unui om care și-a schimbat viața complet.",
       ep3_desc:"Emoții autentice, spuse fără filtru.", ep_follow_yt:"URMĂREȘTE PE YOUTUBE",
       newsletter_title:"NU RATA NICIUN EPISOD", newsletter_desc:"Abonează-te pentru a fi notificat la lansarea fiecărui episod nou",
       newsletter_placeholder:"adresa@email.com", newsletter_btn:"ANUNȚĂ-MĂ",
       playlist_title:"URMĂREȘTE-NE PE YOUTUBE", playlist_open_channel:"DESCHIDE CANALUL",
-      playlist_in_playlist:"ÎN PLAYLIST", playlist_3_episodes:"ULTIMELE 3 EPISOADE", coming_soon:"ÎN CURÂND",
+      playlist_in_playlist:"ÎN PLAYLIST", playlist_3_episodes:"PRIMELE 3 EPISOADE", coming_soon:"ÎN CURÂND",
       playlist_card_desc:"Fii la curent cu fiecare episod nou. Urmărește-ne pe platforma ta preferată.", playlist_card_yt:"Urmărește pe YouTube",
       label_contact:"CONTACT", contact_title:"HAI SĂ VORBIM",
+      guest_title:"VREI SĂ FII INVITAT LA PODCAST?", guest_desc:"Ai o poveste din diaspora care merită spusă — sau cunoști pe cineva care are? Scrie-ne.", guest_btn:"PROPUNE O POVESTE",
+      newsletter_consent:'Prin abonare ești de acord cu <a href="privacy.html" style="color:#c9a25a">politica de confidențialitate</a>. Te poți dezabona oricând.', footer_privacy:"Confidențialitate",
       footer_copyright:"© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu", loader_text:"SE ÎNCARCĂ"
     },
     en: {
       nav_despre:"ABOUT", nav_episoade:"EPISODES", nav_playlist:"PLAYLIST", nav_contact:"CONTACT", nav_subscribe:"SUBSCRIBE",
-      hero_hint:"DRAG YOUR OWN PHOTO HERE", hero_badge:"A PODCAST BY PETER BAGHIU",
+      hero_badge:"A PODCAST BY PETER BAGHIU",
       hero_subtitle:"Every person has a true story.<br>Here, it's told without filters.",
-      hero_cta_listen:"LISTEN NOW", hero_cta_about:"ABOUT THE PODCAST",
-      label_podcast:"PODCAST", hero_card_label:"PODCAST", host_name:"Peter Baghiu", host_role:"Host of the Dincolo de Granițe podcast",
+      hero_cta_listen:"SUBSCRIBE ON YOUTUBE", hero_cta_about:"ABOUT THE PODCAST",
+      label_podcast:"PODCAST", hero_card_label:"HOST", host_name:"Peter Baghiu", host_role:"Host of the Dincolo de Granițe podcast",
       hero_card_quote:"“A conversation about courage and new beginnings beyond the border.”", follow_on:"FOLLOW ON",
       marquee_1:"REAL STORIES", marquee_2:"HONEST CONVERSATIONS", marquee_3:"AUTHENTIC EMOTIONS",
       section_label_despre:"ABOUT", despre_title:"STORIES THAT<br>CROSS BORDERS",
@@ -509,15 +496,17 @@ document.addEventListener('pointerout', function(e){
       despre_li4:"About success and failure.", despre_li5:"About what it means to start over in another country.",
       despre_li6:"And about all the borders – visible and invisible – we cross to become who we are.",
       despre_closing:"Because sometimes, the most important change begins the moment we choose to listen.",
-      label_live:"LIVE", episoade_title:"LATEST EPISODES", ep_title_placeholder:"Episode title — coming soon",
+      label_live:"SEASON 1", episoade_title:"THE FIRST EPISODES", ep_title_placeholder:"Episode title — coming soon",
       ep1_desc:"A conversation about courage and new beginnings beyond the border.", ep2_desc:"The story of someone who completely changed their life.",
       ep3_desc:"Authentic emotions, told without filters.", ep_follow_yt:"FOLLOW ON YOUTUBE",
       newsletter_title:"DON'T MISS AN EPISODE", newsletter_desc:"Subscribe to get notified when a new episode launches",
       newsletter_placeholder:"your@email.com", newsletter_btn:"NOTIFY ME",
       playlist_title:"FOLLOW US ON YOUTUBE", playlist_open_channel:"OPEN CHANNEL",
-      playlist_in_playlist:"IN PLAYLIST", playlist_3_episodes:"LATEST 3 EPISODES", coming_soon:"COMING SOON",
+      playlist_in_playlist:"IN PLAYLIST", playlist_3_episodes:"FIRST 3 EPISODES", coming_soon:"COMING SOON",
       playlist_card_desc:"Stay up to date with every new episode. Follow us on your favorite platform.", playlist_card_yt:"Follow on YouTube",
       label_contact:"CONTACT", contact_title:"LET'S TALK",
+      guest_title:"WANT TO BE A GUEST ON THE PODCAST?", guest_desc:"Do you have a diaspora story worth telling — or know someone who does? Write to us.", guest_btn:"SUGGEST A STORY",
+      newsletter_consent:'By subscribing you agree to the <a href="privacy.html" style="color:#c9a25a">privacy policy</a>. You can unsubscribe anytime.', footer_privacy:"Privacy",
       footer_copyright:"© 2026 Dincolo de Granițe · A podcast by Peter Baghiu", loader_text:"LOADING"
     }
   };
@@ -573,14 +562,14 @@ document.addEventListener('pointerout', function(e){
 </script>
 </helmet>
 
-<div data-loader style="position:fixed;inset:0;z-index:999;background:#0f1113;display:flex;align-items:center;justify-content:center;animation:loaderOut 2.1s ease forwards">
+<div data-loader style="position:fixed;inset:0;z-index:999;background:#0f1113;display:flex;align-items:center;justify-content:center;animation:loaderOut 1.2s ease forwards">
   <div style="display:flex;flex-direction:column;align-items:center;gap:20px;animation:loaderIn .7s ease forwards">
     <div style="position:relative;width:72px;height:72px" style-before="content:'';position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.45),transparent 70%);animation:pulseGlow 2s ease-in-out infinite;z-index:0">
       <img src="assets/logo.jpg" alt="Dincolo de Granițe" style="position:relative;z-index:1;width:72px;height:72px;object-fit:cover;border-radius:50%;display:block;box-shadow:0 0 0 1px rgba(201,162,90,.4)">
     </div>
     <div style="font:400 26px/1 'Bebas Neue';letter-spacing:.03em;background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 3s ease-in-out infinite">DINCOLO DE GRANIȚE</div>
     <div style="width:160px;height:3px;border-radius:3px;background:rgba(201,162,90,.15);overflow:hidden;margin-top:6px">
-      <div style="width:100%;height:100%;background:linear-gradient(90deg,#8a6f3a,#e3c07d);transform-origin:left;animation:loaderFill 1.2s .1s cubic-bezier(.4,0,.2,1) forwards;transform:scaleX(0)"></div>
+      <div style="width:100%;height:100%;background:linear-gradient(90deg,#8a6f3a,#e3c07d);transform-origin:left;animation:loaderFill .6s .1s cubic-bezier(.4,0,.2,1) forwards;transform:scaleX(0)"></div>
     </div>
     <div style="font:600 10px Inter;letter-spacing:.28em;color:rgba(245,246,247,.35);margin-top:2px" data-i18n="loader_text">SE ÎNCARCĂ</div>
   </div>
@@ -646,21 +635,17 @@ document.addEventListener('pointerout', function(e){
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 45%,rgba(0,0,0,.55) 100%);pointer-events:none"></div>
   <div style="position:absolute;top:36px;left:36px;width:26px;height:26px;border-top:1px solid rgba(201,162,90,.4);border-left:1px solid rgba(201,162,90,.4);z-index:1;pointer-events:none"></div>
   <div style="position:absolute;bottom:36px;right:36px;width:26px;height:26px;border-bottom:1px solid rgba(201,162,90,.25);border-right:1px solid rgba(201,162,90,.25);z-index:1;pointer-events:none"></div>
-  <div data-hero-hint style="position:absolute;left:50%;bottom:100px;transform:translateX(-50%);z-index:1;display:inline-flex;align-items:center;gap:9px;padding:10px 20px;background:rgba(15,17,19,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(201,162,90,.4);border-radius:999px;pointer-events:none;transition:opacity .3s ease;white-space:nowrap;opacity:0">
-    <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
-    <span style="font:600 11px Inter;letter-spacing:.14em;color:#f5f6f7" data-i18n="hero_hint">TRAGE PROPRIA VOASTRĂ POZĂ AICI</span>
-  </div>
   <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:clamp(28px,7vw,50px) clamp(20px,7vw,90px);box-sizing:border-box;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(36px,6vw,64px);align-items:center">
     <div>
       <div style="display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.06);border-radius:999px;margin-bottom:28px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 1.6s forwards">
         <span style="width:7px;height:7px;border-radius:50%;background:#c9a25a;animation:livePulse 2s infinite"></span>
         <span style="font:600 12px Inter;letter-spacing:.16em;color:#c9a25a" data-i18n="hero_badge">UN PODCAST DE PETER BAGHIU</span>
       </div>
-      <div style="font:400 clamp(44px,9vw,80px)/.94 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.4);opacity:0;animation:fadeInUp .9s cubic-bezier(.2,.8,.2,1) 1.75s forwards">DINCOLO<br>DE <span style="background:linear-gradient(90deg,#e3c07d,#c9a25a 45%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 6s ease-in-out infinite">GRANIȚE</span></div>
+      <h1 style="margin:0;font:400 clamp(44px,9vw,80px)/.94 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.4);opacity:0;animation:fadeInUp .9s cubic-bezier(.2,.8,.2,1) 1.75s forwards">DINCOLO<br>DE <span style="background:linear-gradient(90deg,#e3c07d,#c9a25a 45%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 6s ease-in-out infinite">GRANIȚE</span></h1>
       <div style="width:70px;height:2px;background:#c9a25a;margin:30px 0 26px;opacity:0;animation:fadeInUp .7s cubic-bezier(.2,.8,.2,1) 1.9s forwards"></div>
       <div style="font:italic 500 clamp(18px,4vw,25px)/1.45 'Playfair Display';color:#f5f6f7;max-width:480px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2s forwards" data-i18n="hero_subtitle" data-i18n-html="1">Fiecare om are o poveste adevărată.<br>Aici o spune fără filtru.</div>
       <div style="display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2.15s forwards">
-        <a data-magnetic href="#playlist" style="padding:16px 34px;background:#c9a25a;color:#0f1113;font:600 14px Inter;letter-spacing:.03em;border-radius:999px;transition:transform .15s ease-out,box-shadow .3s ease;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;animation:ctaGlow 2.6s ease-in-out infinite" style-active="transform:scale(0.96)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(15,17,19,.16);flex:none"><svg width="10" height="10" viewBox="0 0 24 24" style="margin-left:1px" aria-hidden="true"><path d="M6 4.5v15l13-7.5z" fill="#0f1113"></path></svg></span><span data-i18n="hero_cta_listen">ASCULTĂ ACUM</span></a>
+        <a data-magnetic href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="padding:16px 34px;background:#c9a25a;color:#0f1113;font:600 14px Inter;letter-spacing:.03em;border-radius:999px;transition:transform .15s ease-out,box-shadow .3s ease;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;animation:ctaGlow 2.6s ease-in-out infinite" style-active="transform:scale(0.96)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(15,17,19,.16);flex:none"><svg width="10" height="10" viewBox="0 0 24 24" style="margin-left:1px" aria-hidden="true"><path d="M6 4.5v15l13-7.5z" fill="#0f1113"></path></svg></span><span data-i18n="hero_cta_listen">ABONEAZĂ-TE PE YOUTUBE</span></a>
         <a href="#despre" style="padding:16px 34px;border:1px solid rgba(245,246,247,.35);color:#f5f6f7;font:600 14px Inter;letter-spacing:.03em;border-radius:999px;text-decoration:none;display:inline-block;transition:box-shadow .3s ease,border-color .3s ease" style-hover="box-shadow:0 0 24px 2px rgba(201,162,90,.45);border-color:#c9a25a" data-i18n="hero_cta_about">DESPRE PODCAST</a>
       </div>
     </div>
@@ -671,7 +656,7 @@ document.addEventListener('pointerout', function(e){
           <span style="font:600 11px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45)" data-i18n="hero_card_label">GAZDĂ</span>
           <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:rgba(201,162,90,.12);border:1px solid rgba(201,162,90,.3)">
             <span style="width:5px;height:5px;border-radius:50%;background:#c9a25a;animation:livePulse 2s infinite"></span>
-            <span style="font:600 10px Inter;letter-spacing:.1em;color:#c9a25a">ON AIR</span>
+            <span style="font:600 10px Inter;letter-spacing:.1em;color:#c9a25a" data-i18n="coming_soon">ÎN CURÂND</span>
           </span>
         </div>
         <div style="position:relative;width:100%;aspect-ratio:1/1;border-radius:18px;overflow:hidden;margin-bottom:22px;box-shadow:0 16px 32px rgba(0,0,0,.4);border:1px solid rgba(201,162,90,.2)">
@@ -763,7 +748,7 @@ document.addEventListener('pointerout', function(e){
         <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
         <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="section_label_despre">DESPRE</span>
       </div>
-      <div style="position:relative;z-index:1;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="despre_title" data-i18n-html="1">POVEȘTI CARE<br>TREC GRANIȚE</div>
+      <h2 style="margin:0;position:relative;z-index:1;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="despre_title" data-i18n-html="1">POVEȘTI CARE<br>TREC GRANIȚE</h2>
     </div>
   <div style="display:flex;flex-direction:column;gap:15px;flex:2 1 480px;min-width:0">
     <div style="font:italic 400 clamp(22px,3.2vw,28px)/1.4 'Playfair Display';color:#f5f6f7" data-i18n="despre_p1">Fiecare om are o poveste.</div>
@@ -794,9 +779,9 @@ document.addEventListener('pointerout', function(e){
     <div>
       <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
         <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;animation:livePulse 2s infinite"></span>
-        <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="label_live">LIVE</span>
+        <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="label_live">SEZONUL 1</span>
       </div>
-      <div style="font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="episoade_title">CELE MAI RECENTE EPISOADE</div>
+      <h2 style="margin:0;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="episoade_title">PRIMELE EPISOADE</h2>
     </div>
   </div>
   <div data-episodes-grid style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:44px">
@@ -804,7 +789,8 @@ document.addEventListener('pointerout', function(e){
       <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent);pointer-events:none"></div>
       <span style="position:absolute;top:14px;right:20px;font:400 56px/1 'Bebas Neue';color:rgba(201,162,90,.12);pointer-events:none;z-index:0">01</span>
       <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;border:1px solid rgba(201,162,90,.22);overflow:hidden;margin-bottom:20px;background:#000">
-        <video src="https://assets.mixkit.co/videos/44050/44050-720.mp4" poster="https://assets.mixkit.co/videos/44050/44050-thumb-720-0.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" controls muted loop playsinline preload="metadata"></video>
+        <img src="assets/ep-cover-london.jpg" alt="Episodul 1 — în curând" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.15),rgba(15,17,19,.55))"></div>
         <span style="position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:999px;background:rgba(15,17,19,.6);backdrop-filter:blur(6px);color:#c9a25a;font:600 11px Inter;letter-spacing:.06em;pointer-events:none;z-index:1">EP. 01</span>
       </div>
       <div style="font:600 20px Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</div>
@@ -817,7 +803,8 @@ document.addEventListener('pointerout', function(e){
       <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent);pointer-events:none"></div>
       <span style="position:absolute;top:14px;right:20px;font:400 56px/1 'Bebas Neue';color:rgba(201,162,90,.12);pointer-events:none;z-index:0">02</span>
       <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;border:1px solid rgba(201,162,90,.22);overflow:hidden;margin-bottom:20px;background:#000">
-        <video src="https://assets.mixkit.co/videos/44046/44046-720.mp4" poster="https://assets.mixkit.co/videos/44046/44046-thumb-720-0.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" controls muted loop playsinline preload="metadata"></video>
+        <img src="assets/ep-cover-nyc.jpg" alt="Episodul 2 — în curând" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.15),rgba(15,17,19,.55))"></div>
         <span style="position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:999px;background:rgba(15,17,19,.6);backdrop-filter:blur(6px);color:#c9a25a;font:600 11px Inter;letter-spacing:.06em;pointer-events:none;z-index:1">EP. 02</span>
       </div>
       <div style="font:600 20px Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</div>
@@ -830,7 +817,8 @@ document.addEventListener('pointerout', function(e){
       <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent);pointer-events:none"></div>
       <span style="position:absolute;top:14px;right:20px;font:400 56px/1 'Bebas Neue';color:rgba(201,162,90,.12);pointer-events:none;z-index:0">03</span>
       <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;border:1px solid rgba(201,162,90,.22);overflow:hidden;margin-bottom:20px;background:#000">
-        <video src="https://assets.mixkit.co/videos/2947/2947-720.mp4" poster="https://assets.mixkit.co/videos/2947/2947-thumb-720-0.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" controls muted loop playsinline preload="metadata"></video>
+        <img src="assets/ep-cover-dubai.jpg" alt="Episodul 3 — în curând" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.15),rgba(15,17,19,.55))"></div>
         <span style="position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:999px;background:rgba(15,17,19,.6);backdrop-filter:blur(6px);color:#c9a25a;font:600 11px Inter;letter-spacing:.06em;pointer-events:none;z-index:1">EP. 03</span>
       </div>
       <div style="font:600 20px Inter;color:#f5f6f7" data-i18n="ep_title_placeholder">Titlu episod — în curând</div>
@@ -850,13 +838,14 @@ document.addEventListener('pointerout', function(e){
     </div>
     <div style="position:relative;text-align:center;display:flex;flex-direction:column;gap:6px">
       <span style="font:400 clamp(22px,3.5vw,28px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7" data-i18n="newsletter_title">NU RATA NICIUN EPISOD</span>
-      <span style="font:400 clamp(10.5px,2.4vw,14px) Inter;color:rgba(245,246,247,.55);white-space:nowrap" data-i18n="newsletter_desc">Abonează-te pentru a fi notificat la lansarea fiecărui episod nou</span>
+      <span style="font:400 clamp(10.5px,2.4vw,14px) Inter;color:rgba(245,246,247,.55)" data-i18n="newsletter_desc">Abonează-te pentru a fi notificat la lansarea fiecărui episod nou</span>
     </div>
     <form data-notify-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="position:relative;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;max-width:460px">
       <input data-notify-email name="email" type="email" required placeholder="adresa@email.com" data-i18n-placeholder="newsletter_placeholder" style="flex:1;padding:14px 20px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(15,17,19,.5);color:#f5f6f7;font:400 15px Inter;outline:none;min-width:200px;max-width:100%;box-sizing:border-box;transition:border-color .25s ease,box-shadow .25s ease" style-focus="border-color:#c9a25a;box-shadow:0 0 0 3px rgba(201,162,90,.15)">
       <button type="submit" style="padding:14px 26px;border-radius:999px;border:none;background:#c9a25a;color:#0f1113;font:600 13px Inter;letter-spacing:.03em;cursor:pointer;transition:all .3s ease;flex:none" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="newsletter_btn">ANUNȚĂ-MĂ</button>
     </form>
     <div data-notify-msg style="position:relative;font:500 13px Inter;color:#c9a25a;opacity:0;transition:opacity .3s ease;min-height:16px"></div>
+    <div style="position:relative;font:400 11.5px Inter;color:rgba(245,246,247,.4);text-align:center;max-width:460px" data-i18n="newsletter_consent" data-i18n-html="1">Prin abonare ești de acord cu <a href="privacy.html" style="color:#c9a25a">politica de confidențialitate</a>. Te poți dezabona oricând.</div>
   </div>
 </div>
 
@@ -867,7 +856,7 @@ document.addEventListener('pointerout', function(e){
     <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a">PLAYLIST</span>
   </div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:20px">
-    <div style="font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="playlist_title">URMĂREȘTE-NE PE YOUTUBE</div>
+    <h2 style="margin:0;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="playlist_title">URMĂREȘTE-NE PE YOUTUBE</h2>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
       <a href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 20px;min-width:160px;background:#c9a25a;color:#0f1113;font:600 12px Inter;letter-spacing:.05em;border-radius:999px;transition:all .3s ease;cursor:pointer;text-decoration:none;white-space:nowrap;animation:ctaGlow 2.6s ease-in-out infinite" style-hover="transform:translateY(-2px)" style-active="transform:scale(0.96)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex:none"><path d="M12 3C9.79 3 8 4.79 8 7v2.34c0 .55-.16 1.09-.46 1.55L5.7 13.6c-.86 1.32.09 3.07 1.66 3.07h9.28c1.57 0 2.52-1.75 1.66-3.07l-1.84-2.71c-.3-.46-.46-1-.46-1.55V7c0-2.21-1.79-4-4-4z" stroke="#0f1113" stroke-width="1.8" stroke-linejoin="round"></path><path d="M9.5 19a2.5 2.5 0 0 0 5 0" stroke="#0f1113" stroke-width="1.8" stroke-linecap="round"></path></svg><span data-i18n="nav_subscribe">ABONEAZĂ-TE</span></a>
       <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;min-width:160px;border:1px solid rgba(201,162,90,.4);color:#c9a25a;font:600 12px Inter;letter-spacing:.05em;border-radius:999px;transition:all .3s ease;cursor:pointer;text-decoration:none;white-space:nowrap" style-hover="background:rgba(201,162,90,.16);border-color:#e3c07d" style-active="background:rgba(201,162,90,.26);border-color:#e3c07d;transform:scale(0.96)"><span data-i18n="playlist_open_channel">DESCHIDE CANALUL</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
@@ -988,7 +977,7 @@ document.addEventListener('pointerout', function(e){
         <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
         <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="label_contact">CONTACT</span>
       </div>
-      <div style="font:400 clamp(24px,5vw,34px) 'Bebas Neue';color:#f5f6f7" data-i18n="contact_title">HAI SĂ VORBIM</div>
+      <h2 style="margin:0;font:400 clamp(24px,5vw,34px) 'Bebas Neue';color:#f5f6f7" data-i18n="contact_title">HAI SĂ VORBIM</h2>
       <a href="mailto:contact@dincolodegranite.com" style="font:400 16px Inter;color:rgba(245,246,247,.6);margin-top:8px;display:inline-block;text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">contact@dincolodegranite.com</a>
     </div>
     <div data-contact-socials style="display:flex;gap:clamp(10px,3vw,16px);flex-wrap:wrap">
@@ -998,7 +987,17 @@ document.addEventListener('pointerout', function(e){
       <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(201,162,90,.25);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.08);transform:translateY(-2px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
     </div>
   </div>
-  <div style="padding-top:26px;font:400 13px Inter;color:rgba(245,246,247,.4)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</div>
+  <div style="margin-top:28px;padding:26px 28px;border:1px solid rgba(201,162,90,.3);border-radius:20px;background:linear-gradient(135deg,rgba(201,162,90,.1),rgba(201,162,90,.02));display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+    <div>
+      <div style="font:400 clamp(20px,3.4vw,26px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7" data-i18n="guest_title">VREI SĂ FII INVITAT LA PODCAST?</div>
+      <div style="font:400 14px/1.6 Inter;color:rgba(245,246,247,.6);margin-top:6px;max-width:560px" data-i18n="guest_desc">Ai o poveste din diaspora care merită spusă — sau cunoști pe cineva care are? Scrie-ne.</div>
+    </div>
+    <a href="mailto:contact@dincolodegranite.com?subject=Vreau%20s%C4%83%20fiu%20invitat%20la%20podcast" style="padding:14px 28px;background:#c9a25a;color:#0f1113;font:600 13px Inter;letter-spacing:.03em;border-radius:999px;text-decoration:none;flex:none;transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="guest_btn">PROPUNE O POVESTE</a>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:26px">
+    <div style="font:400 13px Inter;color:rgba(245,246,247,.4)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</div>
+    <a href="privacy.html" style="font:400 12px Inter;color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a" data-i18n="footer_privacy">Confidențialitate</a>
+  </div>
 </div>
 
 <a href="#top" data-back-to-top style="position:fixed;right:28px;bottom:28px;width:48px;height:48px;border-radius:50%;background:rgba(22,25,27,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .3s ease;border:1px solid rgba(201,162,90,.35);display:flex;align-items:center;justify-content:center;color:#c9a25a;font-size:18px;text-decoration:none;transition:all .3s ease;z-index:40" style-hover="background:#c9a25a;color:#0f1113;transform:translateY(-4px)">↑</a>
