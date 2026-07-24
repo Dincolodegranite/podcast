@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — Dincolo de Granițe</title>
+<link rel="icon" href="assets/logo.jpg" type="image/jpeg">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#0f1113;color:#f5f6f7;font-family:Inter,system-ui,sans-serif;line-height:1.5}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:22px;margin:0}
+  h2{font-size:16px;margin:0 0 14px;color:#e3c07d}
+  a{color:#c9a25a}
+  input,textarea,select,button{font-family:inherit;font-size:14px}
+  input,textarea,select{width:100%;padding:11px 14px;border-radius:10px;border:1px solid rgba(201,162,90,.3);background:rgba(245,246,247,.05);color:#f5f6f7;outline:none}
+  input:focus,textarea:focus,select:focus{border-color:#c9a25a}
+  textarea{min-height:90px;resize:vertical}
+  select{width:auto}
+  button{cursor:pointer;border:none;border-radius:999px;padding:11px 22px;font-weight:600;letter-spacing:.02em}
+  .btn-gold{background:#c9a25a;color:#0f1113}
+  .btn-gold:hover{background:#e3c07d}
+  .btn-ghost{background:transparent;color:#c9a25a;border:1px solid rgba(201,162,90,.4)}
+  .btn-ghost:hover{background:rgba(201,162,90,.12)}
+  .btn-danger{background:transparent;color:#e08a6a;border:1px solid rgba(224,138,106,.4);padding:7px 14px;font-size:12px}
+  .btn-danger:hover{background:rgba(224,138,106,.12)}
+  .btn-small{padding:7px 14px;font-size:12px}
+  .card{background:rgba(245,246,247,.04);border:1px solid rgba(201,162,90,.2);border-radius:16px;padding:22px;margin-bottom:16px}
+  .muted{color:rgba(245,246,247,.5);font-size:13px}
+  .err{color:#e08a6a;font-size:13px;min-height:18px;margin-top:8px}
+  .ok{color:#8fce9a}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .row > *{flex:1;min-width:140px}
+  .row .fixed{flex:none;min-width:0}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid rgba(245,246,247,.08)}
+  th{color:rgba(245,246,247,.45);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .tabs{display:flex;gap:8px;margin:26px 0 18px;flex-wrap:wrap}
+  .tab{padding:9px 20px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:transparent;color:rgba(245,246,247,.7);font-size:13px}
+  .tab.active{background:#c9a25a;color:#0f1113;border-color:#c9a25a}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.04em}
+  .badge.pub{background:rgba(143,206,154,.15);color:#8fce9a;border:1px solid rgba(143,206,154,.35)}
+  .badge.draft{background:rgba(245,246,247,.08);color:rgba(245,246,247,.55);border:1px solid rgba(245,246,247,.2)}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .hidden{display:none !important}
+  .ep-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(245,246,247,.08);flex-wrap:wrap}
+  .ep-item:last-child{border-bottom:none}
+  .ep-num{font-weight:700;color:#c9a25a;flex:none;width:52px}
+  .ep-title{flex:1;min-width:180px}
+  .guest{border:1px solid rgba(245,246,247,.1);border-radius:12px;padding:16px;margin-bottom:12px}
+  .guest .head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+  .guest .story{white-space:pre-wrap;color:rgba(245,246,247,.75);font-size:14px;margin:10px 0}
+  label.chk{display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(245,246,247,.75);cursor:pointer}
+  label.chk input{width:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- LOGIN -->
+  <div id="login-view">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px">
+      <img src="assets/logo.jpg" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover">
+      <h1>Admin — Dincolo de Granițe</h1>
+    </div>
+    <div class="card" style="max-width:420px">
+      <h2>Autentificare</h2>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <input id="login-email" type="email" placeholder="Email" autocomplete="username">
+        <input id="login-pass" type="password" placeholder="Parolă" autocomplete="current-password">
+        <button class="btn-gold" id="login-btn">INTRĂ</button>
+        <div class="err" id="login-err"></div>
+      </div>
+      <div class="muted">Contul se creează din Supabase Dashboard → Authentication → Add user. Emailul trebuie să fie în tabela <code>admins</code>.</div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app-view" class="hidden">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/logo.jpg" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover">
+        <div>
+          <h1>Admin — Dincolo de Granițe</h1>
+          <div class="muted" id="whoami"></div>
+        </div>
+      </div>
+      <div class="row" style="flex:none">
+        <a class="btn-ghost btn-small" style="text-decoration:none" href="index.html" target="_blank">VEZI SITE-UL</a>
+        <button class="btn-ghost btn-small" id="logout-btn">IEȘI</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="episodes">Episoade</button>
+      <button class="tab" data-tab="subscribers">Abonați <span id="sub-count" class="muted"></span></button>
+      <button class="tab" data-tab="guests">Invitați <span id="guest-count" class="muted"></span></button>
+    </div>
+
+    <!-- EPISODES -->
+    <div id="tab-episodes">
+      <div class="card">
+        <h2 id="ep-form-title">Adaugă episod</h2>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="row">
+            <input id="ep-num" type="number" min="0" placeholder="Nr. episod (ex. 1)" style="max-width:170px;flex:none">
+            <input id="ep-title" type="text" placeholder="Titlul episodului">
+          </div>
+          <textarea id="ep-desc" placeholder="Descriere scurtă (apare pe card)"></textarea>
+          <div class="row">
+            <input id="ep-url" type="url" placeholder="Link YouTube (https://...)">
+            <input id="ep-cover" type="url" placeholder="URL copertă (opțional — ex. assets/ep1.jpg sau https://...)">
+          </div>
+          <div class="row">
+            <label class="chk fixed"><input id="ep-pub" type="checkbox"> Publicat (apare pe site)</label>
+            <div class="fixed" style="margin-left:auto;display:flex;gap:8px">
+              <button class="btn-ghost btn-small hidden" id="ep-cancel">ANULEAZĂ</button>
+              <button class="btn-gold btn-small" id="ep-save">SALVEAZĂ</button>
+            </div>
+          </div>
+          <div class="err" id="ep-err"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Episoadele tale</h2>
+        <div id="ep-list" class="muted">Se încarcă...</div>
+      </div>
+    </div>
+
+    <!-- SUBSCRIBERS -->
+    <div id="tab-subscribers" class="hidden">
+      <div class="card">
+        <div class="topbar" style="margin-bottom:14px">
+          <h2 style="margin:0">Abonați newsletter</h2>
+          <button class="btn-ghost btn-small" id="sub-export">EXPORT CSV</button>
+        </div>
+        <div id="sub-list" class="muted">Se încarcă...</div>
+      </div>
+    </div>
+
+    <!-- GUESTS -->
+    <div id="tab-guests" class="hidden">
+      <div class="card">
+        <h2>Propuneri de invitați</h2>
+        <div id="guest-list" class="muted">Se încarcă...</div>
+      </div>
+    </div>
+
+    <div class="muted" style="margin-top:20px">Nu vezi date? Emailul contului tău trebuie să existe în tabela <code>admins</code> (Supabase → Table Editor).</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function(){
+  var SUPA_URL = 'https://fgwsmrwhuzkvrixcgovk.supabase.co';
+  var SUPA_KEY = 'sb_publishable_6uORl4ZKPYpCU_cdcAfudw_YOmcbnDQ';
+
+  if(!window.supabase || !window.supabase.createClient){
+    document.getElementById('login-err').textContent = 'Nu s-a putut încărca biblioteca Supabase. Verifică conexiunea.';
+    return;
+  }
+  var db = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+
+  var $ = function(id){ return document.getElementById(id); };
+  var editingId = null;
+  var subsCache = [];
+
+  function show(view){
+    $('login-view').classList.toggle('hidden', view !== 'login');
+    $('app-view').classList.toggle('hidden', view !== 'app');
+  }
+
+  function fmtDate(iso){
+    try { return new Date(iso).toLocaleString('ro-RO', { dateStyle:'medium', timeStyle:'short' }); }
+    catch(e){ return iso; }
+  }
+
+  // ── Auth ──────────────────────────────────────────────
+  function refreshSession(){
+    db.auth.getSession().then(function(res){
+      var session = res.data ? res.data.session : null;
+      if(session && session.user){
+        $('whoami').textContent = session.user.email || '';
+        show('app');
+        loadAll();
+      } else {
+        show('login');
+      }
+    });
+  }
+
+  $('login-btn').addEventListener('click', function(){
+    var email = $('login-email').value.trim();
+    var pass = $('login-pass').value;
+    $('login-err').textContent = '';
+    if(!email || !pass){ $('login-err').textContent = 'Completează emailul și parola.'; return; }
+    $('login-btn').disabled = true;
+    db.auth.signInWithPassword({ email: email, password: pass }).then(function(res){
+      $('login-btn').disabled = false;
+      if(res.error){ $('login-err').textContent = 'Autentificare eșuată: ' + res.error.message; return; }
+      refreshSession();
+    });
+  });
+  $('login-pass').addEventListener('keydown', function(e){ if(e.key === 'Enter') $('login-btn').click(); });
+
+  $('logout-btn').addEventListener('click', function(){
+    db.auth.signOut().then(function(){ show('login'); });
+  });
+
+  // ── Tabs ──────────────────────────────────────────────
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      ['episodes','subscribers','guests'].forEach(function(name){
+        $('tab-' + name).classList.toggle('hidden', name !== t.dataset.tab);
+      });
+    });
+  });
+
+  function loadAll(){ loadEpisodes(); loadSubscribers(); loadGuests(); }
+
+  // ── Episodes ──────────────────────────────────────────
+  function resetEpForm(){
+    editingId = null;
+    $('ep-form-title').textContent = 'Adaugă episod';
+    $('ep-num').value = ''; $('ep-title').value = ''; $('ep-desc').value = '';
+    $('ep-url').value = ''; $('ep-cover').value = ''; $('ep-pub').checked = false;
+    $('ep-cancel').classList.add('hidden');
+    $('ep-err').textContent = '';
+  }
+  $('ep-cancel').addEventListener('click', resetEpForm);
+
+  $('ep-save').addEventListener('click', function(){
+    var num = parseInt($('ep-num').value, 10);
+    var title = $('ep-title').value.trim();
+    $('ep-err').textContent = '';
+    if(isNaN(num) || !title){ $('ep-err').textContent = 'Numărul episodului și titlul sunt obligatorii.'; return; }
+    var payload = {
+      episode_number: num,
+      title: title,
+      description: $('ep-desc').value.trim() || null,
+      youtube_url: $('ep-url').value.trim() || null,
+      cover_url: $('ep-cover').value.trim() || null,
+      published: $('ep-pub').checked
+    };
+    var q = editingId
+      ? db.from('episodes').update(payload).eq('id', editingId)
+      : db.from('episodes').insert(payload);
+    q.then(function(res){
+      if(res.error){ $('ep-err').textContent = 'Eroare: ' + res.error.message; return; }
+      resetEpForm();
+      loadEpisodes();
+    });
+  });
+
+  function loadEpisodes(){
+    db.from('episodes').select('*').order('episode_number', { ascending: true }).then(function(res){
+      var box = $('ep-list');
+      box.textContent = '';
+      if(res.error){ box.textContent = 'Eroare la încărcare: ' + res.error.message; return; }
+      var eps = res.data || [];
+      if(!eps.length){ box.textContent = 'Niciun episod încă. Adaugă primul mai sus — bifează „Publicat" ca să apară pe site.'; return; }
+      eps.forEach(function(ep){
+        var row = document.createElement('div');
+        row.className = 'ep-item';
+        var num = document.createElement('div'); num.className = 'ep-num';
+        num.textContent = 'EP. ' + (ep.episode_number < 10 ? '0' : '') + ep.episode_number;
+        var mid = document.createElement('div'); mid.className = 'ep-title';
+        var t = document.createElement('div'); t.textContent = ep.title;
+        var d = document.createElement('div'); d.className = 'muted'; d.textContent = ep.description || '';
+        mid.appendChild(t); mid.appendChild(d);
+        var badge = document.createElement('span');
+        badge.className = 'badge ' + (ep.published ? 'pub' : 'draft');
+        badge.textContent = ep.published ? 'PUBLICAT' : 'DRAFT';
+        var actions = document.createElement('div');
+        actions.style.display = 'flex'; actions.style.gap = '8px'; actions.style.flexWrap = 'wrap';
+        var togg = document.createElement('button');
+        togg.className = 'btn-ghost btn-small';
+        togg.textContent = ep.published ? 'ASCUNDE' : 'PUBLICĂ';
+        togg.addEventListener('click', function(){
+          db.from('episodes').update({ published: !ep.published }).eq('id', ep.id).then(loadEpisodes);
+        });
+        var edit = document.createElement('button');
+        edit.className = 'btn-ghost btn-small'; edit.textContent = 'EDITEAZĂ';
+        edit.addEventListener('click', function(){
+          editingId = ep.id;
+          $('ep-form-title').textContent = 'Editează EP. ' + ep.episode_number;
+          $('ep-num').value = ep.episode_number; $('ep-title').value = ep.title;
+          $('ep-desc').value = ep.description || ''; $('ep-url').value = ep.youtube_url || '';
+          $('ep-cover').value = ep.cover_url || ''; $('ep-pub').checked = !!ep.published;
+          $('ep-cancel').classList.remove('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        var del = document.createElement('button');
+        del.className = 'btn-danger'; del.textContent = 'ȘTERGE';
+        del.addEventListener('click', function(){
+          if(!confirm('Ștergi episodul „' + ep.title + '"?')) return;
+          db.from('episodes').delete().eq('id', ep.id).then(loadEpisodes);
+        });
+        actions.appendChild(togg); actions.appendChild(edit); actions.appendChild(del);
+        row.appendChild(num); row.appendChild(mid); row.appendChild(badge); row.appendChild(actions);
+        box.appendChild(row);
+      });
+    });
+  }
+
+  // ── Subscribers ───────────────────────────────────────
+  function loadSubscribers(){
+    db.from('subscribers').select('*').order('created_at', { ascending: false }).then(function(res){
+      var box = $('sub-list');
+      box.textContent = '';
+      if(res.error){ box.textContent = 'Eroare la încărcare: ' + res.error.message; return; }
+      subsCache = res.data || [];
+      $('sub-count').textContent = subsCache.length ? '(' + subsCache.length + ')' : '';
+      if(!subsCache.length){ box.textContent = 'Niciun abonat încă.'; return; }
+      var table = document.createElement('table');
+      var thead = document.createElement('thead');
+      thead.innerHTML = '<tr><th>Email</th><th>Limbă</th><th>Data</th><th></th></tr>';
+      table.appendChild(thead);
+      var tbody = document.createElement('tbody');
+      subsCache.forEach(function(s){
+        var tr = document.createElement('tr');
+        var td1 = document.createElement('td'); td1.textContent = s.email;
+        var td2 = document.createElement('td'); td2.textContent = (s.lang || 'ro').toUpperCase();
+        var td3 = document.createElement('td'); td3.className = 'muted'; td3.textContent = fmtDate(s.created_at);
+        var td4 = document.createElement('td');
+        var del = document.createElement('button');
+        del.className = 'btn-danger'; del.textContent = 'ȘTERGE';
+        del.addEventListener('click', function(){
+          if(!confirm('Ștergi abonatul ' + s.email + '?')) return;
+          db.from('subscribers').delete().eq('id', s.id).then(loadSubscribers);
+        });
+        td4.appendChild(del);
+        tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      box.appendChild(table);
+    });
+  }
+
+  $('sub-export').addEventListener('click', function(){
+    if(!subsCache.length){ alert('Niciun abonat de exportat.'); return; }
+    var lines = ['email,limba,data'];
+    subsCache.forEach(function(s){
+      lines.push('"' + String(s.email).replace(/"/g, '""') + '",' + (s.lang || 'ro') + ',' + s.created_at);
+    });
+    var blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'abonati-dincolodegranite.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  // ── Guest applications ────────────────────────────────
+  var STATUSES = { 'new': 'Nou', 'contacted': 'Contactat', 'accepted': 'Acceptat', 'declined': 'Refuzat' };
+  function loadGuests(){
+    db.from('guest_applications').select('*').order('created_at', { ascending: false }).then(function(res){
+      var box = $('guest-list');
+      box.textContent = '';
+      if(res.error){ box.textContent = 'Eroare la încărcare: ' + res.error.message; return; }
+      var guests = res.data || [];
+      var fresh = guests.filter(function(g){ return g.status === 'new'; }).length;
+      $('guest-count').textContent = fresh ? '(' + fresh + ' noi)' : (guests.length ? '(' + guests.length + ')' : '');
+      if(!guests.length){ box.textContent = 'Nicio propunere încă.'; return; }
+      guests.forEach(function(g){
+        var card = document.createElement('div');
+        card.className = 'guest';
+        var head = document.createElement('div'); head.className = 'head';
+        var who = document.createElement('div');
+        var name = document.createElement('strong'); name.textContent = g.name;
+        var meta = document.createElement('div'); meta.className = 'muted';
+        meta.textContent = g.email + (g.location ? ' · ' + g.location : '') + ' · ' + fmtDate(g.created_at);
+        who.appendChild(name); who.appendChild(meta);
+        var controls = document.createElement('div');
+        controls.style.display = 'flex'; controls.style.gap = '8px'; controls.style.alignItems = 'center';
+        var sel = document.createElement('select');
+        Object.keys(STATUSES).forEach(function(k){
+          var o = document.createElement('option');
+          o.value = k; o.textContent = STATUSES[k];
+          if(g.status === k) o.selected = true;
+          sel.appendChild(o);
+        });
+        sel.addEventListener('change', function(){
+          db.from('guest_applications').update({ status: sel.value }).eq('id', g.id).then(loadGuests);
+        });
+        var mail = document.createElement('a');
+        mail.className = 'btn-ghost btn-small'; mail.style.textDecoration = 'none';
+        mail.textContent = 'RĂSPUNDE';
+        mail.href = 'mailto:' + encodeURIComponent(g.email) + '?subject=' + encodeURIComponent('Dincolo de Granițe — propunerea ta');
+        var del = document.createElement('button');
+        del.className = 'btn-danger'; del.textContent = 'ȘTERGE';
+        del.addEventListener('click', function(){
+          if(!confirm('Ștergi propunerea de la ' + g.name + '?')) return;
+          db.from('guest_applications').delete().eq('id', g.id).then(loadGuests);
+        });
+        controls.appendChild(sel); controls.appendChild(mail); controls.appendChild(del);
+        head.appendChild(who); head.appendChild(controls);
+        var story = document.createElement('div'); story.className = 'story'; story.textContent = g.story;
+        card.appendChild(head); card.appendChild(story);
+        box.appendChild(card);
+      });
+    });
+  }
+
+  db.auth.onAuthStateChange(function(){ refreshSession(); });
+  refreshSession();
+})();
+</script>
+</body>
+</html>
