@@ -26,6 +26,7 @@
 <meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","logo":"https://www.dincolodegranite.com/assets/logo.jpg","email":"contact@dincolodegranite.com","founder":{"@type":"Person","name":"Peter Baghiu"},"sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite","https://facebook.com/dincolo.de.granite","https://tiktok.com/@dincolo.de.granite"]},{"@type":"WebSite","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","inLanguage":"ro"}]}</script>
 <script src="./support.js"></script>
+<script defer src="./enhance.js"></script>
 </head>
 <body style="background:#0f1113;margin:0">
 <x-dc>
@@ -187,7 +188,7 @@ document.addEventListener('pointerout', function(e){
 });
 window.addEventListener('resize', function(){ __moveNavHighlight(__activeNavLink); }, { passive: true });
 window.addEventListener('load', function(){
-  var sections = document.querySelectorAll('#despre,#episoade,#playlist,#contact');
+  var sections = document.querySelectorAll('#despre,#harta,#episoade,#playlist,#contact');
   if(sections.length && window.IntersectionObserver){
     var navobs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
@@ -551,6 +552,8 @@ document.addEventListener('pointerout', function(e){
       label_contact:"CONTACT", contact_title:"HAI SĂ VORBIM",
       guest_title:"VREI SĂ FII INVITAT LA PODCAST?", guest_desc:"Ai o poveste din diaspora care merită spusă — sau cunoști pe cineva care are? Scrie-ne.", guest_btn:"PROPUNE O POVESTE",
       guest_name_ph:"Numele tău", guest_email_ph:"adresa@email.com", guest_location_ph:"Orașul / țara (opțional)", guest_story_ph:"Pe scurt: cine ești, când ai plecat și ce poveste ai de spus", guest_send:"TRIMITE PROPUNEREA",
+      nav_harta:"HARTA", harta_label:"HARTA DIASPOREI", harta_title:"CÂT DE DEPARTE EȘTI DE CASĂ?", harta_sub:"Scrie orașul în care trăiești și vezi drumul până acasă.", harta_placeholder:"Orașul tău (ex. London, Dubai...)", harta_btn:"ARATĂ-MI", harta_notfound:"Nu găsesc orașul — încearcă un oraș mare din apropiere.", harta_legend_home:"ACASĂ", harta_legend_guests:"PROPUNERI DE INVITAȚI", harta_km_label:"PÂNĂ ACASĂ", harta_line:"Distanța nu șterge povestea. O face mai puternică.", harta_cta:"PROPUNE-ȚI POVESTEA",
+      count_label:"PRIMUL EPISOD ÎN", count_d:"ZILE", count_h:"ORE", count_m:"MIN", count_s:"SEC",
       newsletter_consent:'Prin abonare ești de acord cu <a href="privacy.html" style="color:#c9a25a">politica de confidențialitate</a>. Te poți dezabona oricând.', footer_privacy:"Confidențialitate",
       footer_copyright:"© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu", loader_text:"SE ÎNCARCĂ"
     },
@@ -581,6 +584,8 @@ document.addEventListener('pointerout', function(e){
       label_contact:"CONTACT", contact_title:"LET'S TALK",
       guest_title:"WANT TO BE A GUEST ON THE PODCAST?", guest_desc:"Do you have a diaspora story worth telling — or know someone who does? Write to us.", guest_btn:"SUGGEST A STORY",
       guest_name_ph:"Your name", guest_email_ph:"your@email.com", guest_location_ph:"City / country (optional)", guest_story_ph:"Briefly: who you are, when you left, and the story you want to tell", guest_send:"SEND APPLICATION",
+      nav_harta:"MAP", harta_label:"DIASPORA MAP", harta_title:"HOW FAR ARE YOU FROM HOME?", harta_sub:"Type the city you live in and see the road home.", harta_placeholder:"Your city (e.g. London, Dubai...)", harta_btn:"SHOW ME", harta_notfound:"City not found — try a bigger city nearby.", harta_legend_home:"HOME", harta_legend_guests:"GUEST APPLICATIONS", harta_km_label:"FROM HOME", harta_line:"Distance doesn't erase the story. It makes it stronger.", harta_cta:"SHARE YOUR STORY",
+      count_label:"FIRST EPISODE IN", count_d:"DAYS", count_h:"HRS", count_m:"MIN", count_s:"SEC",
       newsletter_consent:'By subscribing you agree to the <a href="privacy.html" style="color:#c9a25a">privacy policy</a>. You can unsubscribe anytime.', footer_privacy:"Privacy",
       footer_copyright:"© 2026 Dincolo de Granițe · A podcast by Peter Baghiu", loader_text:"LOADING"
     }
@@ -666,6 +671,7 @@ document.addEventListener('pointerout', function(e){
     </a>
     <div data-nav-links style="position:relative;display:flex;align-items:center;gap:2px">
       <a href="#despre" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="1" fill="#c9a25a" stroke="none"></circle></svg><span data-i18n="nav_despre">DESPRE</span></a>
+      <a href="#harta" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span data-i18n="nav_harta">HARTA</span></a>
       <a href="#episoade" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="2" y="13" width="5" height="7" rx="2"></rect><rect x="17" y="13" width="5" height="7" rx="2"></rect></svg><span data-i18n="nav_episoade">EPISOADE</span></a>
       <a href="#playlist" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><span data-i18n="nav_playlist">PLAYLIST</span></a>
       <a href="#contact" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span data-i18n="nav_contact">CONTACT</span></a>
@@ -683,6 +689,7 @@ document.addEventListener('pointerout', function(e){
     </div>
     <div data-nav-mobile-menu style="position:absolute;top:calc(100% + 10px);left:0;right:0;background:rgba(15,17,19,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(201,162,90,.25);border-radius:24px;box-shadow:0 24px 50px rgba(0,0,0,.55);padding:12px;display:flex;flex-direction:column;gap:2px;opacity:0;transform:translateY(-10px) scale(.98);pointer-events:none;transition:opacity .3s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1);z-index:60">
       <a href="#despre" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_despre">DESPRE</a>
+      <a href="#harta" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_harta">HARTA</a>
       <a href="#episoade" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_episoade">EPISOADE</a>
       <a href="#playlist" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_playlist">PLAYLIST</a>
       <a href="#contact" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_contact">CONTACT</a>
@@ -816,7 +823,7 @@ document.addEventListener('pointerout', function(e){
 <div style="position:relative;overflow:hidden">
   <div style="position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.45),transparent)"></div>
   <div style="position:absolute;top:-180px;left:-160px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.1),transparent 70%);filter:blur(40px);pointer-events:none"></div>
-  <div id="despre" style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(60px,10vw,110px) clamp(20px,7vw,90px);box-sizing:border-box;display:flex;flex-wrap:wrap;gap:clamp(36px,6vw,80px)">
+  <div id="despre" data-reveal style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(60px,10vw,110px) clamp(20px,7vw,90px);box-sizing:border-box;display:flex;flex-wrap:wrap;gap:clamp(36px,6vw,80px)">
     <div data-sticky-col style="position:sticky;top:130px;flex:1 1 300px;min-width:240px;max-width:320px">
       <span style="position:absolute;top:-64px;left:-10px;font:400 160px/1 'Playfair Display';color:rgba(201,162,90,.1);pointer-events:none;z-index:0;user-select:none">“</span>
       <div style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
@@ -848,8 +855,42 @@ document.addEventListener('pointerout', function(e){
 </div>
 </div>
 
+<!-- HARTA DIASPOREI -->
+<div id="harta" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
+    <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a"></span>
+    <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="harta_label">HARTA DIASPOREI</span>
+  </div>
+  <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="harta_title">CÂT DE DEPARTE EȘTI DE CASĂ?</h2>
+  <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin-bottom:28px" data-i18n="harta_sub">Scrie orașul în care trăiești și vezi drumul până acasă.</div>
+  <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);background:rgba(245,246,247,.035);border:1px solid rgba(201,162,90,.18);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)">
+    <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.5),transparent);pointer-events:none"></div>
+    <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;max-width:560px;z-index:5">
+      <div style="position:relative;flex:1;min-width:220px">
+        <input data-harta-input type="text" placeholder="Orașul tău (ex. London, Dubai...)" data-i18n-placeholder="harta_placeholder" style="width:100%;padding:14px 20px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(15,17,19,.5);color:#f5f6f7;font:400 15px Inter;outline:none;box-sizing:border-box;transition:border-color .25s ease" style-focus="border-color:#c9a25a">
+        <div data-harta-suggestions style="display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(15,17,19,.97);border:1px solid rgba(201,162,90,.35);border-radius:16px;overflow:hidden;z-index:30;box-shadow:0 20px 40px rgba(0,0,0,.5)"></div>
+      </div>
+      <button data-harta-btn type="button" style="padding:14px 28px;border-radius:999px;border:none;background:#c9a25a;color:#0f1113;font:600 13px Inter;letter-spacing:.03em;cursor:pointer;transition:all .25s ease;flex:none" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="harta_btn">ARATĂ-MI</button>
+    </div>
+    <div data-harta-err style="font:500 13px Inter;color:#e08a6a;opacity:0;transition:opacity .3s ease;margin-bottom:8px" data-i18n="harta_notfound">Nu găsesc orașul — încearcă un oraș mare din apropiere.</div>
+    <div style="position:relative">
+      <canvas data-harta-canvas style="display:block;width:100%"></canvas>
+    </div>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:14px">
+      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:9px;height:9px;border-radius:50%;background:#e3c07d;flex:none"></span><span data-i18n="harta_legend_home">ACASĂ</span></span>
+      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(227,192,125,.6);flex:none"></span><span data-i18n="harta_legend_guests">PROPUNERI DE INVITAȚI</span></span>
+    </div>
+    <div data-harta-result style="display:none;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:26px 12px 8px">
+      <div style="font:400 clamp(44px,8vw,72px)/1 'Bebas Neue';color:#e3c07d"><span data-harta-km>0</span> KM</div>
+      <div style="font:600 12px Inter;letter-spacing:.22em;color:rgba(245,246,247,.5);margin-top:6px" data-i18n="harta_km_label">PÂNĂ ACASĂ</div>
+      <div style="font:italic 500 clamp(16px,3vw,20px)/1.5 'Playfair Display';color:#f5f6f7;margin-top:16px" data-i18n="harta_line">Distanța nu șterge povestea. O face mai puternică.</div>
+      <a href="#contact" style="display:inline-block;margin-top:18px;padding:14px 30px;background:#c9a25a;color:#0f1113;font:600 13px Inter;letter-spacing:.03em;border-radius:999px;text-decoration:none;transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="harta_cta">PROPUNE-ȚI POVESTEA</a>
+    </div>
+  </div>
+</div>
+
 <!-- EPISOADE -->
-<div id="episoade" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+<div id="episoade" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
   <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:50px;flex-wrap:wrap;gap:12px">
     <div>
       <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
@@ -905,6 +946,16 @@ document.addEventListener('pointerout', function(e){
   </div>
   <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:clamp(56px,8vw,88px);padding:44px 32px;background:rgba(245,246,247,.035);border:1px solid rgba(201,162,90,.18);border-radius:28px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 40px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)">
     <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent)"></div>
+    <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:6px">
+      <span style="font:600 11px Inter;letter-spacing:.26em;color:#c9a25a" data-i18n="count_label">PRIMUL EPISOD ÎN</span>
+      <div style="display:flex;gap:clamp(12px,3.5vw,26px)">
+        <div style="text-align:center;min-width:54px"><div data-count-d style="font:400 clamp(30px,6vw,46px)/1 'Bebas Neue';color:#e3c07d">–</div><div style="font:600 9.5px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45);margin-top:6px" data-i18n="count_d">ZILE</div></div>
+        <div style="text-align:center;min-width:54px"><div data-count-h style="font:400 clamp(30px,6vw,46px)/1 'Bebas Neue';color:#e3c07d">–</div><div style="font:600 9.5px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45);margin-top:6px" data-i18n="count_h">ORE</div></div>
+        <div style="text-align:center;min-width:54px"><div data-count-m style="font:400 clamp(30px,6vw,46px)/1 'Bebas Neue';color:#e3c07d">–</div><div style="font:600 9.5px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45);margin-top:6px" data-i18n="count_m">MIN</div></div>
+        <div style="text-align:center;min-width:54px"><div data-count-s style="font:400 clamp(30px,6vw,46px)/1 'Bebas Neue';color:#e3c07d">–</div><div style="font:600 9.5px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45);margin-top:6px" data-i18n="count_s">SEC</div></div>
+      </div>
+      <div style="width:64px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent);margin-top:4px"></div>
+    </div>
     <div style="position:relative;width:52px;height:52px;flex:none">
       <div style="position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,#c9a25a,#8a6f3a,#c9a25a);opacity:.5;filter:blur(4px);animation:spinSlow 9s linear infinite"></div>
       <div style="position:relative;width:52px;height:52px;border-radius:50%;background:#16191b;border:1px solid rgba(201,162,90,.35);display:flex;align-items:center;justify-content:center">
@@ -925,7 +976,7 @@ document.addEventListener('pointerout', function(e){
 </div>
 
 <!-- PLAYLIST -->
-<div id="playlist" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+<div id="playlist" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
   <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
     <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a"></span>
     <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a">PLAYLIST</span>
@@ -1045,7 +1096,7 @@ document.addEventListener('pointerout', function(e){
 </div>
 
 <!-- CONTACT / FOOTER -->
-<div id="contact" style="max-width:1280px;margin:0 auto;padding:clamp(44px,8vw,70px) clamp(20px,7vw,90px) 40px;box-sizing:border-box">
+<div id="contact" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(44px,8vw,70px) clamp(20px,7vw,90px) 40px;box-sizing:border-box">
   <div style="display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:36px;border-bottom:1px solid rgba(201,162,90,.2);flex-wrap:wrap;gap:20px">
     <div>
       <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
