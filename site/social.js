@@ -14,8 +14,16 @@ var PAIRS = [
 ];
 
 function apply(map){
+  /* platform buttons hidden until Peter fills their URL in /admin */
+  document.querySelectorAll('[data-social]').forEach(function(el){
+    var v = map[el.getAttribute('data-social')];
+    if(v && /^https?:\/\//.test(v)){
+      el.setAttribute('href', v);
+      el.style.display = '';
+    }
+  });
   document.querySelectorAll('a[href]').forEach(function(a){
-    if(a.hasAttribute('data-ep-link')) return;
+    if(a.hasAttribute('data-ep-link') || a.hasAttribute('data-social')) return;
     var h = a.getAttribute('href') || '';
     for(var i = 0; i < PAIRS.length; i++){
       if(h.indexOf(PAIRS[i][0]) !== -1){
