@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harta Diasporei — Dincolo de Granițe · Cât de departe ești de casă?</title>
+<meta name="description" content="Scrie orașul în care trăiești și vezi drumul până acasă — harta interactivă a diasporei românești, cu punctele orașelor din care vin invitații podcastului.">
+<link rel="canonical" href="https://www.dincolodegranite.com/harta">
+<meta name="theme-color" content="#0f1113">
+<link rel="icon" href="assets/logo.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Harta Diasporei — Dincolo de Granițe">
+<meta property="og:description" content="Cât de departe ești de casă? Harta interactivă a românilor care construiesc dincolo de granițe.">
+<meta property="og:url" content="https://www.dincolodegranite.com/harta">
+<meta property="og:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="500">
+<meta property="og:site_name" content="Dincolo de Granițe">
+<meta property="og:locale" content="ro_RO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Harta Diasporei — Dincolo de Granițe">
+<meta name="twitter:description" content="Cât de departe ești de casă? Harta interactivă a diasporei românești.">
+<meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://www.dincolodegranite.com/"},{"@type":"ListItem","position":2,"name":"Harta Diasporei","item":"https://www.dincolodegranite.com/harta"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pages.css">
+<script defer src="enhance.js"></script>
+</head>
+<body>
+
+<nav class="pnav"><div class="pnav-in">
+  <a class="pbrand" href="index.html"><img src="assets/logo.jpg" alt="Dincolo de Granițe"><span>DINCOLO DE GRANIȚE</span></a>
+  <div class="plinks">
+    <a href="despre.html">Despre</a>
+    <a class="on" href="harta.html">Harta</a>
+    <a href="episoade.html">Episoade</a>
+    <a href="invitati.html">Invitați</a>
+    <a href="contact.html">Contact</a>
+    <a class="yt" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener">YouTube ↗</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <header class="phead">
+    <span class="eyebrow">Harta Diasporei</span>
+    <h1>Cât de departe ești<br>de casă?</h1>
+    <p class="lede">Scrie orașul în care trăiești și vezi drumul până acasă. Punctele aurii sunt orașele din care vin propunerile de invitați — harta crește cu fiecare poveste.</p>
+  </header>
+
+  <section>
+    <div class="gcard">
+      <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;max-width:560px;z-index:5">
+        <div style="position:relative;flex:1;min-width:220px">
+          <input data-harta-input class="field" style="border-radius:999px" type="text" placeholder="Orașul tău (ex. London, Dubai...)">
+          <div data-harta-suggestions style="display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(15,17,19,.97);border:1px solid rgba(201,162,90,.35);border-radius:16px;overflow:hidden;z-index:30;box-shadow:0 20px 40px rgba(0,0,0,.5)"></div>
+        </div>
+        <button data-harta-btn type="button" class="btn btn-gold" style="flex:none">ARATĂ-MI</button>
+      </div>
+      <div data-harta-err style="font:500 13px Inter;color:#e08a6a;opacity:0;transition:opacity .3s ease;margin-bottom:8px">Nu găsesc orașul — încearcă un oraș mare din apropiere.</div>
+      <div style="position:relative">
+        <canvas data-harta-canvas style="display:block;width:100%"></canvas>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:14px">
+        <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:9px;height:9px;border-radius:50%;background:#e3c07d;flex:none"></span>ACASĂ</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(227,192,125,.6);flex:none"></span>PROPUNERI DE INVITAȚI</span>
+      </div>
+      <div data-harta-result style="display:none;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:26px 12px 8px">
+        <div style="font:400 clamp(44px,8vw,72px)/1 'Bebas Neue';color:#e3c07d"><span data-harta-km>0</span> KM</div>
+        <div style="font:600 12px Inter;letter-spacing:.22em;color:rgba(245,246,247,.5);margin-top:6px">PÂNĂ ACASĂ</div>
+        <div style="font:italic 500 clamp(16px,3vw,20px)/1.5 'Playfair Display';color:#f5f6f7;margin-top:16px">Distanța nu șterge povestea. O face mai puternică.</div>
+        <a href="invitati.html" class="btn btn-gold" style="margin-top:18px">PROPUNE-ȚI POVESTEA</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="gcard" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <p style="margin:0;max-width:560px">Fiecare punct auriu e un român care și-a propus povestea. Construiești și tu ceva în Marea Britanie — sau oriunde dincolo de granițe?</p>
+      <a class="btn btn-ghost" href="invitati.html">Devino invitat →</a>
+    </div>
+  </section>
+</div>
+
+<footer class="pfoot"><div class="wrap pfoot-in">
+  <span>© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</span>
+  <span><a href="index.html">Acasă</a> · <a href="despre.html">Despre</a> · <a href="episoade.html">Episoade</a> · <a href="invitati.html">Invitați</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Confidențialitate</a></span>
+</div></footer>
+
+</body>
+</html>

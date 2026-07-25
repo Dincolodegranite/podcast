@@ -669,7 +669,6 @@ document.addEventListener('pointerout', function(e){
     applyLang(lang);
   });
   var savedLang = 'ro';
-  try{ savedLang = localStorage.getItem('dg_lang') || 'ro'; }catch(err){}
   function initLang(){ applyLang(window.__dgLang || savedLang); }
   window.addEventListener('DOMContentLoaded', initLang);
   window.addEventListener('load', initLang);
@@ -709,16 +708,10 @@ document.addEventListener('pointerout', function(e){
     </a>
     <div data-nav-links style="position:relative;display:flex;align-items:center;gap:2px">
       <a href="despre.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="1" fill="#c9a25a" stroke="none"></circle></svg><span data-i18n="nav_despre">DESPRE</span></a>
-      <a href="#harta" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span data-i18n="nav_harta">HARTA</span></a>
+      <a href="harta.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span data-i18n="nav_harta">HARTA</span></a>
       <a href="episoade.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="2" y="13" width="5" height="7" rx="2"></rect><rect x="17" y="13" width="5" height="7" rx="2"></rect></svg><span data-i18n="nav_episoade">EPISOADE</span></a>
       <a href="invitati.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span data-i18n="nav_invitati">INVITAȚI</span></a>
-      <a href="#contact" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span data-i18n="nav_contact">CONTACT</span></a>
-    </div>
-    <div data-lang-switch style="position:relative;display:flex;align-items:center;gap:6px;background:rgba(15,17,19,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(201,162,90,.28);border-radius:999px;padding:3px;flex:none;box-shadow:inset 0 1px 3px rgba(0,0,0,.35),0 8px 20px rgba(0,0,0,.25);transition:border-color .25s ease,box-shadow .25s ease" style-hover="border-color:rgba(201,162,90,.55);box-shadow:inset 0 1px 3px rgba(0,0,0,.35),0 8px 20px rgba(0,0,0,.25),0 0 16px rgba(201,162,90,.25)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="1.8" style="flex:none;margin-left:7px" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9Z"></path></svg>
-      <div data-lang-pill style="position:absolute;top:3px;left:28px;width:32px;height:calc(100% - 6px);background:linear-gradient(135deg,#e3c07d,#c9a25a);border-radius:999px;transition:left .35s cubic-bezier(.34,1.56,.64,1),width .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 3px 10px rgba(201,162,90,.45),inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 2px rgba(138,111,58,.4)"></div>
-      <button data-lang-btn="ro" type="button" style="position:relative;z-index:1;width:32px;border:none;background:transparent;font:700 10px Inter;letter-spacing:.05em;padding:7px 0;border-radius:999px;cursor:pointer;transition:color .3s ease,transform .15s ease" style-hover="opacity:.85" style-active="transform:scale(0.88)">RO</button>
-      <button data-lang-btn="en" type="button" style="position:relative;z-index:1;width:32px;border:none;background:transparent;font:700 10px Inter;letter-spacing:.05em;padding:7px 0;border-radius:999px;cursor:pointer;transition:color .3s ease,transform .15s ease" style-hover="opacity:.85" style-active="transform:scale(0.88)">EN</button>
+      <a href="contact.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span data-i18n="nav_contact">CONTACT</span></a>
     </div>
     <div data-nav-toggle role="button" tabindex="0" aria-label="Deschide meniul" style="display:none;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer;flex:none;background:rgba(201,162,90,.1);border:1px solid rgba(201,162,90,.25);transition:background .25s ease" style-hover="background:rgba(201,162,90,.2)">
       <span data-nav-toggle-bar style="width:16px;height:2px;border-radius:2px;background:#f5f6f7;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s ease"></span>
@@ -727,10 +720,10 @@ document.addEventListener('pointerout', function(e){
     </div>
     <div data-nav-mobile-menu style="position:absolute;top:calc(100% + 10px);left:0;right:0;background:rgba(15,17,19,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(201,162,90,.25);border-radius:24px;box-shadow:0 24px 50px rgba(0,0,0,.55);padding:12px;display:flex;flex-direction:column;gap:2px;opacity:0;transform:translateY(-10px) scale(.98);pointer-events:none;transition:opacity .3s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1);z-index:60">
       <a href="despre.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_despre">DESPRE</a>
-      <a href="#harta" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_harta">HARTA</a>
+      <a href="harta.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_harta">HARTA</a>
       <a href="episoade.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_episoade">EPISOADE</a>
       <a href="invitati.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_invitati">INVITAȚI</a>
-      <a href="#contact" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_contact">CONTACT</a>
+      <a href="contact.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_contact">CONTACT</a>
     </div>
   </div>
 </div>
@@ -951,40 +944,6 @@ document.addEventListener('pointerout', function(e){
   </div>
 </div>
 
-<!-- HARTA DIASPOREI -->
-<div id="harta" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
-  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-    <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a"></span>
-    <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="harta_label">HARTA DIASPOREI</span>
-  </div>
-  <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="harta_title">CÂT DE DEPARTE EȘTI DE CASĂ?</h2>
-  <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin-bottom:28px" data-i18n="harta_sub">Scrie orașul în care trăiești și vezi drumul până acasă.</div>
-  <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
-    <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.5),transparent);pointer-events:none"></div>
-    <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;max-width:560px;z-index:5">
-      <div style="position:relative;flex:1;min-width:220px">
-        <input data-harta-input type="text" placeholder="Orașul tău (ex. London, Dubai...)" data-i18n-placeholder="harta_placeholder" style="width:100%;padding:14px 20px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(15,17,19,.5);color:#f5f6f7;font:400 15px Inter;outline:none;box-sizing:border-box;transition:border-color .25s ease" style-focus="border-color:#c9a25a">
-        <div data-harta-suggestions style="display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(15,17,19,.97);border:1px solid rgba(201,162,90,.35);border-radius:16px;overflow:hidden;z-index:30;box-shadow:0 20px 40px rgba(0,0,0,.5)"></div>
-      </div>
-      <button data-harta-btn type="button" style="padding:14px 28px;border-radius:999px;border:none;background:#c9a25a;color:#0f1113;font:600 13px Inter;letter-spacing:.03em;cursor:pointer;transition:all .25s ease;flex:none" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="harta_btn">ARATĂ-MI</button>
-    </div>
-    <div data-harta-err style="font:500 13px Inter;color:#e08a6a;opacity:0;transition:opacity .3s ease;margin-bottom:8px" data-i18n="harta_notfound">Nu găsesc orașul — încearcă un oraș mare din apropiere.</div>
-    <div style="position:relative">
-      <canvas data-harta-canvas style="display:block;width:100%"></canvas>
-    </div>
-    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:14px">
-      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:9px;height:9px;border-radius:50%;background:#e3c07d;flex:none"></span><span data-i18n="harta_legend_home">ACASĂ</span></span>
-      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(227,192,125,.6);flex:none"></span><span data-i18n="harta_legend_guests">PROPUNERI DE INVITAȚI</span></span>
-    </div>
-    <div data-harta-result style="display:none;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:26px 12px 8px">
-      <div style="font:400 clamp(44px,8vw,72px)/1 'Bebas Neue';color:#e3c07d"><span data-harta-km>0</span> KM</div>
-      <div style="font:600 12px Inter;letter-spacing:.22em;color:rgba(245,246,247,.5);margin-top:6px" data-i18n="harta_km_label">PÂNĂ ACASĂ</div>
-      <div style="font:italic 500 clamp(16px,3vw,20px)/1.5 'Playfair Display';color:#f5f6f7;margin-top:16px" data-i18n="harta_line">Distanța nu șterge povestea. O face mai puternică.</div>
-      <a href="#contact" style="display:inline-block;margin-top:18px;padding:14px 30px;background:#c9a25a;color:#0f1113;font:600 13px Inter;letter-spacing:.03em;border-radius:999px;text-decoration:none;transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="harta_cta">PROPUNE-ȚI POVESTEA</a>
-    </div>
-  </div>
-</div>
-
 <!-- PLAYLIST -->
 <div id="playlist" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
   <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
@@ -1105,35 +1064,16 @@ document.addEventListener('pointerout', function(e){
   </div>
 </div>
 
-<!-- CONTACT / FOOTER -->
-<div id="contact" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(44px,8vw,70px) clamp(20px,7vw,90px) 40px;box-sizing:border-box">
-  <div style="display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:36px;border-bottom:1px solid rgba(201,162,90,.2);flex-wrap:wrap;gap:20px">
-    <div>
-      <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-        <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
-        <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="label_contact">CONTACT</span>
-      </div>
-      <h2 style="margin:0;font:400 clamp(24px,5vw,34px) 'Bebas Neue';color:#f5f6f7" data-i18n="contact_title">HAI SĂ VORBIM</h2>
-      <a href="mailto:contact@dincolodegranite.com" style="font:400 16px Inter;color:rgba(245,246,247,.6);margin-top:8px;display:inline-block;text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">contact@dincolodegranite.com</a>
-    </div>
-    <div data-contact-socials style="display:flex;gap:clamp(10px,3vw,16px);flex-wrap:wrap">
-      <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(201,162,90,.25);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.08);transform:translateY(-2px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
-      <a href="https://tiktok.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="TikTok" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(201,162,90,.25);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.08);transform:translateY(-2px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-3.4h-3.3v13.9a2.6 2.6 0 1 1-1.8-2.5V10.4a5.9 5.9 0 1 0 5.1 5.9V9.3a7.6 7.6 0 0 0 4.4 1.4V7.4a4.3 4.3 0 0 1-1.8-1.6Z"></path></svg></a>
-      <a href="https://facebook.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Facebook" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(201,162,90,.25);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.08);transform:translateY(-2px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"></path></svg></a>
-      <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(201,162,90,.25);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.08);transform:translateY(-2px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
-    </div>
-  </div>
-  <div style="margin-top:28px;padding:26px 28px;border:1px solid transparent;border-radius:20px;background:linear-gradient(135deg,rgba(35,32,24,.9),rgba(20,21,24,.95)) padding-box,linear-gradient(170deg,rgba(227,192,125,.55),rgba(201,162,90,.14) 35%,rgba(201,162,90,.10) 65%,rgba(227,192,125,.32) 100%) border-box">
-    <div style="font:400 clamp(20px,3.4vw,26px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7" data-i18n="guest_title">VREI SĂ FII INVITAT LA PODCAST?</div>
-    <div style="font:400 14px/1.6 Inter;color:rgba(245,246,247,.6);margin-top:6px;max-width:640px" data-i18n="guest_desc">Construiești ceva în Marea Britanie — o afacere, o carieră, un proiect? Sau cunoști pe cineva cu o poveste neobișnuită? Scrie-ne.</div>
-    <a href="invitati.html" style="display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:15px 32px;background:#c9a25a;color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="guest_page_btn">APLICĂ ACUM →</a>
-  </div>
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:26px">
+<!-- FOOTER -->
+<div style="max-width:1280px;margin:0 auto;padding:clamp(32px,5vw,48px) clamp(20px,7vw,90px) 40px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:26px;border-top:1px solid rgba(201,162,90,.2)">
     <div style="font:400 13px Inter;color:rgba(245,246,247,.4)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</div>
     <div style="display:flex;gap:16px;flex-wrap:wrap;font:400 12px Inter">
       <a href="despre.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Despre</a>
+      <a href="harta.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Harta</a>
       <a href="episoade.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Episoade</a>
       <a href="invitati.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Invitați</a>
+      <a href="contact.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Contact</a>
       <a href="privacy.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a" data-i18n="footer_privacy">Confidențialitate</a>
     </div>
   </div>

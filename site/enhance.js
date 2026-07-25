@@ -442,17 +442,26 @@ function initCursor(){
 
 /* ── Boot (retry until the React-rendered DOM exists) ──────────── */
 var tries = 0;
+var done = { map: false, cd: false, board: false, extras: false };
 var iv = setInterval(function(){
   tries++;
-  var mapReady = document.querySelector('[data-harta-canvas]');
-  var cdReady = document.querySelector('[data-countdown]');
-  if(mapReady && cdReady){
-    clearInterval(iv);
+  if(!done.map && document.querySelector('[data-harta-canvas]')){
+    done.map = true;
     try { initMap(); } catch(e){ console.warn('harta init:', e); }
+  }
+  if(!done.cd && document.querySelector('[data-countdown]')){
+    done.cd = true;
     try { initCountdown(); } catch(e){ console.warn('countdown init:', e); }
+  }
+  if(!done.board && document.querySelector('[data-clock-lon]')){
+    done.board = true;
     try { initBoard(); } catch(e){}
+  }
+  if(!done.extras && (done.cd || done.map || tries > 4)){
+    done.extras = true;
     try { initReveals(); } catch(e){}
     try { initCursor(); } catch(e){}
-  } else if(tries > 100){ clearInterval(iv); }
+  }
+  if(tries > 100 || (done.map && done.cd && done.board && done.extras)) clearInterval(iv);
 }, 300);
 })();
