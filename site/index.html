@@ -850,6 +850,39 @@ document.addEventListener('pointerout', function(e){
   </div>
 </div>
 
+<!-- HARTA DIASPOREI -->
+<div id="harta" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(48px,8vw,84px) clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
+    <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a"></span>
+    <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="harta_label">HARTA DIASPOREI</span>
+  </div>
+  <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="harta_title">CÂT DE DEPARTE EȘTI DE CASĂ?</h2>
+  <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin-bottom:28px" data-i18n="harta_sub">Scrie orașul în care trăiești și vezi drumul până acasă.</div>
+  <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
+    <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;max-width:560px;z-index:5">
+      <div style="position:relative;flex:1;min-width:220px">
+        <input data-harta-input type="text" placeholder="Orașul tău (ex. London, Dubai...)" data-i18n-placeholder="harta_placeholder" style="width:100%;padding:14px 20px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(15,17,19,.5);color:#f5f6f7;font:400 15px Inter;outline:none;box-sizing:border-box;transition:border-color .25s ease" style-focus="border-color:#c9a25a">
+        <div data-harta-suggestions style="display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(15,17,19,.97);border:1px solid rgba(201,162,90,.35);border-radius:16px;overflow:hidden;z-index:30;box-shadow:0 20px 40px rgba(0,0,0,.5)"></div>
+      </div>
+      <button data-harta-btn type="button" style="padding:14px 28px;border-radius:999px;border:none;background:#c9a25a;color:#0f1113;font:600 13px Inter;letter-spacing:.03em;cursor:pointer;transition:all .25s ease;flex:none" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="harta_btn">ARATĂ-MI</button>
+    </div>
+    <div data-harta-err style="font:500 13px Inter;color:#e08a6a;opacity:0;transition:opacity .3s ease;margin-bottom:8px" data-i18n="harta_notfound">Nu găsesc orașul — încearcă un oraș mare din apropiere.</div>
+    <div style="position:relative">
+      <canvas data-harta-canvas style="display:block;width:100%"></canvas>
+    </div>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:14px">
+      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:9px;height:9px;border-radius:50%;background:#e3c07d;flex:none"></span><span data-i18n="harta_legend_home">ACASĂ</span></span>
+      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(227,192,125,.6);flex:none"></span><span data-i18n="harta_legend_guests">PROPUNERI DE INVITAȚI</span></span>
+    </div>
+    <div data-harta-result style="display:none;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:26px 12px 8px">
+      <div style="font:400 clamp(44px,8vw,72px)/1 'Bebas Neue';color:#e3c07d"><span data-harta-km>0</span> KM</div>
+      <div style="font:600 12px Inter;letter-spacing:.22em;color:rgba(245,246,247,.5);margin-top:6px" data-i18n="harta_km_label">PÂNĂ ACASĂ</div>
+      <div style="font:italic 500 clamp(16px,3vw,20px)/1.5 'Playfair Display';color:#f5f6f7;margin-top:16px" data-i18n="harta_line">Distanța nu șterge povestea. O face mai puternică.</div>
+      <a href="invitati.html" style="display:inline-block;margin-top:18px;padding:14px 30px;background:#c9a25a;color:#0f1113;font:600 13px Inter;letter-spacing:.03em;border-radius:999px;text-decoration:none;transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,162,90,.35)" data-i18n="harta_cta">PROPUNE-ȚI POVESTEA</a>
+    </div>
+  </div>
+</div>
+
 <!-- EPISOADE -->
 <div id="episoade" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
   <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:50px;flex-wrap:wrap;gap:12px">
