@@ -51,7 +51,7 @@ a:hover{color:#e3c07d}
 @keyframes ctaGlow{0%,100%{box-shadow:0 4px 14px rgba(0,0,0,.3),0 0 0 0 rgba(201,162,90,.45)}50%{box-shadow:0 8px 22px rgba(0,0,0,.35),0 0 32px 8px rgba(201,162,90,.45)}}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(201,162,90,.45)}70%{box-shadow:0 0 0 9px rgba(201,162,90,0)}100%{box-shadow:0 0 0 0 rgba(201,162,90,0)}}
-@keyframes scrollDot{0%{transform:translateY(0);opacity:1}80%{opacity:1}100%{transform:translateY(36px);opacity:0}}
+@keyframes scrollBeam{0%{transform:translateY(-16px);opacity:0}18%{opacity:1}82%{opacity:1}100%{transform:translateY(50px);opacity:0}}
 @keyframes waveBar{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
 @keyframes fadeInRight{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:translateX(0)}}
 @keyframes kenBurns{0%{transform:scale(1)}100%{transform:scale(1.07)}}
@@ -166,6 +166,8 @@ window.addEventListener('scroll', function(){
   if(bar){ bar.style.width = __scrollPct + '%'; }
   var __ringEl = document.querySelector('[data-scroll-ring]');
   if(__ringEl){ __ringEl.style.setProperty('--ring-p', __scrollPct.toFixed(1)); }
+  var __shEl = document.querySelector('[data-scroll-hint]');
+  if(__shEl){ __shEl.style.opacity = window.scrollY > 60 ? '0' : '1'; }
   var __backTopEl = document.querySelector('[data-back-to-top]');
   if(__backTopEl){
     if(window.scrollY > 700){ __backTopEl.style.opacity = '1'; __backTopEl.style.pointerEvents = 'auto'; }
@@ -764,10 +766,10 @@ document.addEventListener('pointerout', function(e){
       </div>
     </div>
     </div>
-  <div data-scroll-hint style="position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;z-index:1;white-space:nowrap">
-    <span style="font:500 10px Inter;letter-spacing:.24em;color:rgba(245,246,247,.4)">SCROLL</span>
-    <div style="width:1px;height:36px;background:rgba(201,162,90,.2);position:relative">
-      <div style="position:absolute;left:50%;top:0;margin-left:-2.5px;width:5px;height:5px;border-radius:50%;background:#c9a25a;animation:scrollDot 2s ease-in-out infinite"></div>
+  <div data-scroll-hint style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;z-index:1;white-space:nowrap;transition:opacity .45s ease">
+    <span style="font:600 9.5px Inter;letter-spacing:.3em;color:rgba(245,246,247,.35)">SCROLL</span>
+    <div style="width:1px;height:50px;position:relative;overflow:hidden;background:rgba(201,162,90,.12)">
+      <div style="position:absolute;left:0;top:0;width:1px;height:16px;background:linear-gradient(180deg,transparent,#e3c07d,transparent);animation:scrollBeam 2.2s cubic-bezier(.4,0,.2,1) infinite"></div>
     </div>
   </div>
 </div>
