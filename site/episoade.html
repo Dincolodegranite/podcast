@@ -32,14 +32,24 @@
 <body>
 
 <nav class="pnav"><div class="pnav-in">
-  <a class="pbrand" href="index.html"><img src="assets/logo.jpg" alt="Dincolo de Granițe"><span>DINCOLO DE GRANIȚE</span></a>
+  <a class="pbrand" href="index.html" aria-label="Acasă">
+    <span class="pbrand-logo"><img src="assets/logo.jpg" alt="Dincolo de Granițe"></span>
+    <span class="pbrand-word">DINCOLO DE GRANIȚE</span>
+  </a>
   <div class="plinks">
-    <a href="despre.html">Despre</a>
-    <a href="harta.html">Harta</a>
-    <a class="on" href="episoade.html">Episoade</a>
-    <a href="invitati.html">Invitați</a>
-    <a href="contact.html">Contact</a>
-    <a class="yt" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener">YouTube ↗</a>
+    <a href="despre.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="1" fill="#c9a25a" stroke="none"></circle></svg><span>DESPRE</span></a>
+    <a href="harta.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span>HARTA</span></a>
+    <a href="episoade.html" class="on"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="2" y="13" width="5" height="7" rx="2"></rect><rect x="17" y="13" width="5" height="7" rx="2"></rect></svg><span>EPISOADE</span></a>
+    <a href="invitati.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>INVITAȚI</span></a>
+    <a href="contact.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span>CONTACT</span></a>
+  </div>
+  <button class="pburger" aria-label="Deschide meniul" type="button"><span></span><span></span><span></span></button>
+  <div class="pmenu">
+    <a href="despre.html">DESPRE</a>
+    <a href="harta.html">HARTA</a>
+    <a href="episoade.html">EPISOADE</a>
+    <a href="invitati.html">INVITAȚI</a>
+    <a href="contact.html">CONTACT</a>
   </div>
 </div></nav>
 
@@ -137,5 +147,6 @@
 })();
 </script>
 
+<script>document.querySelector(".pburger").addEventListener("click",function(){this.closest(".pnav-in").classList.toggle("open")});</script>
 </body>
 </html>
