@@ -522,22 +522,24 @@
        server-side. If that is not configured yet, fall back to the mail client
        so a reply is never lost. */
     function sendViaResend(body){
-      return db.auth.getSession().then(function(s){
-        var token = s && s.data && s.data.session && s.data.session.access_token;
-        if(!token) return { ok: false, error: 'Sesiune expirată — reintră în cont.' };
-        return fetch(SUPA_URL + '/functions/v1/send-reply', {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer ' + token,
-            'apikey': SUPA_KEY,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ to: g.email, subject: SUBJECT, body: body })
-        }).then(function(r){
-          return r.json().catch(function(){ return {}; }).then(function(j){
-            return r.ok ? { ok: true } : { ok: false, error: j.error || ('Eroare ' + r.status) };
+      /* functions.invoke attaches the current session itself, so there is no
+         manual token handling to get wrong. */
+      return db.functions.invoke('send-reply', {
+        body: { to: g.email, subject: SUBJECT, body: body }
+      }).then(function(res){
+        if(!res.error) return { ok: true };
+        /* pull the server's own message out of the error response */
+        var ctx = res.error.context;
+        if(ctx && typeof ctx.json === 'function'){
+          return ctx.json().then(function(j){
+            return { ok: false, error: (j && j.error) || res.error.message };
+          }).catch(function(){
+            return { ok: false, error: res.error.message };
           });
-        }).catch(function(){ return { ok: false, error: 'Nu am putut contacta serverul de email.' }; });
+        }
+        return { ok: false, error: res.error.message || 'Eroare necunoscută.' };
+      }).catch(function(e){
+        return { ok: false, error: (e && e.message) || 'Nu am putut contacta serverul de email.' };
       });
     }
     send.addEventListener('click', function(){
