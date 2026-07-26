@@ -69,6 +69,8 @@ a:hover{color:#e3c07d}
   .nl-btn{width:100%;flex:1 1 100%!important}
 }
 @media (max-width:900px){.dsp-divider{display:none!important}}
+.dsp-quote{text-wrap:balance}
+@media (max-width:560px){.dsp-quote{font-size:18px!important}.dsp-card{padding:26px 18px!important}}
 @media (max-width:560px){.cd-grid{display:grid!important;grid-template-columns:1fr 1fr;justify-content:center}.cd-cell{min-width:0!important}}
 @keyframes fadeInDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes dividerTrace{0%{top:-38%}100%{top:100%}}
@@ -853,19 +855,23 @@ document.addEventListener('pointerout', function(e){
 
 <!-- DESPRE (card) -->
 <div id="despre" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(48px,8vw,84px) clamp(20px,7vw,90px) 0;box-sizing:border-box">
-  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-    <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
-    <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="section_label_despre">DESPRE</span>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:20px">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
+        <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
+        <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="section_label_despre">DESPRE</span>
+      </div>
+      <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="despre_title">POVEȘTI CARE TREC GRANIȚE</h2>
+      <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:640px" data-i18n="despre_p3">Dincolo de Granițe este locul unde românii din întreaga lume își spun povestea. Fie că locuiesc în România, Marea Britanie, Europa, America, Canada, Australia sau oriunde în lume, fiecare invitat aduce o perspectivă unică despre curaj, schimbare și succes.</div>
+    </div>
+    <a href="despre.html" style="flex:none;display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="despre_more">POVESTEA COMPLETĂ →</a>
   </div>
-  <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="despre_title">POVEȘTI CARE TREC GRANIȚE</h2>
-  <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:640px;margin-bottom:16px" data-i18n="despre_p3">Dincolo de Granițe este locul unde românii din întreaga lume își spun povestea. Fie că locuiesc în România, Marea Britanie, Europa, America, Canada, Australia sau oriunde în lume, fiecare invitat aduce o perspectivă unică despre curaj, schimbare și succes.</div>
-  <div style="position:relative;overflow:hidden;border-radius:28px;border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4);padding:clamp(26px,5vw,54px)">
+  <div class="dsp-card" style="position:relative;overflow:hidden;border-radius:28px;border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4);padding:clamp(26px,5vw,54px)">
     <div style="position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none"></div>
     <div style="position:relative;display:flex;align-items:center;gap:clamp(32px,5vw,56px);flex-wrap:wrap">
       <div style="flex:1 1 280px;min-width:250px;display:flex;flex-direction:column">
         <span aria-hidden="true" style="display:block;font:italic 700 72px/1 'Playfair Display';color:rgba(201,162,90,.22);margin:0 0 -26px -3px">&ldquo;</span>
-        <div style="position:relative;z-index:1;font:italic 600 clamp(19px,2.8vw,24px)/1.5 'Playfair Display';color:#c9a25a" data-i18n="despre_closing">Pentru că cele mai valoroase lecții vin din experiențele oamenilor.</div>
-        <a href="despre.html" style="margin-top:26px;align-self:center;display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="despre_more">POVESTEA COMPLETĂ →</a>
+        <div class="dsp-quote" style="position:relative;z-index:1;font:italic 600 clamp(19px,2.8vw,24px)/1.5 'Playfair Display';color:#c9a25a" data-i18n="despre_closing">Pentru că cele mai valoroase lecții vin din experiențele oamenilor.</div>
       </div>
       <div class="dsp-divider" style="flex:none;align-self:stretch;width:1px;background:linear-gradient(180deg,transparent,rgba(201,162,90,.35),transparent)"></div>
       <div style="flex:1 1 420px;min-width:280px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,162,90,.16);border-radius:16px;overflow:hidden;border:1px solid rgba(201,162,90,.2)">
