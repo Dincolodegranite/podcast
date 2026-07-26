@@ -71,7 +71,14 @@ a:hover{color:#e3c07d}
 @media (max-width:900px){.dsp-divider{display:none!important}}
 .dsp-quote{text-wrap:balance}
 @media (max-width:560px){.dsp-quote{font-size:18px!important}.dsp-card{padding:26px 18px!important}}
-@media (max-width:560px){.cd-grid{display:grid!important;grid-template-columns:1fr 1fr;justify-content:center}.cd-cell{min-width:0!important}}
+@media (max-width:560px){
+  /* countdown stays on one row: full-width 4-col grid, slimmer tiles */
+  [data-newsletter-card]{padding:36px 16px!important}
+  [data-countdown]{width:100%}
+  .cd-grid{display:grid!important;grid-template-columns:repeat(4,1fr);gap:8px!important;width:100%}
+  .cd-cell{min-width:0!important;padding:14px 4px 10px!important}
+  .cd-cell>div:first-of-type{font-size:32px!important}
+}
 @keyframes fadeInDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes dividerTrace{0%{top:-38%}100%{top:100%}}
 @keyframes boardFlip{0%,86%,100%{transform:rotateX(0)}90%{transform:rotateX(86deg)}95%{transform:rotateX(-14deg)}}
