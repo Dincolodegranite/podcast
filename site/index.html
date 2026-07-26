@@ -85,6 +85,7 @@ a:hover{color:#e3c07d}
 .ep-yt-title{font:600 15.5px/1.4 Inter;color:#f5f6f7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ep-yt-meta{font:400 12.5px Inter;color:rgba(245,246,247,.5)}
 .ep-yt-meta [data-ep-badge]{color:rgba(227,192,125,.9);font-weight:600}
+.brd-status-cell{text-align:center}
 .brd-head{position:relative;overflow:hidden}
 .brd-head::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(227,192,125,.09) 50%,transparent 58%);transform:translateX(-120%);animation:brdSweep 7s ease-in-out infinite;pointer-events:none}
 @keyframes brdSweep{0%,64%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
@@ -106,6 +107,7 @@ a:hover{color:#e3c07d}
   .brd-row .brd-status-cell,.brd-row .brd-arrow{margin-top:10px!important}
   .brd-title{white-space:normal!important;overflow:visible!important}
   .brd-desc{white-space:normal!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .brd-arrow,.brd-arrow-sp{display:none!important}
 }
 html{scrollbar-width:thin;scrollbar-color:#c9a25a #0f1113}
 ::-webkit-scrollbar{width:10px;height:10px}
@@ -1053,7 +1055,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-time" style="flex:none;width:78px" data-i18n="board_col_time">PLECARE</span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px" data-i18n="board_col_status">STATUS</span>
-      <span style="flex:none;width:14px"></span>
+      <span class="brd-arrow-sp" style="flex:none;width:14px"></span>
     </div>
     <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="1">EP. 01</span>
