@@ -294,11 +294,32 @@ function initMap(){
   var result = document.querySelector('[data-harta-result]');
   var kmEl = document.querySelector('[data-harta-km]');
   var errEl = document.querySelector('[data-harta-err]');
+  /* the notice is display:none while idle so it reserves no space.
+     A pending hide is cancelled on show, and the reveal forces a reflow
+     instead of waiting on rAF, which can lag behind the hide timer. */
+  var errTimer = null;
+  function showErr(on){
+    if(!errEl) return;
+    if(errTimer){ clearTimeout(errTimer); errTimer = null; }
+    if(on){
+      errEl.style.display = 'flex';
+      void errEl.offsetHeight;
+      errEl.style.opacity = '1';
+      errEl.style.transform = 'none';
+    } else {
+      errEl.style.opacity = '0';
+      errEl.style.transform = 'translateY(-4px)';
+      errTimer = setTimeout(function(){
+        errEl.style.display = 'none';
+        errTimer = null;
+      }, 300);
+    }
+  }
 
   function pick(city){
     sug.style.display = 'none';
     input.value = city[0];
-    errEl.style.opacity = '0';
+    showErr(false);
     arc = { from: [city[1], city[2]], t: 0 };
     var km = haversine(city[1], city[2], HOME.lat, HOME.lon);
     result.style.display = 'block';
@@ -317,13 +338,13 @@ function initMap(){
     var c = findCity(input.value) || suggest(input.value)[0];
     if(c){ pick(c); }
     else {
-      errEl.style.opacity = '1';
+      showErr(true);
       result.style.display = 'none';
     }
   }
   input.addEventListener('input', function(){
     var list = suggest(input.value);
-    errEl.style.opacity = '0';
+    showErr(false);
     if(!list.length){ sug.style.display = 'none'; return; }
     sug.textContent = '';
     list.forEach(function(c){
