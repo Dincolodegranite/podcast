@@ -94,6 +94,12 @@ a:hover{color:#e3c07d}
 .brd-row:hover img{transform:scale(1.08)}
 .brd-arrow{display:inline-block;transition:transform .3s ease,color .3s ease}
 .brd-row:hover .brd-arrow{transform:translateX(4px);color:#e3c07d}
+@media (max-width:480px){
+  .brd-time{display:none!important}
+  .brd-thumb-sp{width:40px!important}
+  .brd-thumb{width:40px!important;height:40px!important}
+  .brd-row,.brd-cols{gap:8px!important;padding-left:10px!important;padding-right:10px!important}
+}
 html{scrollbar-width:thin;scrollbar-color:#c9a25a #0f1113}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:#0f1113}
@@ -1033,17 +1039,17 @@ document.addEventListener('pointerout', function(e){
         <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.4)" data-i18n="board_buc">BUCUREȘTI</span><span data-clock-buc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:#e3c07d">--:--</span></span>
       </div>
     </div>
-    <div style="display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:13px clamp(14px,3vw,28px) 9px;font:700 9px Inter;letter-spacing:.24em;color:rgba(245,246,247,.32)">
+    <div class="brd-cols" style="display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:13px clamp(14px,3vw,28px) 9px;font:700 9px Inter;letter-spacing:.24em;color:rgba(245,246,247,.32)">
       <span style="width:64px;flex:none" data-i18n="board_col_flight">ZBOR</span>
-      <span style="width:52px;flex:none"></span>
+      <span class="brd-thumb-sp" style="width:52px;flex:none"></span>
       <span style="flex:1" data-i18n="board_col_story">POVESTEA</span>
-      <span style="flex:none;width:78px" data-i18n="board_col_time">PLECARE</span>
+      <span class="brd-time" style="flex:none;width:78px" data-i18n="board_col_time">PLECARE</span>
       <span style="flex:none;width:112px" data-i18n="board_col_status">STATUS</span>
       <span style="flex:none;width:14px"></span>
     </div>
     <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="1">EP. 01</span>
-      <span style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
+      <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="1" src="assets/ep-cover-london.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
@@ -1051,7 +1057,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="1" style="font:600 15px Inter;color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
         <span data-ep-desc="1" style="font:400 12.5px Inter;color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
       </span>
-      <span style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
+      <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span style="flex:none;width:112px;perspective:400px">
         <span data-ep-status="1" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px Inter;letter-spacing:.14em;color:#e3c07d;animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="coming_soon">ÎN CURÂND</span>
       </span>
@@ -1059,7 +1065,7 @@ document.addEventListener('pointerout', function(e){
     </a>
     <a data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="2">EP. 02</span>
-      <span style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
+      <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
@@ -1067,7 +1073,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="2" style="font:600 15px Inter;color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
         <span data-ep-desc="2" style="font:400 12.5px Inter;color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
       </span>
-      <span style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
+      <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span style="flex:none;width:112px;perspective:400px">
         <span data-ep-status="2" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px Inter;letter-spacing:.14em;color:#e3c07d;animation:boardFlip 7s ease-in-out infinite;animation-delay:3.4s" data-i18n="coming_soon">ÎN CURÂND</span>
       </span>
@@ -1075,7 +1081,7 @@ document.addEventListener('pointerout', function(e){
     </a>
     <a data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="3">EP. 03</span>
-      <span style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
+      <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
@@ -1083,7 +1089,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="3" style="font:600 15px Inter;color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
         <span data-ep-desc="3" style="font:400 12.5px Inter;color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
       </span>
-      <span style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
+      <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span style="flex:none;width:112px;perspective:400px">
         <span data-ep-status="3" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px Inter;letter-spacing:.14em;color:#e3c07d;animation:boardFlip 7s ease-in-out infinite;animation-delay:5.8s" data-i18n="coming_soon">ÎN CURÂND</span>
       </span>
