@@ -59,6 +59,8 @@ a:hover{color:#e3c07d}
 @keyframes loaderFill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes loaderOut{0%{opacity:1;visibility:visible;pointer-events:auto}70%{opacity:1;visibility:visible;pointer-events:auto}100%{opacity:0;visibility:hidden;pointer-events:none}}
 @keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes cdPulse{0%{transform:scale(1);opacity:.65}70%{transform:scale(3.2);opacity:0}100%{transform:scale(3.2);opacity:0}}
+@media (max-width:480px){.cd-grid{flex-wrap:wrap!important;justify-content:center}.cd-cell{min-width:68px!important}}
 @keyframes fadeInDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes dividerTrace{0%{top:-38%}100%{top:100%}}
 @keyframes boardFlip{0%,86%,100%{transform:rotateX(0)}90%{transform:rotateX(86deg)}95%{transform:rotateX(-14deg)}}
@@ -990,15 +992,33 @@ document.addEventListener('pointerout', function(e){
   </div>
   <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:clamp(56px,8vw,88px);padding:44px 32px;border:1px solid transparent;border-radius:28px;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
     <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent)"></div>
-    <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:6px">
-      <span style="font:600 11px Inter;letter-spacing:.26em;color:#c9a25a" data-i18n="count_label">URMĂTORUL EPISOD ÎN</span>
-      <div style="display:flex;gap:clamp(12px,3.5vw,26px)">
-        <div style="text-align:center;min-width:54px"><div data-count-d style="font:400 clamp(30px,6vw,46px)/1 'Bebas Neue';color:#e3c07d">–</div><div style="font:600 9.5px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45);margin-top:6px" data-i18n="count_d">ZILE</div></div>
-        <div style="text-align:center;min-width:54px"><div data-count-h style="font:400 clamp(30px,6vw,46px)/1 'Bebas Neue';color:#e3c07d">–</div><div style="font:600 9.5px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45);margin-top:6px" data-i18n="count_h">ORE</div></div>
-        <div style="text-align:center;min-width:54px"><div data-count-m style="font:400 clamp(30px,6vw,46px)/1 'Bebas Neue';color:#e3c07d">–</div><div style="font:600 9.5px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45);margin-top:6px" data-i18n="count_m">MIN</div></div>
-        <div style="text-align:center;min-width:54px"><div data-count-s style="font:400 clamp(30px,6vw,46px)/1 'Bebas Neue';color:#e3c07d">–</div><div style="font:600 9.5px Inter;letter-spacing:.18em;color:rgba(245,246,247,.45);margin-top:6px" data-i18n="count_s">SEC</div></div>
+    <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:700 10px Inter;letter-spacing:.24em;color:#e3c07d">
+        <span style="position:relative;width:6px;height:6px;flex:none"><span style="position:absolute;inset:0;border-radius:50%;background:#e3c07d"></span><span style="position:absolute;inset:0;border-radius:50%;background:#e3c07d;animation:cdPulse 2.4s ease-out infinite"></span></span>
+        <span data-i18n="count_label">URMĂTORUL EPISOD ÎN</span>
+      </span>
+      <div class="cd-grid" style="display:flex;align-items:stretch;gap:10px">
+        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
+          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
+          <div data-count-d style="font:400 clamp(32px,6.4vw,50px)/1 'Bebas Neue';color:#e3c07d;font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_d">ZILE</div>
+        </div>
+        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
+          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
+          <div data-count-h style="font:400 clamp(32px,6.4vw,50px)/1 'Bebas Neue';color:#e3c07d;font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_h">ORE</div>
+        </div>
+        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
+          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
+          <div data-count-m style="font:400 clamp(32px,6.4vw,50px)/1 'Bebas Neue';color:#e3c07d;font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_m">MIN</div>
+        </div>
+        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
+          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
+          <div data-count-s style="font:400 clamp(32px,6.4vw,50px)/1 'Bebas Neue';color:rgba(227,192,125,.72);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_s">SEC</div>
+        </div>
       </div>
-      <div style="width:64px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent);margin-top:4px"></div>
     </div>
     <div style="position:relative;width:52px;height:52px;flex:none">
       <div style="position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,#c9a25a,#8a6f3a,#c9a25a);opacity:.5;filter:blur(4px);animation:spinSlow 9s linear infinite"></div>
