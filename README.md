@@ -128,9 +128,27 @@ Harta folosește `get_guest_cities()`, care returnează doar oraș + număr — 
 - [ ] Confirmă conturile de social media și pune linkurile în admin
 
 **Pentru mai târziu**
-- [ ] Trimiterea emailurilor direct din site, la răspunsurile către invitați. Acum se deschide clientul tău de email, pentru că un site static nu poate trimite singur. Ar fi nevoie de un cont Resend și de o cheie API introdusă de tine în Supabase.
+- [ ] Verifică domeniul în Resend, ca să poți trimite către oricine (vezi mai jos).
+- [ ] RSS cu audio, dacă vrei să fii și pe Apple Podcasts și Spotify. Cere fișiere audio găzduite; acum ai doar video pe YouTube.
 - [ ] Semnalarea în admin a locațiilor pe care harta nu le recunoaște, ca să nu mai descoperi întâmplător că lipsește un punct.
 - [ ] Primele mesaje de invitație. Lista de invitați potriviți e pregătită.
+
+---
+
+## Trimiterea emailurilor
+
+Răspunsurile către invitați se trimit din admin, prin funcția Supabase **`send-reply`**.
+
+Cheia Resend **nu e în acest depozit și nu trebuie să ajungă niciodată aici**. Stă ca secret al funcției: Supabase → Edge Functions → Secrets → `RESEND_API_KEY`.
+
+Cum funcționează: apelul e permis doar dacă cel care-l face e autentificat **și** are emailul în tabela `admins` — altfel oricine ar putea trimite emailuri prin funcție. Răspunsul se salvează întâi în `guest_replies`, apoi se trimite. Dacă trimiterea eșuează, se deschide clientul tău de email, ca să nu pierzi mesajul.
+
+### ⚠️ Verificarea domeniului la Resend
+Ca să trimiți către alte adrese decât a ta, Resend cere verificarea domeniului prin înregistrări DNS la GoDaddy. Îți va cere și un **MX pe un subdomeniu** (de obicei `send.dincolodegranite.com`).
+
+**Adaugă-l pe subdomeniu. Nu modifica MX-ul de la rădăcina domeniului** — acela ține emailul pe Microsoft 365.
+
+Pentru testare înainte de verificare, setează secretul `REPLY_FROM` cu valoarea `onboarding@resend.dev`; în acest regim Resend acceptă trimiteri doar către adresa contului tău.
 
 ---
 
