@@ -928,18 +928,18 @@ document.addEventListener('pointerout', function(e){
     </div>
   </div>
   <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
+    <div data-harta-result style="display:none;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:6px 12px 30px">
+      <div style="font:400 clamp(44px,8vw,72px)/1 'Bebas Neue';color:#e3c07d"><span data-harta-km>0</span> KM</div>
+      <div style="font:600 12px Inter;letter-spacing:.22em;color:rgba(245,246,247,.5);margin-top:6px" data-i18n="harta_km_label">PÂNĂ ACASĂ</div>
+      <div style="font:italic 500 clamp(16px,3vw,20px)/1.5 'Playfair Display';color:#f5f6f7;margin-top:16px" data-i18n="harta_line">Distanța nu șterge povestea. O face mai puternică.</div>
+      <a href="invitati.html" style="display:inline-block;margin-top:18px;padding:14px 28px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="harta_cta">PROPUNE-ȚI POVESTEA</a>
+    </div>
     <div style="position:relative">
       <canvas data-harta-canvas style="display:block;width:100%"></canvas>
     </div>
     <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:14px">
       <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:9px;height:9px;border-radius:50%;background:#e3c07d;flex:none"></span><span data-i18n="harta_legend_home">ACASĂ</span></span>
       <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(227,192,125,.6);flex:none"></span><span data-i18n="harta_legend_guests">PROPUNERI DE INVITAȚI</span></span>
-    </div>
-    <div data-harta-result style="display:none;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:26px 12px 8px">
-      <div style="font:400 clamp(44px,8vw,72px)/1 'Bebas Neue';color:#e3c07d"><span data-harta-km>0</span> KM</div>
-      <div style="font:600 12px Inter;letter-spacing:.22em;color:rgba(245,246,247,.5);margin-top:6px" data-i18n="harta_km_label">PÂNĂ ACASĂ</div>
-      <div style="font:italic 500 clamp(16px,3vw,20px)/1.5 'Playfair Display';color:#f5f6f7;margin-top:16px" data-i18n="harta_line">Distanța nu șterge povestea. O face mai puternică.</div>
-      <a href="invitati.html" style="display:inline-block;margin-top:18px;padding:14px 28px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="harta_cta">PROPUNE-ȚI POVESTEA</a>
     </div>
   </div>
 </div>
@@ -1007,7 +1007,7 @@ document.addEventListener('pointerout', function(e){
       </span>
     </a>
   </div>
-  <div style="margin-top:clamp(56px,8vw,88px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
+  <div style="margin-top:clamp(56px,8vw,88px);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
     <div>
     <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
       <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
