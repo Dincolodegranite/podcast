@@ -22,6 +22,11 @@ function apply(map){
       el.style.display = '';
     }
   });
+  /* plain-text fields Peter can edit from /admin (e.g. the DESPRE card spec sheet) */
+  document.querySelectorAll('[data-set]').forEach(function(el){
+    var v = map[el.getAttribute('data-set')];
+    if(v) el.textContent = v;
+  });
   document.querySelectorAll('a[href]').forEach(function(a){
     if(a.hasAttribute('data-ep-link') || a.hasAttribute('data-social')) return;
     var h = a.getAttribute('href') || '';
