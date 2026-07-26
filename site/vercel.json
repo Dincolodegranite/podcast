@@ -1,6 +1,6 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/episod/:slug", "destination": "/episod.html" }
+    { "source": "/episod/:slug", "destination": "/episod" }
   ]
 }
