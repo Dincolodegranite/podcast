@@ -431,15 +431,16 @@ function initCursor(){
     'border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-100px,-100px);' +
     'transition:width .25s ease,height .25s ease,border-color .25s ease;will-change:transform');
   var dot = document.createElement('div');
+  dot.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e3c07d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>';
   dot.setAttribute('style',
-    'position:fixed;left:0;top:0;width:5px;height:5px;background:#e3c07d;border-radius:50%;' +
-    'pointer-events:none;z-index:9999;transform:translate(-100px,-100px);will-change:transform');
+    'position:fixed;left:0;top:0;width:18px;height:18px;pointer-events:none;z-index:9999;' +
+    'transform:translate(-100px,-100px);will-change:transform;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))');
   document.body.appendChild(ring);
   document.body.appendChild(dot);
   var mx = -100, my = -100, rx = -100, ry = -100;
   document.addEventListener('pointermove', function(e){
     mx = e.clientX; my = e.clientY;
-    dot.style.transform = 'translate(' + (mx - 2.5) + 'px,' + (my - 2.5) + 'px)';
+    dot.style.transform = 'translate(' + (mx - 9) + 'px,' + (my - 9) + 'px)';
     var t = e.target;
     var interactive = t.closest && t.closest('a,button,input,textarea,select,[role="button"],[data-nav-toggle]');
     ring.style.width = interactive ? '52px' : '34px';
