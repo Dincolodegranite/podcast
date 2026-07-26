@@ -1,5 +1,5 @@
 /* Dincolo de Granițe — premium layer:
-   diaspora map + distance moment, launch countdown, scroll reveals, cursor.
+   diaspora map + distance moment, launch countdown, scroll reveals.
    Self-contained; waits for the React-rendered DOM via retry loop. */
 (function(){
 'use strict';
@@ -441,40 +441,6 @@ function initReveals(){
   });
 }
 
-/* ── Cursor (desktop, fine pointers only) ──────────────────────── */
-function initCursor(){
-  if(!window.matchMedia) return;
-  if(!matchMedia('(pointer:fine)').matches) return;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var ring = document.createElement('div');
-  ring.setAttribute('style',
-    'position:fixed;left:0;top:0;width:34px;height:34px;border:1px solid rgba(201,162,90,.65);' +
-    'border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-100px,-100px);' +
-    'transition:width .25s ease,height .25s ease,border-color .25s ease;will-change:transform');
-  var dot = document.createElement('div');
-  dot.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e3c07d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>';
-  dot.setAttribute('style',
-    'position:fixed;left:0;top:0;width:18px;height:18px;pointer-events:none;z-index:9999;' +
-    'transform:translate(-100px,-100px);will-change:transform;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))');
-  document.body.appendChild(ring);
-  document.body.appendChild(dot);
-  var mx = -100, my = -100, rx = -100, ry = -100;
-  document.addEventListener('pointermove', function(e){
-    mx = e.clientX; my = e.clientY;
-    dot.style.transform = 'translate(' + (mx - 9) + 'px,' + (my - 9) + 'px)';
-    var t = e.target;
-    var interactive = t.closest && t.closest('a,button,input,textarea,select,[role="button"],[data-nav-toggle]');
-    ring.style.width = interactive ? '52px' : '34px';
-    ring.style.height = interactive ? '52px' : '34px';
-    ring.style.borderColor = interactive ? 'rgba(227,192,125,.9)' : 'rgba(201,162,90,.65)';
-  }, { passive: true });
-  (function follow(){
-    rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
-    var w = parseFloat(ring.style.width) || 34;
-    ring.style.transform = 'translate(' + (rx - w / 2) + 'px,' + (ry - w / 2) + 'px)';
-    requestAnimationFrame(follow);
-  })();
-}
 
 /* ── Boot (retry until the React-rendered DOM exists) ──────────── */
 var tries = 0;
@@ -496,7 +462,6 @@ var iv = setInterval(function(){
   if(!done.extras && (done.cd || done.map || tries > 4)){
     done.extras = true;
     try { initReveals(); } catch(e){}
-    try { initCursor(); } catch(e){}
   }
   if(tries > 100 || (done.map && done.cd && done.board && done.extras)) clearInterval(iv);
 }, 300);
