@@ -183,6 +183,16 @@
         </div>
       </div>
       <div class="card" style="margin-top:20px">
+        <h2>Clipuri scurte (pagina principală)</h2>
+        <p class="muted" style="margin:0 0 14px">Linkuri către clipuri de pe YouTube Shorts, TikTok, Instagram sau Facebook. Secțiunea apare pe site doar dacă ai completat cel puțin unul. Pentru linkurile de YouTube, imaginea se ia automat.</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <label class="muted" style="font-size:12px">Clip 1<input id="set-clip1" type="url" placeholder="https://www.youtube.com/shorts/..." style="margin-top:5px"></label>
+          <label class="muted" style="font-size:12px">Clip 2<input id="set-clip2" type="url" placeholder="https://www.tiktok.com/@..." style="margin-top:5px"></label>
+          <label class="muted" style="font-size:12px">Clip 3<input id="set-clip3" type="url" placeholder="https://www.instagram.com/reel/..." style="margin-top:5px"></label>
+          <label class="muted" style="font-size:12px">Clip 4<input id="set-clip4" type="url" placeholder="https://..." style="margin-top:5px"></label>
+        </div>
+      </div>
+      <div class="card" style="margin-top:20px">
         <h2>Countdown episod următor</h2>
         <p class="muted" style="margin:0 0 14px">Data și ora la care apare noul episod (ora ta, UK). Countdown-ul de pe acasă numără invers spre acest moment pentru toată lumea, indiferent de fusul lor orar. Lasă gol ca să oprești countdown-ul.</p>
         <div style="display:flex;flex-direction:column;gap:12px">
@@ -271,7 +281,7 @@
   function loadAll(){ loadEpisodes(); loadSubscribers(); loadGuests(); loadSettings(); }
 
   // ── Site settings (social links) ──────────────────────
-  var SETTING_KEYS = { 'set-youtube': 'social_youtube', 'set-instagram': 'social_instagram', 'set-tiktok': 'social_tiktok', 'set-facebook': 'social_facebook', 'set-apple': 'social_apple', 'set-spotify': 'social_spotify', 'set-despre-format': 'despre_format', 'set-despre-sezon-label': 'despre_sezon_label', 'set-despre-sezon': 'despre_sezon', 'set-despre-filmat': 'despre_filmat', 'set-despre-gazda': 'despre_gazda' };
+  var SETTING_KEYS = { 'set-youtube': 'social_youtube', 'set-instagram': 'social_instagram', 'set-tiktok': 'social_tiktok', 'set-facebook': 'social_facebook', 'set-apple': 'social_apple', 'set-spotify': 'social_spotify', 'set-despre-format': 'despre_format', 'set-despre-sezon-label': 'despre_sezon_label', 'set-despre-sezon': 'despre_sezon', 'set-despre-filmat': 'despre_filmat', 'set-despre-gazda': 'despre_gazda', 'set-clip1': 'clip_1', 'set-clip2': 'clip_2', 'set-clip3': 'clip_3', 'set-clip4': 'clip_4' };
   function loadSettings(){
     db.from('site_settings').select('*').then(function(res){
       if(res.error) return;

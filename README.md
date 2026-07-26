@@ -37,6 +37,7 @@ site/
 ├── index.html      pagina principală (tot conținutul + dicționarele RO/EN)
 ├── despre.html     povestea ta și formatul emisiunii
 ├── episoade.html   arhiva completă, se încarcă din Supabase
+├── episod.html     pagina unui episod → /episod/1-titlu (rută în vercel.json)
 ├── invitati.html   formularul de propuneri
 ├── contact.html
 ├── termeni.html    termeni și condiții
@@ -66,6 +67,7 @@ Ca să vezi date, emailul tău trebuie să existe în tabela `admins`.
 **Setări** — toate se aplică pe site în câteva secunde după salvare:
 - linkuri social media (YouTube, Instagram, TikTok, Facebook, Apple Podcasts, Spotify)
 - fișa tehnică din cardul „Despre" (format, eticheta sezonului, data, locul filmării, gazda)
+- **până la 4 linkuri de clipuri scurte** → secțiunea „Clipuri" de pe prima pagină, care rămâne ascunsă cât timp niciun link nu e completat
 - **data și ora următorului episod** → countdown-ul de pe prima pagină
 
 > Butoanele Apple Podcasts și Spotify sunt ascunse până completezi linkurile.

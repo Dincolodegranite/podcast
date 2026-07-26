@@ -26,10 +26,11 @@
 <meta name="twitter:title" content="Dincolo de Granițe — Podcast cu Peter Baghiu">
 <meta name="twitter:description" content="Cea mai mare arhivă video a poveștilor românilor din întreaga lume — curaj, schimbare și succes, spuse fără filtru.">
 <meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","logo":"https://www.dincolodegranite.com/assets/logo.jpg","email":"contact@dincolodegranite.com","founder":{"@type":"Person","name":"Peter Baghiu"},"sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite","https://facebook.com/dincolo.de.granite","https://tiktok.com/@dincolo.de.granite"]},{"@type":"WebSite","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","inLanguage":"ro"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","logo":"https://www.dincolodegranite.com/assets/logo.jpg","email":"contact@dincolodegranite.com","founder":{"@type":"Person","name":"Peter Baghiu"},"sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite","https://facebook.com/dincolo.de.granite","https://tiktok.com/@dincolo.de.granite"]},{"@type":"WebSite","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","inLanguage":"ro"},{"@type":"PodcastSeries","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","description":"Podcast despre românii din întreaga lume care își spun povestea: viață, antreprenoriat, carieră, investiții, familie.","inLanguage":"ro","image":"https://www.dincolodegranite.com/assets/og-banner.jpg","author":{"@type":"Person","name":"Peter Baghiu"},"publisher":{"@type":"Organization","name":"Dincolo de Granițe"},"webFeed":"https://www.youtube.com/@dincolo.de.granite"}]}</script>
 <script src="./support.js"></script>
 <script defer src="./enhance.js"></script>
 <script defer src="./social.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body style="background:#0f1113;margin:0">
 <x-dc>
@@ -112,6 +113,24 @@ a:hover{color:#e3c07d}
 .ep-yt-title{font:600 15.5px/1.4 Inter;color:#f5f6f7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ep-yt-meta{font:400 12.5px Inter;color:rgba(245,246,247,.5)}
 .ep-yt-meta [data-ep-badge]{color:rgba(227,192,125,.9);font-weight:600}
+.clip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,20px)}
+@media (max-width:900px){.clip-grid{grid-template-columns:repeat(2,1fr)}}
+.clip{position:relative;display:block;aspect-ratio:9/16;border-radius:18px;overflow:hidden;text-decoration:none;
+  border:1px solid transparent;
+  background:linear-gradient(180deg,#191c1f,#131618) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 40%,rgba(227,192,125,.25)) border-box;
+  box-shadow:0 18px 40px rgba(0,0,0,.35);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
+.clip:hover{transform:translateY(-4px);box-shadow:0 26px 54px rgba(0,0,0,.45)}
+.clip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.clip:hover img{transform:scale(1.06)}
+.clip-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,.05) 40%,rgba(15,17,19,.8))}
+.clip-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;background:rgba(15,17,19,.6);border:1px solid rgba(227,192,125,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s ease,transform .3s ease}
+.clip:hover .clip-play{background:rgba(201,162,90,.94);transform:translate(-50%,-50%) scale(1.08)}
+.clip-play svg path{fill:#e3c07d}
+.clip:hover .clip-play svg path{fill:#0f1113}
+.clip-tag{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;
+  background:rgba(10,11,12,.78);color:#e3c07d;font:700 9.5px Inter;letter-spacing:.12em}
 .brd-status-cell{text-align:center}
 .brd-head{position:relative;overflow:hidden}
 .brd-head::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(227,192,125,.09) 50%,transparent 58%);transform:translateX(-120%);animation:brdSweep 7s ease-in-out infinite;pointer-events:none}
@@ -398,12 +417,27 @@ document.addEventListener('submit', function(e){
   function __applyEps(){
     if(!__epsCache || !__epsCache.length) return;
     var __all = function(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+    var __slug = function(s){
+      return String(s || '').toLowerCase()
+        .replace(/ă/g,'a').replace(/â/g,'a').replace(/î/g,'i').replace(/ș/g,'s').replace(/ş/g,'s')
+        .replace(/ț/g,'t').replace(/ţ/g,'t')
+        .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0, 60);
+    };
+    var __epPath = function(ep){
+      var sl = __slug(ep.title);
+      return '/episod/' + ep.episode_number + (sl ? '-' + sl : '');
+    };
     for(var i = 0; i < Math.min(3, __epsCache.length); i++){
       var ep = __epsCache[i];
       var n = String(i + 1);
       __all('[data-ep-title="' + n + '"]').forEach(function(el){ el.removeAttribute('data-i18n'); el.textContent = ep.title; });
       if(ep.description){ __all('[data-ep-desc="' + n + '"]').forEach(function(el){ el.removeAttribute('data-i18n'); el.textContent = ep.description; }); }
-      if(ep.youtube_url){ __all('[data-ep-link="' + n + '"]').forEach(function(el){ el.href = ep.youtube_url; }); }
+      /* cards now open the on-site episode page, which embeds the video */
+      __all('[data-ep-link="' + n + '"]').forEach(function(el){
+        el.href = __epPath(ep);
+        el.removeAttribute('target');
+        el.removeAttribute('rel');
+      });
       if(ep.cover_url){ __all('[data-ep-img="' + n + '"]').forEach(function(el){ el.src = ep.cover_url; }); }
       __all('[data-ep-badge="' + n + '"]').forEach(function(el){ el.textContent = 'EP. ' + (ep.episode_number < 10 ? '0' : '') + ep.episode_number; });
       if(ep.youtube_url){
@@ -626,6 +660,7 @@ document.addEventListener('pointerout', function(e){
       newsletter_title:"NU RATA NICIUN EPISOD", newsletter_desc:"Abonează-te pentru a fi notificat la lansarea fiecărui episod nou",
       newsletter_placeholder:"adresa@email.com", newsletter_btn:"ANUNȚĂ-MĂ",
       newsletter_trust1:"Fără spam", newsletter_trust2:"Un email per episod", section_label_newsletter:"COMUNITATE",
+      clips_label:"CLIPURI", clips_title:"MOMENTELE CARE RĂMÂN", clips_sub:"Fragmente scurte din conversații — pentru când ai două minute.",
       playlist_title:"URMĂREȘTE-NE PE YOUTUBE", playlist_open_channel:"DESCHIDE CANALUL",
       playlist_in_playlist:"ÎN PLAYLIST", playlist_3_episodes:"PRIMELE 3 EPISOADE", coming_soon:"ÎN CURÂND",
       playlist_card_desc:"Fii la curent cu fiecare episod nou. Urmărește-ne pe platforma ta preferată.", playlist_card_yt:"Urmărește pe YouTube",
@@ -663,6 +698,7 @@ document.addEventListener('pointerout', function(e){
       newsletter_title:"DON'T MISS AN EPISODE", newsletter_desc:"Subscribe to get notified when a new episode launches",
       newsletter_placeholder:"your@email.com", newsletter_btn:"NOTIFY ME",
       newsletter_trust1:"No spam", newsletter_trust2:"One email per episode", section_label_newsletter:"COMMUNITY",
+      clips_label:"CLIPS", clips_title:"THE MOMENTS THAT STAY", clips_sub:"Short cuts from the conversations — for when you have two minutes.",
       playlist_title:"FOLLOW US ON YOUTUBE", playlist_open_channel:"OPEN CHANNEL",
       playlist_in_playlist:"IN PLAYLIST", playlist_3_episodes:"FIRST 3 EPISODES", coming_soon:"COMING SOON",
       playlist_card_desc:"Stay up to date with every new episode. Follow us on your favorite platform.", playlist_card_yt:"Follow on YouTube",
@@ -1077,6 +1113,17 @@ document.addEventListener('pointerout', function(e){
     </div>
     <div style="position:relative;font:400 11.5px/1.6 Inter;color:rgba(245,246,247,.38);text-align:center;max-width:460px" data-i18n="newsletter_consent" data-i18n-html="1">Prin abonare ești de acord cu <a href="privacy.html" style="color:#c9a25a">politica de confidențialitate</a>. Te poți dezabona oricând.</div>
   </div>
+</div>
+
+<!-- CLIPURI (hidden until Peter adds clip links in /admin) -->
+<div data-clips-section data-reveal style="display:none;max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
+    <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a"></span>
+    <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="clips_label">CLIPURI</span>
+  </div>
+  <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="clips_title">MOMENTELE CARE RĂMÂN</h2>
+  <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin-bottom:16px" data-i18n="clips_sub">Fragmente scurte din conversații — pentru când ai două minute.</div>
+  <div data-clips-grid class="clip-grid"></div>
 </div>
 
 <!-- PLAYLIST -->

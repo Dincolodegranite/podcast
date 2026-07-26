@@ -27,6 +27,66 @@ function apply(map){
     var v = map[el.getAttribute('data-set')];
     if(v) el.textContent = v;
   });
+  renderClips(map);
+}
+
+/* ── Short clips ────────────────────────────────────────────────
+   Peter pastes up to four clip URLs in /admin. YouTube links get a
+   free thumbnail; other platforms fall back to a labelled card.
+   The whole section stays hidden while no clip is set.            */
+function platformOf(url){
+  var h = String(url || '');
+  if(/youtube\.com|youtu\.be/.test(h)) return 'YOUTUBE';
+  if(/tiktok\.com/.test(h)) return 'TIKTOK';
+  if(/instagram\.com/.test(h)) return 'INSTAGRAM';
+  if(/facebook\.com|fb\.watch/.test(h)) return 'FACEBOOK';
+  return 'CLIP';
+}
+function youtubeThumb(url){
+  var m = String(url || '').match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{6,})/);
+  return m ? 'https://i.ytimg.com/vi/' + m[1] + '/hqdefault.jpg' : null;
+}
+function renderClips(map){
+  var section = document.querySelector('[data-clips-section]');
+  var grid = document.querySelector('[data-clips-grid]');
+  if(!section || !grid) return;
+
+  var urls = ['clip_1','clip_2','clip_3','clip_4']
+    .map(function(k){ return map[k]; })
+    .filter(function(v){ return v && /^https?:\/\//.test(v); });
+
+  if(!urls.length) return;           /* nothing to show — leave it hidden */
+  if(grid.childElementCount) return; /* already rendered on an earlier pass */
+
+  urls.forEach(function(url){
+    var a = document.createElement('a');
+    a.className = 'clip';
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.setAttribute('aria-label', 'Vezi clipul pe ' + platformOf(url));
+
+    var thumb = youtubeThumb(url);
+    if(thumb){
+      var img = document.createElement('img');
+      img.src = thumb; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
+      a.appendChild(img);
+    }
+
+    var shade = document.createElement('span');
+    shade.className = 'clip-shade';
+    var play = document.createElement('span');
+    play.className = 'clip-play';
+    play.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg>';
+    var tag = document.createElement('span');
+    tag.className = 'clip-tag';
+    tag.textContent = platformOf(url);
+
+    a.appendChild(shade); a.appendChild(play); a.appendChild(tag);
+    grid.appendChild(a);
+  });
+
+  section.style.display = '';
   document.querySelectorAll('a[href]').forEach(function(a){
     if(a.hasAttribute('data-ep-link') || a.hasAttribute('data-social')) return;
     var h = a.getAttribute('href') || '';

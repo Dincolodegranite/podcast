@@ -29,6 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="pages.css">
 <script defer src="social.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -105,12 +106,18 @@
   var errBox = document.getElementById('ep-error');
 
   function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function slug(s){
+    return String(s || '').toLowerCase()
+      .replace(/ă/g,'a').replace(/â/g,'a').replace(/î/g,'i').replace(/ș/g,'s').replace(/ş/g,'s')
+      .replace(/ț/g,'t').replace(/ţ/g,'t')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0, 60);
+  }
 
   function card(ep, i){
     var a = document.createElement('a');
     a.className = 'ep-card';
-    a.href = ep.youtube_url || 'https://www.youtube.com/@dincolo.de.granite';
-    a.target = '_blank'; a.rel = 'noopener';
+    /* stays on the site — the episode page embeds the video */
+    a.href = '/episod/' + ep.episode_number + (slug(ep.title) ? '-' + slug(ep.title) : '');
 
     var thumb = document.createElement('span'); thumb.className = 'ep-yt-thumb';
     var img = document.createElement('img');
