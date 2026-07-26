@@ -58,6 +58,8 @@ section{padding:clamp(20px,4vw,36px) 0}
 .fsoc{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a !important;transition:all .25s ease}
 .fsoc:hover{border-color:#e3c07d;color:#f5f6f7 !important;background:rgba(201,162,90,.1)}
 .fsoc-row{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap}
+.fsoc-block{display:flex;flex-direction:column;align-items:center;gap:10px}
+.fsoc-label{font:600 11px Inter;letter-spacing:.14em;text-transform:uppercase;color:rgba(227,192,125,.85);text-align:center}
 
 /* cards — gradient hairline system */
 .gcard{position:relative;border:1px solid transparent;border-radius:22px;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 30px 60px rgba(0,0,0,.35);padding:clamp(22px,4vw,34px)}
