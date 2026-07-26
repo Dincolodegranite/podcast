@@ -507,28 +507,64 @@
     actions.style.cssText = 'display:flex;gap:12px;align-items:center;flex-wrap:wrap';
     var send = document.createElement('button');
     send.className = 'btn-gold btn-small';
-    send.textContent = 'SALVEAZĂ & DESCHIDE EMAILUL';
+    send.textContent = 'TRIMITE EMAILUL';
     var note = document.createElement('span');
     note.className = 'muted'; note.style.fontSize = '12px';
     var hist = document.createElement('div');
     hist.style.cssText = 'margin-top:12px';
+    var SUBJECT = 'Re: propunerea ta pentru Dincolo de Granițe';
+    function openMailto(body){
+      window.location.href = 'mailto:' + encodeURIComponent(g.email) +
+        '?subject=' + encodeURIComponent(SUBJECT) +
+        '&body=' + encodeURIComponent(body);
+    }
+    /* Sends through the send-reply Edge Function, which holds the Resend key
+       server-side. If that is not configured yet, fall back to the mail client
+       so a reply is never lost. */
+    function sendViaResend(body){
+      return db.auth.getSession().then(function(s){
+        var token = s && s.data && s.data.session && s.data.session.access_token;
+        if(!token) return { ok: false, error: 'Sesiune expirată — reintră în cont.' };
+        return fetch(SUPA_URL + '/functions/v1/send-reply', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+            'apikey': SUPA_KEY,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ to: g.email, subject: SUBJECT, body: body })
+        }).then(function(r){
+          return r.json().catch(function(){ return {}; }).then(function(j){
+            return r.ok ? { ok: true } : { ok: false, error: j.error || ('Eroare ' + r.status) };
+          });
+        }).catch(function(){ return { ok: false, error: 'Nu am putut contacta serverul de email.' }; });
+      });
+    }
     send.addEventListener('click', function(){
       var body = ta.value.trim();
       if(!body){ note.textContent = 'Scrie răspunsul întâi.'; return; }
       send.disabled = true;
+      note.style.color = '';
+      note.textContent = 'Se trimite...';
       db.from('guest_replies').insert({ application_id: g.id, body: body }).then(function(res){
-        send.disabled = false;
-        if(res.error){ note.textContent = 'Eroare: ' + res.error.message; return; }
+        if(res.error){ send.disabled = false; note.textContent = 'Eroare: ' + res.error.message; return; }
         if(g.status === 'new'){
           db.from('guest_applications').update({ status: 'contacted' }).eq('id', g.id);
           g.status = 'contacted';
           if(sel) sel.value = 'contacted';
         }
-        note.textContent = 'Salvat în istoric — s-a deschis emailul.';
         loadReplies(g.id, hist);
-        window.location.href = 'mailto:' + encodeURIComponent(g.email) +
-          '?subject=' + encodeURIComponent('Re: propunerea ta pentru Dincolo de Granițe') +
-          '&body=' + encodeURIComponent(body);
+        sendViaResend(body).then(function(out){
+          send.disabled = false;
+          if(out.ok){
+            note.style.color = '#8fce9a';
+            note.textContent = 'Trimis către ' + g.email + ' și salvat în istoric.';
+          } else {
+            note.style.color = '#e0b070';
+            note.textContent = 'Salvat în istoric. Trimiterea automată n-a reușit (' + out.error + ') — deschid clientul de email.';
+            openMailto(body);
+          }
+        });
       });
     });
     actions.appendChild(send); actions.appendChild(note);
