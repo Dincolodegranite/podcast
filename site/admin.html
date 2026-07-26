@@ -182,6 +182,13 @@
           <label class="muted" style="font-size:12px">Gazdă<input id="set-despre-gazda" type="text" placeholder="Peter Baghiu" style="margin-top:5px"></label>
         </div>
       </div>
+      <div class="card" style="margin-top:20px">
+        <h2>Countdown episod următor</h2>
+        <p class="muted" style="margin:0 0 14px">Data și ora la care apare noul episod (ora ta, UK). Countdown-ul de pe acasă numără invers spre acest moment pentru toată lumea, indiferent de fusul lor orar. Lasă gol ca să oprești countdown-ul.</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <label class="muted" style="font-size:12px">Următorul episod apare la<input id="set-next-episode" type="datetime-local" style="margin-top:5px"></label>
+        </div>
+      </div>
       <div style="display:flex;align-items:center;gap:12px;margin-top:20px">
         <button class="btn-gold btn-small" id="set-save">SALVEAZĂ</button>
         <span class="muted" id="set-msg" style="font-size:13px"></span>
@@ -274,6 +281,13 @@
         var el = $(id);
         if(el && map[SETTING_KEYS[id]] !== undefined) el.value = map[SETTING_KEYS[id]];
       });
+      if(map.next_episode_date){
+        var dt = new Date(map.next_episode_date);
+        if(!isNaN(dt.getTime())){
+          var pad2 = function(n){ return n < 10 ? '0' + n : String(n); };
+          $('set-next-episode').value = dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate()) + 'T' + pad2(dt.getHours()) + ':' + pad2(dt.getMinutes());
+        }
+      }
     });
   }
   $('set-save').addEventListener('click', function(){
@@ -285,6 +299,8 @@
       if(v && key.indexOf('social_') === 0 && !/^https?:\/\//.test(v)) bad = true;
       if(v) rows.push({ key: key, value: v, updated_at: new Date().toISOString() });
     });
+    var nextEpRaw = $('set-next-episode').value;
+    rows.push({ key: 'next_episode_date', value: nextEpRaw ? new Date(nextEpRaw).toISOString() : '', updated_at: new Date().toISOString() });
     if(bad){ msg.textContent = 'Linkurile trebuie să înceapă cu https://'; msg.style.color = '#e08a6a'; return; }
     if(!rows.length){ msg.textContent = 'Nimic de salvat.'; msg.style.color = ''; return; }
     $('set-save').disabled = true;

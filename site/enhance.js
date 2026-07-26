@@ -348,20 +348,34 @@ function initMap(){
 /* ── Countdown ─────────────────────────────────────────────────── */
 function initCountdown(){
   var box = document.querySelector('[data-countdown]');
-  var target = new Date('2026-09-01T00:00:00+01:00').getTime();
+  var fallback = new Date('2026-09-01T00:00:00+01:00').getTime();
   var d = box.querySelector('[data-count-d]'), h = box.querySelector('[data-count-h]');
   var m = box.querySelector('[data-count-m]'), s = box.querySelector('[data-count-s]');
   function pad(n){ return n < 10 ? '0' + n : String(n); }
-  function tick(){
-    var diff = target - Date.now();
-    if(diff <= 0){ box.style.display = 'none'; return; }
-    d.textContent = Math.floor(diff / 86400000);
-    h.textContent = pad(Math.floor(diff / 3600000) % 24);
-    m.textContent = pad(Math.floor(diff / 60000) % 60);
-    s.textContent = pad(Math.floor(diff / 1000) % 60);
-    setTimeout(tick, 1000);
+  function start(target){
+    function tick(){
+      var diff = target - Date.now();
+      if(diff <= 0){ box.style.display = 'none'; return; }
+      d.textContent = Math.floor(diff / 86400000);
+      h.textContent = pad(Math.floor(diff / 3600000) % 24);
+      m.textContent = pad(Math.floor(diff / 60000) % 60);
+      s.textContent = pad(Math.floor(diff / 1000) % 60);
+      setTimeout(tick, 1000);
+    }
+    tick();
   }
-  tick();
+  var supa = window.__dgSupa;
+  if(!supa){ start(fallback); return; }
+  fetch(supa.url + '/rest/v1/site_settings?select=value&key=eq.next_episode_date', { headers: { apikey: supa.key } })
+    .then(function(r){ return r.ok ? r.json() : []; })
+    .then(function(rows){
+      if(!rows || !rows.length){ start(fallback); return; }
+      var v = rows[0].value;
+      if(!v){ box.style.display = 'none'; return; }
+      var t = new Date(v).getTime();
+      start(isNaN(t) ? fallback : t);
+    })
+    .catch(function(){ start(fallback); });
 }
 
 /* ── Departures board clocks (London / Bucharest) ──────────────── */
