@@ -396,9 +396,11 @@ document.addEventListener('submit', function(e){
         __all('[data-ep-status="' + n + '"]').forEach(function(el){
           el.removeAttribute('data-i18n');
           el.textContent = (window.__dgLang === 'en' ? 'WATCH' : 'VIZIONEAZĂ');
-          el.style.background = '#c9a25a';
+          el.style.background = 'linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350)';
           el.style.color = '#0f1113';
-          el.style.borderColor = '#c9a25a';
+          el.style.borderColor = 'transparent';
+          el.style.fontWeight = '700';
+          el.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3)';
           el.style.animation = 'none';
         });
       }
