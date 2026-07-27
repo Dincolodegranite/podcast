@@ -105,6 +105,7 @@
       <button class="tab active" data-tab="episodes">Episoade</button>
       <button class="tab" data-tab="subscribers">Abonați <span id="sub-count" class="muted"></span></button>
       <button class="tab" data-tab="guests">Invitați <span id="guest-count" class="muted"></span></button>
+      <button class="tab" data-tab="pages">Pagini</button>
       <button class="tab" data-tab="settings">Setări</button>
     </div>
 
@@ -157,21 +158,9 @@
       </div>
     </div>
 
-    <!-- SETTINGS -->
-    <div id="tab-settings" class="hidden">
+    <!-- PAGES -->
+    <div id="tab-pages" class="hidden">
       <div class="card">
-        <h2>Linkuri social media</h2>
-        <p class="muted" style="margin:0 0 14px">Se aplică automat pe tot site-ul (butoane, footer, tabloul de plecări) în câteva secunde după salvare.</p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <label class="muted" style="font-size:12px">YouTube<input id="set-youtube" type="url" placeholder="https://www.youtube.com/@..." style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">Instagram<input id="set-instagram" type="url" placeholder="https://instagram.com/..." style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">TikTok<input id="set-tiktok" type="url" placeholder="https://tiktok.com/@..." style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">Facebook<input id="set-facebook" type="url" placeholder="https://facebook.com/..." style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">Apple Podcasts — butonul apare pe site doar după ce completezi linkul<input id="set-apple" type="url" placeholder="https://podcasts.apple.com/..." style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">Spotify — butonul apare pe site doar după ce completezi linkul<input id="set-spotify" type="url" placeholder="https://open.spotify.com/show/..." style="margin-top:5px"></label>
-        </div>
-      </div>
-      <div class="card" style="margin-top:20px">
         <h2>Card „Despre" (pagina principală)</h2>
         <p class="muted" style="margin:0 0 14px">Fișa tehnică din cardul Despre, de pe acasă. Se aplică automat în câteva secunde după salvare.</p>
         <div style="display:flex;flex-direction:column;gap:12px">
@@ -216,6 +205,26 @@
           <label class="muted" style="font-size:12px">DE ORIUNDE<input id="set-despre-spec-oriunde" type="text" placeholder="Invitați din toată lumea, pe Zoom" style="margin-top:5px"></label>
           <label class="muted" style="font-size:12px">LIMBA<input id="set-despre-spec-limba" type="text" placeholder="Română și engleză, cu subtitrare" style="margin-top:5px"></label>
           <label class="muted" style="font-size:12px">LANSARE<input id="set-despre-spec-lansare" type="text" placeholder="Septembrie 2026" style="margin-top:5px"></label>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:20px">
+        <button class="btn-gold btn-small" id="pages-save">SALVEAZĂ</button>
+        <span class="muted" id="pages-msg" style="font-size:13px"></span>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="tab-settings" class="hidden">
+      <div class="card">
+        <h2>Linkuri social media</h2>
+        <p class="muted" style="margin:0 0 14px">Se aplică automat pe tot site-ul (butoane, footer, tabloul de plecări) în câteva secunde după salvare.</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <label class="muted" style="font-size:12px">YouTube<input id="set-youtube" type="url" placeholder="https://www.youtube.com/@..." style="margin-top:5px"></label>
+          <label class="muted" style="font-size:12px">Instagram<input id="set-instagram" type="url" placeholder="https://instagram.com/..." style="margin-top:5px"></label>
+          <label class="muted" style="font-size:12px">TikTok<input id="set-tiktok" type="url" placeholder="https://tiktok.com/@..." style="margin-top:5px"></label>
+          <label class="muted" style="font-size:12px">Facebook<input id="set-facebook" type="url" placeholder="https://facebook.com/..." style="margin-top:5px"></label>
+          <label class="muted" style="font-size:12px">Apple Podcasts — butonul apare pe site doar după ce completezi linkul<input id="set-apple" type="url" placeholder="https://podcasts.apple.com/..." style="margin-top:5px"></label>
+          <label class="muted" style="font-size:12px">Spotify — butonul apare pe site doar după ce completezi linkul<input id="set-spotify" type="url" placeholder="https://open.spotify.com/show/..." style="margin-top:5px"></label>
         </div>
       </div>
       <div class="card" style="margin-top:20px">
@@ -308,7 +317,7 @@
     t.addEventListener('click', function(){
       document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
       t.classList.add('active');
-      ['episodes','subscribers','guests','settings'].forEach(function(name){
+      ['episodes','subscribers','guests','pages','settings'].forEach(function(name){
         $('tab-' + name).classList.toggle('hidden', name !== t.dataset.tab);
       });
     });
@@ -336,8 +345,8 @@
       }
     });
   }
-  $('set-save').addEventListener('click', function(){
-    var msg = $('set-msg');
+  function saveSettings(btnId, msgId){
+    var msg = $(msgId), btn = $(btnId);
     var rows = [], bad = false;
     Object.keys(SETTING_KEYS).forEach(function(id){
       var v = $(id).value.trim();
@@ -349,14 +358,16 @@
     rows.push({ key: 'next_episode_date', value: nextEpRaw ? new Date(nextEpRaw).toISOString() : '', updated_at: new Date().toISOString() });
     if(bad){ msg.textContent = 'Linkurile trebuie să înceapă cu https://'; msg.style.color = '#e08a6a'; return; }
     if(!rows.length){ msg.textContent = 'Nimic de salvat.'; msg.style.color = ''; return; }
-    $('set-save').disabled = true;
+    btn.disabled = true;
     db.from('site_settings').upsert(rows, { onConflict: 'key' }).then(function(res){
-      $('set-save').disabled = false;
+      btn.disabled = false;
       if(res.error){ msg.textContent = 'Eroare: ' + res.error.message; msg.style.color = '#e08a6a'; return; }
-      msg.textContent = 'Salvat! Linkurile sunt live pe site.';
+      msg.textContent = 'Salvat! Modificările sunt live pe site.';
       msg.style.color = '#8fce9a';
     });
-  });
+  }
+  $('set-save').addEventListener('click', function(){ saveSettings('set-save', 'set-msg'); });
+  $('pages-save').addEventListener('click', function(){ saveSettings('pages-save', 'pages-msg'); });
 
   // ── Episodes ──────────────────────────────────────────
   function resetEpForm(){
