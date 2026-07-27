@@ -83,10 +83,22 @@ function apply(map){
       el.style.display = '';
     }
   });
-  /* plain-text fields Peter can edit from /admin (e.g. the DESPRE card spec sheet) */
+  /* plain-text fields Peter can edit from /admin (e.g. the DESPRE card spec sheet).
+     data-accent-last keeps the last word wrapped in the shimmer span (despre hero) */
   document.querySelectorAll('[data-set]').forEach(function(el){
     var v = map[el.getAttribute('data-set')];
-    if(v) el.textContent = v;
+    if(!v) return;
+    if(el.hasAttribute('data-accent-last')){
+      var words = v.trim().split(/\s+/);
+      var last = words.pop();
+      el.textContent = words.length ? words.join(' ') + ' ' : '';
+      var sp = document.createElement('span');
+      sp.className = 'hero-grad';
+      sp.textContent = last;
+      el.appendChild(sp);
+    } else {
+      el.textContent = v;
+    }
   });
   /* multi-paragraph blocks (e.g. /despre bio, mission) — blank line = new paragraph */
   document.querySelectorAll('[data-set-html]').forEach(function(el){
