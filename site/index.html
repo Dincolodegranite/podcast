@@ -39,10 +39,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--accent:#c9a25a;--accent-light:#e3c07d;--accent-dark:#b89350;--font-head:'Bebas Neue';--font-body:'Inter';--font-serif:'Playfair Display';--head-weight:400}
 html{scroll-behavior:smooth}
-body{margin:0;background:#0f1113;font-family:Inter,system-ui,sans-serif}
-a{color:#c9a25a}
-a:hover{color:#e3c07d}
+body{margin:0;background:#0f1113;font-family:var(--font-body),system-ui,sans-serif}
+a{color:var(--accent)}
+a:hover{color:var(--accent-light)}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
 @keyframes pulseGlow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
 @keyframes shimmerText{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
@@ -96,22 +97,22 @@ a:hover{color:#e3c07d}
 .ep-card::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(170deg,rgba(240,210,150,.95),rgba(201,162,90,.30) 38%,rgba(201,162,90,.22) 62%,rgba(227,192,125,.75) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transition:opacity .45s ease;pointer-events:none;z-index:6}
 .ep-card:hover::before{opacity:1}
 .ep-card:hover{transform:translateY(-8px);box-shadow:0 32px 64px rgba(0,0,0,.5),0 0 44px -8px rgba(201,162,90,.28)}
-.ep-line{position:absolute;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#e3c07d,#c9a25a);z-index:4;transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.ep-line{position:absolute;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent-light),var(--accent));z-index:4;transition:width .55s cubic-bezier(.2,.8,.2,1)}
 .ep-card:hover .ep-line{width:100%}
 .ep-yt-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;flex:none;background:#0b0c0e}
 .ep-yt-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform .6s cubic-bezier(.2,.8,.2,1);filter:saturate(.92)}
 .ep-card:hover .ep-yt-thumb img{transform:scale(1.06)}
 .ep-yt-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,0) 55%,rgba(15,17,19,.45) 100%);pointer-events:none}
 .ep-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.92);width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(15,17,19,.62);border:1px solid rgba(227,192,125,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,border-color .3s ease}
-.ep-card:hover .ep-play{transform:translate(-50%,-50%) scale(1.08);background:rgba(201,162,90,.94);border-color:#e3c07d}
-.ep-play svg path{fill:#e3c07d;transition:fill .3s ease}
+.ep-card:hover .ep-play{transform:translate(-50%,-50%) scale(1.08);background:rgba(201,162,90,.94);border-color:var(--accent-light)}
+.ep-play svg path{fill:var(--accent-light);transition:fill .3s ease}
 .ep-card:hover .ep-play svg path{fill:#0f1113}
-.ep-dur{position:absolute;right:10px;bottom:10px;padding:4px 9px;border-radius:6px;background:rgba(10,11,12,.82);color:#e3c07d;font:700 10px Inter;letter-spacing:.08em}
+.ep-dur{position:absolute;right:10px;bottom:10px;padding:4px 9px;border-radius:6px;background:rgba(10,11,12,.82);color:var(--accent-light);font:700 10px var(--font-body);letter-spacing:.08em}
 .ep-yt-body{display:flex;gap:12px;padding:16px 18px 18px;align-items:flex-start}
 .ep-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;border:1px solid rgba(201,162,90,.35)}
 .ep-yt-text{display:flex;flex-direction:column;gap:4px;min-width:0}
-.ep-yt-title{font:600 15.5px/1.4 Inter;color:#f5f6f7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.ep-yt-meta{font:400 12.5px Inter;color:rgba(245,246,247,.5)}
+.ep-yt-title{font:600 15.5px/1.4 var(--font-body);color:#f5f6f7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ep-yt-meta{font:400 12.5px var(--font-body);color:rgba(245,246,247,.5)}
 .ep-yt-meta [data-ep-badge]{color:rgba(227,192,125,.9);font-weight:600}
 .clip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,20px)}
 @media (max-width:900px){.clip-grid{grid-template-columns:repeat(2,1fr)}}
@@ -127,20 +128,20 @@ a:hover{color:#e3c07d}
   display:flex;align-items:center;justify-content:center;background:rgba(15,17,19,.6);border:1px solid rgba(227,192,125,.55);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s ease,transform .3s ease}
 .clip:hover .clip-play{background:rgba(201,162,90,.94);transform:translate(-50%,-50%) scale(1.08)}
-.clip-play svg path{fill:#e3c07d}
+.clip-play svg path{fill:var(--accent-light)}
 .clip:hover .clip-play svg path{fill:#0f1113}
 .clip-tag{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;
-  background:rgba(10,11,12,.78);color:#e3c07d;font:700 9.5px Inter;letter-spacing:.12em}
+  background:rgba(10,11,12,.78);color:var(--accent-light);font:700 9.5px var(--font-body);letter-spacing:.12em}
 .brd-status-cell{text-align:center}
 .brd-head{position:relative;overflow:hidden}
 .brd-head::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(227,192,125,.09) 50%,transparent 58%);transform:translateX(-120%);animation:brdSweep 7s ease-in-out infinite;pointer-events:none}
 @keyframes brdSweep{0%,64%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
-.brd-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#e3c07d,#c9a25a);transform:scaleY(0);transform-origin:center;transition:transform .3s ease}
+.brd-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent-light),var(--accent));transform:scaleY(0);transform-origin:center;transition:transform .3s ease}
 .brd-row:hover::before{transform:scaleY(1)}
 .brd-row img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .brd-row:hover img{transform:scale(1.08)}
 .brd-arrow{display:inline-block;transition:transform .3s ease,color .3s ease}
-.brd-row:hover .brd-arrow{transform:translateX(4px);color:#e3c07d}
+.brd-row:hover .brd-arrow{transform:translateX(4px);color:var(--accent-light)}
 .brd-break{display:none;flex-basis:100%;height:0}
 @media (max-width:480px){
   .brd-time{display:none!important}
@@ -155,12 +156,12 @@ a:hover{color:#e3c07d}
   .brd-desc{white-space:normal!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical}
   .brd-arrow,.brd-arrow-sp{display:none!important}
 }
-html{scrollbar-width:thin;scrollbar-color:#c9a25a #0f1113}
+html{scrollbar-width:thin;scrollbar-color:var(--accent) #0f1113}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:#0f1113}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#c9a25a,#8a6f3a);border-radius:6px;border:2px solid #0f1113}
-::-webkit-scrollbar-thumb:hover{background:#e3c07d}
-::selection{background:#c9a25a;color:#0f1113}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent),#8a6f3a);border-radius:6px;border:2px solid #0f1113}
+::-webkit-scrollbar-thumb:hover{background:var(--accent-light)}
+::selection{background:var(--accent);color:#0f1113}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,[role="button"]:focus-visible{outline:2px solid rgba(227,192,125,.75);outline-offset:3px;border-radius:6px}
 </style>
@@ -346,11 +347,11 @@ document.addEventListener('submit', function(e){
   }).then(function(res){
     if(res.ok){
       __msgEl.textContent = __M.success || 'Te-am notat! Îți dăm de veste la primul episod.';
-      __msgEl.style.color = '#c9a25a';
+      __msgEl.style.color = 'var(--accent)';
       if(__emailInput) __emailInput.value = '';
     } else if(res.status === 409){
       __msgEl.textContent = __M.dup || 'Ești deja pe listă! Te anunțăm la primul episod.';
-      __msgEl.style.color = '#c9a25a';
+      __msgEl.style.color = 'var(--accent)';
       if(__emailInput) __emailInput.value = '';
     } else {
       __msgEl.textContent = __M.error || 'A apărut o eroare. Încearcă din nou.';
@@ -397,7 +398,7 @@ document.addEventListener('submit', function(e){
   }).then(function(res){
     if(res.ok){
       __gmsg.textContent = __M.gSuccess || 'Mulțumim! Am primit propunerea ta și revenim curând.';
-      __gmsg.style.color = '#c9a25a';
+      __gmsg.style.color = 'var(--accent)';
       __gform.reset();
     } else {
       __gmsg.textContent = __M.gError || 'A apărut o eroare. Încearcă din nou.';
@@ -444,7 +445,7 @@ document.addEventListener('submit', function(e){
         __all('[data-ep-status="' + n + '"]').forEach(function(el){
           el.removeAttribute('data-i18n');
           el.textContent = (window.__dgLang === 'en' ? 'WATCH' : 'VIZIONEAZĂ');
-          el.style.background = 'linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350)';
+          el.style.background = 'linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark))';
           el.style.color = '#0f1113';
           el.style.borderColor = 'transparent';
           el.style.fontWeight = '700';
@@ -671,7 +672,7 @@ document.addEventListener('pointerout', function(e){
       count_label:"URMĂTORUL EPISOD ÎN", count_d:"ZILE", count_h:"ORE", count_m:"MIN", count_s:"SEC",
       board_title:"PLECĂRI · EPISOADE", board_lon:"LONDRA", board_buc:"BUCUREȘTI", board_gate:"POARTA", board_boarding:"ÎMBARCARE DESCHISĂ", board_col_flight:"ZBOR", board_col_story:"POVESTEA", board_col_time:"PLECARE", board_col_status:"STATUS",
       board_project_label:"PROIECT", scale_label:"SCARĂ 1:1 — POVESTE REALĂ", ep_view_link:"VEZI →", ep_view:"VEZI EPISODUL", ep_all:"VEZI TOATE EPISOADELE →",
-      newsletter_consent:'Prin abonare ești de acord cu <a href="privacy.html" style="color:#c9a25a">politica de confidențialitate</a>. Te poți dezabona oricând.', footer_privacy:"Confidențialitate",
+      newsletter_consent:'Prin abonare ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>. Te poți dezabona oricând.', footer_privacy:"Confidențialitate",
       footer_copyright:"© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu", footer_community:"Alătură-te comunității Dincolo de Granițe", loader_text:"SE ÎNCARCĂ"
     },
     en: {
@@ -709,7 +710,7 @@ document.addEventListener('pointerout', function(e){
       count_label:"NEXT EPISODE IN", count_d:"DAYS", count_h:"HRS", count_m:"MIN", count_s:"SEC",
       board_title:"DEPARTURES · EPISODES", board_lon:"LONDON", board_buc:"BUCHAREST", board_gate:"GATE", board_boarding:"NOW BOARDING", board_col_flight:"FLIGHT", board_col_story:"THE STORY", board_col_time:"DEPARTURE", board_col_status:"STATUS",
       board_project_label:"PROJECT", scale_label:"SCALE 1:1 — REAL STORY", ep_view_link:"WATCH →", ep_view:"WATCH EPISODE", ep_all:"SEE ALL EPISODES →",
-      newsletter_consent:'By subscribing you agree to the <a href="privacy.html" style="color:#c9a25a">privacy policy</a>. You can unsubscribe anytime.', footer_privacy:"Privacy",
+      newsletter_consent:'By subscribing you agree to the <a href="privacy.html" style="color:var(--accent)">privacy policy</a>. You can unsubscribe anytime.', footer_privacy:"Privacy",
       footer_copyright:"© 2026 Dincolo de Granițe · A podcast by Peter Baghiu", footer_community:"Join the Dincolo de Granițe community", loader_text:"LOADING"
     }
   };
@@ -769,35 +770,35 @@ document.addEventListener('pointerout', function(e){
     <div style="position:relative;width:72px;height:72px" style-before="content:'';position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.45),transparent 70%);animation:pulseGlow 2s ease-in-out infinite;z-index:0">
       <img src="assets/logo.jpg" alt="Dincolo de Granițe" style="position:relative;z-index:1;width:72px;height:72px;object-fit:cover;border-radius:50%;display:block;box-shadow:0 0 0 1px rgba(201,162,90,.4)">
     </div>
-    <div style="font:400 26px/1 'Bebas Neue';letter-spacing:.03em;background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 3s ease-in-out infinite">DINCOLO DE GRANIȚE</div>
+    <div style="font:var(--head-weight) 26px/1 var(--font-head);letter-spacing:.03em;background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 3s ease-in-out infinite">DINCOLO DE GRANIȚE</div>
     <div style="width:160px;height:3px;border-radius:3px;background:rgba(201,162,90,.15);overflow:hidden;margin-top:6px">
-      <div style="width:100%;height:100%;background:linear-gradient(90deg,#8a6f3a,#e3c07d);transform-origin:left;animation:loaderFill .6s .1s cubic-bezier(.4,0,.2,1) forwards;transform:scaleX(0)"></div>
+      <div style="width:100%;height:100%;background:linear-gradient(90deg,#8a6f3a,var(--accent-light));transform-origin:left;animation:loaderFill .6s .1s cubic-bezier(.4,0,.2,1) forwards;transform:scaleX(0)"></div>
     </div>
-    <div style="font:600 10px Inter;letter-spacing:.28em;color:rgba(245,246,247,.35);margin-top:2px" data-i18n="loader_text">SE ÎNCARCĂ</div>
+    <div style="font:600 10px var(--font-body);letter-spacing:.28em;color:rgba(245,246,247,.35);margin-top:2px" data-i18n="loader_text">SE ÎNCARCĂ</div>
   </div>
 </div>
 
 <div style="position:fixed;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:3px 3px;opacity:.4;mix-blend-mode:overlay;pointer-events:none;z-index:2"></div>
-<div data-scroll-bar style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#c9a25a,#e3c07d);z-index:100;transition:width .1s linear"></div>
-<div data-toast-el style="position:fixed;left:50%;bottom:32px;transform:translateX(-50%);z-index:200;max-width:calc(100vw - 48px);padding:14px 26px;background:rgba(15,17,19,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(201,162,90,.4);border-radius:20px;color:#f5f6f7;font:500 13px Inter;letter-spacing:.02em;text-align:center;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;box-shadow:0 16px 40px rgba(0,0,0,.5);box-sizing:border-box"></div>
+<div data-scroll-bar style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-light));z-index:100;transition:width .1s linear"></div>
+<div data-toast-el style="position:fixed;left:50%;bottom:32px;transform:translateX(-50%);z-index:200;max-width:calc(100vw - 48px);padding:14px 26px;background:rgba(15,17,19,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(201,162,90,.4);border-radius:20px;color:#f5f6f7;font:500 13px var(--font-body);letter-spacing:.02em;text-align:center;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;box-shadow:0 16px 40px rgba(0,0,0,.5);box-sizing:border-box"></div>
 
 <!-- NAV (sticky, floating island) -->
 <div id="top" style="position:fixed;top:18px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 24px;box-sizing:border-box;pointer-events:none">
   <div data-nav-pill style="position:relative;pointer-events:auto;width:100%;max-width:1180px;background:rgba(18,20,22,.65);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(201,162,90,.2);border-radius:999px;box-shadow:0 16px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:9px 9px 9px 22px;transition:all .35s cubic-bezier(.2,.8,.2,1);opacity:0;animation:fadeInDown .7s cubic-bezier(.2,.8,.2,1) .2s forwards">
     <a href="#top" aria-label="Acasă" style="display:flex;align-items:center;gap:11px;flex:none;text-decoration:none;cursor:pointer">
       <div data-nav-logo style="position:relative;width:52px;height:52px;flex:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)" style-before="content:'';position:absolute;inset:-10px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.45),transparent 70%);animation:pulseGlow 2s ease-in-out infinite;z-index:0">
-        <div data-scroll-ring style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(#c9a25a calc(var(--ring-p, 0) * 1%), rgba(201,162,90,.22) 0)"></div>
+        <div data-scroll-ring style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--ring-p, 0) * 1%), rgba(201,162,90,.22) 0)"></div>
         <img src="assets/logo.jpg" alt="Dincolo de Granițe" style="position:absolute;top:3px;left:3px;width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #0f1113;transition:transform .45s cubic-bezier(.2,.8,.2,1)" style-hover="transform:scale(1.08) rotate(-6deg)">
       </div>
-      <div data-nav-word style="font:600 clamp(9px,3.4vw,12px) Inter;letter-spacing:.06em;color:#f5f6f7;white-space:nowrap;transition:font-size .3s ease,opacity .3s ease">DINCOLO DE GRANIȚE</div>
+      <div data-nav-word style="font:600 clamp(9px,3.4vw,12px) var(--font-body);letter-spacing:.06em;color:#f5f6f7;white-space:nowrap;transition:font-size .3s ease,opacity .3s ease">DINCOLO DE GRANIȚE</div>
     </a>
     <div data-nav-links style="position:relative;display:flex;align-items:center;gap:2px">
-      <a href="#top" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:600 13px Inter;color:#f5f6f7;text-decoration:none;border-radius:999px;background:rgba(201,162,90,.14)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="m3 11 9-8 9 8"></path><path d="M5 9.5V21h14V9.5"></path></svg><span data-i18n="nav_acasa">ACASĂ</span></a>
-      <a href="despre.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="1" fill="#c9a25a" stroke="none"></circle></svg><span data-i18n="nav_despre">DESPRE</span></a>
+      <a href="#top" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:600 13px var(--font-body);color:#f5f6f7;text-decoration:none;border-radius:999px;background:rgba(201,162,90,.14)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="m3 11 9-8 9 8"></path><path d="M5 9.5V21h14V9.5"></path></svg><span data-i18n="nav_acasa">ACASĂ</span></a>
+      <a href="despre.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px var(--font-body);color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="1" fill="var(--accent)" stroke="none"></circle></svg><span data-i18n="nav_despre">DESPRE</span></a>
 
-      <a href="episoade.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="2" y="13" width="5" height="7" rx="2"></rect><rect x="17" y="13" width="5" height="7" rx="2"></rect></svg><span data-i18n="nav_episoade">EPISOADE</span></a>
-      <a href="invitati.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span data-i18n="nav_invitati">INVITAȚI</span></a>
-      <a href="contact.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px Inter;color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#e3c07d);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span data-i18n="nav_contact">CONTACT</span></a>
+      <a href="episoade.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px var(--font-body);color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="2" y="13" width="5" height="7" rx="2"></rect><rect x="17" y="13" width="5" height="7" rx="2"></rect></svg><span data-i18n="nav_episoade">EPISOADE</span></a>
+      <a href="invitati.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px var(--font-body);color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span data-i18n="nav_invitati">INVITAȚI</span></a>
+      <a href="contact.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;font:500 13px var(--font-body);color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span data-i18n="nav_contact">CONTACT</span></a>
     </div>
     <div data-nav-toggle role="button" tabindex="0" aria-label="Deschide meniul" style="display:none;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer;flex:none;background:rgba(201,162,90,.1);border:1px solid rgba(201,162,90,.25);transition:background .25s ease" style-hover="background:rgba(201,162,90,.2)">
       <span data-nav-toggle-bar style="width:16px;height:2px;border-radius:2px;background:#f5f6f7;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s ease"></span>
@@ -805,12 +806,12 @@ document.addEventListener('pointerout', function(e){
       <span data-nav-toggle-bar style="width:16px;height:2px;border-radius:2px;background:#f5f6f7;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s ease"></span>
     </div>
     <div data-nav-mobile-menu style="position:absolute;top:calc(100% + 10px);left:0;right:0;background:rgba(15,17,19,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(201,162,90,.25);border-radius:24px;box-shadow:0 24px 50px rgba(0,0,0,.55);padding:12px;display:flex;flex-direction:column;gap:2px;opacity:0;transform:translateY(-10px) scale(.98);pointer-events:none;transition:opacity .3s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1);z-index:60">
-      <a href="#top" data-nav-mobile-link style="padding:14px 18px;font:600 15px Inter;color:#f5f6f7;text-decoration:none;border-radius:14px;background:rgba(201,162,90,.14)" data-i18n="nav_acasa">ACASĂ</a>
-      <a href="despre.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_despre">DESPRE</a>
+      <a href="#top" data-nav-mobile-link style="padding:14px 18px;font:600 15px var(--font-body);color:#f5f6f7;text-decoration:none;border-radius:14px;background:rgba(201,162,90,.14)" data-i18n="nav_acasa">ACASĂ</a>
+      <a href="despre.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px var(--font-body);color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_despre">DESPRE</a>
 
-      <a href="episoade.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_episoade">EPISOADE</a>
-      <a href="invitati.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_invitati">INVITAȚI</a>
-      <a href="contact.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px Inter;color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_contact">CONTACT</a>
+      <a href="episoade.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px var(--font-body);color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_episoade">EPISOADE</a>
+      <a href="invitati.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px var(--font-body);color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_invitati">INVITAȚI</a>
+      <a href="contact.html" data-nav-mobile-link style="padding:14px 18px;font:500 15px var(--font-body);color:rgba(245,246,247,.85);text-decoration:none;border-radius:14px;transition:all .2s ease" style-hover="background:rgba(201,162,90,.1);color:#f5f6f7" data-i18n="nav_contact">CONTACT</a>
     </div>
   </div>
 </div>
@@ -825,34 +826,34 @@ document.addEventListener('pointerout', function(e){
   <div data-parallax="14" style="position:absolute;left:-120px;bottom:-160px;width:460px;height:460px;pointer-events:none;transition:transform .3s ease-out">
     <div style="width:100%;height:100%;background:radial-gradient(circle,rgba(201,162,90,.28),transparent 70%);filter:blur(50px);animation:blobMove 12s ease-in-out infinite"></div>
   </div>
-  <div data-parallax="8" style="position:absolute;right:24px;bottom:-40px;z-index:0;font:400 clamp(64px,14vw,200px)/1 'Bebas Neue';color:rgba(245,246,247,.05);white-space:nowrap;pointer-events:none;letter-spacing:.02em;transition:transform .3s ease-out">GRANIȚE</div>
+  <div data-parallax="8" style="position:absolute;right:24px;bottom:-40px;z-index:0;font:var(--head-weight) clamp(64px,14vw,200px)/1 var(--font-head);color:rgba(245,246,247,.05);white-space:nowrap;pointer-events:none;letter-spacing:.02em;transition:transform .3s ease-out">GRANIȚE</div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 45%,rgba(0,0,0,.55) 100%);pointer-events:none"></div>
   <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:clamp(28px,7vw,50px) clamp(20px,7vw,90px);box-sizing:border-box;width:100%;display:flex;align-items:center">
     <div style="max-width:840px">
       <div style="display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.06);border-radius:999px;margin-bottom:28px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 1.6s forwards">
-        <span style="width:7px;height:7px;border-radius:50%;background:#c9a25a;animation:livePulse 2s infinite"></span>
-        <span style="font:600 12px Inter;letter-spacing:.16em;color:#c9a25a" data-i18n="hero_badge">UN PODCAST DE PETER BAGHIU</span>
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:livePulse 2s infinite"></span>
+        <span style="font:600 12px var(--font-body);letter-spacing:.16em;color:var(--accent)" data-i18n="hero_badge">UN PODCAST DE PETER BAGHIU</span>
       </div>
-      <h1 style="margin:0;font:400 clamp(44px,9vw,80px)/.94 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.4);opacity:0;animation:fadeInUp .9s cubic-bezier(.2,.8,.2,1) 1.75s forwards">DINCOLO<br>DE <span style="background:linear-gradient(90deg,#e3c07d,#c9a25a 45%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 6s ease-in-out infinite">GRANIȚE</span></h1>
-      <div style="width:70px;height:2px;background:#c9a25a;margin:30px 0 26px;opacity:0;animation:fadeInUp .7s cubic-bezier(.2,.8,.2,1) 1.9s forwards"></div>
-      <div style="font:italic 500 clamp(18px,4vw,25px)/1.45 'Playfair Display';color:#f5f6f7;max-width:480px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2s forwards" data-i18n="hero_subtitle" data-i18n-html="1">Fiecare om are o poveste. Unele schimbă vieți.<br>Conversații autentice cu români din întreaga lume.</div>
+      <h1 style="margin:0;font:var(--head-weight) clamp(44px,9vw,80px)/.94 var(--font-head);color:#f5f6f7;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.4);opacity:0;animation:fadeInUp .9s cubic-bezier(.2,.8,.2,1) 1.75s forwards">DINCOLO<br>DE <span style="background:linear-gradient(90deg,var(--accent-light),var(--accent) 45%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 6s ease-in-out infinite">GRANIȚE</span></h1>
+      <div style="width:70px;height:2px;background:var(--accent);margin:30px 0 26px;opacity:0;animation:fadeInUp .7s cubic-bezier(.2,.8,.2,1) 1.9s forwards"></div>
+      <div style="font:italic 500 clamp(18px,4vw,25px)/1.45 var(--font-serif);color:#f5f6f7;max-width:480px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2s forwards" data-i18n="hero_subtitle" data-i18n-html="1">Fiecare om are o poveste. Unele schimbă vieți.<br>Conversații autentice cu români din întreaga lume.</div>
       <div style="display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2.15s forwards">
-        <a data-magnetic href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="padding:16px 34px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 14px Inter;letter-spacing:.04em;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:transform .15s ease-out,box-shadow .3s ease;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" style-active="transform:scale(0.96)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(15,17,19,.16);flex:none"><svg width="10" height="10" viewBox="0 0 24 24" style="margin-left:1px" aria-hidden="true"><path d="M6 4.5v15l13-7.5z" fill="#0f1113"></path></svg></span><span data-i18n="hero_cta_listen">ABONEAZĂ-TE PE YOUTUBE</span></a>
-        <a href="despre.html" style="padding:16px 34px;border:1px solid rgba(245,246,247,.35);color:#f5f6f7;font:600 14px Inter;letter-spacing:.03em;border-radius:999px;text-decoration:none;display:inline-block;transition:box-shadow .3s ease,border-color .3s ease" style-hover="box-shadow:0 0 24px 2px rgba(201,162,90,.45);border-color:#c9a25a" data-i18n="hero_cta_about">DESPRE PODCAST</a>
+        <a data-magnetic href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="padding:16px 34px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 14px var(--font-body);letter-spacing:.04em;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:transform .15s ease-out,box-shadow .3s ease;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" style-active="transform:scale(0.96)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(15,17,19,.16);flex:none"><svg width="10" height="10" viewBox="0 0 24 24" style="margin-left:1px" aria-hidden="true"><path d="M6 4.5v15l13-7.5z" fill="#0f1113"></path></svg></span><span data-i18n="hero_cta_listen">ABONEAZĂ-TE PE YOUTUBE</span></a>
+        <a href="despre.html" style="padding:16px 34px;border:1px solid rgba(245,246,247,.35);color:#f5f6f7;font:600 14px var(--font-body);letter-spacing:.03em;border-radius:999px;text-decoration:none;display:inline-block;transition:box-shadow .3s ease,border-color .3s ease" style-hover="box-shadow:0 0 24px 2px rgba(201,162,90,.45);border-color:var(--accent)" data-i18n="hero_cta_about">DESPRE PODCAST</a>
       </div>
       <div style="display:flex;align-items:center;gap:clamp(14px,3vw,26px);flex-wrap:wrap;margin-top:40px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2.3s forwards">
-        <span style="display:inline-flex;align-items:center;gap:8px;font:600 10.5px Inter;letter-spacing:.16em;color:rgba(245,246,247,.55)"><span style="width:5px;height:5px;border-radius:50%;background:#c9a25a;flex:none"></span><span data-i18n="hero_meta1">PRIMUL EPISOD — SEPTEMBRIE 2026</span></span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font:600 10.5px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55)"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none"></span><span data-i18n="hero_meta1">PRIMUL EPISOD — SEPTEMBRIE 2026</span></span>
         <span style="width:1px;height:12px;background:rgba(201,162,90,.35);flex:none"></span>
-        <span style="display:inline-flex;align-items:center;gap:8px;font:600 10.5px Inter;letter-spacing:.16em;color:rgba(245,246,247,.55)"><span style="width:5px;height:5px;border-radius:50%;background:#c9a25a;flex:none"></span><span data-i18n="hero_meta2">FILMAT ÎN KENT, UK</span></span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font:600 10.5px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55)"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none"></span><span data-i18n="hero_meta2">FILMAT ÎN KENT, UK</span></span>
         <span style="width:1px;height:12px;background:rgba(201,162,90,.35);flex:none"></span>
-        <span style="display:inline-flex;align-items:center;gap:8px;font:600 10.5px Inter;letter-spacing:.16em;color:rgba(245,246,247,.55)"><span style="width:5px;height:5px;border-radius:50%;background:#c9a25a;flex:none"></span><span data-i18n="hero_meta3">INTERVIURI ÎN STUDIO ȘI PE ZOOM</span></span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font:600 10.5px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55)"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none"></span><span data-i18n="hero_meta3">INTERVIURI ÎN STUDIO ȘI PE ZOOM</span></span>
       </div>
     </div>
     </div>
   <div data-scroll-hint style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;z-index:1;white-space:nowrap;transition:opacity .45s ease">
-    <span style="font:600 9.5px Inter;letter-spacing:.3em;color:rgba(245,246,247,.35)">SCROLL</span>
+    <span style="font:600 9.5px var(--font-body);letter-spacing:.3em;color:rgba(245,246,247,.35)">SCROLL</span>
     <div style="width:1px;height:50px;position:relative;overflow:hidden;background:rgba(201,162,90,.12)">
-      <div style="position:absolute;left:0;top:0;width:1px;height:16px;background:linear-gradient(180deg,transparent,#e3c07d,transparent);animation:scrollBeam 2.2s cubic-bezier(.4,0,.2,1) infinite"></div>
+      <div style="position:absolute;left:0;top:0;width:1px;height:16px;background:linear-gradient(180deg,transparent,var(--accent-light),transparent);animation:scrollBeam 2.2s cubic-bezier(.4,0,.2,1) infinite"></div>
     </div>
   </div>
 </div>
@@ -863,44 +864,44 @@ document.addEventListener('pointerout', function(e){
   <div style="position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.4),transparent);z-index:2"></div>
   <div style="display:flex;width:max-content;animation:marquee 26s linear infinite" style-hover="animation-play-state:paused">
     <div style="display:flex;align-items:center;gap:22px;padding:30px 11px 30px 0;flex:none">
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#c9a25a;white-space:nowrap" data-i18n="marquee_2">PROFESIONIȘTI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_3">INVESTITORI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#c9a25a;white-space:nowrap">DINCOLO DE GRANIȚE</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:var(--accent);white-space:nowrap" data-i18n="marquee_2">PROFESIONIȘTI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_3">INVESTITORI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:var(--accent);white-space:nowrap">DINCOLO DE GRANIȚE</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
     </div>
     <div style="display:flex;align-items:center;gap:22px;padding:30px 11px 30px 0;flex:none">
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#c9a25a;white-space:nowrap" data-i18n="marquee_2">PROFESIONIȘTI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_3">INVESTITORI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#c9a25a;white-space:nowrap">DINCOLO DE GRANIȚE</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:var(--accent);white-space:nowrap" data-i18n="marquee_2">PROFESIONIȘTI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_3">INVESTITORI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:var(--accent);white-space:nowrap">DINCOLO DE GRANIȚE</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
     </div>
     <div style="display:flex;align-items:center;gap:22px;padding:30px 11px 30px 0;flex:none">
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#c9a25a;white-space:nowrap" data-i18n="marquee_2">PROFESIONIȘTI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_3">INVESTITORI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#c9a25a;white-space:nowrap">DINCOLO DE GRANIȚE</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:var(--accent);white-space:nowrap" data-i18n="marquee_2">PROFESIONIȘTI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_3">INVESTITORI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:var(--accent);white-space:nowrap">DINCOLO DE GRANIȚE</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
     </div>
     <div style="display:flex;align-items:center;gap:22px;padding:30px 11px 30px 0;flex:none">
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#c9a25a;white-space:nowrap" data-i18n="marquee_2">PROFESIONIȘTI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_3">INVESTITORI</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
-      <span style="font:400 clamp(20px,5vw,32px) 'Bebas Neue';letter-spacing:.02em;color:#c9a25a;white-space:nowrap">DINCOLO DE GRANIȚE</span>
-      <span style="color:#c9a25a;font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:var(--accent);white-space:nowrap" data-i18n="marquee_2">PROFESIONIȘTI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:#f5f6f7;white-space:nowrap" data-i18n="marquee_3">INVESTITORI</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
+      <span style="font:var(--head-weight) clamp(20px,5vw,32px) var(--font-head);letter-spacing:.02em;color:var(--accent);white-space:nowrap">DINCOLO DE GRANIȚE</span>
+      <span style="color:var(--accent);font-size:20px">•</span>
     </div>
   </div>
 </div>
@@ -910,42 +911,42 @@ document.addEventListener('pointerout', function(e){
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:20px">
     <div>
       <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-        <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
-        <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="section_label_despre">DESPRE</span>
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none"></span>
+        <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)" data-i18n="section_label_despre">DESPRE</span>
       </div>
-      <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="despre_title">POVEȘTI CARE TREC GRANIȚE</h2>
-      <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:640px" data-i18n="despre_p3">Dincolo de Granițe este locul unde românii din întreaga lume își spun povestea. Fie că locuiesc în România, Marea Britanie, Europa, America, Canada, Australia sau oriunde în lume, fiecare invitat aduce o perspectivă unică despre curaj, schimbare și succes.</div>
+      <h2 style="margin:0 0 10px;font:var(--head-weight) clamp(32px,6vw,44px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.01em" data-i18n="despre_title">POVEȘTI CARE TREC GRANIȚE</h2>
+      <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:640px" data-i18n="despre_p3">Dincolo de Granițe este locul unde românii din întreaga lume își spun povestea. Fie că locuiesc în România, Marea Britanie, Europa, America, Canada, Australia sau oriunde în lume, fiecare invitat aduce o perspectivă unică despre curaj, schimbare și succes.</div>
     </div>
-    <a class="sec-cta" href="despre.html" style="flex:none;display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="despre_more">POVESTEA COMPLETĂ →</a>
+    <a class="sec-cta" href="despre.html" style="flex:none;display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="despre_more">POVESTEA COMPLETĂ →</a>
   </div>
   <div class="dsp-card" style="position:relative;overflow:hidden;border-radius:28px;border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4);padding:clamp(26px,5vw,54px)">
     <div style="position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none"></div>
     <div style="position:relative;display:flex;align-items:center;gap:clamp(32px,5vw,56px);flex-wrap:wrap">
       <div style="flex:1 1 280px;min-width:250px;display:flex;flex-direction:column">
-        <span aria-hidden="true" style="display:block;font:italic 700 72px/1 'Playfair Display';color:rgba(201,162,90,.22);margin:0 0 -26px -3px">&ldquo;</span>
-        <div class="dsp-quote" style="position:relative;z-index:1;font:italic 600 clamp(19px,2.8vw,24px)/1.5 'Playfair Display';color:#c9a25a" data-i18n="despre_closing">Pentru că cele mai valoroase lecții vin din experiențele oamenilor.</div>
+        <span aria-hidden="true" style="display:block;font:italic 700 72px/1 var(--font-serif);color:rgba(201,162,90,.22);margin:0 0 -26px -3px">&ldquo;</span>
+        <div class="dsp-quote" style="position:relative;z-index:1;font:italic 600 clamp(19px,2.8vw,24px)/1.5 var(--font-serif);color:var(--accent)" data-i18n="despre_closing">Pentru că cele mai valoroase lecții vin din experiențele oamenilor.</div>
       </div>
       <div class="dsp-divider" style="flex:none;align-self:stretch;width:1px;background:linear-gradient(180deg,transparent,rgba(201,162,90,.35),transparent)"></div>
       <div style="flex:1 1 420px;min-width:280px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,162,90,.16);border-radius:16px;overflow:hidden;border:1px solid rgba(201,162,90,.2)">
         <div style="background:rgba(255,255,255,.015);padding:18px 18px 17px;transition:background .25s ease" style-hover="background:rgba(201,162,90,.08)">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(201,162,90,.16);color:#e3c07d;margin-bottom:11px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg></span>
-          <div style="font:700 10px Inter;letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px" data-i18n="despre_spec_format_l">FORMAT</div>
-          <div style="font:500 13px/1.4 Inter;color:rgba(245,246,247,.82)" data-set="despre_format">Interviuri lungi, în studio și pe Zoom</div>
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(201,162,90,.16);color:var(--accent-light);margin-bottom:11px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg></span>
+          <div style="font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px" data-i18n="despre_spec_format_l">FORMAT</div>
+          <div style="font:500 13px/1.4 var(--font-body);color:rgba(245,246,247,.82)" data-set="despre_format">Interviuri lungi, în studio și pe Zoom</div>
         </div>
         <div style="background:rgba(255,255,255,.015);padding:18px 18px 17px;transition:background .25s ease" style-hover="background:rgba(201,162,90,.08)">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(201,162,90,.16);color:#e3c07d;margin-bottom:11px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg></span>
-          <div style="font:700 10px Inter;letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px" data-set="despre_sezon_label">SEZONUL 1</div>
-          <div style="font:500 13px/1.4 Inter;color:rgba(245,246,247,.82)" data-set="despre_sezon">Septembrie 2026</div>
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(201,162,90,.16);color:var(--accent-light);margin-bottom:11px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg></span>
+          <div style="font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px" data-set="despre_sezon_label">SEZONUL 1</div>
+          <div style="font:500 13px/1.4 var(--font-body);color:rgba(245,246,247,.82)" data-set="despre_sezon">Septembrie 2026</div>
         </div>
         <div style="background:rgba(255,255,255,.015);padding:18px 18px 17px;transition:background .25s ease" style-hover="background:rgba(201,162,90,.08)">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(201,162,90,.16);color:#e3c07d;margin-bottom:11px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"></path><circle cx="12" cy="9.5" r="2.3"></circle></svg></span>
-          <div style="font:700 10px Inter;letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px" data-i18n="despre_spec_loc_l">FILMAT ÎN</div>
-          <div style="font:500 13px/1.4 Inter;color:rgba(245,246,247,.82)" data-set="despre_filmat">Kent, Regatul Unit</div>
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(201,162,90,.16);color:var(--accent-light);margin-bottom:11px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"></path><circle cx="12" cy="9.5" r="2.3"></circle></svg></span>
+          <div style="font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px" data-i18n="despre_spec_loc_l">FILMAT ÎN</div>
+          <div style="font:500 13px/1.4 var(--font-body);color:rgba(245,246,247,.82)" data-set="despre_filmat">Kent, Regatul Unit</div>
         </div>
         <div style="background:rgba(255,255,255,.015);padding:18px 18px 17px;transition:background .25s ease" style-hover="background:rgba(201,162,90,.08)">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(201,162,90,.16);color:#e3c07d;margin-bottom:11px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg></span>
-          <div style="font:700 10px Inter;letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px" data-i18n="despre_spec_gazda_l">GAZDĂ</div>
-          <div style="font:500 13px/1.4 Inter;color:rgba(245,246,247,.82)" data-set="despre_gazda">Peter Baghiu</div>
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(201,162,90,.16);color:var(--accent-light);margin-bottom:11px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg></span>
+          <div style="font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px" data-i18n="despre_spec_gazda_l">GAZDĂ</div>
+          <div style="font:500 13px/1.4 var(--font-body);color:rgba(245,246,247,.82)" data-set="despre_gazda">Peter Baghiu</div>
         </div>
       </div>
     </div>
@@ -957,39 +958,39 @@ document.addEventListener('pointerout', function(e){
   <div style="position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:20px">
     <div>
     <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-      <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a"></span>
-      <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="harta_label">HARTA DIASPOREI</span>
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>
+      <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)" data-i18n="harta_label">HARTA DIASPOREI</span>
     </div>
-    <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="harta_title">CÂT DE DEPARTE EȘTI DE CASĂ?</h2>
-    <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px" data-i18n="harta_sub">Scrie orașul în care trăiești și vezi drumul până acasă.</div>
+    <h2 style="margin:0 0 10px;font:var(--head-weight) clamp(32px,6vw,44px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.01em" data-i18n="harta_title">CÂT DE DEPARTE EȘTI DE CASĂ?</h2>
+    <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px" data-i18n="harta_sub">Scrie orașul în care trăiești și vezi drumul până acasă.</div>
     </div>
     <div style="flex:none;display:flex;flex-direction:column;gap:10px;width:min(100%,430px)">
       <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap">
         <div style="position:relative;flex:1;min-width:190px">
-          <input data-harta-input type="text" placeholder="Orașul tău (ex. London, Dubai...)" data-i18n-placeholder="harta_placeholder" style="width:100%;padding:14px 20px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(15,17,19,.5);color:#f5f6f7;font:400 15px Inter;outline:none;box-sizing:border-box;transition:border-color .25s ease" style-focus="border-color:#c9a25a">
+          <input data-harta-input type="text" placeholder="Orașul tău (ex. London, Dubai...)" data-i18n-placeholder="harta_placeholder" style="width:100%;padding:14px 20px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(15,17,19,.5);color:#f5f6f7;font:400 15px var(--font-body);outline:none;box-sizing:border-box;transition:border-color .25s ease" style-focus="border-color:var(--accent)">
           <div data-harta-suggestions style="display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(15,17,19,.97);border:1px solid rgba(201,162,90,.35);border-radius:16px;overflow:hidden;z-index:30;box-shadow:0 20px 40px rgba(0,0,0,.5)"></div>
         </div>
-        <button data-harta-btn type="button" style="flex:none;padding:14px 28px;border-radius:999px;border:none;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;cursor:pointer;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="harta_btn">ARATĂ-MI</button>
+        <button data-harta-btn type="button" style="flex:none;padding:14px 28px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;cursor:pointer;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="harta_btn">ARATĂ-MI</button>
       </div>
       <div data-harta-err class="hmsg" style="display:none;align-items:center;gap:10px;box-sizing:border-box;padding:11px 16px 11px 13px;border-radius:12px;border:1px solid transparent;background:linear-gradient(180deg,rgba(224,138,106,.12),rgba(224,138,106,.06)) padding-box,linear-gradient(150deg,rgba(224,138,106,.5),rgba(224,138,106,.18)) border-box;opacity:0;transform:translateY(-4px);transition:opacity .3s ease,transform .3s cubic-bezier(.2,.8,.2,1)">
         <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(224,138,106,.16);color:#e8a184" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 8v5"></path><path d="M12 16.5h.01"></path></svg></span>
-        <span style="font:500 13px/1.45 Inter;color:#eaab90" data-i18n="harta_notfound">Nu găsesc orașul — încearcă un oraș mare din apropiere.</span>
+        <span style="font:500 13px/1.45 var(--font-body);color:#eaab90" data-i18n="harta_notfound">Nu găsesc orașul — încearcă un oraș mare din apropiere.</span>
       </div>
     </div>
   </div>
   <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
     <div data-harta-result style="display:none;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:6px 12px 30px">
-      <div style="font:400 clamp(44px,8vw,72px)/1 'Bebas Neue';color:#e3c07d"><span data-harta-km>0</span> KM</div>
-      <div style="font:600 12px Inter;letter-spacing:.22em;color:rgba(245,246,247,.5);margin-top:6px" data-i18n="harta_km_label">PÂNĂ ACASĂ</div>
-      <div style="font:italic 500 clamp(16px,3vw,20px)/1.5 'Playfair Display';color:#f5f6f7;margin-top:16px" data-i18n="harta_line">Distanța nu șterge povestea. O face mai puternică.</div>
-      <a href="invitati.html" style="display:inline-block;margin-top:18px;padding:14px 28px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="harta_cta">PROPUNE-ȚI POVESTEA</a>
+      <div style="font:var(--head-weight) clamp(44px,8vw,72px)/1 var(--font-head);color:var(--accent-light)"><span data-harta-km>0</span> KM</div>
+      <div style="font:600 12px var(--font-body);letter-spacing:.22em;color:rgba(245,246,247,.5);margin-top:6px" data-i18n="harta_km_label">PÂNĂ ACASĂ</div>
+      <div style="font:italic 500 clamp(16px,3vw,20px)/1.5 var(--font-serif);color:#f5f6f7;margin-top:16px" data-i18n="harta_line">Distanța nu șterge povestea. O face mai puternică.</div>
+      <a href="invitati.html" style="display:inline-block;margin-top:18px;padding:14px 28px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="harta_cta">PROPUNE-ȚI POVESTEA</a>
     </div>
     <div style="position:relative">
       <canvas data-harta-canvas style="display:block;width:100%"></canvas>
     </div>
     <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:14px">
-      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:9px;height:9px;border-radius:50%;background:#e3c07d;flex:none"></span><span data-i18n="harta_legend_home">ACASĂ</span></span>
-      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px Inter;letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(227,192,125,.6);flex:none"></span><span data-i18n="harta_legend_guests">PROPUNERI DE INVITAȚI</span></span>
+      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:9px;height:9px;border-radius:50%;background:var(--accent-light);flex:none"></span><span data-i18n="harta_legend_home">ACASĂ</span></span>
+      <span style="display:inline-flex;align-items:center;gap:8px;font:500 11px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.55)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(227,192,125,.6);flex:none"></span><span data-i18n="harta_legend_guests">PROPUNERI DE INVITAȚI</span></span>
     </div>
   </div>
 </div>
@@ -999,13 +1000,13 @@ document.addEventListener('pointerout', function(e){
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:20px">
     <div>
       <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-        <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;animation:livePulse 2s infinite"></span>
-        <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="label_live">SEZONUL 1</span>
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:livePulse 2s infinite"></span>
+        <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)" data-i18n="label_live">SEZONUL 1</span>
       </div>
-      <h2 style="margin:0;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="episoade_title">Explorează conversațiile</h2>
-      <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin-top:10px" data-i18n="episoade_sub">Primele conversații cu românii din întreaga lume — publicate aici imediat ce apar.</div>
+      <h2 style="margin:0;font:var(--head-weight) clamp(32px,6vw,44px)/1.1 var(--font-head);color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="episoade_title">Explorează conversațiile</h2>
+      <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px;margin-top:10px" data-i18n="episoade_sub">Primele conversații cu românii din întreaga lume — publicate aici imediat ce apar.</div>
     </div>
-    <a class="sec-cta" href="episoade.html" style="flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="ep_all">VEZI TOATE EPISOADELE →</a>
+    <a class="sec-cta" href="episoade.html" style="flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;border-radius:999px;text-decoration:none;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="ep_all">VEZI TOATE EPISOADELE →</a>
   </div>
   <div data-episodes-grid class="ep-grid">
     <a class="ep-card" data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="animation:fadeIn .8s ease both">
@@ -1060,99 +1061,99 @@ document.addEventListener('pointerout', function(e){
   <div style="margin-top:clamp(56px,8vw,88px);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
     <div>
     <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-      <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a;flex:none"></span>
-      <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="section_label_newsletter">COMUNITATE</span>
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none"></span>
+      <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)" data-i18n="section_label_newsletter">COMUNITATE</span>
     </div>
-    <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="newsletter_title">NU RATA NICIUN EPISOD</h2>
-    <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px" data-i18n="newsletter_desc">Abonează-te pentru a fi notificat la lansarea fiecărui episod nou</div>
+    <h2 style="margin:0 0 10px;font:var(--head-weight) clamp(32px,6vw,44px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.01em" data-i18n="newsletter_title">NU RATA NICIUN EPISOD</h2>
+    <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px" data-i18n="newsletter_desc">Abonează-te pentru a fi notificat la lansarea fiecărui episod nou</div>
     </div>
-    <a class="sec-cta" href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;text-decoration:none;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex:none"><path d="M12 3C9.79 3 8 4.79 8 7v2.34c0 .55-.16 1.09-.46 1.55L5.7 13.6c-.86 1.32.09 3.07 1.66 3.07h9.28c1.57 0 2.52-1.75 1.66-3.07l-1.84-2.71c-.3-.46-.46-1-.46-1.55V7c0-2.21-1.79-4-4-4z" stroke="#0f1113" stroke-width="1.8" stroke-linejoin="round"></path><path d="M9.5 19a2.5 2.5 0 0 0 5 0" stroke="#0f1113" stroke-width="1.8" stroke-linecap="round"></path></svg><span data-i18n="nav_subscribe">ABONEAZĂ-TE</span></a>
+    <a class="sec-cta" href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;border-radius:999px;text-decoration:none;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex:none"><path d="M12 3C9.79 3 8 4.79 8 7v2.34c0 .55-.16 1.09-.46 1.55L5.7 13.6c-.86 1.32.09 3.07 1.66 3.07h9.28c1.57 0 2.52-1.75 1.66-3.07l-1.84-2.71c-.3-.46-.46-1-.46-1.55V7c0-2.21-1.79-4-4-4z" stroke="#0f1113" stroke-width="1.8" stroke-linejoin="round"></path><path d="M9.5 19a2.5 2.5 0 0 0 5 0" stroke="#0f1113" stroke-width="1.8" stroke-linecap="round"></path></svg><span data-i18n="nav_subscribe">ABONEAZĂ-TE</span></a>
   </div>
   <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;padding:44px 32px;border:1px solid transparent;border-radius:28px;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
     <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent)"></div>
     <div style="position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none"></div>
     <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:10px">
-      <span style="display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:700 10px Inter;letter-spacing:.24em;color:#e3c07d">
-        <span style="position:relative;width:6px;height:6px;flex:none"><span style="position:absolute;inset:0;border-radius:50%;background:#e3c07d"></span><span style="position:absolute;inset:0;border-radius:50%;background:#e3c07d;animation:cdPulse 2.4s ease-out infinite"></span></span>
+      <span style="display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:700 10px var(--font-body);letter-spacing:.24em;color:var(--accent-light)">
+        <span style="position:relative;width:6px;height:6px;flex:none"><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light)"></span><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light);animation:cdPulse 2.4s ease-out infinite"></span></span>
         <span data-i18n="count_label">URMĂTORUL EPISOD ÎN</span>
       </span>
       <div class="cd-grid" style="display:flex;align-items:stretch;gap:10px">
         <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
           <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
-          <div data-count-d style="font:400 clamp(32px,6.4vw,50px)/1 'Bebas Neue';color:#e3c07d;font-variant-numeric:tabular-nums">–</div>
-          <div style="font:700 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_d">ZILE</div>
+          <div data-count-d style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_d">ZILE</div>
         </div>
         <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
           <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
-          <div data-count-h style="font:400 clamp(32px,6.4vw,50px)/1 'Bebas Neue';color:#e3c07d;font-variant-numeric:tabular-nums">–</div>
-          <div style="font:700 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_h">ORE</div>
+          <div data-count-h style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_h">ORE</div>
         </div>
         <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
           <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
-          <div data-count-m style="font:400 clamp(32px,6.4vw,50px)/1 'Bebas Neue';color:#e3c07d;font-variant-numeric:tabular-nums">–</div>
-          <div style="font:700 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_m">MIN</div>
+          <div data-count-m style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_m">MIN</div>
         </div>
         <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
           <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
-          <div data-count-s style="font:400 clamp(32px,6.4vw,50px)/1 'Bebas Neue';color:rgba(227,192,125,.72);font-variant-numeric:tabular-nums">–</div>
-          <div style="font:700 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_s">SEC</div>
+          <div data-count-s style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:rgba(227,192,125,.72);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.42);margin-top:8px" data-i18n="count_s">SEC</div>
         </div>
       </div>
     </div>
     <form data-notify-form method="POST" style="position:relative;width:100%;max-width:470px">
       <div class="nl-capsule" style="display:flex;align-items:center;gap:8px;padding:6px;border-radius:999px;border:1px solid transparent;background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55)) padding-box,linear-gradient(150deg,rgba(227,192,125,.45),rgba(201,162,90,.12) 55%,rgba(227,192,125,.28)) border-box;transition:box-shadow .3s ease">
         <span class="nl-icon" style="flex:none;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:16px;color:rgba(227,192,125,.8)" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span>
-        <input data-notify-email name="email" type="email" required placeholder="adresa@email.com" data-i18n-placeholder="newsletter_placeholder" style="flex:1;min-width:0;padding:12px 8px;border:none;background:transparent;color:#f5f6f7;font:400 15px Inter;outline:none">
-        <button type="submit" class="nl-btn" style="flex:none;padding:13px 26px;border-radius:999px;border:none;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 12.5px Inter;letter-spacing:.06em;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3);transition:filter .25s ease,box-shadow .25s ease" style-hover="filter:brightness(1.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 18px rgba(201,162,90,.4)" data-i18n="newsletter_btn">ANUNȚĂ-MĂ</button>
+        <input data-notify-email name="email" type="email" required placeholder="adresa@email.com" data-i18n-placeholder="newsletter_placeholder" style="flex:1;min-width:0;padding:12px 8px;border:none;background:transparent;color:#f5f6f7;font:400 15px var(--font-body);outline:none">
+        <button type="submit" class="nl-btn" style="flex:none;padding:13px 26px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 12.5px var(--font-body);letter-spacing:.06em;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3);transition:filter .25s ease,box-shadow .25s ease" style-hover="filter:brightness(1.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 18px rgba(201,162,90,.4)" data-i18n="newsletter_btn">ANUNȚĂ-MĂ</button>
       </div>
     </form>
-    <div data-notify-msg style="position:relative;font:500 13px Inter;color:#c9a25a;opacity:0;transition:opacity .3s ease;min-height:16px"></div>
+    <div data-notify-msg style="position:relative;font:500 13px var(--font-body);color:var(--accent);opacity:0;transition:opacity .3s ease;min-height:16px"></div>
     <div style="position:relative;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:-4px">
-      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px Inter;letter-spacing:.05em;color:rgba(245,246,247,.5)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust1">Fără spam</span></span>
-      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px Inter;letter-spacing:.05em;color:rgba(245,246,247,.5)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust2">Un email per episod</span></span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.5)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust1">Fără spam</span></span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.5)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust2">Un email per episod</span></span>
     </div>
-    <div style="position:relative;font:400 11.5px/1.6 Inter;color:rgba(245,246,247,.38);text-align:center;max-width:460px" data-i18n="newsletter_consent" data-i18n-html="1">Prin abonare ești de acord cu <a href="privacy.html" style="color:#c9a25a">politica de confidențialitate</a>. Te poți dezabona oricând.</div>
+    <div style="position:relative;font:400 11.5px/1.6 var(--font-body);color:rgba(245,246,247,.38);text-align:center;max-width:460px" data-i18n="newsletter_consent" data-i18n-html="1">Prin abonare ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>. Te poți dezabona oricând.</div>
   </div>
 </div>
 
 <!-- CLIPURI (hidden until Peter adds clip links in /admin) -->
 <div data-clips-section data-reveal style="display:none;max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
   <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-    <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a"></span>
-    <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a" data-i18n="clips_label">CLIPURI</span>
+    <span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>
+    <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)" data-i18n="clips_label">CLIPURI</span>
   </div>
-  <h2 style="margin:0 0 10px;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;letter-spacing:.01em" data-i18n="clips_title">MOMENTELE CARE RĂMÂN</h2>
-  <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin-bottom:16px" data-i18n="clips_sub">Fragmente scurte din conversații — pentru când ai două minute.</div>
+  <h2 style="margin:0 0 10px;font:var(--head-weight) clamp(32px,6vw,44px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.01em" data-i18n="clips_title">MOMENTELE CARE RĂMÂN</h2>
+  <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px;margin-bottom:16px" data-i18n="clips_sub">Fragmente scurte din conversații — pentru când ai două minute.</div>
   <div data-clips-grid class="clip-grid"></div>
 </div>
 
 <!-- PLAYLIST -->
 <div id="playlist" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
   <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-    <span style="width:6px;height:6px;border-radius:50%;background:#c9a25a"></span>
-    <span style="font:600 13px Inter;letter-spacing:.28em;color:#c9a25a">PLAYLIST</span>
+    <span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>
+    <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)">PLAYLIST</span>
   </div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:20px">
     <div>
-      <h2 style="margin:0;font:400 clamp(32px,6vw,44px)/1.1 'Bebas Neue';color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="playlist_title">URMĂREȘTE-NE PE YOUTUBE</h2>
-      <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin-top:10px" data-i18n="playlist_sub">Fiecare episod e o plecare peste graniță — îmbarcarea se face pe YouTube.</div>
+      <h2 style="margin:0;font:var(--head-weight) clamp(32px,6vw,44px)/1.1 var(--font-head);color:#f5f6f7;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) both" data-i18n="playlist_title">URMĂREȘTE-NE PE YOUTUBE</h2>
+      <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px;margin-top:10px" data-i18n="playlist_sub">Fiecare episod e o plecare peste graniță — îmbarcarea se face pe YouTube.</div>
     </div>
-      <a class="sec-cta" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 13px Inter;letter-spacing:.04em;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .3s ease;cursor:pointer;text-decoration:none;white-space:nowrap" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" style-active="transform:scale(0.96)"><span data-i18n="playlist_open_channel">DESCHIDE CANALUL</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+      <a class="sec-cta" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .3s ease;cursor:pointer;text-decoration:none;white-space:nowrap" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" style-active="transform:scale(0.96)"><span data-i18n="playlist_open_channel">DESCHIDE CANALUL</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
   </div>
   <div style="position:relative;width:1100px;max-width:100%;box-sizing:border-box;margin:0 auto;border-radius:26px;overflow:hidden;border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.5),rgba(201,162,90,.12) 34%,rgba(201,162,90,.08) 66%,rgba(227,192,125,.3) 100%) border-box;box-shadow:0 50px 100px rgba(0,0,0,.5)">
     <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent);pointer-events:none"></div>
     <div class="brd-head" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px clamp(14px,3vw,28px);background:rgba(201,162,90,.07);border-bottom:1px solid rgba(201,162,90,.22)">
       <div style="display:inline-flex;align-items:center;gap:11px">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e3c07d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M21 3 3 10.5l7 2.5"></path><path d="M21 3l-6 18-4.5-8"></path><path d="M21 3 10 13"></path></svg>
-        <span style="font:400 21px/1 'Bebas Neue';letter-spacing:.14em;color:#e3c07d" data-i18n="board_title">PLECĂRI · EPISOADE</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M21 3 3 10.5l7 2.5"></path><path d="M21 3l-6 18-4.5-8"></path><path d="M21 3 10 13"></path></svg>
+        <span style="font:var(--head-weight) 21px/1 var(--font-head);letter-spacing:.14em;color:var(--accent-light)" data-i18n="board_title">PLECĂRI · EPISOADE</span>
       </div>
       <div style="display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap">
-        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.4)" data-i18n="board_lon">LONDRA</span><span data-clock-lon style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:#e3c07d">--:--</span></span>
+        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.4)" data-i18n="board_lon">LONDRA</span><span data-clock-lon style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
         <span style="width:1px;height:14px;background:rgba(201,162,90,.35)"></span>
-        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px Inter;letter-spacing:.2em;color:rgba(245,246,247,.4)" data-i18n="board_buc">BUCUREȘTI</span><span data-clock-buc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:#e3c07d">--:--</span></span>
+        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.4)" data-i18n="board_buc">BUCUREȘTI</span><span data-clock-buc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
       </div>
     </div>
-    <div class="brd-cols" style="display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:13px clamp(14px,3vw,28px) 9px;font:700 9px Inter;letter-spacing:.24em;color:rgba(245,246,247,.32)">
+    <div class="brd-cols" style="display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:13px clamp(14px,3vw,28px) 9px;font:700 9px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.32)">
       <span style="width:64px;flex:none" data-i18n="board_col_flight">ZBOR</span>
       <span class="brd-thumb-sp" style="width:52px;flex:none"></span>
       <span style="flex:1" data-i18n="board_col_story">POVESTEA</span>
@@ -1162,69 +1163,69 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-arrow-sp" style="flex:none;width:14px"></span>
     </div>
     <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
-      <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="1">EP. 01</span>
+      <span style="width:64px;flex:none;font:var(--head-weight) 26px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="1">EP. 01</span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="1" src="assets/ep-cover-london.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
-        <span data-ep-title="1" class="brd-title" style="font:600 15px Inter;color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
-        <span data-ep-desc="1" class="brd-desc" style="font:400 12.5px Inter;color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
+        <span data-ep-title="1" class="brd-title" style="font:600 15px var(--font-body);color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="1" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
       </span>
       <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
-        <span data-ep-status="1" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px Inter;letter-spacing:.14em;color:#e3c07d;animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="coming_soon">ÎN CURÂND</span>
+        <span data-ep-status="1" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="coming_soon">ÎN CURÂND</span>
       </span>
       <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
     </a>
     <a data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
-      <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="2">EP. 02</span>
+      <span style="width:64px;flex:none;font:var(--head-weight) 26px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="2">EP. 02</span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
-        <span data-ep-title="2" class="brd-title" style="font:600 15px Inter;color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
-        <span data-ep-desc="2" class="brd-desc" style="font:400 12.5px Inter;color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
+        <span data-ep-title="2" class="brd-title" style="font:600 15px var(--font-body);color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="2" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
       </span>
       <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
-        <span data-ep-status="2" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px Inter;letter-spacing:.14em;color:#e3c07d;animation:boardFlip 7s ease-in-out infinite;animation-delay:3.4s" data-i18n="coming_soon">ÎN CURÂND</span>
+        <span data-ep-status="2" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:3.4s" data-i18n="coming_soon">ÎN CURÂND</span>
       </span>
       <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
     </a>
     <a data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
-      <span style="width:64px;flex:none;font:400 26px/1 'Bebas Neue';letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="3">EP. 03</span>
+      <span style="width:64px;flex:none;font:var(--head-weight) 26px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="3">EP. 03</span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <span style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(201,162,90,.25),rgba(15,17,19,.55))"></span>
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
-        <span data-ep-title="3" class="brd-title" style="font:600 15px Inter;color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
-        <span data-ep-desc="3" class="brd-desc" style="font:400 12.5px Inter;color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
+        <span data-ep-title="3" class="brd-title" style="font:600 15px var(--font-body);color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_title_placeholder">Titlu episod — în curând</span>
+        <span data-ep-desc="3" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
       </span>
       <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
-        <span data-ep-status="3" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px Inter;letter-spacing:.14em;color:#e3c07d;animation:boardFlip 7s ease-in-out infinite;animation-delay:5.8s" data-i18n="coming_soon">ÎN CURÂND</span>
+        <span data-ep-status="3" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:5.8s" data-i18n="coming_soon">ÎN CURÂND</span>
       </span>
       <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
     </a>
     <div class="brd-foot" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(201,162,90,.22);background:rgba(201,162,90,.05)">
       <div class="brd-foot-gate" style="display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap">
-        <span style="font:700 9.5px Inter;letter-spacing:.24em;color:rgba(245,246,247,.4)" data-i18n="board_gate">POARTA</span>
-        <span style="font:400 19px/1 'Bebas Neue';letter-spacing:.1em;color:#f5f6f7">YOUTUBE</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;background:rgba(143,206,154,.12);border:1px solid rgba(143,206,154,.35)"><span style="width:5px;height:5px;border-radius:50%;background:#8fce9a;animation:livePulse 2s infinite"></span><span style="font:700 9.5px Inter;letter-spacing:.08em;color:#8fce9a" data-i18n="board_boarding">ÎMBARCARE DESCHISĂ</span></span>
+        <span style="font:700 9.5px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.4)" data-i18n="board_gate">POARTA</span>
+        <span style="font:var(--head-weight) 19px/1 var(--font-head);letter-spacing:.1em;color:#f5f6f7">YOUTUBE</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;background:rgba(143,206,154,.12);border:1px solid rgba(143,206,154,.35)"><span style="width:5px;height:5px;border-radius:50%;background:#8fce9a;animation:livePulse 2s infinite"></span><span style="font:700 9.5px var(--font-body);letter-spacing:.08em;color:#8fce9a" data-i18n="board_boarding">ÎMBARCARE DESCHISĂ</span></span>
       </div>
       <div class="brd-foot-soc" style="display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap">
-        <a data-magnetic href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);color:#0f1113;font:700 12px Inter;letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)"><svg width="15" height="15" viewBox="0 0 24 24" fill="#0f1113" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg><span data-i18n="nav_subscribe">ABONEAZĂ-TE</span></a>
-        <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
-        <a href="https://facebook.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Facebook" style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"></path></svg></a>
-        <a href="https://tiktok.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="TikTok" style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-3.4h-3.3v13.9a2.6 2.6 0 1 1-1.8-2.5V10.4a5.9 5.9 0 1 0 5.1 5.9V9.3a7.6 7.6 0 0 0 4.4 1.4V7.4a4.3 4.3 0 0 1-1.8-1.6Z"></path></svg></a>
-        <a href="#" data-social="social_apple" target="_blank" rel="noopener" aria-label="Apple Podcasts" style="display:none;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none"></circle><path d="M8.5 8.2a5 5 0 0 1 7 0"></path><path d="M6 5.6a8.4 8.4 0 0 1 12 0"></path><path d="M10.5 15.5h3l-.6 5h-1.8z"></path></svg></a>
-        <a href="#" data-social="social_spotify" target="_blank" rel="noopener" aria-label="Spotify" style="display:none;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 9.6c3-1 6.6-.8 9.1.7"></path><path d="M8 12.4c2.5-.8 5.4-.6 7.4.7"></path><path d="M8.6 15.1c1.9-.6 4-.4 5.7.6"></path></svg></a>
+        <a data-magnetic href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 12px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)"><svg width="15" height="15" viewBox="0 0 24 24" fill="#0f1113" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg><span data-i18n="nav_subscribe">ABONEAZĂ-TE</span></a>
+        <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+        <a href="https://facebook.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Facebook" style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"></path></svg></a>
+        <a href="https://tiktok.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="TikTok" style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-3.4h-3.3v13.9a2.6 2.6 0 1 1-1.8-2.5V10.4a5.9 5.9 0 1 0 5.1 5.9V9.3a7.6 7.6 0 0 0 4.4 1.4V7.4a4.3 4.3 0 0 1-1.8-1.6Z"></path></svg></a>
+        <a href="#" data-social="social_apple" target="_blank" rel="noopener" aria-label="Apple Podcasts" style="display:none;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none"></circle><path d="M8.5 8.2a5 5 0 0 1 7 0"></path><path d="M6 5.6a8.4 8.4 0 0 1 12 0"></path><path d="M10.5 15.5h3l-.6 5h-1.8z"></path></svg></a>
+        <a href="#" data-social="social_spotify" target="_blank" rel="noopener" aria-label="Spotify" style="display:none;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 9.6c3-1 6.6-.8 9.1.7"></path><path d="M8 12.4c2.5-.8 5.4-.6 7.4.7"></path><path d="M8.6 15.1c1.9-.6 4-.4 5.7.6"></path></svg></a>
       </div>
     </div>
   </div>
@@ -1232,7 +1233,7 @@ document.addEventListener('pointerout', function(e){
 
 <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px);box-sizing:border-box">
   <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:28px">
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:3px;height:44px;padding:0 2px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)"><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.000s"></span><span style="width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.045s"></span><span style="width:4px;height:28px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.090s"></span><span style="width:4px;height:34px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.135s"></span><span style="width:4px;height:39px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.180s"></span><span style="width:4px;height:42px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.225s"></span><span style="width:4px;height:44px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.270s"></span><span style="width:4px;height:44px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.315s"></span><span style="width:4px;height:42px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.360s"></span><span style="width:4px;height:39px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.405s"></span><span style="width:4px;height:34px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.450s"></span><span style="width:4px;height:28px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.495s"></span><span style="width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.540s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,#e3c07d,#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.585s"></span></div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:3px;height:44px;padding:0 2px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)"><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.000s"></span><span style="width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.045s"></span><span style="width:4px;height:28px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.090s"></span><span style="width:4px;height:34px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.135s"></span><span style="width:4px;height:39px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.180s"></span><span style="width:4px;height:42px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.225s"></span><span style="width:4px;height:44px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.270s"></span><span style="width:4px;height:44px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.315s"></span><span style="width:4px;height:42px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.360s"></span><span style="width:4px;height:39px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.405s"></span><span style="width:4px;height:34px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.450s"></span><span style="width:4px;height:28px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.495s"></span><span style="width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.540s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.585s"></span></div>
   <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:3px;height:19px;padding:0 2px;opacity:.55;-webkit-mask-image:linear-gradient(180deg,#000,transparent),linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,#000,transparent),linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-composite:intersect"><span style="width:4px;height:7px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.000s"></span><span style="width:4px;height:9px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.045s"></span><span style="width:4px;height:12px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.090s"></span><span style="width:4px;height:14px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.135s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.180s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.225s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.270s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.315s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.360s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.405s"></span><span style="width:4px;height:14px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.450s"></span><span style="width:4px;height:12px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.495s"></span><span style="width:4px;height:9px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.540s"></span><span style="width:4px;height:7px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.585s"></span></div>
 </div>
 </div>
@@ -1240,31 +1241,31 @@ document.addEventListener('pointerout', function(e){
 <!-- FOOTER -->
 <div style="max-width:1280px;margin:0 auto;padding:clamp(32px,5vw,48px) clamp(20px,7vw,90px) 40px;box-sizing:border-box">
   <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:26px;border-top:1px solid rgba(201,162,90,.2)">
-    <div style="font:400 13px Inter;color:rgba(245,246,247,.4)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</div>
+    <div style="font:400 13px var(--font-body);color:rgba(245,246,247,.4)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-    <div style="font:600 11px Inter;letter-spacing:.14em;text-transform:uppercase;color:rgba(227,192,125,.85);text-align:center" data-i18n="footer_community">Alătură-te comunității Dincolo de Granițe</div>
+    <div style="font:600 11px var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:rgba(227,192,125,.85);text-align:center" data-i18n="footer_community">Alătură-te comunității Dincolo de Granițe</div>
     <div style="display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center">
-      <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
-      <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
-      <a href="https://tiktok.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="TikTok" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-3.4h-3.3v13.9a2.6 2.6 0 1 1-1.8-2.5V10.4a5.9 5.9 0 1 0 5.1 5.9V9.3a7.6 7.6 0 0 0 4.4 1.4V7.4a4.3 4.3 0 0 1-1.8-1.6Z"></path></svg></a>
-      <a href="https://facebook.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"></path></svg></a>
-      <a href="#" data-social="social_apple" target="_blank" rel="noopener" aria-label="Apple Podcasts" style="display:none;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none"></circle><path d="M8.5 8.2a5 5 0 0 1 7 0"></path><path d="M6 5.6a8.4 8.4 0 0 1 12 0"></path><path d="M10.5 15.5h3l-.6 5h-1.8z"></path></svg></a>
-      <a href="#" data-social="social_spotify" target="_blank" rel="noopener" aria-label="Spotify" style="display:none;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:#c9a25a;text-decoration:none;transition:all .25s ease" style-hover="border-color:#e3c07d;color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 9.6c3-1 6.6-.8 9.1.7"></path><path d="M8 12.4c2.5-.8 5.4-.6 7.4.7"></path><path d="M8.6 15.1c1.9-.6 4-.4 5.7.6"></path></svg></a>
+      <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
+      <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+      <a href="https://tiktok.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="TikTok" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-3.4h-3.3v13.9a2.6 2.6 0 1 1-1.8-2.5V10.4a5.9 5.9 0 1 0 5.1 5.9V9.3a7.6 7.6 0 0 0 4.4 1.4V7.4a4.3 4.3 0 0 1-1.8-1.6Z"></path></svg></a>
+      <a href="https://facebook.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"></path></svg></a>
+      <a href="#" data-social="social_apple" target="_blank" rel="noopener" aria-label="Apple Podcasts" style="display:none;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none"></circle><path d="M8.5 8.2a5 5 0 0 1 7 0"></path><path d="M6 5.6a8.4 8.4 0 0 1 12 0"></path><path d="M10.5 15.5h3l-.6 5h-1.8z"></path></svg></a>
+      <a href="#" data-social="social_spotify" target="_blank" rel="noopener" aria-label="Spotify" style="display:none;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 9.6c3-1 6.6-.8 9.1.7"></path><path d="M8 12.4c2.5-.8 5.4-.6 7.4.7"></path><path d="M8.6 15.1c1.9-.6 4-.4 5.7.6"></path></svg></a>
     </div>
     </div>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;font:400 12px Inter">
-      <a href="despre.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Despre</a>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;font:400 12px var(--font-body)">
+      <a href="despre.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Despre</a>
 
-      <a href="episoade.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Episoade</a>
-      <a href="invitati.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Invitați</a>
-      <a href="contact.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Contact</a>
-      <a href="termeni.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a">Termeni</a>
-      <a href="privacy.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:#c9a25a" data-i18n="footer_privacy">Confidențialitate</a>
+      <a href="episoade.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Episoade</a>
+      <a href="invitati.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Invitați</a>
+      <a href="contact.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Contact</a>
+      <a href="termeni.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Termeni</a>
+      <a href="privacy.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)" data-i18n="footer_privacy">Confidențialitate</a>
     </div>
   </div>
 </div>
 
-<a href="#top" data-back-to-top style="position:fixed;right:28px;bottom:28px;width:48px;height:48px;border-radius:50%;background:rgba(22,25,27,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .3s ease;border:1px solid rgba(201,162,90,.35);display:flex;align-items:center;justify-content:center;color:#c9a25a;font-size:18px;text-decoration:none;transition:all .3s ease;z-index:40" style-hover="background:#c9a25a;color:#0f1113;transform:translateY(-4px)">↑</a>
+<a href="#top" data-back-to-top style="position:fixed;right:28px;bottom:28px;width:48px;height:48px;border-radius:50%;background:rgba(22,25,27,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .3s ease;border:1px solid rgba(201,162,90,.35);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:18px;text-decoration:none;transition:all .3s ease;z-index:40" style-hover="background:var(--accent);color:#0f1113;transform:translateY(-4px)">↑</a>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {

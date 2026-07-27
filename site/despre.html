@@ -39,15 +39,15 @@
   .fmt-card{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
   .fmt-card:hover{transform:translateY(-4px);box-shadow:0 40px 70px rgba(0,0,0,.45)}
   .fmt-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-  .fmt-num{font:400 38px/1 'Bebas Neue';background:linear-gradient(135deg,#e3c07d,#c9a25a 60%,#b89350);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .icon-chip{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:rgba(201,162,90,.16);color:#e3c07d;flex:none}
+  .fmt-num{font:var(--head-weight) 38px/1 var(--font-head);background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .icon-chip{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:rgba(201,162,90,.16);color:var(--accent-light);flex:none}
   .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,162,90,.16);border-radius:16px;overflow:hidden;border:1px solid rgba(201,162,90,.2)}
   .spec-cell{background:rgba(21,23,27,.9);padding:18px 18px 17px;transition:background .25s ease}
   .spec-cell:hover{background:rgba(201,162,90,.08)}
-  .spec-l{font:700 10px Inter;letter-spacing:.16em;color:rgba(227,192,125,.85);margin:11px 0 4px}
-  .spec-v{font:500 13px/1.45 Inter;color:rgba(245,246,247,.82)}
-  .quote-mark{display:block;font:italic 700 72px/1 'Playfair Display';color:rgba(201,162,90,.22);margin:0 0 -26px -3px}
-  .closing{font:italic 600 clamp(18px,2.6vw,23px)/1.5 'Playfair Display';color:#c9a25a;text-align:center;max-width:44ch;margin:26px auto 0}
+  .spec-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin:11px 0 4px}
+  .spec-v{font:500 13px/1.45 var(--font-body);color:rgba(245,246,247,.82)}
+  .quote-mark{display:block;font:italic 700 72px/1 var(--font-serif);color:rgba(201,162,90,.22);margin:0 0 -26px -3px}
+  .closing{font:italic 600 clamp(18px,2.6vw,23px)/1.5 var(--font-serif);color:var(--accent);text-align:center;max-width:44ch;margin:26px auto 0}
   .portrait-ring{position:relative;width:104px;height:104px;flex:none}
   .portrait-ring::before{content:'';position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(from 0deg,rgba(227,192,125,.55),rgba(201,162,90,.08),rgba(227,192,125,.55));animation:spinSlow 10s linear infinite}
   .portrait-ring img{position:relative;width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid #101214}
@@ -58,7 +58,7 @@
   .hp-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:65% 55%}
   .hp-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,0) 55%,rgba(15,17,19,.93) 100%)}
   .hp-cap{position:absolute;left:0;right:0;bottom:0;padding:22px 26px 24px;text-align:center}
-  .hp-cap-title{font:400 20px 'Bebas Neue';letter-spacing:.1em;color:#e3c07d}
+  .hp-cap-title{font:var(--head-weight) 20px var(--font-head);letter-spacing:.1em;color:var(--accent-light)}
   .hp-cap-sub{margin:6px auto 0;font-size:12.5px;line-height:1.5;color:rgba(245,246,247,.7);max-width:34ch}
 </style>
 </head>
@@ -70,11 +70,11 @@
     <span class="pbrand-word">DINCOLO DE GRANIȚE</span>
   </a>
   <div class="plinks">
-    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"></path><path d="M5 9.5V21h14V9.5"></path></svg><span>ACASĂ</span></a>
-    <a href="despre.html" class="on"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="1" fill="#c9a25a" stroke="none"></circle></svg><span>DESPRE</span></a>
-    <a href="episoade.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="2" y="13" width="5" height="7" rx="2"></rect><rect x="17" y="13" width="5" height="7" rx="2"></rect></svg><span>EPISOADE</span></a>
-    <a href="invitati.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>INVITAȚI</span></a>
-    <a href="contact.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a25a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span>CONTACT</span></a>
+    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"></path><path d="M5 9.5V21h14V9.5"></path></svg><span>ACASĂ</span></a>
+    <a href="despre.html" class="on"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="1" fill="var(--accent)" stroke="none"></circle></svg><span>DESPRE</span></a>
+    <a href="episoade.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="2" y="13" width="5" height="7" rx="2"></rect><rect x="17" y="13" width="5" height="7" rx="2"></rect></svg><span>EPISOADE</span></a>
+    <a href="invitati.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>INVITAȚI</span></a>
+    <a href="contact.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span>CONTACT</span></a>
   </div>
   <button class="pburger" aria-label="Deschide meniul" type="button"><span></span><span></span><span></span></button>
   <div class="pmenu">
@@ -89,12 +89,12 @@
 <div class="wrap">
   <header class="phead">
     <svg class="phead-route" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <circle cx="600" cy="150" r="90" fill="none" stroke="#e3c07d" stroke-width="1"></circle>
-      <circle cx="600" cy="150" r="170" fill="none" stroke="#e3c07d" stroke-width="1"></circle>
-      <line x1="600" y1="10" x2="600" y2="290" stroke="#e3c07d" stroke-width="1.5" stroke-dasharray="3 10"></line>
-      <path d="M120,250 C320,220 420,90 600,150 C780,210 880,60 1080,50" fill="none" stroke="#e3c07d" stroke-width="1.5"></path>
-      <circle cx="120" cy="250" r="5" fill="#e3c07d"></circle>
-      <circle cx="1080" cy="50" r="5" fill="#e3c07d"></circle>
+      <circle cx="600" cy="150" r="90" fill="none" stroke="var(--accent-light)" stroke-width="1"></circle>
+      <circle cx="600" cy="150" r="170" fill="none" stroke="var(--accent-light)" stroke-width="1"></circle>
+      <line x1="600" y1="10" x2="600" y2="290" stroke="var(--accent-light)" stroke-width="1.5" stroke-dasharray="3 10"></line>
+      <path d="M120,250 C320,220 420,90 600,150 C780,210 880,60 1080,50" fill="none" stroke="var(--accent-light)" stroke-width="1.5"></path>
+      <circle cx="120" cy="250" r="5" fill="var(--accent-light)"></circle>
+      <circle cx="1080" cy="50" r="5" fill="var(--accent-light)"></circle>
     </svg>
     <span class="eyebrow">Despre</span>
     <h1 data-set="despre_hero_title">Omul din spatele<br>microfonului</h1>
@@ -146,7 +146,7 @@
 
   <section class="sec-gap">
     <span class="eyebrow">Formatul</span>
-    <div style="font:400 clamp(15px,3vw,17px)/1.6 Inter;color:rgba(245,246,247,.6);max-width:560px;margin:10px 0 16px" data-set="despre_format_intro">Fiecare conversație urmează același drum, în trei acte.</div>
+    <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px;margin:10px 0 16px" data-set="despre_format_intro">Fiecare conversație urmează același drum, în trei acte.</div>
     <div class="grid3">
       <div class="gcard fmt-card">
         <div class="fmt-top">

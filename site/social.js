@@ -13,7 +13,68 @@ var PAIRS = [
   ['facebook.com',  'social_facebook']
 ];
 
+/* ── Theme (accent colour, fonts, heading weight) ───────────────
+   Peter can override these from /admin → Setări → Aspect. Leaving
+   a field empty keeps the hand-tuned default (set in :root by
+   pages.css / each page's own <style>), so this whole block is a
+   no-op until he actually changes something.                     */
+function hexToHsl(hex){
+  var m = /^#?([0-9a-f]{6})$/i.exec(hex || '');
+  if(!m) return null;
+  var n = parseInt(m[1], 16);
+  var r = ((n >> 16) & 255) / 255, g = ((n >> 8) & 255) / 255, b = (n & 255) / 255;
+  var max = Math.max(r, g, b), min = Math.min(r, g, b), h, s, l = (max + min) / 2;
+  if(max === min){ h = s = 0; }
+  else {
+    var d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    if(max === r) h = (g - b) / d + (g < b ? 6 : 0);
+    else if(max === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h /= 6;
+  }
+  return [h * 360, s * 100, l * 100];
+}
+function hslToHex(h, s, l){
+  h = ((h % 360) + 360) % 360; s = Math.max(0, Math.min(100, s)) / 100; l = Math.max(0, Math.min(100, l)) / 100;
+  var c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m2 = l - c / 2, r, g, b;
+  if(h < 60){ r = c; g = x; b = 0; } else if(h < 120){ r = x; g = c; b = 0; } else if(h < 180){ r = 0; g = c; b = x; }
+  else if(h < 240){ r = 0; g = x; b = c; } else if(h < 300){ r = x; g = 0; b = c; } else { r = c; g = 0; b = x; }
+  var toHex = function(v){ var s2 = Math.round((v + m2) * 255).toString(16); return s2.length === 1 ? '0' + s2 : s2; };
+  return '#' + toHex(r) + toHex(g) + toHex(b);
+}
+function shade(hex, dl, ds){
+  var hsl = hexToHsl(hex);
+  if(!hsl) return null;
+  return hslToHex(hsl[0], hsl[1] + (ds || 0), hsl[2] + (dl || 0));
+}
+var loadedFonts = {};
+function loadGoogleFont(name){
+  if(!name || loadedFonts[name]) return;
+  loadedFonts[name] = true;
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(name).replace(/%20/g, '+') + ':ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600&display=swap';
+  document.head.appendChild(link);
+}
+function applyTheme(map){
+  var root = document.documentElement.style;
+  var accent = (map.theme_accent || '').trim();
+  if(/^#[0-9a-f]{6}$/i.test(accent)){
+    root.setProperty('--accent', accent);
+    root.setProperty('--accent-light', shade(accent, 12, 14) || accent);
+    root.setProperty('--accent-dark', shade(accent, -5, -9) || accent);
+  }
+  var headFont = (map.theme_heading_font || '').trim();
+  var bodyFont = (map.theme_body_font || '').trim();
+  if(headFont){ root.setProperty('--font-head', "'" + headFont + "'"); loadGoogleFont(headFont); }
+  if(bodyFont){ root.setProperty('--font-body', "'" + bodyFont + "'"); loadGoogleFont(bodyFont); }
+  var weight = parseInt(map.theme_head_weight, 10);
+  if(weight >= 100 && weight <= 900) root.setProperty('--head-weight', String(weight));
+}
+
 function apply(map){
+  applyTheme(map);
   /* platform buttons hidden until Peter fills their URL in /admin */
   document.querySelectorAll('[data-social]').forEach(function(el){
     var v = map[el.getAttribute('data-social')];
