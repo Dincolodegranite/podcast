@@ -27,6 +27,21 @@ function apply(map){
     var v = map[el.getAttribute('data-set')];
     if(v) el.textContent = v;
   });
+  /* multi-paragraph blocks (e.g. /despre bio, mission) — blank line = new paragraph */
+  document.querySelectorAll('[data-set-html]').forEach(function(el){
+    var v = map[el.getAttribute('data-set-html')];
+    if(!v) return;
+    el.innerHTML = '';
+    v.split(/\n\s*\n/).forEach(function(para){
+      para = para.trim();
+      if(!para) return;
+      var p = document.createElement('p');
+      p.textContent = para;
+      el.appendChild(p);
+    });
+    var ps = el.querySelectorAll('p');
+    if(ps.length) ps[ps.length - 1].style.marginBottom = '0';
+  });
   renderClips(map);
 }
 
