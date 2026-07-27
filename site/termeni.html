@@ -12,6 +12,9 @@
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="manifest" href="site.webmanifest">
 <style>
+  :root{--accent:#c9a25a;--accent-light:#e3c07d;--accent-dark:#b89350;--font-head:'Bebas Neue';--font-body:'Inter';--font-serif:'Playfair Display';--head-weight:400}
+  .gold-last{background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:goldShimmer 6s ease-in-out infinite}
+  @keyframes goldShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
   body{margin:0;background:#0f1113;color:#f5f6f7;font-family:var(--font-body),system-ui,sans-serif;line-height:1.7}
   .wrap{max-width:760px;margin:0 auto;padding:56px 24px 48px}
   a{color:var(--accent)}
@@ -36,7 +39,7 @@
 <body>
 <div class="wrap">
   <a class="back" href="index.html">← Înapoi la site</a>
-  <h1>Termeni și condiții</h1>
+  <h1 data-gold-last>Termeni și condiții</h1>
   <div class="updated">Ultima actualizare: 25 iulie 2026</div>
 
   <p>Bine ai venit pe <strong>www.dincolodegranite.com</strong>, site-ul oficial al podcastului <strong>Dincolo de Granițe</strong>, operat de Peter Baghiu din Marea Britanie („noi"). Prin utilizarea site-ului, ești de acord cu termenii de mai jos. Dacă nu ești de acord, te rugăm să nu folosești site-ul.</p>

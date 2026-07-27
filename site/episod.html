@@ -79,7 +79,7 @@
 
   <article id="ep-view" hidden>
     <span class="epv-num" id="ep-num"></span>
-    <h1 class="epv-title" id="ep-title"></h1>
+    <h1 class="epv-title" id="ep-title" data-gold-last></h1>
     <div class="epv-meta">
       <span id="ep-date"></span>
     </div>
@@ -200,6 +200,7 @@
 
     $('ep-num').textContent = 'EPISODUL ' + pad(ep.episode_number);
     $('ep-title').textContent = ep.title;
+    if(window.__goldLast) window.__goldLast();
 
     if(ep.published_at || ep.created_at){
       var d = new Date(ep.published_at || ep.created_at);

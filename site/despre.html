@@ -60,9 +60,7 @@
   .hp-cap{position:absolute;left:0;right:0;bottom:0;padding:22px 26px 24px;text-align:center}
   .hp-cap-title{font:var(--head-weight) 20px var(--font-head);letter-spacing:.1em;color:var(--accent-light)}
   .hp-cap-sub{margin:6px auto 0;font-size:12.5px;line-height:1.5;color:rgba(245,246,247,.7);max-width:34ch}
-  /* wow layer: scroll reveals, shimmer pe titlu, hover-uri vii */
-  .hero-grad{background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:dshimmer 6s ease-in-out infinite}
-  @keyframes dshimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  /* wow layer: scroll reveals, hover-uri vii (shimmerul .gold-last vine din pages.css) */
   html.rvjs .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
   html.rvjs .rv.on{opacity:1;transform:none}
   html.rvjs .grid2 .rv:nth-child(2){transition-delay:.12s}
@@ -118,7 +116,7 @@
       <circle cx="1080" cy="50" r="5" fill="var(--accent-light)"></circle>
     </svg>
     <span class="eyebrow">Despre</span>
-    <h1 data-set="despre_hero_title" data-accent-last>Omul din spatele<br><span class="hero-grad">microfonului</span></h1>
+    <h1 data-set="despre_hero_title" data-gold-last>Omul din spatele<br><span class="gold-last">microfonului</span></h1>
     <p class="lede" data-set="despre_hero_lede">Un fotograf român stabilit în Kent, care a decis că poveștile pe care le aude merită mai mult decât să rămână povestite la o cafea.</p>
   </header>
 
@@ -127,7 +125,7 @@
     <div class="grid2" style="margin-top:14px">
       <div class="gcard ovh rv">
         <div class="dsp-glow"></div>
-        <h2 style="position:relative">Cine sunt</h2>
+        <h2 style="position:relative" data-gold-last>Cine sunt</h2>
         <div style="position:relative" data-set-html="despre_bio">
         <p><strong style="color:#f5f6f7">Nu am pornit acest podcast pentru a deveni podcaster.</strong> Sunt fotograf profesionist, stabilit în Kent, Marea Britanie — unul dintre milioanele de români care au plecat de acasă ca să construiască ceva în altă parte.</p>
         <p>Ani de zile, meseria mea a fost să surprind momente: oameni, evenimente, fracțiuni de secundă care spun o poveste întreagă. Cu timpul am înțeles că cele mai valoroase lucruri pe care le-am întâlnit nu erau imaginile — ci poveștile din spatele lor. Oameni plecați cu o valiză și un plan vag, care azi conduc afaceri, echipe și proiecte pe care puțini le-ar fi crezut posibile.</p>
@@ -153,7 +151,7 @@
       <div class="dsp-glow"></div>
       <span class="quote-mark" aria-hidden="true">&ldquo;</span>
       <div style="position:relative">
-      <h2>De ce „Dincolo de Granițe"</h2>
+      <h2 data-gold-last>De ce „Dincolo de Granițe"</h2>
       <div data-set-html="despre_misiune">
       <p><strong style="color:#f5f6f7">Dincolo de Granițe este locul unde românii din întreaga lume își spun povestea.</strong> Fie că locuiesc în România, Marea Britanie, Europa, America, Canada, Australia sau oriunde în lume, fiecare invitat aduce o perspectivă unică despre curaj, schimbare și succes.</p>
       <p>În studioul nostru din Kent sau online, purtăm conversații autentice despre viață, antreprenoriat, carieră, investiții, educație, familie, credință, cultură, provocări și lecțiile care ne formează. Nu căutăm doar realizările, ci și drumul până la ele. Pentru că, dincolo de fiecare succes, există o poveste care merită ascultată.</p>
@@ -202,7 +200,7 @@
       <div class="dsp-glow"></div>
       <div style="position:relative;display:flex;align-items:center;gap:clamp(28px,5vw,52px);flex-wrap:wrap">
         <div style="flex:1 1 300px;min-width:260px">
-          <h2 style="margin-bottom:8px" data-set="despre_studio_title">Filmat cinematic, în Kent</h2>
+          <h2 style="margin-bottom:8px" data-set="despre_studio_title" data-gold-last>Filmat cinematic, în Kent</h2>
           <p style="margin:0 0 22px" data-set="despre_studio_text">Episoadele se filmează în studio propriu, pe camere de cinema Canon, cu invitați față în față — iar pentru românii din alte colțuri ale lumii, pe Zoom. În română și engleză, cu subtitrare.</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn btn-gold" href="invitati.html">Vreau să fiu invitat</a>

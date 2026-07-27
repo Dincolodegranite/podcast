@@ -355,7 +355,7 @@
       }
     });
   }
-  function saveSettings(btnId, msgId){
+  function saveSettings(btnId, msgId, withCountdown){
     var msg = $(msgId), btn = $(btnId);
     var rows = [], bad = false;
     Object.keys(SETTING_KEYS).forEach(function(id){
@@ -364,8 +364,12 @@
       if(v && key.indexOf('social_') === 0 && !/^https?:\/\//.test(v)) bad = true;
       if(v) rows.push({ key: key, value: v, updated_at: new Date().toISOString() });
     });
-    var nextEpRaw = $('set-next-episode').value;
-    rows.push({ key: 'next_episode_date', value: nextEpRaw ? new Date(nextEpRaw).toISOString() : '', updated_at: new Date().toISOString() });
+    /* the countdown lives in the Setări tab; only its own save button may
+       write it — otherwise saving from Pagini would silently clear it */
+    if(withCountdown){
+      var nextEpRaw = $('set-next-episode').value;
+      rows.push({ key: 'next_episode_date', value: nextEpRaw ? new Date(nextEpRaw).toISOString() : '', updated_at: new Date().toISOString() });
+    }
     if(bad){ msg.textContent = 'Linkurile trebuie să înceapă cu https://'; msg.style.color = '#e08a6a'; return; }
     if(!rows.length){ msg.textContent = 'Nimic de salvat.'; msg.style.color = ''; return; }
     btn.disabled = true;
@@ -376,8 +380,8 @@
       msg.style.color = '#8fce9a';
     });
   }
-  $('set-save').addEventListener('click', function(){ saveSettings('set-save', 'set-msg'); });
-  $('pages-save').addEventListener('click', function(){ saveSettings('pages-save', 'pages-msg'); });
+  $('set-save').addEventListener('click', function(){ saveSettings('set-save', 'set-msg', true); });
+  $('pages-save').addEventListener('click', function(){ saveSettings('pages-save', 'pages-msg', false); });
 
   // ── Episodes ──────────────────────────────────────────
   function resetEpForm(){

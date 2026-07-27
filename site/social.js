@@ -73,6 +73,43 @@ function applyTheme(map){
   if(weight >= 100 && weight <= 900) root.setProperty('--head-weight', String(weight));
 }
 
+/* ── Gold last word ─────────────────────────────────────────────
+   Any element with data-gold-last gets its final word wrapped in
+   span.gold-last (the shimmer gradient). Works on the last TEXT
+   node only, so <br> structures survive, and it is idempotent —
+   safe to re-run after admin hydration or a language switch.     */
+function goldLast(){
+  document.querySelectorAll('[data-gold-last]').forEach(function(el){
+    var nodes = el.childNodes, i, n;
+    for(i = nodes.length - 1; i >= 0; i--){
+      n = nodes[i];
+      if(n.nodeType === 3){
+        if(!/\S/.test(n.nodeValue)) continue;
+        var m = n.nodeValue.match(/^([\s\S]*?)(\S+)(\s*)$/);
+        if(!m) return;
+        var sp = document.createElement('span');
+        sp.className = 'gold-last';
+        sp.textContent = m[2];
+        n.nodeValue = m[1];
+        if(n.nextSibling) el.insertBefore(sp, n.nextSibling);
+        else el.appendChild(sp);
+        return;
+      }
+      if(n.nodeType === 1){
+        if(n.classList && n.classList.contains('gold-last')) return;
+        if(n.tagName === 'BR') continue;
+        return; /* ends in some other element — leave it alone */
+      }
+    }
+  });
+}
+window.__goldLast = goldLast;
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', goldLast);
+} else {
+  goldLast();
+}
+
 function apply(map){
   applyTheme(map);
   /* platform buttons hidden until Peter fills their URL in /admin */
@@ -83,22 +120,10 @@ function apply(map){
       el.style.display = '';
     }
   });
-  /* plain-text fields Peter can edit from /admin (e.g. the DESPRE card spec sheet).
-     data-accent-last keeps the last word wrapped in the shimmer span (despre hero) */
+  /* plain-text fields Peter can edit from /admin (e.g. the DESPRE card spec sheet) */
   document.querySelectorAll('[data-set]').forEach(function(el){
     var v = map[el.getAttribute('data-set')];
-    if(!v) return;
-    if(el.hasAttribute('data-accent-last')){
-      var words = v.trim().split(/\s+/);
-      var last = words.pop();
-      el.textContent = words.length ? words.join(' ') + ' ' : '';
-      var sp = document.createElement('span');
-      sp.className = 'hero-grad';
-      sp.textContent = last;
-      el.appendChild(sp);
-    } else {
-      el.textContent = v;
-    }
+    if(v) el.textContent = v;
   });
   /* multi-paragraph blocks (e.g. /despre bio, mission) — blank line = new paragraph */
   document.querySelectorAll('[data-set-html]').forEach(function(el){
@@ -116,6 +141,7 @@ function apply(map){
     if(ps.length) ps[ps.length - 1].style.marginBottom = '0';
   });
   renderClips(map);
+  goldLast(); /* hydration overwrites textContent, so re-wrap the last words */
 }
 
 /* ── Short clips ────────────────────────────────────────────────

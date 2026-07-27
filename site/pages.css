@@ -46,6 +46,8 @@ img{max-width:100%}
 h1{margin:14px 0 12px;font:var(--head-weight) clamp(34px,6vw,52px)/1.05 var(--font-head),var(--font-body),sans-serif;letter-spacing:.01em;color:#f5f6f7}
 .lede{font:italic 500 clamp(16px,2.6vw,20px)/1.55 var(--font-serif),Georgia,serif;color:rgba(245,246,247,.75);max-width:62ch;margin:0}
 h2{margin:0 0 14px;font:var(--head-weight) clamp(24px,4vw,32px)/1.15 var(--font-head),var(--font-body),sans-serif;letter-spacing:.02em;color:#f5f6f7}
+.gold-last{background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:goldShimmer 6s ease-in-out infinite}
+@keyframes goldShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 p{color:rgba(245,246,247,.72);font-size:15.5px;margin:0 0 14px}
 .muted{color:rgba(245,246,247,.5)}
 
