@@ -52,6 +52,10 @@
   .portrait-ring::before{content:'';position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(from 0deg,rgba(227,192,125,.55),rgba(201,162,90,.08),rgba(227,192,125,.55));animation:spinSlow 10s linear infinite}
   .portrait-ring img{position:relative;width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid #101214}
   @keyframes spinSlow{to{transform:rotate(360deg)}}
+  .phead{position:relative;overflow:hidden;padding:clamp(36px,6.6vw,66px) 0 clamp(23px,4.1vw,36px)}
+  .phead-route{position:absolute;inset:0;width:100%;height:100%;opacity:.03;z-index:-1;pointer-events:none}
+  .hp-frame{position:relative;width:100%;max-width:280px;aspect-ratio:16/11;border-radius:20px;background:linear-gradient(160deg,rgba(201,162,90,.1),rgba(255,255,255,.02));border:1px solid rgba(201,162,90,.18);display:flex;align-items:center;justify-content:center}
+  .hp-frame svg{position:relative;color:#e3c07d}
 </style>
 </head>
 <body>
@@ -80,6 +84,14 @@
 
 <div class="wrap">
   <header class="phead">
+    <svg class="phead-route" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle cx="600" cy="150" r="90" fill="none" stroke="#e3c07d" stroke-width="1"></circle>
+      <circle cx="600" cy="150" r="170" fill="none" stroke="#e3c07d" stroke-width="1"></circle>
+      <line x1="600" y1="10" x2="600" y2="290" stroke="#e3c07d" stroke-width="1.5" stroke-dasharray="3 10"></line>
+      <path d="M120,250 C320,220 420,90 600,150 C780,210 880,60 1080,50" fill="none" stroke="#e3c07d" stroke-width="1.5"></path>
+      <circle cx="120" cy="250" r="5" fill="#e3c07d"></circle>
+      <circle cx="1080" cy="50" r="5" fill="#e3c07d"></circle>
+    </svg>
     <span class="eyebrow">Despre</span>
     <h1>Omul din spatele<br>microfonului</h1>
     <p class="lede">Un fotograf român stabilit în Kent, care a decis că poveștile pe care le aude merită mai mult decât să rămână povestite la o cafea.</p>
@@ -99,7 +111,16 @@
       </div>
       <div class="gcard ovh" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;min-height:320px">
         <div class="dsp-glow" style="top:-160px;right:auto;left:-120px"></div>
-        <div class="portrait-ring"><img src="assets/logo.jpg" alt="Dincolo de Granițe"></div>
+        <div class="hp-frame">
+          <svg width="120" height="90" viewBox="0 0 220 160" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="128" x2="202" y2="128" stroke-width="1.3" opacity=".55"></line>
+            <line x1="30" y1="136" x2="190" y2="136" stroke-width="1" opacity=".28"></line>
+            <path d="M62,120 C62,66 158,66 158,120"></path>
+            <rect x="46" y="104" width="27" height="35" rx="12"></rect>
+            <rect x="147" y="104" width="27" height="35" rx="12"></rect>
+            <path d="M73,132 q9,9 0,18 q-9,9 2,17" stroke-width="1.4" opacity=".7"></path>
+          </svg>
+        </div>
         <div style="position:relative;font:400 22px 'Bebas Neue';letter-spacing:.1em;color:#e3c07d">PORTRET ÎN CURÂND</div>
         <p class="muted" style="position:relative;font-size:13.5px;max-width:36ch;margin:0">Fotograful e mereu de partea greșită a obiectivului. Portretul oficial apare aici odată cu primul episod.</p>
       </div>
