@@ -54,8 +54,12 @@
   @keyframes spinSlow{to{transform:rotate(360deg)}}
   .phead{position:relative;overflow:hidden;padding:clamp(36px,6.6vw,66px) 0 clamp(23px,4.1vw,36px)}
   .phead-route{position:absolute;inset:0;width:100%;height:100%;opacity:.03;z-index:-1;pointer-events:none}
-  .hp-frame{position:relative;width:100%;max-width:280px;aspect-ratio:16/11;border-radius:20px;background:linear-gradient(160deg,rgba(201,162,90,.1),rgba(255,255,255,.02));border:1px solid rgba(201,162,90,.18);display:flex;align-items:center;justify-content:center}
-  .hp-frame svg{position:relative;color:#e3c07d}
+  .hp-frame{position:relative;width:100%;height:100%;min-height:340px}
+  .hp-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:65% 55%}
+  .hp-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,0) 55%,rgba(15,17,19,.93) 100%)}
+  .hp-cap{position:absolute;left:0;right:0;bottom:0;padding:22px 26px 24px;text-align:center}
+  .hp-cap-title{font:400 20px 'Bebas Neue';letter-spacing:.1em;color:#e3c07d}
+  .hp-cap-sub{margin:6px auto 0;font-size:12.5px;line-height:1.5;color:rgba(245,246,247,.7);max-width:34ch}
 </style>
 </head>
 <body>
@@ -109,20 +113,15 @@
         <p style="margin-bottom:0">Poveștile astea rămâneau spuse pe jumătate, între două cadre. Așa a apărut podcastul.</p>
         </div>
       </div>
-      <div class="gcard ovh" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;min-height:320px">
-        <div class="dsp-glow" style="top:-160px;right:auto;left:-120px"></div>
+      <div class="gcard ovh" style="padding:0;display:flex">
         <div class="hp-frame">
-          <svg width="120" height="90" viewBox="0 0 220 160" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="128" x2="202" y2="128" stroke-width="1.3" opacity=".55"></line>
-            <line x1="30" y1="136" x2="190" y2="136" stroke-width="1" opacity=".28"></line>
-            <path d="M62,120 C62,66 158,66 158,120"></path>
-            <rect x="46" y="104" width="27" height="35" rx="12"></rect>
-            <rect x="147" y="104" width="27" height="35" rx="12"></rect>
-            <path d="M73,132 q9,9 0,18 q-9,9 2,17" stroke-width="1.4" opacity=".7"></path>
-          </svg>
+          <img src="assets/despre-headphones.jpg" alt="Căști pe birou, în studio" loading="lazy">
+          <div class="hp-shade"></div>
+          <div class="hp-cap">
+            <div class="hp-cap-title">PORTRET ÎN CURÂND</div>
+            <p class="hp-cap-sub">Fotograful e mereu de partea greșită a obiectivului. Portretul oficial apare aici odată cu primul episod.</p>
+          </div>
         </div>
-        <div style="position:relative;font:400 22px 'Bebas Neue';letter-spacing:.1em;color:#e3c07d">PORTRET ÎN CURÂND</div>
-        <p class="muted" style="position:relative;font-size:13.5px;max-width:36ch;margin:0">Fotograful e mereu de partea greșită a obiectivului. Portretul oficial apare aici odată cu primul episod.</p>
       </div>
     </div>
   </section>
