@@ -71,8 +71,16 @@
   .portrait-ring::before{content:'';position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(from 0deg,rgba(227,192,125,.55),rgba(201,162,90,.08),rgba(227,192,125,.55));animation:spinSlow 10s linear infinite}
   .portrait-ring img{position:relative;width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid #101214}
   @keyframes spinSlow{to{transform:rotate(360deg)}}
-  .phead{position:relative;overflow:hidden;padding:clamp(36px,6.6vw,66px) 0 clamp(23px,4.1vw,36px)}
-  .phead-route{position:absolute;inset:0;width:100%;height:100%;opacity:.03;z-index:-1;pointer-events:none}
+  /* hero full-width cu imaginea de studio */
+  .dhero{position:relative;overflow:hidden;display:flex;align-items:flex-end;min-height:clamp(400px,58vh,580px);padding:120px 0 clamp(34px,5.5vw,54px)}
+  .dhero-bg{position:absolute;inset:0;background:url(assets/hero-studio.jpg) center 38%/cover no-repeat;animation:dheroSettle 2s ease-out both}
+  @keyframes dheroSettle{from{transform:scale(1.07)}to{transform:scale(1)}}
+  .dhero-shade{position:absolute;inset:0;background:linear-gradient(180deg,#0f1113 0%,rgba(15,17,19,.42) 24%,rgba(15,17,19,.5) 58%,#0f1113 100%),linear-gradient(90deg,rgba(15,17,19,.72),rgba(15,17,19,.2) 60%,rgba(15,17,19,.05))}
+  .dhero-in{position:relative;width:100%;animation:dheroUp .9s cubic-bezier(.2,.8,.2,1) .15s both}
+  @keyframes dheroUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  .dhero h1{font-size:clamp(38px,6.5vw,62px);margin:14px 0 14px;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+  .dhero .lede{max-width:56ch;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+  @media (prefers-reduced-motion:reduce){.dhero-bg,.dhero-in{animation:none}}
   .hp-frame{position:relative;width:100%;height:100%;min-height:340px}
   .hp-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:65% 55%}
   .hp-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,0) 55%,rgba(15,17,19,.93) 100%)}
@@ -162,20 +170,17 @@
   </div>
 </div></nav>
 
-<div class="wrap">
-  <header class="phead">
-    <svg class="phead-route" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <circle cx="600" cy="150" r="90" fill="none" stroke="var(--accent-light)" stroke-width="1"></circle>
-      <circle cx="600" cy="150" r="170" fill="none" stroke="var(--accent-light)" stroke-width="1"></circle>
-      <line x1="600" y1="10" x2="600" y2="290" stroke="var(--accent-light)" stroke-width="1.5" stroke-dasharray="3 10"></line>
-      <path d="M120,250 C320,220 420,90 600,150 C780,210 880,60 1080,50" fill="none" stroke="var(--accent-light)" stroke-width="1.5"></path>
-      <circle cx="120" cy="250" r="5" fill="var(--accent-light)"></circle>
-      <circle cx="1080" cy="50" r="5" fill="var(--accent-light)"></circle>
-    </svg>
+<section class="dhero">
+  <div class="dhero-bg" aria-hidden="true"></div>
+  <div class="dhero-shade" aria-hidden="true"></div>
+  <div class="wrap dhero-in">
     <span class="eyebrow">Despre</span>
-    <h1 data-set="despre_hero_title" data-gold-last>Omul din spatele<br><span class="gold-last">microfonului</span></h1>
-    <p class="lede" data-set="despre_hero_lede">Un fotograf român stabilit în Kent, care a decis că poveștile pe care le aude merită mai mult decât să rămână povestite la o cafea.</p>
-  </header>
+    <h1 data-set="despre_hero_title" data-gold-last>Povestea din spatele <span class="gold-last">podcastului</span></h1>
+    <p class="lede" data-set="despre_hero_lede">Nu am creat acest podcast doar pentru a realiza interviuri. L-am creat pentru că am descoperit că unele conversații nu ar trebui să se încheie odată cu întâlnirea. Unele merită să fie ascultate de mult mai mulți oameni.</p>
+  </div>
+</section>
+
+<div class="wrap">
 
   <section>
     <span class="eyebrow">Povestea</span>
