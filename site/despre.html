@@ -75,6 +75,17 @@
   html.rvjs .grid3 .rv:nth-child(2){transition-delay:.12s}
   html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
   @media (prefers-reduced-motion:reduce){html.rvjs .rv{opacity:1;transform:none;transition:none}}
+  /* semnătura se „scrie" singură când intră în viewport */
+  html.rvjs .signature.rv{opacity:1;transform:rotate(-3deg);transition:none;background-size:0% 100%}
+  html.rvjs .signature.rv .sig-flourish path{stroke-dashoffset:260}
+  html.rvjs .signature.rv.on{animation:sigWrite 1.5s cubic-bezier(.5,0,.3,1) .25s forwards}
+  html.rvjs .signature.rv.on .sig-flourish path{animation:sigStroke .7s ease-out 1.7s forwards}
+  @keyframes sigWrite{to{background-size:100% 100%}}
+  @keyframes sigStroke{to{stroke-dashoffset:0}}
+  @media (prefers-reduced-motion:reduce){
+    html.rvjs .signature.rv{background-size:100% 100%;animation:none}
+    html.rvjs .signature.rv .sig-flourish path{stroke-dashoffset:0;animation:none}
+  }
   .hp-frame img{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
   .gcard:hover .hp-frame img{transform:scale(1.045)}
   .icon-chip{transition:transform .35s cubic-bezier(.2,.8,.2,1),background .35s ease}
@@ -88,7 +99,9 @@
   .tl-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px}
   .tl-t{font:var(--head-weight) 20px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0 0 4px}
   .tl-p{font-size:14px;margin:0;color:rgba(245,246,247,.65)}
-  .signature{position:relative;font:400 40px/1 'Great Vibes',cursive;color:var(--accent);margin-top:20px;transform:rotate(-3deg);transform-origin:left center}
+  .signature{position:relative;display:inline-block;margin-top:20px;transform:rotate(-3deg);transform-origin:left center;font:400 46px/1.1 'Great Vibes',cursive;background:linear-gradient(100deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));background-repeat:no-repeat;background-size:100% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 14px rgba(201,162,90,.35))}
+  .sig-flourish{display:block;width:150px;margin:-4px 0 0 10px;overflow:visible}
+  .sig-flourish path{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:0}
   .faq{display:flex;flex-direction:column;gap:10px;max-width:760px;margin-top:14px}
   .faq-i{border:1px solid rgba(201,162,90,.2);border-radius:16px;background:linear-gradient(180deg,#15171b,#101214);overflow:hidden;transition:border-color .3s ease}
   .faq-i[open]{border-color:rgba(201,162,90,.45)}
@@ -156,7 +169,9 @@
         <p>Ani de zile, meseria mea a fost să surprind momente: oameni, evenimente, fracțiuni de secundă care spun o poveste întreagă. Cu timpul am înțeles că cele mai valoroase lucruri pe care le-am întâlnit nu erau imaginile — ci poveștile din spatele lor. Oameni plecați cu o valiză și un plan vag, care azi conduc afaceri, echipe și proiecte pe care puțini le-ar fi crezut posibile.</p>
         <p style="margin-bottom:0">Poveștile astea rămâneau spuse pe jumătate, între două cadre. Așa a apărut podcastul.</p>
         </div>
-        <div class="signature">Peter</div>
+        <div class="signature rv">Peter
+          <svg class="sig-flourish" viewBox="0 0 220 30" aria-hidden="true"><path d="M6,20 C70,4 130,28 214,12"></path></svg>
+        </div>
       </div>
       <div class="gcard ovh rv" style="padding:0;display:flex">
         <div class="hp-frame">
