@@ -72,6 +72,15 @@
   .icon-chip{transition:transform .35s cubic-bezier(.2,.8,.2,1),background .35s ease}
   .fmt-card:hover .icon-chip{transform:rotate(-8deg) scale(1.12);background:rgba(201,162,90,.28)}
   .spec-cell:hover .icon-chip{transform:scale(1.12)}
+  .tl{position:relative;margin-top:16px;max-width:640px}
+  .tl::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent-light),rgba(201,162,90,.08))}
+  .tl-item{position:relative;padding:0 0 26px 34px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:'';position:absolute;left:3px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(201,162,90,.18)}
+  .tl-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px}
+  .tl-t{font:var(--head-weight) 20px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0 0 4px}
+  .tl-p{font-size:14px;margin:0;color:rgba(245,246,247,.65)}
+  .signature{position:relative;font:italic 500 26px/1 var(--font-serif);color:var(--accent);margin-top:18px}
   .eq{display:inline-flex;align-items:flex-end;gap:3px;height:14px;margin-left:4px}
   .eq i{width:3px;height:5px;border-radius:2px;background:var(--accent);animation:eqb 1.1s ease-in-out infinite}
   .eq i:nth-child(2){animation-delay:.15s}
@@ -131,6 +140,7 @@
         <p>Ani de zile, meseria mea a fost să surprind momente: oameni, evenimente, fracțiuni de secundă care spun o poveste întreagă. Cu timpul am înțeles că cele mai valoroase lucruri pe care le-am întâlnit nu erau imaginile — ci poveștile din spatele lor. Oameni plecați cu o valiză și un plan vag, care azi conduc afaceri, echipe și proiecte pe care puțini le-ar fi crezut posibile.</p>
         <p style="margin-bottom:0">Poveștile astea rămâneau spuse pe jumătate, între două cadre. Așa a apărut podcastul.</p>
         </div>
+        <div class="signature">— Peter</div>
       </div>
       <div class="gcard ovh rv" style="padding:0;display:flex">
         <div class="hp-frame">
@@ -141,6 +151,32 @@
             <p class="hp-cap-sub">Fotograful e mereu de partea greșită a obiectivului. Portretul oficial apare aici odată cu primul episod.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-gap">
+    <span class="eyebrow">Traseul</span>
+    <div class="tl">
+      <div class="tl-item rv">
+        <div class="tl-l">FOTOGRAF</div>
+        <div class="tl-t">Ani în spatele obiectivului</div>
+        <p class="tl-p">Portrete, evenimente, oameni — și povești care rămâneau spuse pe jumătate, între două cadre.</p>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-l">IDEEA</div>
+        <div class="tl-t">Poveștile cer mai mult</div>
+        <p class="tl-p">Conversațiile din spatele ședințelor foto meritau microfoane, nu doar cadre.</p>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-l">STUDIOUL</div>
+        <div class="tl-t">Construit în Kent</div>
+        <p class="tl-p">Camere de cinema, lumini calde și un spațiu gândit pentru conversații lungi, fără grabă.</p>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-l">LANSAREA</div>
+        <div class="tl-t">Septembrie 2026</div>
+        <p class="tl-p">Primele episoade — în studio și pe Zoom, cu români din toată lumea.</p>
       </div>
     </div>
   </section>
@@ -201,11 +237,7 @@
       <div style="position:relative;display:flex;align-items:center;gap:clamp(28px,5vw,52px);flex-wrap:wrap">
         <div style="flex:1 1 300px;min-width:260px">
           <h2 style="margin-bottom:8px" data-set="despre_studio_title" data-gold-last>Filmat cinematic, în Kent</h2>
-          <p style="margin:0 0 22px" data-set="despre_studio_text">Episoadele se filmează în studio propriu, pe camere de cinema Canon, cu invitați față în față — iar pentru românii din alte colțuri ale lumii, pe Zoom. În română și engleză, cu subtitrare.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn btn-gold" href="invitati.html">Vreau să fiu invitat</a>
-            <a class="btn btn-ghost" href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener">Abonează-te pe YouTube</a>
-          </div>
+          <p style="margin:0" data-set="despre_studio_text">Episoadele se filmează în studio propriu, pe camere de cinema Canon, cu invitați față în față — iar pentru românii din alte colțuri ale lumii, pe Zoom. În română și engleză, cu subtitrare.</p>
         </div>
         <div class="spec-grid" style="flex:1 1 300px;min-width:260px;max-width:420px">
           <div class="spec-cell">
@@ -228,6 +260,22 @@
             <div class="spec-l">LANSARE</div>
             <div class="spec-v" data-set="despre_spec_lansare">Septembrie 2026</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-gap">
+    <div class="gcard ovh rv" style="text-align:center;padding:clamp(34px,6vw,54px) clamp(22px,5vw,44px)">
+      <div class="dsp-glow"></div>
+      <div class="dsp-glow" style="top:auto;right:auto;bottom:-160px;left:-120px"></div>
+      <div style="position:relative">
+        <span class="eyebrow">Rândul tău</span>
+        <h2 data-gold-last style="margin:12px 0 10px;font-size:clamp(26px,5vw,38px)">Ai o poveste care merită spusă?</h2>
+        <p style="max-width:52ch;margin:0 auto 24px">Antreprenor, profesionist sau abia la început de drum — dacă ai construit ceva dincolo de granițe, vrem să te ascultăm.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <a class="btn btn-gold" href="invitati.html">Propune-ți povestea</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener">Abonează-te pe YouTube</a>
         </div>
       </div>
     </div>
