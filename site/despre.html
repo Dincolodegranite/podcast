@@ -3,7 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>html{background:#0f1113}</style>
+<style>html{background:#0f1113}
+@keyframes ldOut{0%{opacity:1;visibility:visible}70%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}
+@keyframes ldIn{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ldFill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes ldShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@media (prefers-reduced-motion:reduce){[data-loader]{display:none!important}}</style>
 <title>Despre — Dincolo de Granițe · Podcast cu Peter Baghiu</title>
 <meta name="description" content="Cine e Peter Baghiu și de ce a creat Dincolo de Granițe — arhiva video a poveștilor românilor din întreaga lume.">
 <link rel="canonical" href="https://www.dincolodegranite.com/despre">
@@ -124,6 +129,16 @@
 </style>
 </head>
 <body>
+<div data-loader style="position:fixed;inset:0;z-index:999;background:#0f1113;display:flex;align-items:center;justify-content:center;animation:ldOut 1.2s ease forwards">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:18px;animation:ldIn .7s ease forwards">
+    <img src="assets/logo.jpg" alt="" style="width:72px;height:72px;object-fit:cover;border-radius:50%;display:block;box-shadow:0 0 0 1px rgba(201,162,90,.4),0 0 34px rgba(201,162,90,.3)">
+    <div style="font:400 26px/1 'Bebas Neue',Inter,sans-serif;letter-spacing:.03em;background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:ldShimmer 3s ease-in-out infinite">DINCOLO DE GRANIȚE</div>
+    <div style="width:160px;height:3px;border-radius:3px;background:rgba(201,162,90,.15);overflow:hidden;margin-top:4px">
+      <div style="width:100%;height:100%;background:linear-gradient(90deg,#8a6f3a,#e3c07d);transform-origin:left;animation:ldFill .6s .1s cubic-bezier(.4,0,.2,1) forwards;transform:scaleX(0)"></div>
+    </div>
+    <div style="font:600 10px Inter,sans-serif;letter-spacing:.28em;color:rgba(245,246,247,.35)">SE ÎNCARCĂ</div>
+  </div>
+</div>
 
 <nav class="pnav"><div class="pnav-in">
   <a class="pbrand" href="index.html" aria-label="Acasă">
