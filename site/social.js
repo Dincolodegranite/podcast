@@ -125,6 +125,15 @@ function apply(map){
     var v = map[el.getAttribute('data-set')];
     if(v) el.textContent = v;
   });
+  /* images Peter can swap from /admin (e.g. his portrait on /despre) */
+  document.querySelectorAll('[data-set-img]').forEach(function(el){
+    var v = map[el.getAttribute('data-set-img')];
+    if(v && (/^https?:\/\//.test(v) || /^assets\//.test(v))) el.setAttribute('src', v);
+  });
+  /* placeholders that stop making sense once their setting is filled in */
+  document.querySelectorAll('[data-hide-if]').forEach(function(el){
+    if(map[el.getAttribute('data-hide-if')]) el.style.display = 'none';
+  });
   /* multi-paragraph blocks (e.g. /despre bio, mission) — blank line = new paragraph */
   document.querySelectorAll('[data-set-html]').forEach(function(el){
     var v = map[el.getAttribute('data-set-html')];
