@@ -44,10 +44,15 @@
   .ovh{overflow:hidden}
   .dsp-glow{position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none}
   .sec-gap{margin-top:clamp(40px,6vw,64px)}
-  .fmt-card{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
+  .fmt-card{position:relative;overflow:hidden;padding-bottom:28px;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
   .fmt-card:hover{transform:translateY(-4px);box-shadow:0 40px 70px rgba(0,0,0,.45)}
-  .fmt-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-  .fmt-num{font:var(--head-weight) 38px/1 var(--font-head);background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .fmt-wm{position:absolute;top:-14px;right:2px;font:var(--head-weight) 120px/1 var(--font-head);color:rgba(227,192,125,.07);pointer-events:none;transition:color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+  .fmt-card:hover .fmt-wm{color:rgba(227,192,125,.14);transform:translateY(-5px)}
+  .fmt-card h2,.fmt-card p{position:relative}
+  .fmt-top{position:relative;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .fmt-act{font:700 10px var(--font-body);letter-spacing:.22em;color:rgba(227,192,125,.85)}
+  .fmt-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--accent-light),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .fmt-card:hover .fmt-bar{transform:scaleX(1)}
   .icon-chip{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:rgba(201,162,90,.16);color:var(--accent-light);flex:none}
   .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,162,90,.16);border-radius:16px;overflow:hidden;border:1px solid rgba(201,162,90,.2)}
   .spec-cell{background:rgba(21,23,27,.9);padding:18px 18px 17px;transition:background .25s ease}
@@ -55,7 +60,7 @@
   .spec-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin:11px 0 4px}
   .spec-v{font:500 13px/1.45 var(--font-body);color:rgba(245,246,247,.82)}
   .quote-mark{display:block;font:italic 700 72px/1 var(--font-serif);color:rgba(201,162,90,.22);margin:0 0 -26px -3px}
-  .closing{font:italic 600 clamp(18px,2.6vw,23px)/1.5 var(--font-serif);color:var(--accent);text-align:center;max-width:44ch;margin:26px auto 0}
+  .closing{font:italic 400 clamp(19px,2.8vw,25px)/1.6 var(--font-serif);letter-spacing:.015em;color:var(--accent-light);text-align:center;max-width:46ch;margin:26px auto 0;opacity:.95}
   .portrait-ring{position:relative;width:104px;height:104px;flex:none}
   .portrait-ring::before{content:'';position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(from 0deg,rgba(227,192,125,.55),rgba(201,162,90,.08),rgba(227,192,125,.55));animation:spinSlow 10s linear infinite}
   .portrait-ring img{position:relative;width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid #101214}
@@ -99,7 +104,7 @@
   .tl-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px}
   .tl-t{font:var(--head-weight) 20px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0 0 4px}
   .tl-p{font-size:14px;margin:0;color:rgba(245,246,247,.65)}
-  .signature{position:relative;display:inline-block;margin-top:20px;transform:rotate(-3deg);transform-origin:left center;font:400 46px/1.1 'Great Vibes',cursive;background:linear-gradient(100deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));background-repeat:no-repeat;background-size:100% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 14px rgba(201,162,90,.35))}
+  .signature{position:relative;display:inline-block;margin:6px 0 0 -8px;padding:16px 16px 6px 8px;transform:rotate(-3deg);transform-origin:left center;font:400 46px/1.1 'Great Vibes',cursive;background:linear-gradient(100deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));background-repeat:no-repeat;background-size:100% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 14px rgba(201,162,90,.35))}
   .sig-flourish{display:block;width:150px;margin:-4px 0 0 10px;overflow:visible}
   .sig-flourish path{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:0}
   .faq{display:flex;flex-direction:column;gap:10px;max-width:760px;margin-top:14px}
@@ -235,28 +240,34 @@
     <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px;margin:10px 0 16px" data-set="despre_format_intro">Fiecare conversație urmează același drum, în trei acte.</div>
     <div class="grid3">
       <div class="gcard fmt-card rv">
+        <span class="fmt-wm" aria-hidden="true">01</span>
         <div class="fmt-top">
-          <span class="fmt-num">01</span>
           <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2.2"></circle><circle cx="18" cy="5" r="2.2"></circle><path d="M8 19h6a4 4 0 0 0 0-8H10a4 4 0 0 1 0-8h6"></path></svg></span>
+          <span class="fmt-act">ACTUL 01</span>
         </div>
-        <h2 style="font-size:22px;margin:0 0 8px" data-set="despre_format1_title">Drumul</h2>
-        <p style="margin:0" data-set="despre_format1_text">De unde a plecat invitatul, ce a lăsat în urmă și cum au arătat începuturile — fără poleială.</p>
+        <h2 style="font-size:22px;margin:0 0 8px" data-set="despre_format1_title">Începutul</h2>
+        <p style="margin:0" data-set="despre_format1_text">De unde a pornit totul. Copilăria, primele experiențe, alegerile și provocările care au pus bazele parcursului.</p>
+        <span class="fmt-bar" aria-hidden="true"></span>
       </div>
       <div class="gcard fmt-card rv">
+        <span class="fmt-wm" aria-hidden="true">02</span>
         <div class="fmt-top">
-          <span class="fmt-num">02</span>
           <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V8l7-5 7 5v13"></path><path d="M9 21v-6h6v6"></path></svg></span>
+          <span class="fmt-act">ACTUL 02</span>
         </div>
-        <h2 style="font-size:22px;margin:0 0 8px" data-set="despre_format2_title">Construcția</h2>
-        <p style="margin:0" data-set="despre_format2_text">Ce a construit și cum: deciziile, riscurile, momentele în care putea pierde tot.</p>
+        <h2 style="font-size:22px;margin:0 0 8px" data-set="despre_format2_title">Parcursul</h2>
+        <p style="margin:0" data-set="despre_format2_text">Deciziile care au schimbat direcția, riscurile asumate, eșecurile, reușitele și momentele care au definit drumul.</p>
+        <span class="fmt-bar" aria-hidden="true"></span>
       </div>
       <div class="gcard fmt-card rv">
+        <span class="fmt-wm" aria-hidden="true">03</span>
         <div class="fmt-top">
-          <span class="fmt-num">03</span>
           <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.5 10.9c.8.6 1.5 1.6 1.5 2.6h4c0-1 .7-2 1.5-2.6A6 6 0 0 0 12 3z"></path></svg></span>
+          <span class="fmt-act">ACTUL 03</span>
         </div>
         <h2 style="font-size:22px;margin:0 0 8px" data-set="despre_format3_title">Lecțiile</h2>
-        <p style="margin:0" data-set="despre_format3_text">Ce ar spune celor care vin din urmă — sfaturi concrete, nu motivaționale de carton.</p>
+        <p style="margin:0" data-set="despre_format3_text">Experiențele, principiile și perspectivele pe care invitatul le-ar împărtăși celor care își construiesc propriul drum.</p>
+        <span class="fmt-bar" aria-hidden="true"></span>
       </div>
     </div>
   </section>
