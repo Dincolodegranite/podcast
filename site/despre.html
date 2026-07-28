@@ -26,10 +26,18 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://www.dincolodegranite.com/"},{"@type":"ListItem","position":2,"name":"Despre","item":"https://www.dincolodegranite.com/despre"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="pages.css">
 <script defer src="social.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Peter Baghiu","jobTitle":"Fotograf & gazdă de podcast","url":"https://www.dincolodegranite.com/despre","sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Cine poate fi invitat la podcast?","acceptedAnswer":{"@type":"Answer","text":"Români de oriunde din lume care au construit ceva: antreprenori, profesioniști, investitori, creatori. Nu contează dimensiunea poveștii, ci autenticitatea ei. Propunerile se trimit din pagina Invitați de pe dincolodegranite.com."}},
+{"@type":"Question","name":"Trebuie să vin fizic în Kent?","acceptedAnswer":{"@type":"Answer","text":"Nu. Episoadele se filmează în studio, față în față, dar pentru românii din alte colțuri ale lumii înregistrăm pe Zoom — de oriunde ai fi."}},
+{"@type":"Question","name":"Cât durează filmarea unui episod?","acceptedAnswer":{"@type":"Answer","text":"Între 60 și 90 de minute — o conversație relaxată, fără scenariu rigid și fără grabă."}},
+{"@type":"Question","name":"Costă ceva participarea?","acceptedAnswer":{"@type":"Answer","text":"Nu. Participarea ca invitat este gratuită."}},
+{"@type":"Question","name":"În ce limbă sunt episoadele?","acceptedAnswer":{"@type":"Answer","text":"În română și engleză, iar toate episoadele au subtitrare."}},
+{"@type":"Question","name":"Când se lansează primele episoade?","acceptedAnswer":{"@type":"Answer","text":"În septembrie 2026, pe YouTube."}}
+]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>
   /* premium layer specific pentru /despre — construit pe .gcard din pages.css */
@@ -80,7 +88,15 @@
   .tl-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px}
   .tl-t{font:var(--head-weight) 20px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0 0 4px}
   .tl-p{font-size:14px;margin:0;color:rgba(245,246,247,.65)}
-  .signature{position:relative;font:italic 500 26px/1 var(--font-serif);color:var(--accent);margin-top:18px}
+  .signature{position:relative;font:400 40px/1 'Great Vibes',cursive;color:var(--accent);margin-top:20px;transform:rotate(-3deg);transform-origin:left center}
+  .faq{display:flex;flex-direction:column;gap:10px;max-width:760px;margin-top:14px}
+  .faq-i{border:1px solid rgba(201,162,90,.2);border-radius:16px;background:linear-gradient(180deg,#15171b,#101214);overflow:hidden;transition:border-color .3s ease}
+  .faq-i[open]{border-color:rgba(201,162,90,.45)}
+  .faq-i summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;font:600 15px var(--font-body);color:#f5f6f7}
+  .faq-i summary::-webkit-details-marker{display:none}
+  .faq-i summary::after{content:'+';font:400 24px/1 var(--font-head);color:var(--accent);transition:transform .3s ease;flex:none}
+  .faq-i[open] summary::after{transform:rotate(45deg)}
+  .faq-i p{margin:0;padding:0 20px 16px;font-size:14.5px;line-height:1.6;color:rgba(245,246,247,.68)}
   .eq{display:inline-flex;align-items:flex-end;gap:3px;height:14px;margin-left:4px}
   .eq i{width:3px;height:5px;border-radius:2px;background:var(--accent);animation:eqb 1.1s ease-in-out infinite}
   .eq i:nth-child(2){animation-delay:.15s}
@@ -140,7 +156,7 @@
         <p>Ani de zile, meseria mea a fost să surprind momente: oameni, evenimente, fracțiuni de secundă care spun o poveste întreagă. Cu timpul am înțeles că cele mai valoroase lucruri pe care le-am întâlnit nu erau imaginile — ci poveștile din spatele lor. Oameni plecați cu o valiză și un plan vag, care azi conduc afaceri, echipe și proiecte pe care puțini le-ar fi crezut posibile.</p>
         <p style="margin-bottom:0">Poveștile astea rămâneau spuse pe jumătate, între două cadre. Așa a apărut podcastul.</p>
         </div>
-        <div class="signature">— Peter</div>
+        <div class="signature">Peter</div>
       </div>
       <div class="gcard ovh rv" style="padding:0;display:flex">
         <div class="hp-frame">
@@ -176,7 +192,7 @@
       <div class="tl-item rv">
         <div class="tl-l">LANSAREA</div>
         <div class="tl-t">Septembrie 2026</div>
-        <p class="tl-p">Primele episoade — în studio și pe Zoom, cu români din toată lumea.</p>
+        <p class="tl-p"><a href="episoade.html">Primele episoade</a> — în studio și pe Zoom, cu <a href="invitati.html">români din toată lumea</a>.</p>
       </div>
     </div>
   </section>
@@ -262,6 +278,36 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="sec-gap">
+    <span class="eyebrow">Întrebări frecvente</span>
+    <div class="faq rv">
+      <details class="faq-i">
+        <summary>Cine poate fi invitat la podcast?</summary>
+        <p>Români de oriunde din lume care au construit ceva: antreprenori, profesioniști, investitori, creatori. Nu contează dimensiunea poveștii, ci autenticitatea ei. Îți poți propune povestea din <a href="invitati.html">pagina Invitați</a>.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Trebuie să vin fizic în Kent?</summary>
+        <p>Nu. Episoadele se filmează în studio, față în față, dar pentru românii din alte colțuri ale lumii înregistrăm pe Zoom — de oriunde ai fi.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Cât durează filmarea unui episod?</summary>
+        <p>Între 60 și 90 de minute — o conversație relaxată, fără scenariu rigid și fără grabă.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Costă ceva participarea?</summary>
+        <p>Nu. Participarea ca invitat este gratuită.</p>
+      </details>
+      <details class="faq-i">
+        <summary>În ce limbă sunt episoadele?</summary>
+        <p>În română și engleză, iar toate episoadele au subtitrare.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Când se lansează primele episoade?</summary>
+        <p>În septembrie 2026, pe YouTube. Până atunci poți urmări <a href="episoade.html">pagina de episoade</a> sau te poți abona la newsletter de pe prima pagină.</p>
+      </details>
     </div>
   </section>
 
