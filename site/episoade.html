@@ -46,6 +46,32 @@
   .dhero h1{font-size:clamp(38px,6.5vw,62px);margin:14px 0 14px;text-shadow:0 6px 40px rgba(0,0,0,.5)}
   .dhero .lede{max-width:56ch;text-shadow:0 2px 18px rgba(0,0,0,.5)}
   @media (prefers-reduced-motion:reduce){.dhero-bg,.dhero-in{animation:none}}
+  /* toolbar arhivă: căutare + sortare + contor */
+  .ep-toolbar{display:none;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+  .ep-toolbar.on{display:flex}
+  .ep-search{position:relative;flex:1 1 260px;max-width:430px}
+  .ep-search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:rgba(227,192,125,.7);pointer-events:none}
+  .ep-search input{width:100%;padding:13px 42px 13px 44px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(21,23,27,.9);color:#f5f6f7;font:500 14px var(--font-body);outline:none;transition:border-color .25s ease,box-shadow .25s ease}
+  .ep-search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(201,162,90,.12)}
+  .ep-search input::placeholder{color:rgba(245,246,247,.35)}
+  .ep-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:none;width:28px;height:28px;border:none;border-radius:50%;background:rgba(201,162,90,.15);color:var(--accent-light);font:600 14px/1 var(--font-body);cursor:pointer}
+  .ep-clear:hover{background:rgba(201,162,90,.3)}
+  .ep-search.has-q .ep-clear{display:block}
+  .ep-chip{padding:11px 18px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:transparent;color:rgba(245,246,247,.6);font:600 11px var(--font-body);letter-spacing:.08em;cursor:pointer;transition:all .25s ease}
+  .ep-chip.on{background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;border-color:transparent;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)}
+  .ep-chip:not(.on):hover{border-color:var(--accent);color:#f5f6f7}
+  .ep-count{margin-left:auto;font:600 11px var(--font-body);letter-spacing:.14em;color:rgba(245,246,247,.4);text-transform:uppercase;white-space:nowrap}
+  @media (max-width:640px){.ep-count{margin-left:0;width:100%;text-align:left}}
+  .ep-hl{background:rgba(201,162,90,.34);color:#fff;border-radius:3px;padding:0 1px}
+  .ep-noresults{display:none;text-align:center;padding:clamp(30px,6vw,50px)}
+  .ep-noresults b{color:var(--accent-light);font-weight:600}
+  /* card sponsor / partener */
+  .ovh{overflow:hidden}
+  .dsp-glow{position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none}
+  .sp-grid{display:flex;align-items:center;gap:clamp(22px,4vw,40px);flex-wrap:wrap}
+  .sp-logo{flex:none;width:140px;height:140px;border-radius:20px;background:rgba(21,23,27,.9);border:1px solid rgba(201,162,90,.25);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .sp-logo img{max-width:80%;max-height:80%;object-fit:contain}
+  .sp-tag{display:block;font:700 10px var(--font-body);letter-spacing:.22em;color:rgba(227,192,125,.85);margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -95,7 +121,23 @@
 <div class="wrap">
 
   <section>
+    <div class="ep-toolbar" id="ep-toolbar">
+      <div class="ep-search" id="ep-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input id="ep-q" type="search" placeholder="Caută un episod, o temă, un invitat..." autocomplete="off">
+        <button class="ep-clear" id="ep-clear" type="button" aria-label="Șterge căutarea">✕</button>
+      </div>
+      <button class="ep-chip on" id="ep-sort-new" type="button">CELE MAI NOI</button>
+      <button class="ep-chip" id="ep-sort-old" type="button">DE LA ÎNCEPUT</button>
+      <span class="ep-count" id="ep-count"></span>
+    </div>
+
     <div id="ep-archive" class="ep-grid" aria-live="polite"></div>
+
+    <div class="ep-noresults gcard" id="ep-noresults">
+      <p style="margin:0 0 16px">Niciun episod nu se potrivește cu <b id="ep-noq"></b>.</p>
+      <button class="btn btn-ghost" id="ep-reset" type="button">Șterge căutarea</button>
+    </div>
 
     <div id="ep-empty" class="gcard" style="display:none;text-align:center;padding:clamp(36px,7vw,60px)">
       <div style="font:var(--head-weight) 26px var(--font-head);letter-spacing:.08em;color:var(--accent-light);margin-bottom:8px">PRIMUL EPISOD — SEPTEMBRIE 2026</div>
@@ -108,6 +150,31 @@
 
     <div id="ep-error" class="gcard" style="display:none;text-align:center">
       <p style="margin:0">Nu am putut încărca episoadele. <a href="episoade.html">Reîncearcă</a> sau mergi direct pe <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener">canalul de YouTube</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Partener</span>
+    <div class="gcard ovh sp-card" data-show-if="sponsor_name" style="display:none;margin-top:14px">
+      <div class="dsp-glow"></div>
+      <div class="sp-grid" style="position:relative">
+        <div class="sp-logo" data-show-if="sponsor_logo" style="display:none"><img data-set-img="sponsor_logo" src="assets/logo.jpg" alt="Partener"></div>
+        <div style="flex:1 1 280px;min-width:240px">
+          <span class="sp-tag">PARTENERUL EPISOADELOR</span>
+          <h2 style="margin-bottom:8px" data-set="sponsor_name">Partener</h2>
+          <p style="margin:0 0 18px" data-set="sponsor_text"></p>
+          <a class="btn btn-gold" data-set-href="sponsor_url" href="#" target="_blank" rel="noopener sponsored">Descoperă partenerul</a>
+        </div>
+      </div>
+    </div>
+    <div class="gcard ovh sp-card" data-hide-if="sponsor_name" style="text-align:center;margin-top:14px;padding:clamp(30px,5vw,46px)">
+      <div class="dsp-glow"></div>
+      <div style="position:relative">
+        <span class="sp-tag">ACEST SPAȚIU AȘTEAPTĂ PARTENERUL POTRIVIT</span>
+        <h2 data-gold-last style="margin:10px 0 8px">Devino partenerul conversațiilor</h2>
+        <p style="max-width:52ch;margin:0 auto 20px">Brandul tău, în fața românilor care construiesc în toată lumea. Hai să vorbim despre un parteneriat care are sens pentru amândoi.</p>
+        <a class="btn btn-gold" href="contact.html">Hai să vorbim</a>
+      </div>
     </div>
   </section>
 </div>
@@ -166,7 +233,7 @@
     var av = document.createElement('img'); av.className = 'ep-avatar';
     av.loading = 'lazy'; av.decoding = 'async'; av.src = 'assets/logo.jpg'; av.alt = '';
     var txt = document.createElement('span'); txt.className = 'ep-yt-text';
-    var t = document.createElement('span'); t.className = 'ep-yt-title'; t.textContent = ep.title;
+    var t = document.createElement('span'); t.className = 'ep-yt-title'; highlightInto(t, ep.title);
     var m = document.createElement('span'); m.className = 'ep-yt-meta';
     var b = document.createElement('b'); b.textContent = 'EP. ' + pad(ep.episode_number);
     m.appendChild(document.createTextNode('Dincolo de Granițe · '));
@@ -183,6 +250,66 @@
     return a;
   }
 
+  /* ── căutare + sortare ─────────────────────────────── */
+  var toolbar = document.getElementById('ep-toolbar');
+  var qInput = document.getElementById('ep-q');
+  var searchBox = document.getElementById('ep-search');
+  var sortNew = document.getElementById('ep-sort-new');
+  var sortOld = document.getElementById('ep-sort-old');
+  var countEl = document.getElementById('ep-count');
+  var noRes = document.getElementById('ep-noresults');
+  var noQ = document.getElementById('ep-noq');
+  var all = [];
+  var query = '';
+  var dir = 'desc';
+
+  function norm(s){
+    return String(s || '').toLowerCase()
+      .replace(/ă/g,'a').replace(/â/g,'a').replace(/î/g,'i').replace(/ș/g,'s').replace(/ş/g,'s')
+      .replace(/ț/g,'t').replace(/ţ/g,'t');
+  }
+  /* diacriticele se înlocuiesc 1-la-1, deci pozițiile din textul
+     normalizat se mapează direct pe textul original */
+  function highlightInto(el, text){
+    if(!query){ el.textContent = text; return; }
+    var hay = norm(text), i = 0, at;
+    while((at = hay.indexOf(query, i)) !== -1){
+      if(at > i) el.appendChild(document.createTextNode(text.slice(i, at)));
+      var mk = document.createElement('mark');
+      mk.className = 'ep-hl';
+      mk.textContent = text.slice(at, at + query.length);
+      el.appendChild(mk);
+      i = at + query.length;
+    }
+    if(i < text.length) el.appendChild(document.createTextNode(text.slice(i)));
+  }
+
+  function render(){
+    var list = all.filter(function(ep){
+      if(!query) return true;
+      var hay = norm(ep.title + ' ' + (ep.description || '') + ' ep ' + pad(ep.episode_number) + ' ' + ep.episode_number);
+      return hay.indexOf(query) !== -1;
+    });
+    list.sort(function(a, b){ return dir === 'desc' ? b.episode_number - a.episode_number : a.episode_number - b.episode_number; });
+    grid.innerHTML = '';
+    list.forEach(function(ep, i){ grid.appendChild(card(ep, i)); });
+    noRes.style.display = (!list.length && query) ? 'block' : 'none';
+    if(query) noQ.textContent = '„' + qInput.value.trim() + '”';
+    countEl.textContent = query
+      ? list.length + ' din ' + all.length
+      : (all.length === 1 ? '1 episod' : all.length + ' episoade');
+  }
+  function setQuery(v){
+    query = norm(v.trim());
+    searchBox.classList.toggle('has-q', !!query);
+    render();
+  }
+  qInput.addEventListener('input', function(){ setQuery(qInput.value); });
+  document.getElementById('ep-clear').addEventListener('click', function(){ qInput.value = ''; setQuery(''); qInput.focus(); });
+  document.getElementById('ep-reset').addEventListener('click', function(){ qInput.value = ''; setQuery(''); });
+  sortNew.addEventListener('click', function(){ dir = 'desc'; sortNew.classList.add('on'); sortOld.classList.remove('on'); render(); });
+  sortOld.addEventListener('click', function(){ dir = 'asc'; sortOld.classList.add('on'); sortNew.classList.remove('on'); render(); });
+
   fetch(SUPA_URL + '/rest/v1/episodes?select=*&published=eq.true&order=episode_number.desc', {
     headers: { 'apikey': SUPA_KEY }
   }).then(function(r){
@@ -190,7 +317,9 @@
     return r.json();
   }).then(function(eps){
     if(!eps || !eps.length){ empty.style.display = 'block'; return; }
-    eps.forEach(function(ep, i){ grid.appendChild(card(ep, i)); });
+    all = eps;
+    toolbar.classList.add('on');
+    render();
   }).catch(function(){
     errBox.style.display = 'block';
   });

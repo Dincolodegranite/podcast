@@ -134,6 +134,15 @@ function apply(map){
   document.querySelectorAll('[data-hide-if]').forEach(function(el){
     if(map[el.getAttribute('data-hide-if')]) el.style.display = 'none';
   });
+  /* sections that only appear once their setting is filled in (e.g. sponsor) */
+  document.querySelectorAll('[data-show-if]').forEach(function(el){
+    if(map[el.getAttribute('data-show-if')]) el.style.display = '';
+  });
+  /* links Peter can point wherever he wants from /admin */
+  document.querySelectorAll('[data-set-href]').forEach(function(el){
+    var v = map[el.getAttribute('data-set-href')];
+    if(v && /^https?:\/\//.test(v)) el.setAttribute('href', v);
+  });
   /* multi-paragraph blocks (e.g. /despre bio, mission) — blank line = new paragraph */
   document.querySelectorAll('[data-set-html]').forEach(function(el){
     var v = map[el.getAttribute('data-set-html')];
