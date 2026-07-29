@@ -48,6 +48,16 @@ h1{margin:14px 0 12px;font:var(--head-weight) clamp(34px,6vw,52px)/1.05 var(--fo
 h2{margin:0 0 14px;font:var(--head-weight) clamp(24px,4vw,32px)/1.15 var(--font-head),var(--font-body),sans-serif;letter-spacing:.02em;color:#f5f6f7}
 .gold-last{background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:goldShimmer 6s ease-in-out infinite}
 @keyframes goldShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* newsletter sitewide — capsula de abonare de deasupra footerului */
+.nlx-cap{position:relative;display:flex;align-items:center;gap:8px;padding:5px;border-radius:999px;border:1px solid transparent;background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55)) padding-box,linear-gradient(150deg,rgba(227,192,125,.45),rgba(201,162,90,.12) 55%,rgba(227,192,125,.28)) border-box;transition:box-shadow .3s ease}
+.nlx-cap:focus-within{box-shadow:0 0 0 3px rgba(201,162,90,.16)}
+.nlx-ic{flex:none;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:14px;color:rgba(227,192,125,.8)}
+.nlx-cap input[type=email]{flex:1;min-width:0;padding:11px 8px 11px 2px;border:none;background:transparent;color:#f5f6f7;font:400 15px var(--font-body);outline:none}
+.nlx-cap input[type=email]::placeholder{color:rgba(245,246,247,.38)}
+.nlx-btn{flex:none;padding:12px 22px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 12px var(--font-body);letter-spacing:.06em;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3);transition:filter .25s ease}
+.nlx-btn:hover{filter:brightness(1.07)}
+@media (max-width:520px){.nlx-cap{flex-wrap:wrap;border-radius:22px;padding:10px}.nlx-btn{flex:1 1 100%}}
 p{color:rgba(245,246,247,.72);font-size:15.5px;margin:0 0 14px}
 .muted{color:rgba(245,246,247,.5)}
 

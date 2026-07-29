@@ -110,6 +110,46 @@ if(document.readyState === 'loading'){
   goldLast();
 }
 
+/* ── Newsletter sitewide ────────────────────────────────────────
+   Same subscribers table as the homepage capsule. The hidden
+   "website" field is a honeypot: humans never see it, bots fill
+   it, and filled submissions are silently dropped.               */
+function initNewsletterForms(){
+  document.querySelectorAll('[data-nl-form]').forEach(function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var hp = form.querySelector('input[name="website"]');
+      var input = form.querySelector('input[type="email"]');
+      var msg = form.querySelector('[data-nl-msg]');
+      var btn = form.querySelector('button[type="submit"]');
+      function show(t){ if(msg){ msg.textContent = t; msg.style.opacity = '1'; } }
+      if(hp && hp.value){ input.value = ''; show('Te-am notat! Îți dăm de veste la primul episod.'); return; }
+      var email = (input.value || '').trim();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('Te rog introdu o adresă de email validă.'); return; }
+      if(btn) btn.disabled = true;
+      fetch(SUPA_URL + '/rest/v1/subscribers', {
+        method: 'POST',
+        headers: { 'apikey': SUPA_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ email: email })
+      }).then(function(r){
+        if(btn) btn.disabled = false;
+        if(r.status === 409){ show('Ești deja pe listă! Te anunțăm la primul episod.'); return; }
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        input.value = '';
+        show('Te-am notat! Îți dăm de veste la primul episod.');
+      }).catch(function(){
+        if(btn) btn.disabled = false;
+        show('A apărut o eroare. Încearcă din nou.');
+      });
+    });
+  });
+}
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initNewsletterForms);
+} else {
+  initNewsletterForms();
+}
+
 function apply(map){
   applyTheme(map);
   /* platform buttons hidden until Peter fills their URL in /admin */
