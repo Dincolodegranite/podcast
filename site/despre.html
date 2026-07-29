@@ -32,7 +32,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://www.dincolodegranite.com/"},{"@type":"ListItem","position":2,"name":"Despre","item":"https://www.dincolodegranite.com/despre"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="pages.css">
 <script defer src="social.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Peter Baghiu","jobTitle":"Fotograf & gazdă de podcast","url":"https://www.dincolodegranite.com/despre","sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite"]}</script>
@@ -100,21 +100,6 @@
   html.rvjs .grid3 .rv:nth-child(2){transition-delay:.12s}
   html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
   @media (prefers-reduced-motion:reduce){html.rvjs .rv{opacity:1;transform:none;transition:none}}
-  /* semnătura se „scrie" singură când intră în viewport */
-  html.rvjs .signature.rv{opacity:1;transform:rotate(-4deg);transition:none}
-  html.rvjs .signature.rv .sig-name{background-size:0% 100%}
-  html.rvjs .signature.rv .sig-loop path,
-  html.rvjs .signature.rv .sig-trail path{stroke-dashoffset:300}
-  html.rvjs .signature.rv.on .sig-loop path{animation:sigStroke .55s ease-out .1s forwards}
-  html.rvjs .signature.rv.on .sig-name{animation:sigWrite 1.4s cubic-bezier(.5,0,.3,1) .35s forwards}
-  html.rvjs .signature.rv.on .sig-trail path{animation:sigStroke .7s ease-out 1.7s forwards}
-  @keyframes sigWrite{to{background-size:100% 100%}}
-  @keyframes sigStroke{to{stroke-dashoffset:0}}
-  @media (prefers-reduced-motion:reduce){
-    html.rvjs .signature.rv .sig-name{background-size:100% 100%;animation:none}
-    html.rvjs .signature.rv .sig-loop path,
-    html.rvjs .signature.rv .sig-trail path{stroke-dashoffset:0;animation:none}
-  }
   .hp-frame img{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
   .gcard:hover .hp-frame img{transform:scale(1.045)}
   .icon-chip{transition:transform .35s cubic-bezier(.2,.8,.2,1),background .35s ease}
@@ -128,12 +113,6 @@
   .tl-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px}
   .tl-t{font:var(--head-weight) 20px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0 0 4px}
   .tl-p{font-size:14px;margin:0;color:rgba(245,246,247,.65)}
-  .signature{position:relative;display:inline-block;margin:18px 0 24px 46px;transform:rotate(-4deg);transform-origin:left center}
-  .sig-name{position:relative;display:inline-block;font:400 74px/1 'Herr Von Muellerhoff',cursive;background:linear-gradient(100deg,var(--accent-light),var(--accent) 55%,var(--accent-dark));background-repeat:no-repeat;background-size:100% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 14px rgba(201,162,90,.35))}
-  .sig-loop{position:absolute;left:-38px;top:-10px;width:66px;height:84px;overflow:visible;pointer-events:none}
-  .sig-trail{position:absolute;left:100%;top:38px;width:172px;height:50px;overflow:visible;pointer-events:none}
-  .sig-loop path,.sig-trail path{stroke:var(--accent);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:0}
-  .sig-trail path.faint{opacity:.5;stroke-width:1.3}
   .faq{display:flex;flex-direction:column;gap:10px;margin-top:14px}
   .faq-i{border:1px solid rgba(201,162,90,.2);border-radius:16px;background:linear-gradient(180deg,#15171b,#101214);overflow:hidden;transition:border-color .3s ease}
   .faq-i[open]{border-color:rgba(201,162,90,.45)}
@@ -205,14 +184,6 @@
           <p><strong style="color:#f5f6f7">Nu am pornit acest podcast pentru a deveni podcaster.</strong> Sunt fotograf profesionist, stabilit în Kent, Marea Britanie — unul dintre milioanele de români care au plecat de acasă ca să construiască ceva în altă parte.</p>
           <p>Ani de zile, meseria mea a fost să surprind momente: oameni, evenimente, fracțiuni de secundă care spun o poveste întreagă. Cu timpul am înțeles că cele mai valoroase lucruri pe care le-am întâlnit nu erau imaginile — ci poveștile din spatele lor. Oameni plecați cu o valiză și un plan vag, care azi conduc afaceri, echipe și proiecte pe care puțini le-ar fi crezut posibile.</p>
           <p style="margin-bottom:0">Poveștile astea rămâneau spuse pe jumătate, între două cadre. Așa a apărut podcastul.</p>
-          </div>
-          <div class="signature rv">
-            <svg class="sig-loop" viewBox="0 0 66 84" aria-hidden="true"><path d="M50,70 C22,84 4,64 12,42 C20,18 52,14 60,36 C66,52 54,64 34,54"></path></svg>
-            <span class="sig-name">B. Peter</span>
-            <svg class="sig-trail" viewBox="0 -8 178 58" aria-hidden="true">
-              <path d="M4,38 C42,18 78,40 112,18 C136,4 152,8 172,0"></path>
-              <path class="faint" d="M4,26 C40,8 74,28 108,8 C130,-4 148,-2 168,-8"></path>
-            </svg>
           </div>
         </div>
         <div class="story-photo">
