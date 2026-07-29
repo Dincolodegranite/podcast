@@ -63,6 +63,9 @@
   .ep-count{margin-left:auto;font:600 11px var(--font-body);letter-spacing:.14em;color:rgba(245,246,247,.4);text-transform:uppercase;white-space:nowrap}
   @media (max-width:640px){.ep-count{margin-left:0;width:100%;text-align:left}}
   .ep-hl{background:rgba(201,162,90,.34);color:#fff;border-radius:3px;padding:0 1px}
+  .ep-cats{display:none;gap:8px;flex-wrap:wrap;width:100%}
+  .ep-cats.on{display:flex}
+  .ep-cat-tag{position:absolute;left:10px;top:10px;z-index:2;padding:4px 9px;border-radius:6px;background:rgba(10,11,12,.82);color:var(--accent-light);font:700 9.5px var(--font-body);letter-spacing:.12em}
   .ep-noresults{display:none;text-align:center;padding:clamp(30px,6vw,50px)}
   .ep-noresults b{color:var(--accent-light);font-weight:600}
   /* card sponsor / partener */
@@ -130,6 +133,12 @@
       <button class="ep-chip on" id="ep-sort-new" type="button">CELE MAI NOI</button>
       <button class="ep-chip" id="ep-sort-old" type="button">DE LA ÎNCEPUT</button>
       <span class="ep-count" id="ep-count"></span>
+      <div class="ep-cats" id="ep-cats">
+        <button class="ep-chip ep-cat-chip on" data-cat="" type="button">TOATE</button>
+        <button class="ep-chip ep-cat-chip" data-cat="antreprenori" type="button">ANTREPRENORI</button>
+        <button class="ep-chip ep-cat-chip" data-cat="profesionisti" type="button">PROFESIONIȘTI</button>
+        <button class="ep-chip ep-cat-chip" data-cat="investitori" type="button">INVESTITORI</button>
+      </div>
     </div>
 
     <div id="ep-archive" class="ep-grid" aria-live="polite"></div>
@@ -228,6 +237,11 @@
     var dur = document.createElement('span'); dur.className = 'ep-dur live';
     dur.textContent = 'VIZIONEAZĂ';
     thumb.appendChild(img); thumb.appendChild(shade); thumb.appendChild(play); thumb.appendChild(dur);
+    if(ep.category && CAT_LABELS[ep.category]){
+      var ct = document.createElement('span'); ct.className = 'ep-cat-tag';
+      ct.textContent = CAT_LABELS[ep.category];
+      thumb.appendChild(ct);
+    }
 
     var body = document.createElement('span'); body.className = 'ep-yt-body';
     var av = document.createElement('img'); av.className = 'ep-avatar';
@@ -262,6 +276,8 @@
   var all = [];
   var query = '';
   var dir = 'desc';
+  var cat = '';
+  var CAT_LABELS = { antreprenori: 'ANTREPRENORI', profesionisti: 'PROFESIONIȘTI', investitori: 'INVESTITORI' };
 
   function norm(s){
     return String(s || '').toLowerCase()
@@ -286,6 +302,7 @@
 
   function render(){
     var list = all.filter(function(ep){
+      if(cat && ep.category !== cat) return false;
       if(!query) return true;
       var hay = norm(ep.title + ' ' + (ep.description || '') + ' ep ' + pad(ep.episode_number) + ' ' + ep.episode_number);
       return hay.indexOf(query) !== -1;
@@ -293,9 +310,10 @@
     list.sort(function(a, b){ return dir === 'desc' ? b.episode_number - a.episode_number : a.episode_number - b.episode_number; });
     grid.innerHTML = '';
     list.forEach(function(ep, i){ grid.appendChild(card(ep, i)); });
-    noRes.style.display = (!list.length && query) ? 'block' : 'none';
-    if(query) noQ.textContent = '„' + qInput.value.trim() + '”';
-    countEl.textContent = query
+    var filtering = !!(query || cat);
+    noRes.style.display = (!list.length && filtering) ? 'block' : 'none';
+    if(filtering) noQ.textContent = '„' + (qInput.value.trim() || CAT_LABELS[cat] || '') + '”';
+    countEl.textContent = filtering
       ? list.length + ' din ' + all.length
       : (all.length === 1 ? '1 episod' : all.length + ' episoade');
   }
@@ -306,7 +324,16 @@
   }
   qInput.addEventListener('input', function(){ setQuery(qInput.value); });
   document.getElementById('ep-clear').addEventListener('click', function(){ qInput.value = ''; setQuery(''); qInput.focus(); });
-  document.getElementById('ep-reset').addEventListener('click', function(){ qInput.value = ''; setQuery(''); });
+  document.getElementById('ep-reset').addEventListener('click', function(){ qInput.value = ''; setCat(''); setQuery(''); });
+
+  var catChips = document.querySelectorAll('.ep-cat-chip');
+  function setCat(v){
+    cat = v;
+    catChips.forEach(function(c){ c.classList.toggle('on', c.getAttribute('data-cat') === v); });
+  }
+  catChips.forEach(function(c){
+    c.addEventListener('click', function(){ setCat(c.getAttribute('data-cat')); render(); });
+  });
   sortNew.addEventListener('click', function(){ dir = 'desc'; sortNew.classList.add('on'); sortOld.classList.remove('on'); render(); });
   sortOld.addEventListener('click', function(){ dir = 'asc'; sortOld.classList.add('on'); sortNew.classList.remove('on'); render(); });
 
@@ -319,6 +346,8 @@
     if(!eps || !eps.length){ empty.style.display = 'block'; return; }
     all = eps;
     toolbar.classList.add('on');
+    /* chip-urile de categorie apar doar dacă măcar un episod are categorie */
+    if(eps.some(function(e){ return !!e.category; })) document.getElementById('ep-cats').classList.add('on');
     render();
   }).catch(function(){
     errBox.style.display = 'block';

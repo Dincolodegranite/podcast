@@ -123,6 +123,14 @@
             <input id="ep-url" type="url" placeholder="Link YouTube (https://...)">
             <input id="ep-cover" type="url" placeholder="URL copertă (opțional — ex. assets/ep1.jpg sau https://...)">
           </div>
+          <label class="muted" style="font-size:12px">Categoria — apare ca filtru pe pagina Episoade
+            <select id="ep-cat" style="margin-top:5px">
+              <option value="">Fără categorie</option>
+              <option value="antreprenori">Antreprenori</option>
+              <option value="profesionisti">Profesioniști</option>
+              <option value="investitori">Investitori</option>
+            </select>
+          </label>
           <div class="row">
             <label class="chk fixed"><input id="ep-pub" type="checkbox"> Publicat (apare pe site)</label>
             <div class="fixed" style="margin-left:auto;display:flex;gap:8px">
@@ -399,6 +407,7 @@
     $('ep-form-title').textContent = 'Adaugă episod';
     $('ep-num').value = ''; $('ep-title').value = ''; $('ep-desc').value = '';
     $('ep-url').value = ''; $('ep-cover').value = ''; $('ep-pub').checked = false;
+    $('ep-cat').value = '';
     $('ep-cancel').classList.add('hidden');
     $('ep-err').textContent = '';
   }
@@ -415,6 +424,7 @@
       description: $('ep-desc').value.trim() || null,
       youtube_url: $('ep-url').value.trim() || null,
       cover_url: $('ep-cover').value.trim() || null,
+      category: $('ep-cat').value || null,
       published: $('ep-pub').checked
     };
     var q = editingId
@@ -462,6 +472,7 @@
           $('ep-num').value = ep.episode_number; $('ep-title').value = ep.title;
           $('ep-desc').value = ep.description || ''; $('ep-url').value = ep.youtube_url || '';
           $('ep-cover').value = ep.cover_url || ''; $('ep-pub').checked = !!ep.published;
+          $('ep-cat').value = ep.category || '';
           $('ep-cancel').classList.remove('hidden');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
