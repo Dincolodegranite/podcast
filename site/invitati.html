@@ -71,8 +71,7 @@
   @media (max-width:820px){.form-grid{grid-template-columns:1fr}}
   .trust{display:flex;flex-direction:column;gap:16px;padding-left:clamp(0px,2.5vw,22px);border-left:1px solid rgba(201,162,90,.18)}
   @media (max-width:820px){.trust{border-left:none;padding-left:0;border-top:1px solid rgba(201,162,90,.18);padding-top:20px}}
-  .trust-i{display:flex;gap:12px;align-items:flex-start;font:400 13.5px/1.55 var(--font-body);color:rgba(245,246,247,.65)}
-  .trust-i b{display:block;font:600 13.5px var(--font-body);color:#f5f6f7;margin-bottom:2px}
+  .trust-i{display:flex;gap:12px;align-items:center;font:500 13.5px/1.5 var(--font-body);color:rgba(245,246,247,.78)}
   .trust-i .icon-chip{width:30px;height:30px}
   /* câmpuri în stil capsulă — ca emailul din secțiunea COMUNITATE de pe acasă */
   .gf-cap,.gf-area{border:1px solid transparent;background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55)) padding-box,linear-gradient(150deg,rgba(227,192,125,.45),rgba(201,162,90,.12) 55%,rgba(227,192,125,.28)) border-box;transition:box-shadow .3s ease}
@@ -175,10 +174,11 @@
   </section>
 
   <section>
-    <div class="gcard ovh rv" style="border-radius:22px">
+    <span class="eyebrow">Beneficii</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">De ce să fii invitat la Dincolo de Granițe?</h2>
+    <div class="gcard ovh rv" style="border-radius:22px;margin-top:18px">
       <div class="dsp-glow"></div>
       <div style="position:relative">
-      <h2 style="margin-bottom:10px" data-gold-last>De ce să fii invitat la Dincolo de Granițe?</h2>
       <p style="max-width:72ch;margin-bottom:26px">Participarea la Dincolo de Granițe înseamnă mai mult decât o apariție într-un podcast. Este o oportunitate de a-ți spune povestea într-un cadru profesionist, de a inspira prin experiența ta și de a face parte dintr-o comunitate construită în jurul conversațiilor autentice.</p>
       <div class="grid3" style="gap:26px 28px">
         <div>
@@ -218,12 +218,12 @@
   </section>
 
   <section id="aplica">
-    <div class="gcard ovh rv">
+    <span class="eyebrow">Formular</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Propune-ți povestea</h2>
+    <div class="gcard ovh rv" style="margin-top:18px">
       <div class="dsp-glow"></div>
       <div class="form-grid" style="position:relative">
       <div>
-      <span class="eyebrow">Formular</span>
-      <h2 style="margin-top:10px" data-gold-last>Propune-ți povestea</h2>
       <form data-guest-form style="display:flex;flex-direction:column;gap:12px;margin-top:6px">
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <label class="gf-cap" style="flex:1;min-width:200px">
@@ -253,19 +253,35 @@
       <aside class="trust">
         <div class="trust-i">
           <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></span>
-          <span><b>Răspundem în 24–48h</b>Fiecare propunere primește un răspuns — da sau nu, dar primește.</span>
+          <span>Răspundem în 24–48 de ore</span>
         </div>
         <div class="trust-i">
-          <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
-          <span><b>Gratuit, fără condiții</b>Participarea ca invitat nu costă nimic.</span>
+          <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg></span>
+          <span>Participarea este gratuită</span>
         </div>
         <div class="trust-i">
           <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
-          <span><b>Kent sau Zoom</b>În studio, față în față — sau online, de oriunde ai fi în lume.</span>
+          <span>În studio sau online</span>
         </div>
         <div class="trust-i">
           <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"></path></svg></span>
-          <span><b>Română sau engleză</b>Cum ți-e mai natural — episoadele au subtitrare.</span>
+          <span>Română sau engleză</span>
+        </div>
+        <div class="trust-i">
+          <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+          <span>Pregătim episodul împreună</span>
+        </div>
+        <div class="trust-i">
+          <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.9-.9L3 20l1-5.4a8.1 8.1 0 0 1-1-3.9A8.4 8.4 0 0 1 11.5 2.5h.5a8.4 8.4 0 0 1 9 9z"></path></svg></span>
+          <span>Fără întrebări-surpriză</span>
+        </div>
+        <div class="trust-i">
+          <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="13" height="12" rx="2.5"></rect><path d="M15 10.5 22 7v10l-7-3.5"></path></svg></span>
+          <span>Fără grabă</span>
+        </div>
+        <div class="trust-i">
+          <span class="icon-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>
+          <span>Punem omul înaintea funcției</span>
         </div>
       </aside>
       </div>
@@ -274,8 +290,8 @@
 
   <section>
     <div class="gcard rv" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
-      <p style="margin:0;max-width:520px">Cunoști pe cineva care ar trebui să fie la masa asta? Trimite-i pagina — cele mai bune episoade încep cu o recomandare.</p>
-      <a class="btn btn-ghost" href="despre.html">Despre podcast →</a>
+      <p style="margin:0;max-width:520px">Cunoști pe cineva a cărui poveste merită ascultată? Trimite-i această pagină. Unele dintre cele mai valoroase conversații încep cu o recomandare.</p>
+      <a class="btn btn-ghost" id="share-invita" href="mailto:?subject=O%20invita%C8%9Bie%20pentru%20tine%20%E2%80%94%20Dincolo%20de%20Grani%C8%9Be&body=Cred%20c%C4%83%20povestea%20ta%20merit%C4%83%20spus%C4%83%20la%20Dincolo%20de%20Grani%C8%9Be%3A%20https%3A%2F%2Fwww.dincolodegranite.com%2Finvitati">Recomandă un invitat →</a>
     </div>
   </section>
 </div>
@@ -351,6 +367,22 @@
     });
   }, { threshold: .15, rootMargin: '0px 0px -40px' });
   els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script>
+(function(){
+  /* pe telefoane, butonul de recomandare deschide share-ul nativ; altfel rămâne mailto */
+  var sh = document.getElementById('share-invita');
+  if(sh && navigator.share){
+    sh.addEventListener('click', function(e){
+      e.preventDefault();
+      navigator.share({
+        title: 'Dincolo de Granițe',
+        text: 'Cred că povestea ta merită spusă la Dincolo de Granițe.',
+        url: 'https://www.dincolodegranite.com/invitati'
+      }).catch(function(){});
+    });
+  }
 })();
 </script>
 </body>
