@@ -82,16 +82,10 @@
   .dhero .lede{max-width:56ch;text-shadow:0 2px 18px rgba(0,0,0,.5)}
   @media (prefers-reduced-motion:reduce){.dhero-bg,.dhero-in{animation:none}}
   .story-grid{display:grid;grid-template-columns:1.15fr .85fr}
-  .story-text{position:relative;padding:clamp(28px,4.5vw,46px)}
-  .story-text h2{margin-bottom:0}
-  .story-text h2::after{content:'';display:block;width:46px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--accent-light),transparent);margin:12px 0 18px}
-  .story-text [data-set-html] p:first-child{font-size:17px;line-height:1.7;color:rgba(245,246,247,.86)}
+  .story-text{position:relative;padding:clamp(26px,4vw,42px)}
   .story-photo{position:relative;overflow:hidden;min-height:340px}
-  .story-photo::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(201,162,90,.55),transparent);z-index:3}
   .story-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
   .story-card:hover .story-photo img{transform:scale(1.045)}
-  .story-frame{position:absolute;inset:14px;border:1px solid rgba(227,192,125,.22);border-radius:14px;z-index:2;pointer-events:none;transition:border-color .5s ease}
-  .story-card:hover .story-frame{border-color:rgba(227,192,125,.45)}
   .story-shade{position:absolute;inset:0;background:linear-gradient(90deg,#101214 0%,rgba(16,18,20,.3) 26%,rgba(15,17,19,0) 55%),linear-gradient(180deg,rgba(15,17,19,0) 55%,rgba(15,17,19,.9) 100%)}
   @media (max-width:760px){
     .story-grid{grid-template-columns:1fr}
@@ -199,7 +193,6 @@
     <div class="gcard ovh rv story-card" style="margin-top:14px;padding:0">
       <div class="story-grid">
         <div class="story-text">
-          <div class="dsp-glow"></div>
           <h2 style="position:relative" data-gold-last>Cine sunt</h2>
           <div style="position:relative" data-set-html="despre_bio">
           <p><strong style="color:#f5f6f7">Nu am pornit acest podcast pentru a deveni podcaster.</strong> Sunt fotograf profesionist, stabilit în Kent, Marea Britanie — unul dintre milioanele de români care au plecat de acasă ca să construiască ceva în altă parte.</p>
