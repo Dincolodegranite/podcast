@@ -201,11 +201,13 @@ function initMap(){
   var ctx = canvas.getContext('2d');
   var W = 0, H = 0, dpr = Math.max(1, window.devicePixelRatio || 1);
   var guests = {};   /* normName -> city entry */
+  var gcount = {};   /* normName -> cati invitati are orasul */
   var arc = null;    /* {from:[lat,lon], t:0..1} */
   var ambient = [];  /* scantei care calatoresc singure spre casa */
   var labels = [];   /* numele oraselor care tocmai au trimis o scanteie */
   var mx = -999, my = -999, lanternA = 0, lanternOn = false;
   var spot = document.createElement('canvas');
+  var band = document.createElement('canvas');
   var LR = 190; /* raza felinarului, in px CSS */
   var pings = [];    /* inele de sosire la baza */
   var lastSpawn = 0;
@@ -227,7 +229,10 @@ function initMap(){
     }).then(function(r){ return r.ok ? r.json() : []; }).then(function(rows){
       (rows || []).forEach(function(row){
         var c = findCity(row.city);
-        if(c) guests[norm(c[0])] = c;
+        if(c){
+          guests[norm(c[0])] = c;
+          gcount[norm(c[0])] = Math.max(gcount[norm(c[0])] || 0, Number(row.n) || 1);
+        }
       });
       updateCityCount();
     }).catch(function(){});
@@ -291,6 +296,26 @@ function initMap(){
   function draw(now){
     ctx.clearRect(0, 0, W, H);
     if(land.width) ctx.drawImage(land, 0, 0, W, H);
+    if(bright.width){
+      var ph0 = (now - t0) / 1000;
+      var bw = Math.round(W * 0.24);
+      var bwd = Math.round(bw * dpr), bhd = Math.round(H * dpr);
+      if(band.width !== bwd || band.height !== bhd){ band.width = bwd; band.height = bhd; }
+      var sx = ((ph0 * W / 16) % (W + bw * 2)) - bw;
+      var bx = band.getContext('2d');
+      bx.setTransform(1, 0, 0, 1, 0, 0);
+      bx.clearRect(0, 0, bwd, bhd);
+      bx.drawImage(bright, sx * dpr, 0, bwd, bhd, 0, 0, bwd, bhd);
+      bx.globalCompositeOperation = 'destination-in';
+      var bg2 = bx.createLinearGradient(0, 0, bwd, 0);
+      bg2.addColorStop(0, 'rgba(0,0,0,0)');
+      bg2.addColorStop(0.5, 'rgba(0,0,0,.55)');
+      bg2.addColorStop(1, 'rgba(0,0,0,0)');
+      bx.fillStyle = bg2;
+      bx.fillRect(0, 0, bwd, bhd);
+      bx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(band, sx, 0, bw, H);
+    }
     lanternA += ((lanternOn ? 1 : 0) - lanternA) * 0.08;
     if(lanternA > 0.02 && bright.width){
       var sd = Math.round(LR * 2 * dpr);
@@ -315,15 +340,17 @@ function initMap(){
     var phase = (now - t0) / 1000;
     Object.keys(guests).forEach(function(k, i){
       var c = guests[k], p = proj(c[1], c[2]);
+      var n2 = gcount[k] || 1;
+      var boost = 1 + Math.min(0.9, (n2 - 1) * 0.18);
       var pulse = 0.55 + 0.45 * Math.sin(phase * 2 + i * 1.7);
       ctx.beginPath();
       ctx.fillStyle = 'rgba(227,192,125,' + (0.35 + 0.4 * pulse).toFixed(2) + ')';
-      ctx.arc(p[0], p[1], mr, 0, 6.2832);
+      ctx.arc(p[0], p[1], mr * boost, 0, 6.2832);
       ctx.fill();
       ctx.beginPath();
       ctx.strokeStyle = 'rgba(227,192,125,' + (0.25 * pulse).toFixed(2) + ')';
       ctx.lineWidth = 1;
-      ctx.arc(p[0], p[1], mr * (1.8 + 0.9 * pulse), 0, 6.2832);
+      ctx.arc(p[0], p[1], mr * boost * (1.8 + 0.9 * pulse), 0, 6.2832);
       ctx.stroke();
     });
     var hp = proj(HOME.lat, HOME.lon);
@@ -343,14 +370,27 @@ function initMap(){
     ctx.strokeStyle = 'rgba(227,192,125,' + (0.32 * (1 - rip)).toFixed(3) + ')';
     ctx.lineWidth = 1;
     ctx.arc(hp[0], hp[1], mr * (2 + rip * 8), 0, 6.2832); ctx.stroke();
+    ctx.font = '600 9px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(227,192,125,' + (0.4 + 0.25 * hPulse).toFixed(3) + ')';
+    ctx.shadowColor = 'rgba(0,0,0,.8)'; ctx.shadowBlur = 4;
+    ctx.fillText('ACASĂ', hp[0], hp[1] + mr * 4.6);
+    ctx.shadowBlur = 0;
     /* scantei: din cand in cand, un oras trimite una spre casa */
     var gk = Object.keys(guests);
     if(gk.length && now - lastSpawn > 2600 && ambient.length < 3){
       lastSpawn = now;
-      var c0 = guests[gk[Math.floor(Math.random() * gk.length)]];
-      ambient.push({ from: [c0[1], c0[2]], t: 0 });
+      var pool = [];
+      gk.forEach(function(k2){
+        var w = Math.min(5, gcount[k2] || 1);
+        for(var wi = 0; wi < w; wi++) pool.push(k2);
+      });
+      var pk = pool[Math.floor(Math.random() * pool.length)];
+      var c0 = guests[pk];
+      ambient.push({ from: [c0[1], c0[2]], t: 0, v: 0.0045 + Math.random() * 0.004 });
       var lp = proj(c0[1], c0[2]);
-      labels.push({ text: String(c0[0]).toUpperCase(), x: lp[0], y: lp[1], t: 0 });
+      var nn = gcount[pk] || 1;
+      labels.push({ text: String(c0[0]).toUpperCase() + (nn > 1 ? ' ×' + nn : ''), x: lp[0], y: lp[1], t: 0 });
     }
     for(var ai = ambient.length - 1; ai >= 0; ai--){
       var A = ambient[ai];
@@ -374,7 +414,7 @@ function initMap(){
       ctx.beginPath();
       ctx.fillStyle = '#fff6e2';
       ctx.arc(ph2[0], ph2[1], 1, 0, 6.2832); ctx.fill();
-      A.t += 0.006;
+      A.t += (A.v || 0.006);
       if(A.t >= 1){ ambient.splice(ai, 1); pings.push({ r: 0 }); }
     }
     for(var li = labels.length - 1; li >= 0; li--){
@@ -440,6 +480,16 @@ function initMap(){
     lanternOn = true;
   }, { passive: true });
   canvas.addEventListener('pointerleave', function(){ lanternOn = false; }, { passive: true });
+  canvas.addEventListener('click', function(e){
+    var r2 = canvas.getBoundingClientRect();
+    var cx2 = e.clientX - r2.left, cy2 = e.clientY - r2.top;
+    var hp2 = proj(HOME.lat, HOME.lon);
+    if(Math.hypot(cx2 - hp2[0], cy2 - hp2[1]) < 14) return;
+    if(ambient.length > 5) return;
+    var lon2 = cx2 / W * 360 - 180;
+    var lat2 = LAT_TOP - cy2 / H * LAT_SPAN;
+    ambient.push({ from: [lat2, lon2], t: 0, v: 0.009 });
+  });
 
   /* input + suggestions + result */
   var input = document.querySelector('[data-harta-input]');
