@@ -314,13 +314,13 @@ function initMap(){
         var h = Math.sin(col * 127.1 + row * 311.7) * 43758.5453;
         h = h - Math.floor(h);
         var x = col * cw + cw / 2, y = row * ch + ch / 2;
-        var rr = coast ? r * 1.12 : r * (0.72 + h * 0.5);
+        var rr = coast ? r * 1.15 : r * (0.9 + h * 0.3);
         lctx.beginPath();
-        lctx.fillStyle = coast ? 'rgba(227,192,125,.30)' : 'rgba(201,162,90,' + (0.09 + h * 0.10).toFixed(3) + ')';
+        lctx.fillStyle = coast ? 'rgba(227,192,125,.34)' : 'rgba(201,162,90,' + (0.13 + h * 0.07).toFixed(3) + ')';
         lctx.arc(x, y, rr, 0, 6.2832);
         lctx.fill();
         bctx.beginPath();
-        bctx.fillStyle = coast ? 'rgba(240,210,150,.7)' : 'rgba(227,192,125,' + (0.3 + h * 0.25).toFixed(3) + ')';
+        bctx.fillStyle = coast ? 'rgba(240,210,150,.75)' : 'rgba(227,192,125,' + (0.38 + h * 0.2).toFixed(3) + ')';
         bctx.arc(x, y, rr, 0, 6.2832);
         bctx.fill();
       }
@@ -328,7 +328,7 @@ function initMap(){
     /* vinieta: harta se stinge usor spre margini */
     var vg = lctx.createRadialGradient(W/2, H/2, Math.min(W,H) * 0.25, W/2, H/2, Math.max(W,H) * 0.72);
     vg.addColorStop(0, 'rgba(0,0,0,1)');
-    vg.addColorStop(1, 'rgba(0,0,0,.45)');
+    vg.addColorStop(1, 'rgba(0,0,0,.68)');
     lctx.globalCompositeOperation = 'destination-in';
     lctx.fillStyle = vg;
     lctx.fillRect(0, 0, W, H);
