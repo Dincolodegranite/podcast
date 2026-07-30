@@ -119,6 +119,22 @@
   .tl-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px}
   .tl-t{font:var(--head-weight) 20px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0 0 4px}
   .tl-p{font-size:14px;margin:0;color:rgba(245,246,247,.65)}
+  /* desktop: zigzag față de linia centrală */
+  @media (min-width:860px){
+    .tl{max-width:940px}
+    .tl::before{left:50%;margin-left:-1px}
+    .tl-item{width:50%;padding:0 40px 36px 0;text-align:right}
+    .tl-item::before{left:auto;right:-7px}
+    .tl-item:nth-child(even){margin-left:50%;padding:0 0 36px 40px;text-align:left}
+    .tl-item:nth-child(even)::before{right:auto;left:-7px}
+    .tl-item:nth-child(even){margin-top:-14px}
+    .tl-l{font-size:11px}
+    .tl-t{font-size:22px}
+    .tl-p{font-size:14.5px}
+    html.rvjs .tl-item.rv{transform:translateX(-26px)}
+    html.rvjs .tl-item.rv:nth-child(even){transform:translateX(26px)}
+    html.rvjs .tl-item.rv.on{transform:none}
+  }
   .faq{display:flex;flex-direction:column;gap:10px;margin-top:14px}
   .faq-i{border:1px solid rgba(201,162,90,.2);border-radius:16px;background:linear-gradient(180deg,#15171b,#101214);overflow:hidden;transition:border-color .3s ease}
   .faq-i[open]{border-color:rgba(201,162,90,.45)}
