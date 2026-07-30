@@ -316,11 +316,6 @@ function initMap(){
   var raf = 0, visible = false, t0 = performance.now();
 
   SEED_GUESTS.forEach(function(n){ var c = findCity(n); if(c) guests[norm(c[0])] = c; });
-  var cityCountEl = document.querySelector('[data-harta-cities]');
-  function updateCityCount(){
-    if(cityCountEl) cityCountEl.textContent = ' · ' + Object.keys(guests).length + ' ORAȘE';
-  }
-  updateCityCount();
 
   var supa = window.__dgSupa;
   if(supa){
@@ -336,7 +331,6 @@ function initMap(){
           gcount[norm(c[0])] = Math.max(gcount[norm(c[0])] || 0, Number(row.n) || 1);
         }
       });
-      updateCityCount();
     }).catch(function(){});
   }
 
