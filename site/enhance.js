@@ -366,16 +366,19 @@ function initMap(){
       for(var col = 0; col < GRID_COLS; col += step){
         if(line.charAt(col) !== '#') continue;
         var coast = !(at(col-step,row) && at(col+step,row) && at(col,row-step) && at(col,row+step));
+        var cLon = col + step / 2 - 180, cLat = LAT_TOP - (row + step / 2);
+        var ro = cLon >= 20.3 && cLon <= 29.7 && cLat >= 43.6 && cLat <= 48.3;
         var h = Math.sin(col * 127.1 + row * 311.7) * 43758.5453;
         h = h - Math.floor(h);
         var x = (col / step) * cw + cw / 2, y = (row / step) * ch + ch / 2;
         var rr = coast ? r * 1.15 : r * (0.9 + h * 0.3);
+        if(ro) rr = r * 1.2;
         lctx.beginPath();
-        lctx.fillStyle = coast ? 'rgba(227,192,125,.34)' : 'rgba(201,162,90,' + (0.13 + h * 0.07).toFixed(3) + ')';
+        lctx.fillStyle = ro ? 'rgba(240,210,150,.6)' : coast ? 'rgba(227,192,125,.34)' : 'rgba(201,162,90,' + (0.13 + h * 0.07).toFixed(3) + ')';
         lctx.arc(x, y, rr, 0, 6.2832);
         lctx.fill();
         bctx.beginPath();
-        bctx.fillStyle = coast ? 'rgba(240,210,150,.75)' : 'rgba(227,192,125,' + (0.38 + h * 0.2).toFixed(3) + ')';
+        bctx.fillStyle = ro ? 'rgba(247,227,175,.95)' : coast ? 'rgba(240,210,150,.75)' : 'rgba(227,192,125,' + (0.38 + h * 0.2).toFixed(3) + ')';
         bctx.arc(x, y, rr, 0, 6.2832);
         bctx.fill();
       }
@@ -553,6 +556,10 @@ function initMap(){
       var ht = cityTime('__home', HOME.lat, HOME.lon);
       tEl.textContent = (ct ? String(city[0]).toUpperCase() + ' ' + ct : '') + (ct && ht ? '   ·   ' : '') + (ht ? 'ROMÂNIA ' + ht : '');
     }
+    var routeEl = document.querySelector('[data-harta-route]');
+    if(routeEl) routeEl.textContent = String(city[0]).toUpperCase() + ' → ROMÂNIA';
+    var storyEl = document.querySelector('[data-harta-story]');
+    if(storyEl) storyEl.textContent = 'Din ' + city[0] + ' până acasă sunt ' + Math.round(km).toLocaleString('ro-RO') + ' km. Dar uneori, oamenii reușesc să apropie distanțele prin conversații sincere.';
     result.style.display = 'block';
     var start = null, dur = 1400;
     function count(ts){
