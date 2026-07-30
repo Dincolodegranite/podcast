@@ -429,16 +429,20 @@ function initMap(){
     ctx.strokeStyle = 'rgba(227,192,125,' + (0.32 * (1 - rip)).toFixed(3) + ')';
     ctx.lineWidth = 1;
     ctx.arc(hp[0], hp[1], mr * (2 + rip * 8), 0, 6.2832); ctx.stroke();
-    ctx.font = '600 9px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = 'rgba(227,192,125,' + (0.4 + 0.25 * hPulse).toFixed(3) + ')';
-    ctx.shadowColor = 'rgba(0,0,0,.8)'; ctx.shadowBlur = 4;
     if(now - homeTimeAt > 30000){
       homeTimeStr = cityTime('__home', HOME.lat, HOME.lon);
       homeTimeAt = now;
     }
-    ctx.fillText('ACASĂ' + (homeTimeStr ? ' · ' + homeTimeStr : ''), hp[0], hp[1] + mr * 4.6);
-    ctx.shadowBlur = 0;
+    var homeTxt = 'ACASĂ' + (homeTimeStr ? ' · ' + homeTimeStr : '');
+    ctx.font = '600 10.5px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    var htw = ctx.measureText(homeTxt).width;
+    var hly = hp[1] + mr * 4.4;
+    ctx.fillStyle = 'rgba(13,15,17,.78)';
+    if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(hp[0] - htw/2 - 8, hly - 9, htw + 16, 18, 9); ctx.fill(); }
+    else ctx.fillRect(hp[0] - htw/2 - 8, hly - 9, htw + 16, 18);
+    ctx.fillStyle = 'rgba(240,215,160,.95)';
+    ctx.fillText(homeTxt, hp[0], hly + 3.5);
     /* scantei: din cand in cand, un oras trimite una spre casa */
     var gk = Object.keys(guests);
     if(gk.length && now - lastSpawn > 2600 && ambient.length < 3){
@@ -486,12 +490,15 @@ function initMap(){
       L.t += 0.007;
       if(L.t >= 1){ labels.splice(li, 1); continue; }
       var la = L.t < 0.12 ? L.t / 0.12 : (L.t > 0.7 ? (1 - L.t) / 0.3 : 1);
-      ctx.font = '600 10px Inter, sans-serif';
+      var ly = L.y - 16 - L.t * 6;
+      ctx.font = '600 10.5px Inter, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillStyle = 'rgba(245,227,189,' + (0.85 * la).toFixed(3) + ')';
-      ctx.shadowColor = 'rgba(0,0,0,.7)'; ctx.shadowBlur = 4;
-      ctx.fillText(L.text, L.x, L.y - 12 - L.t * 6);
-      ctx.shadowBlur = 0;
+      var lw = ctx.measureText(L.text).width;
+      ctx.fillStyle = 'rgba(13,15,17,' + (0.78 * la).toFixed(3) + ')';
+      if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(L.x - lw/2 - 8, ly - 9, lw + 16, 18, 9); ctx.fill(); }
+      else ctx.fillRect(L.x - lw/2 - 8, ly - 9, lw + 16, 18);
+      ctx.fillStyle = 'rgba(245,227,189,' + (0.95 * la).toFixed(3) + ')';
+      ctx.fillText(L.text, L.x, ly + 3.5);
     }
     for(var pi = pings.length - 1; pi >= 0; pi--){
       var P = pings[pi];
