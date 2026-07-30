@@ -495,11 +495,7 @@ function initMap(){
     ctx.strokeStyle = 'rgba(227,192,125,' + (0.32 * (1 - rip)).toFixed(3) + ')';
     ctx.lineWidth = 1;
     ctx.arc(hp[0], hp[1], mr * (2 + rip * 8), 0, 6.2832); ctx.stroke();
-    if(now - homeTimeAt > 30000){
-      homeTimeStr = cityTime('__home', HOME.lat, HOME.lon);
-      homeTimeAt = now;
-    }
-    var homeTxt = 'ACASĂ' + (homeTimeStr ? ' · ' + homeTimeStr : '');
+    var homeTxt = 'ACASĂ';
     ctx.font = '600 10.5px Inter, sans-serif';
     ctx.textAlign = 'center';
     var htw = ctx.measureText(homeTxt).width;
@@ -523,8 +519,7 @@ function initMap(){
       ambient.push({ from: [c0[1], c0[2]], t: 0, v: 0.0045 + Math.random() * 0.004 });
       var lp = proj(c0[1], c0[2]);
       var nn = gcount[pk] || 1;
-      var lt = cityTime(pk, c0[1], c0[2]);
-      labels.push({ text: String(c0[0]).toUpperCase() + (nn > 1 ? ' ×' + nn : '') + (lt ? ' · ' + lt : ''), x: lp[0], y: lp[1], t: 0 });
+      labels.push({ text: String(c0[0]).toUpperCase() + (nn > 1 ? ' ×' + nn : ''), x: lp[0], y: lp[1], t: 0 });
     }
     for(var ai = ambient.length - 1; ai >= 0; ai--){
       var A = ambient[ai];
@@ -663,6 +658,12 @@ function initMap(){
     showErr(false);
     arc = { from: [city[1], city[2]], t: 0 };
     var km = haversine(city[1], city[2], HOME.lat, HOME.lon);
+    var tEl = document.querySelector('[data-harta-times]');
+    if(tEl){
+      var ct = cityTime(norm(city[0]), city[1], city[2]);
+      var ht = cityTime('__home', HOME.lat, HOME.lon);
+      tEl.textContent = (ct ? String(city[0]).toUpperCase() + ' ' + ct : '') + (ct && ht ? '   ·   ' : '') + (ht ? 'ROMÂNIA ' + ht : '');
+    }
     result.style.display = 'block';
     var start = null, dur = 1400;
     function count(ts){
