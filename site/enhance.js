@@ -611,7 +611,13 @@ function initCountdown(){
   var d = box.querySelector('[data-count-d]'), h = box.querySelector('[data-count-h]');
   var m = box.querySelector('[data-count-m]'), s = box.querySelector('[data-count-s]');
   function pad(n){ return n < 10 ? '0' + n : String(n); }
+  var CD_MONTHS = ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'];
   function start(target){
+    var dateEl = box.querySelector('[data-count-date]');
+    if(dateEl){
+      var dt = new Date(target);
+      dateEl.textContent = dt.getDate() + ' ' + CD_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear();
+    }
     function tick(){
       var diff = target - Date.now();
       if(diff <= 0){ box.style.display = 'none'; return; }
@@ -641,6 +647,7 @@ function initCountdown(){
 function initBoard(){
   var lon = document.querySelector('[data-clock-lon]');
   var buc = document.querySelector('[data-clock-buc]');
+  var nyc = document.querySelector('[data-clock-nyc]');
   if(!lon || !buc) return;
   function fmt(tz){
     try {
@@ -650,6 +657,7 @@ function initBoard(){
   function tick(){
     lon.textContent = fmt('Europe/London');
     buc.textContent = fmt('Europe/Bucharest');
+    if(nyc) nyc.textContent = fmt('America/New_York');
   }
   tick();
   setInterval(tick, 15000);

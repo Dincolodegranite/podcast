@@ -120,6 +120,8 @@
             <input id="ep-title" type="text" placeholder="Titlul episodului">
           </div>
           <textarea id="ep-desc" placeholder="Descriere scurtă (apare pe card)"></textarea>
+          <input id="ep-quote" type="text" placeholder="Citat memorabil din episod (apare pe card, fără ghilimele)">
+          <input id="ep-route" type="text" placeholder="Ruta de pe tablou (ex. LONDRA → BUCUREȘTI)">
           <div class="row">
             <input id="ep-url" type="url" placeholder="Link YouTube (https://...)">
             <input id="ep-cover" type="url" placeholder="URL copertă (opțional — ex. assets/ep1.jpg sau https://...)">
@@ -442,7 +444,7 @@
   function resetEpForm(){
     editingId = null;
     $('ep-form-title').textContent = 'Adaugă episod';
-    $('ep-num').value = ''; $('ep-title').value = ''; $('ep-desc').value = '';
+    $('ep-num').value = ''; $('ep-title').value = ''; $('ep-desc').value = ''; $('ep-quote').value = ''; $('ep-route').value = '';
     $('ep-url').value = ''; $('ep-cover').value = ''; $('ep-pub').checked = false;
     $('ep-cat').value = '';
     $('ep-cancel').classList.add('hidden');
@@ -459,6 +461,8 @@
       episode_number: num,
       title: title,
       description: $('ep-desc').value.trim() || null,
+      quote: $('ep-quote').value.trim() || null,
+      route: $('ep-route').value.trim() || null,
       youtube_url: $('ep-url').value.trim() || null,
       cover_url: $('ep-cover').value.trim() || null,
       category: $('ep-cat').value || null,
@@ -507,7 +511,7 @@
           editingId = ep.id;
           $('ep-form-title').textContent = 'Editează EP. ' + ep.episode_number;
           $('ep-num').value = ep.episode_number; $('ep-title').value = ep.title;
-          $('ep-desc').value = ep.description || ''; $('ep-url').value = ep.youtube_url || '';
+          $('ep-desc').value = ep.description || ''; $('ep-quote').value = ep.quote || ''; $('ep-route').value = ep.route || ''; $('ep-url').value = ep.youtube_url || '';
           $('ep-cover').value = ep.cover_url || ''; $('ep-pub').checked = !!ep.published;
           $('ep-cat').value = ep.category || '';
           $('ep-cancel').classList.remove('hidden');
