@@ -165,7 +165,10 @@
             Ține-mă minte pe acest dispozitiv
           </label>
           <button type="submit" data-mk-submit class="btn btn-gold" style="width:100%;border:0;cursor:pointer">DEBLOCHEAZĂ ACCESUL</button>
-          <span data-mk-msg style="display:none;font:500 13px var(--font-body);color:var(--accent);text-align:center"></span>
+          <div data-mk-msg style="display:none;align-items:center;gap:10px;box-sizing:border-box;padding:11px 16px 11px 13px;border-radius:12px;border:1px solid transparent;background:linear-gradient(180deg,rgba(224,138,106,.12),rgba(224,138,106,.06)) padding-box,linear-gradient(150deg,rgba(224,138,106,.5),rgba(224,138,106,.18)) border-box;opacity:0;transform:translateY(-4px);transition:opacity .3s ease,transform .3s cubic-bezier(.2,.8,.2,1)">
+            <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(224,138,106,.16);color:#e8a184" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 8v5"></path><path d="M12 16.5h.01"></path></svg></span>
+            <span data-mk-msg-text style="font:500 13.5px/1.45 var(--font-body);color:#f0c9b8"></span>
+          </div>
         </form>
         <p class="muted" style="margin:16px 0 0;font-size:12px;text-align:center">Folosim datele doar ca să știm cine consultă materialele. Zero spam.</p>
       </div>
@@ -204,7 +207,15 @@
   var content = document.getElementById('mk-gated');
   var form = document.querySelector('[data-mk-form]');
   var msg = form ? form.querySelector('[data-mk-msg]') : null;
-  function show(t){ if(msg){ msg.textContent = t; msg.style.display = 'block'; } }
+  function show(t){
+    if(!msg) return;
+    var tx = msg.querySelector('[data-mk-msg-text]');
+    if(tx) tx.textContent = t; else msg.textContent = t;
+    msg.style.display = 'flex';
+    void msg.offsetHeight;
+    msg.style.opacity = '1';
+    msg.style.transform = 'none';
+  }
   var uiMode = 'register';
   var titleEl = document.querySelector('[data-mk-title]');
   var ledeEl = document.querySelector('[data-mk-lede]');
@@ -233,7 +244,7 @@
       b.style.color = on ? '#0f1113' : 'rgba(245,246,247,.65)';
       b.style.fontWeight = on ? '700' : '600';
     });
-    if(msg) msg.style.display = 'none';
+    if(msg){ msg.style.display = 'none'; msg.style.opacity = '0'; msg.style.transform = 'translateY(-4px)'; }
   }
   tabBtns.forEach(function(b){
     b.addEventListener('click', function(){ setMode(b.getAttribute('data-mk-tab')); });
