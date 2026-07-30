@@ -203,11 +203,20 @@ function initMap(){
   var guests = {};   /* normName -> city entry */
   var arc = null;    /* {from:[lat,lon], t:0..1} */
   var ambient = [];  /* scantei care calatoresc singure spre casa */
+  var labels = [];   /* numele oraselor care tocmai au trimis o scanteie */
+  var mx = -999, my = -999, lanternA = 0, lanternOn = false;
+  var spot = document.createElement('canvas');
+  var LR = 190; /* raza felinarului, in px CSS */
   var pings = [];    /* inele de sosire la baza */
   var lastSpawn = 0;
   var raf = 0, visible = false, t0 = performance.now();
 
   SEED_GUESTS.forEach(function(n){ var c = findCity(n); if(c) guests[norm(c[0])] = c; });
+  var cityCountEl = document.querySelector('[data-harta-cities]');
+  function updateCityCount(){
+    if(cityCountEl) cityCountEl.textContent = ' · ' + Object.keys(guests).length + ' ORAȘE';
+  }
+  updateCityCount();
 
   var supa = window.__dgSupa;
   if(supa){
@@ -220,6 +229,7 @@ function initMap(){
         var c = findCity(row.city);
         if(c) guests[norm(c[0])] = c;
       });
+      updateCityCount();
     }).catch(function(){});
   }
 
@@ -227,7 +237,23 @@ function initMap(){
     return [ (lon + 180) / 360 * W, (LAT_TOP - lat) / LAT_SPAN * H ];
   }
   var land = document.createElement('canvas');
+  var bright = document.createElement('canvas');
   function renderLand(){
+    var bctx = bright.getContext('2d');
+    bright.width = Math.round(W * dpr); bright.height = Math.round(H * dpr);
+    bctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var bcw = W / GRID_COLS, bch = H / GRID_ROWS, br = Math.max(0.8, bcw * 0.3);
+    bctx.fillStyle = 'rgba(227,192,125,.5)';
+    for(var brow = 0; brow < GRID_ROWS; brow++){
+      var bline = GRID[brow];
+      for(var bcol = 0; bcol < GRID_COLS; bcol++){
+        if(bline.charAt(bcol) === '#'){
+          bctx.beginPath();
+          bctx.arc(bcol * bcw + bcw / 2, brow * bch + bch / 2, br, 0, 6.2832);
+          bctx.fill();
+        }
+      }
+    }
     var lctx = land.getContext('2d');
     land.width = Math.round(W * dpr); land.height = Math.round(H * dpr);
     lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -265,6 +291,26 @@ function initMap(){
   function draw(now){
     ctx.clearRect(0, 0, W, H);
     if(land.width) ctx.drawImage(land, 0, 0, W, H);
+    lanternA += ((lanternOn ? 1 : 0) - lanternA) * 0.08;
+    if(lanternA > 0.02 && bright.width){
+      var sd = Math.round(LR * 2 * dpr);
+      if(spot.width !== sd){ spot.width = sd; spot.height = sd; }
+      var sctx = spot.getContext('2d');
+      sctx.setTransform(1, 0, 0, 1, 0, 0);
+      sctx.clearRect(0, 0, sd, sd);
+      sctx.drawImage(bright, (mx - LR) * dpr, (my - LR) * dpr, sd, sd, 0, 0, sd, sd);
+      sctx.globalCompositeOperation = 'destination-in';
+      var lg = sctx.createRadialGradient(sd/2, sd/2, 0, sd/2, sd/2, sd/2);
+      lg.addColorStop(0, 'rgba(0,0,0,1)');
+      lg.addColorStop(0.55, 'rgba(0,0,0,.55)');
+      lg.addColorStop(1, 'rgba(0,0,0,0)');
+      sctx.fillStyle = lg;
+      sctx.fillRect(0, 0, sd, sd);
+      sctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = lanternA;
+      ctx.drawImage(spot, mx - LR, my - LR, LR * 2, LR * 2);
+      ctx.globalAlpha = 1;
+    }
     var mr = Math.max(3, Math.min(6, W * 0.005));
     var phase = (now - t0) / 1000;
     Object.keys(guests).forEach(function(k, i){
@@ -303,6 +349,8 @@ function initMap(){
       lastSpawn = now;
       var c0 = guests[gk[Math.floor(Math.random() * gk.length)]];
       ambient.push({ from: [c0[1], c0[2]], t: 0 });
+      var lp = proj(c0[1], c0[2]);
+      labels.push({ text: String(c0[0]).toUpperCase(), x: lp[0], y: lp[1], t: 0 });
     }
     for(var ai = ambient.length - 1; ai >= 0; ai--){
       var A = ambient[ai];
@@ -319,12 +367,27 @@ function initMap(){
       }
       var ph2 = f(tHead);
       ctx.beginPath();
-      ctx.fillStyle = 'rgba(245,227,189,.9)';
-      ctx.shadowColor = 'rgba(227,192,125,.9)'; ctx.shadowBlur = 8;
-      ctx.arc(ph2[0], ph2[1], 1.7, 0, 6.2832); ctx.fill();
+      ctx.fillStyle = 'rgba(227,192,125,.85)';
+      ctx.shadowColor = 'rgba(227,192,125,.95)'; ctx.shadowBlur = 10;
+      ctx.arc(ph2[0], ph2[1], 2.2, 0, 6.2832); ctx.fill();
       ctx.shadowBlur = 0;
+      ctx.beginPath();
+      ctx.fillStyle = '#fff6e2';
+      ctx.arc(ph2[0], ph2[1], 1, 0, 6.2832); ctx.fill();
       A.t += 0.006;
       if(A.t >= 1){ ambient.splice(ai, 1); pings.push({ r: 0 }); }
+    }
+    for(var li = labels.length - 1; li >= 0; li--){
+      var L = labels[li];
+      L.t += 0.007;
+      if(L.t >= 1){ labels.splice(li, 1); continue; }
+      var la = L.t < 0.12 ? L.t / 0.12 : (L.t > 0.7 ? (1 - L.t) / 0.3 : 1);
+      ctx.font = '600 10px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'rgba(245,227,189,' + (0.85 * la).toFixed(3) + ')';
+      ctx.shadowColor = 'rgba(0,0,0,.7)'; ctx.shadowBlur = 4;
+      ctx.fillText(L.text, L.x, L.y - 12 - L.t * 6);
+      ctx.shadowBlur = 0;
     }
     for(var pi = pings.length - 1; pi >= 0; pi--){
       var P = pings[pi];
@@ -367,9 +430,16 @@ function initMap(){
   draw(performance.now()); /* synchronous first paint — never a blank map */
   window.addEventListener('resize', function(){ size(); draw(performance.now()); }, { passive: true });
   if(window.IntersectionObserver){
-    new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }, { rootMargin: '100px' }).observe(canvas);
+    new IntersectionObserver(function(es){ visible = es[es.length - 1].isIntersecting; }, { rootMargin: '100px' }).observe(canvas);
   } else { visible = true; }
   raf = requestAnimationFrame(loop);
+
+  canvas.addEventListener('pointermove', function(e){
+    var r = canvas.getBoundingClientRect();
+    mx = e.clientX - r.left; my = e.clientY - r.top;
+    lanternOn = true;
+  }, { passive: true });
+  canvas.addEventListener('pointerleave', function(){ lanternOn = false; }, { passive: true });
 
   /* input + suggestions + result */
   var input = document.querySelector('[data-harta-input]');
