@@ -822,7 +822,7 @@ document.addEventListener('pointerout', function(e){
 <!-- HERO -->
 <div data-spotlight style="position:relative;min-height:820px;display:flex;flex-direction:column;justify-content:center;width:100%;background:#0f1113;overflow:hidden">
   <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#e9ebec,#e6e8e9);overflow:hidden">
-    <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="100%,100%" style="position:absolute;inset:0;animation:kenBurns 22s ease-in-out infinite alternate;transform-origin:50% 50%" id="hero-cover" shape="rect" placeholder="Adaugă o poză din studio / cu microfonul tău" src="assets/hero-studio.jpg" fit="cover"></x-import>
+    <img id="hero-cover" src="assets/hero-studio.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kenBurns 22s ease-in-out infinite alternate;transform-origin:50% 50%">
   </div>
   <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,17,19,.94) 0%,rgba(15,17,19,.82) 38%,rgba(15,17,19,.55) 68%,rgba(15,17,19,.3) 100%)"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(circle at var(--mx) var(--my),rgba(201,162,90,.16),transparent 55%);pointer-events:none"></div>
