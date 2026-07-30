@@ -12,6 +12,7 @@
 <title>Media Kit — Dincolo de Granițe · Podcast cu Peter Baghiu</title>
 <meta name="description" content="Prezentarea oficială Dincolo de Granițe pentru manageri, agenții și invitați publici: despre podcast, public, studio, echipament, procesul de filmare și contact direct.">
 <link rel="canonical" href="https://www.dincolodegranite.com/media-kit">
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#0f1113">
 <link rel="icon" href="assets/logo.jpg" type="image/jpeg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
@@ -94,6 +95,11 @@
   .faq-i summary::after{content:'+';font:400 24px/1 var(--font-head);color:var(--accent);transition:transform .3s ease;flex:none}
   .faq-i[open] summary::after{transform:rotate(45deg)}
   .faq-i p{margin:0;padding:0 20px 16px;font-size:14.5px;line-height:1.6;color:rgba(245,246,247,.68)}
+  /* poarta de acces */
+  .mk-cap{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid rgba(201,162,90,.25);border-radius:999px;padding:4px 6px 4px 16px;transition:border-color .25s ease}
+  .mk-cap:focus-within{border-color:rgba(227,192,125,.65)}
+  .mk-cap svg{flex:none;color:var(--accent-light)}
+  .mk-cap input{flex:1;background:none;border:0;outline:0;color:#f5f6f7;font:500 14px var(--font-body);padding:10px 4px;min-width:0}
 </style>
 </head>
 <body>
@@ -142,6 +148,28 @@
 </section>
 
 <div class="wrap">
+
+  <section id="mk-gate">
+    <div class="gcard ovh rv" style="position:relative;max-width:560px;margin:0 auto;padding:clamp(26px,4.5vw,40px)">
+      <div class="dsp-glow"></div>
+      <div style="position:relative">
+        <div class="ct-eyebrow" style="justify-content:center"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>ACCES PE BAZĂ DE ÎNREGISTRARE</div>
+        <h2 data-gold-last style="margin:14px 0 10px;font-size:clamp(24px,4.2vw,32px);text-align:center">Spune-ne cine ești</h2>
+        <p class="muted" style="margin:0 0 20px;font-size:14px;text-align:center">Media Kit-ul este destinat managerilor, agențiilor și invitaților publici. Completează formularul și primești acces imediat, fără așteptare.</p>
+        <form data-mk-form novalidate style="display:flex;flex-direction:column;gap:12px">
+          <label class="mk-cap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg><input data-mk-name type="text" required placeholder="Numele tău complet" aria-label="Nume"></label>
+          <label class="mk-cap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg><input data-mk-email type="email" required placeholder="adresa@email.com" aria-label="Email"></label>
+          <label class="mk-cap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg><input data-mk-company type="text" placeholder="Companie / rol (opțional)" aria-label="Companie sau rol"></label>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <button type="submit" class="btn btn-gold" style="width:100%;border:0;cursor:pointer">Deblochează accesul</button>
+          <span data-mk-msg style="display:none;font:500 13px var(--font-body);color:var(--accent);text-align:center"></span>
+        </form>
+        <p class="muted" style="margin:16px 0 0;font-size:12px;text-align:center">Folosim datele doar ca să știm cine consultă materialele. Zero spam.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="mk-gated" hidden>
 
   <section style="padding-bottom:0">
     <div class="gcard ct-strip rv">
@@ -329,6 +357,8 @@
     </div>
   </section>
 
+
+  </div>
 </div>
 
 <footer class="pfoot"><div class="wrap pfoot-in">
@@ -346,6 +376,52 @@
   <span><a href="index.html">Acasă</a> · <a href="despre.html">Despre</a> · <a href="episoade.html">Episoade</a> · <a href="invitati.html">Invitați</a> · <a href="contact.html">Contact</a> · <a href="media-kit.html">Media Kit</a> · <a href="termeni.html">Termeni</a> · <a href="privacy.html">Confidențialitate</a></span>
 </div></footer>
 
+<script>
+(function(){
+  var KEY = 'dg_mk_access';
+  var SUPA_URL = 'https://fgwsmrwhuzkvrixcgovk.supabase.co';
+  var SUPA_KEY = 'sb_publishable_6uORl4ZKPYpCU_cdcAfudw_YOmcbnDQ';
+  var gate = document.getElementById('mk-gate');
+  var content = document.getElementById('mk-gated');
+  function unlock(){
+    if(content) content.removeAttribute('hidden');
+    if(gate) gate.style.display = 'none';
+  }
+  try { if(localStorage.getItem(KEY)) unlock(); } catch(e){}
+  var form = document.querySelector('[data-mk-form]');
+  if(!form) return;
+  var msg = form.querySelector('[data-mk-msg]');
+  function show(t){ if(msg){ msg.textContent = t; msg.style.display = 'block'; } }
+  function grant(){
+    try { localStorage.setItem(KEY, String(Date.now())); } catch(e){}
+    unlock();
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var hp = form.querySelector('input[name="website"]');
+    if(hp && hp.value){ grant(); return; }
+    var name = (form.querySelector('[data-mk-name]').value || '').trim();
+    var email = (form.querySelector('[data-mk-email]').value || '').trim();
+    var company = (form.querySelector('[data-mk-company]').value || '').trim();
+    if(!name){ show('Te rugăm să ne spui cum te cheamă.'); return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('Te rugăm să introduci o adresă de email validă.'); return; }
+    var btn = form.querySelector('button[type="submit"]');
+    if(btn) btn.disabled = true;
+    fetch(SUPA_URL + '/rest/v1/media_kit_leads', {
+      method: 'POST',
+      headers: { 'apikey': SUPA_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ name: name, email: email, company: company || null })
+    }).then(function(r){
+      if(btn) btn.disabled = false;
+      if(r.ok || r.status === 409){ grant(); return; }
+      throw new Error('HTTP ' + r.status);
+    }).catch(function(){
+      if(btn) btn.disabled = false;
+      show('A apărut o eroare. Încearcă din nou sau scrie-ne la contact@dincolodegranite.com.');
+    });
+  });
+})();
+</script>
 <script>document.querySelector(".pburger").addEventListener("click",function(){this.closest(".pnav-in").classList.toggle("open")});</script>
 <script>
 (function(){

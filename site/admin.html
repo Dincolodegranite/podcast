@@ -164,6 +164,11 @@
         <h2>Propuneri de invitați</h2>
         <div id="guest-list" class="muted">Se încarcă...</div>
       </div>
+      <div class="card" style="margin-top:20px">
+        <h2>Accese Media Kit</h2>
+        <p class="muted" style="margin:0 0 14px">Cine s-a înregistrat pentru a vedea pagina /media-kit.</p>
+        <div id="mk-lead-list" class="muted">Se încarcă...</div>
+      </div>
     </div>
 
     <!-- PAGES -->
@@ -340,7 +345,7 @@
     });
   });
 
-  function loadAll(){ loadEpisodes(); loadSubscribers(); loadGuests(); loadSettings(); }
+  function loadAll(){ loadEpisodes(); loadSubscribers(); loadGuests(); loadMkLeads(); loadSettings(); }
 
   // ── Site settings (social links) ──────────────────────
   var SETTING_KEYS = { 'set-youtube': 'social_youtube', 'set-instagram': 'social_instagram', 'set-tiktok': 'social_tiktok', 'set-facebook': 'social_facebook', 'set-apple': 'social_apple', 'set-spotify': 'social_spotify', 'set-theme-accent': 'theme_accent', 'set-theme-head-font': 'theme_heading_font', 'set-theme-body-font': 'theme_body_font', 'set-theme-head-weight': 'theme_head_weight', 'set-despre-hero-title': 'despre_hero_title', 'set-despre-hero-lede': 'despre_hero_lede', 'set-despre-bio': 'despre_bio', 'set-despre-portrait': 'despre_portrait', 'set-despre-misiune': 'despre_misiune', 'set-despre-misiune-closing': 'despre_misiune_closing', 'set-despre-studio-title': 'despre_studio_title', 'set-despre-studio-text': 'despre_studio_text', 'set-despre-format1-title': 'despre_format1_title', 'set-despre-format1-text': 'despre_format1_text', 'set-despre-format2-title': 'despre_format2_title', 'set-despre-format2-text': 'despre_format2_text', 'set-despre-format3-title': 'despre_format3_title', 'set-despre-format3-text': 'despre_format3_text', 'set-despre-spec-camere': 'despre_spec_camere', 'set-despre-spec-oriunde': 'despre_spec_oriunde', 'set-despre-spec-limba': 'despre_spec_limba', 'set-despre-spec-lansare': 'despre_spec_lansare', 'set-clip1': 'clip_1', 'set-clip2': 'clip_2', 'set-clip3': 'clip_3', 'set-clip4': 'clip_4', 'set-sponsor-name': 'sponsor_name', 'set-sponsor-text': 'sponsor_text', 'set-sponsor-url': 'sponsor_url', 'set-sponsor-logo': 'sponsor_logo' };
@@ -644,6 +649,35 @@
     box.appendChild(row); box.appendChild(ta); box.appendChild(actions); box.appendChild(hist);
     loadReplies(g.id, hist);
     return box;
+  }
+  function loadMkLeads(){
+    db.from('media_kit_leads').select('*').order('created_at', { ascending: false }).then(function(res){
+      var box = $('mk-lead-list');
+      if(!box) return;
+      box.textContent = '';
+      if(res.error){ box.textContent = 'Eroare la încărcare: ' + res.error.message; return; }
+      var leads = res.data || [];
+      if(!leads.length){ box.textContent = 'Nicio înregistrare încă.'; return; }
+      leads.forEach(function(l){
+        var card = document.createElement('div');
+        card.className = 'guest';
+        var head = document.createElement('div'); head.className = 'head';
+        var who = document.createElement('div');
+        var name = document.createElement('strong'); name.textContent = l.name;
+        var meta = document.createElement('div'); meta.className = 'muted';
+        meta.textContent = l.email + (l.company ? ' · ' + l.company : '') + ' · ' + fmtDate(l.created_at);
+        who.appendChild(name); who.appendChild(meta);
+        var del = document.createElement('button');
+        del.className = 'btn-danger'; del.textContent = 'ȘTERGE';
+        del.addEventListener('click', function(){
+          if(!confirm('Ștergi înregistrarea ' + l.name + '?')) return;
+          db.from('media_kit_leads').delete().eq('id', l.id).then(loadMkLeads);
+        });
+        head.appendChild(who); head.appendChild(del);
+        card.appendChild(head);
+        box.appendChild(card);
+      });
+    });
   }
   function loadGuests(){
     db.from('guest_applications').select('*').order('created_at', { ascending: false }).then(function(res){
