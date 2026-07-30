@@ -202,6 +202,9 @@ function initMap(){
   var W = 0, H = 0, dpr = Math.max(1, window.devicePixelRatio || 1);
   var guests = {};   /* normName -> city entry */
   var arc = null;    /* {from:[lat,lon], t:0..1} */
+  var ambient = [];  /* scantei care calatoresc singure spre casa */
+  var pings = [];    /* inele de sosire la baza */
+  var lastSpawn = 0;
   var raf = 0, visible = false, t0 = performance.now();
 
   SEED_GUESTS.forEach(function(n){ var c = findCity(n); if(c) guests[norm(c[0])] = c; });
@@ -250,6 +253,15 @@ function initMap(){
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     renderLand();
   }
+  function bezTo(p1, hp){
+    var dist = Math.hypot(hp[0] - p1[0], hp[1] - p1[1]);
+    var cx = (p1[0] + hp[0]) / 2;
+    var cy = (p1[1] + hp[1]) / 2 - Math.min(H * 0.42, dist * 0.35 + H * 0.06);
+    return function(tt){
+      return [ (1-tt)*(1-tt)*p1[0] + 2*(1-tt)*tt*cx + tt*tt*hp[0],
+               (1-tt)*(1-tt)*p1[1] + 2*(1-tt)*tt*cy + tt*tt*hp[1] ];
+    };
+  }
   function draw(now){
     ctx.clearRect(0, 0, W, H);
     if(land.width) ctx.drawImage(land, 0, 0, W, H);
@@ -270,11 +282,60 @@ function initMap(){
     });
     var hp = proj(HOME.lat, HOME.lon);
     var hPulse = 0.5 + 0.5 * Math.sin(phase * 2.4);
+    var glow = ctx.createRadialGradient(hp[0], hp[1], 0, hp[0], hp[1], mr * 7);
+    glow.addColorStop(0, 'rgba(227,192,125,.26)');
+    glow.addColorStop(1, 'rgba(227,192,125,0)');
+    ctx.fillStyle = glow;
+    ctx.beginPath(); ctx.arc(hp[0], hp[1], mr * 7, 0, 6.2832); ctx.fill();
     ctx.beginPath(); ctx.fillStyle = '#e3c07d';
     ctx.arc(hp[0], hp[1], mr * 1.3, 0, 6.2832); ctx.fill();
     ctx.beginPath(); ctx.strokeStyle = 'rgba(227,192,125,' + (0.6 * hPulse).toFixed(2) + ')';
     ctx.lineWidth = 1.4;
     ctx.arc(hp[0], hp[1], mr * (2.1 + 1.5 * hPulse), 0, 6.2832); ctx.stroke();
+    var rip = (phase * 0.45) % 1;
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(227,192,125,' + (0.32 * (1 - rip)).toFixed(3) + ')';
+    ctx.lineWidth = 1;
+    ctx.arc(hp[0], hp[1], mr * (2 + rip * 8), 0, 6.2832); ctx.stroke();
+    /* scantei: din cand in cand, un oras trimite una spre casa */
+    var gk = Object.keys(guests);
+    if(gk.length && now - lastSpawn > 2600 && ambient.length < 3){
+      lastSpawn = now;
+      var c0 = guests[gk[Math.floor(Math.random() * gk.length)]];
+      ambient.push({ from: [c0[1], c0[2]], t: 0 });
+    }
+    for(var ai = ambient.length - 1; ai >= 0; ai--){
+      var A = ambient[ai];
+      var f = bezTo(proj(A.from[0], A.from[1]), hp);
+      var tHead = Math.min(1, A.t), tTail = Math.max(0, A.t - 0.22), segs = 16;
+      for(var s2 = 0; s2 < segs; s2++){
+        var pa = f(tTail + (tHead - tTail) * (s2 / segs));
+        var pb = f(tTail + (tHead - tTail) * ((s2 + 1) / segs));
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(227,192,125,' + (0.38 * (s2 + 1) / segs).toFixed(3) + ')';
+        ctx.lineWidth = 1.1;
+        ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]);
+        ctx.stroke();
+      }
+      var ph2 = f(tHead);
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(245,227,189,.9)';
+      ctx.shadowColor = 'rgba(227,192,125,.9)'; ctx.shadowBlur = 8;
+      ctx.arc(ph2[0], ph2[1], 1.7, 0, 6.2832); ctx.fill();
+      ctx.shadowBlur = 0;
+      A.t += 0.006;
+      if(A.t >= 1){ ambient.splice(ai, 1); pings.push({ r: 0 }); }
+    }
+    for(var pi = pings.length - 1; pi >= 0; pi--){
+      var P = pings[pi];
+      P.r += 0.02;
+      var al = 0.5 * (1 - P.r);
+      if(al <= 0){ pings.splice(pi, 1); continue; }
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(227,192,125,' + al.toFixed(3) + ')';
+      ctx.lineWidth = 1.2;
+      ctx.arc(hp[0], hp[1], mr * (2 + P.r * 9), 0, 6.2832); ctx.stroke();
+    }
     if(arc){
       var p1 = proj(arc.from[0], arc.from[1]);
       var mx = (p1[0] + hp[0]) / 2, my = (p1[1] + hp[1]) / 2;
@@ -295,7 +356,7 @@ function initMap(){
       ctx.shadowBlur = 0;
       ctx.beginPath(); ctx.fillStyle = '#f5e3bd';
       ctx.arc(p1[0], p1[1], mr * 1.15, 0, 6.2832); ctx.fill();
-      if(arc.t < 1) arc.t += 0.016;
+      if(arc.t < 1){ arc.t += 0.016; if(arc.t >= 1) pings.push({ r: 0 }); }
     }
   }
   function loop(now){
