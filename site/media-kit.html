@@ -160,7 +160,13 @@
         <p class="muted" style="margin:16px 0 0;font-size:12px;text-align:center">Folosim datele doar ca să știm cine consultă materialele. Zero spam.</p>
       </div>
     </div>
-  </section>
+  
+  <div id="mk-bar" style="display:none;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:12px 12px 12px 20px;border:1px solid rgba(201,162,90,.22);border-radius:999px;background:rgba(21,23,27,.65);margin:6px 0 0">
+    <span class="muted" style="display:inline-flex;align-items:center;gap:10px;font-size:13px"><span class="icon-chip" style="width:26px;height:26px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg></span>Acces activ pentru <strong id="mk-bar-name" style="color:#f5f6f7;font-weight:600"></strong></span>
+    <button id="mk-logout" type="button" class="btn btn-ghost" style="padding:9px 20px;font-size:12px;cursor:pointer">Deconectează-te</button>
+  </div>
+
+</section>
 
   <div id="mk-gated" hidden></div>
 </div>
@@ -189,6 +195,20 @@
   var form = document.querySelector('[data-mk-form]');
   var msg = form ? form.querySelector('[data-mk-msg]') : null;
   function show(t){ if(msg){ msg.textContent = t; msg.style.display = 'block'; } }
+  var bar = document.getElementById('mk-bar');
+  var barName = document.getElementById('mk-bar-name');
+  var logoutBtn = document.getElementById('mk-logout');
+  if(logoutBtn){
+    logoutBtn.addEventListener('click', function(){
+      try { localStorage.removeItem(KEY); } catch(e){}
+      location.reload();
+    });
+  }
+  function showBar(name){
+    if(!bar) return;
+    if(barName) barName.textContent = name || '';
+    bar.style.display = 'flex';
+  }
   function reveal(html){
     if(!content) return;
     content.innerHTML = html;
@@ -219,6 +239,7 @@
       if(res.j && res.j.ok && res.j.html){
         try { localStorage.setItem(KEY, JSON.stringify({ n: data.name, e: data.email, c: data.company || '' })); } catch(e){}
         reveal(res.j.html);
+        showBar(data.name);
         return true;
       }
       if(!silent){
