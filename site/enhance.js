@@ -289,7 +289,7 @@ function initMap(){
     bright.width = land.width; bright.height = land.height;
     lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     bctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var cw = W / GRID_COLS, ch = H / GRID_ROWS, r = Math.max(0.8, cw * 0.3);
+    var cw = W / GRID_COLS, ch = H / GRID_ROWS, r = Math.max(0.9, cw * 0.34);
     /* caroiaj cartografic discret, sub puncte */
     lctx.strokeStyle = 'rgba(227,192,125,.045)';
     lctx.lineWidth = 1;
@@ -337,7 +337,7 @@ function initMap(){
   function size(){
     var w = wrap.clientWidth;
     if(!w) return;
-    W = w; H = Math.round(w * GRID_ROWS / GRID_COLS * 1.18);
+    W = w; H = Math.round(w * GRID_ROWS / GRID_COLS);
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
