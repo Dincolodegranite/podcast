@@ -109,8 +109,8 @@
   .fmt-card:hover .icon-chip{transform:rotate(-8deg) scale(1.12);background:rgba(201,162,90,.28)}
   .spec-cell:hover .icon-chip{transform:scale(1.12)}
   .bn-t{display:flex;align-items:center;gap:10px;font:600 14px var(--font-body);color:var(--accent-light);margin-bottom:8px}
-  .topics{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
-  .topic{display:inline-flex;padding:8px 14px;border-radius:999px;border:1px solid rgba(201,162,90,.28);font:600 10.5px var(--font-body);letter-spacing:.12em;color:rgba(245,246,247,.72)}
+  .topics-head{font:700 10px var(--font-body);letter-spacing:.22em;color:rgba(227,192,125,.85);margin-bottom:20px}
+  .topics-sep{height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.35),transparent);margin:30px 0 24px}
   .tl{position:relative;margin-top:16px;max-width:640px}
   .tl::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent-light),rgba(201,162,90,.08))}
   .tl-item{position:relative;padding:0 0 26px 34px}
@@ -312,14 +312,45 @@
           <p style="font-size:14px;margin:0">Idei și unelte pentru viața ta interioară, pentru relațiile tale și pentru deciziile care contează.</p>
         </div>
       </div>
-      <div class="topics">
-        <span class="topic">SĂNĂTATE MENTALĂ</span>
-        <span class="topic">FAMILIE ȘI CUPLU</span>
-        <span class="topic">PARENTING</span>
-        <span class="topic">PROVOCĂRILE ADOLESCENȚILOR</span>
-        <span class="topic">CARIERĂ ȘI BANI</span>
-        <span class="topic">CREDINȚĂ ȘI CULTURĂ</span>
-        <span class="topic">ANTREPRENORIAT</span>
+      <div class="topics-sep" aria-hidden="true"></div>
+      <div class="topics-head">TEMELE CONVERSAȚIILOR</div>
+      <div class="grid3" style="gap:24px 28px">
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"></path></svg></span>Sănătate mentală</div>
+          <p style="font-size:14px;margin:0">Presiune, epuizare, echilibru. Cum arată viața interioară a oamenilor care par că le au pe toate.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>Familie și cuplu</div>
+          <p style="font-size:14px;margin:0">Cum reziști în doi când construiești departe de casă: distanța, sacrificiile și deciziile luate împreună.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.5"></circle><path d="M2 21v-1a6 6 0 0 1 9-5"></path><circle cx="17.5" cy="11.5" r="2.5"></circle><path d="M13.5 21v-.5a4 4 0 0 1 8 0v.5"></path></svg></span>Parenting</div>
+          <p style="font-size:14px;margin:0">Ce înseamnă să crești copii între două culturi: limba, valorile de acasă și lumea în care cresc ei de fapt.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5z"></path><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg></span>Provocările adolescenților</div>
+          <p style="font-size:14px;margin:0">Generația care crește altfel: presiunea rețelelor, alegerea drumului și încrederea în sine.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 7-7"></path><path d="M14 8h6v6"></path></svg></span>Carieră și bani</div>
+          <p style="font-size:14px;margin:0">Drumul real: primii ani grei, riscuri, investiții și eșecurile despre care nu se laudă nimeni.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 4 4.5 4 7a4 4 0 0 1-8 0c0-2.5 2-4 4-7z"></path><path d="M8 21h8"></path></svg></span>Credință și cultură</div>
+          <p style="font-size:14px;margin:0">Ce păstrezi și ce lași în urmă când pleci: credința, tradițiile și identitatea care te ține întreg.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"></rect><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg></span>Antreprenoriat</div>
+          <p style="font-size:14px;margin:0">Cum construiești o afacere de la zero în altă țară: deciziile grele și momentele în care puteai pierde tot.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg></span>Viața departe de casă</div>
+          <p style="font-size:14px;margin:0">Dorul, adaptarea și viața dintre două lumi. Cum rămâi tu însuți când totul în jur se schimbă.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v4a5 5 0 0 1-10 0z"></path><path d="M17 5h3a2 2 0 0 1-2 4h-1"></path><path d="M7 5H4a2 2 0 0 0 2 4h1"></path></svg></span>Sport și performanță</div>
+          <p style="font-size:14px;margin:0">Disciplina din spatele rezultatelor: antrenamentul, sacrificiile și mentalitatea celor care împing limita.</p>
+        </div>
       </div>
       </div>
     </div>
