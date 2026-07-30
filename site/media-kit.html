@@ -156,6 +156,7 @@
         <form data-mk-form novalidate style="display:flex;flex-direction:column;gap:12px">
           <label class="gf-cap" data-mk-reg><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg></span><input data-mk-name type="text" required placeholder="Numele tău complet" aria-label="Nume"></label>
           <label class="gf-cap" data-mk-reg><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span><input data-mk-email type="email" required placeholder="adresa@email.com" aria-label="Email"></label>
+          <label class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span><input data-mk-pass type="password" required placeholder="Alege o parolă (min. 8 caractere)" aria-label="Parolă" autocomplete="new-password"></label>
           <label class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg></span><input data-mk-company type="text" placeholder="Companie / rol (opțional)" aria-label="Companie sau rol"></label>
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <label style="display:flex;align-items:center;gap:9px;padding:0 6px;cursor:pointer;font:500 13px var(--font-body);color:rgba(245,246,247,.65)">
@@ -220,6 +221,11 @@
       ? 'Media Kit-ul este destinat managerilor, agențiilor și invitaților publici. Completează formularul și primești acces imediat, fără așteptare.'
       : 'Introdu emailul cu care te-ai înregistrat și primești acces imediat.';
     if(submitEl) submitEl.textContent = reg ? 'DEBLOCHEAZĂ ACCESUL' : 'INTRĂ';
+    var passEl2 = form ? form.querySelector('[data-mk-pass]') : null;
+    if(passEl2){
+      passEl2.placeholder = reg ? 'Alege o parolă (min. 8 caractere)' : 'Parola ta';
+      passEl2.setAttribute('autocomplete', reg ? 'new-password' : 'current-password');
+    }
     tabBtns.forEach(function(b){
       var on = b.getAttribute('data-mk-tab') === m;
       b.style.background = on ? 'linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark))' : 'transparent';
@@ -265,7 +271,7 @@
   }
   function persist(data, mode){
     try {
-      var payload = JSON.stringify({ n: data.name, e: data.email, c: data.company || '' });
+      var payload = JSON.stringify({ n: data.name, e: data.email, t: data.token || '' });
       if(mode === 'session'){ sessionStorage.setItem(KEY, payload); localStorage.removeItem(KEY); }
       else { localStorage.setItem(KEY, payload); sessionStorage.removeItem(KEY); }
     } catch(e){}
@@ -280,14 +286,19 @@
     .then(function(res){
       if(btn) btn.disabled = false;
       if(res.j && res.j.ok && res.j.html){
-        var who = { name: (res.j.name || data.name || ''), email: data.email, company: data.company || '' };
+        var who = { name: (res.j.name || data.name || ''), email: data.email, token: (res.j.token || data.token || '') };
         persist(who, mode);
         reveal(res.j.html);
         showBar(who.name);
         return true;
       }
+      if(silent && (res.status === 401 || res.status === 404)){
+        try { localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); } catch(err){}
+      }
       if(!silent){
         if(res.status === 404){ show('Emailul nu e înregistrat încă. Alege Înregistrare și completează formularul.'); setMode('register'); }
+        else if(res.status === 401) show('Parolă greșită. Încearcă din nou.');
+        else if(res.status === 409){ show('Există deja un cont cu acest email. Autentifică-te cu parola.'); setMode('login'); }
         else if(res.status === 400) show('Verifică datele introduse.');
         else show('A apărut o eroare. Încearcă din nou sau scrie-ne la contact@dincolodegranite.com.');
       }
@@ -303,7 +314,7 @@
     var savedRaw = localStorage.getItem(KEY), savedMode = 'local';
     if(!savedRaw){ savedRaw = sessionStorage.getItem(KEY); savedMode = 'session'; }
     var saved = JSON.parse(savedRaw || 'null');
-    if(saved && saved.e){ request({ name: saved.n, email: saved.e, company: saved.c }, true, null, savedMode); }
+    if(saved && saved.e && saved.t){ request({ mode: 'token', name: saved.n, email: saved.e, token: saved.t }, true, null, savedMode); }
   } catch(e){}
   if(!form) return;
   form.addEventListener('submit', function(e){
@@ -314,14 +325,17 @@
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('Te rugăm să introduci o adresă de email validă.'); return; }
     var rememberEl = form.querySelector('[data-mk-remember]');
     var storeMode = rememberEl && !rememberEl.checked ? 'session' : 'local';
+    var pass = (form.querySelector('[data-mk-pass]').value || '');
     if(uiMode === 'login'){
-      request({ mode: 'login', email: email }, false, submitEl, storeMode);
+      if(!pass){ show('Introdu parola.'); return; }
+      request({ mode: 'login', email: email, password: pass }, false, submitEl, storeMode);
       return;
     }
     var name = (form.querySelector('[data-mk-name]').value || '').trim();
     var company = (form.querySelector('[data-mk-company]').value || '').trim();
     if(name.length < 2){ show('Te rugăm să ne spui cum te cheamă.'); return; }
-    request({ name: name, email: email, company: company }, false, submitEl, storeMode);
+    if(pass.length < 8){ show('Alege o parolă de minim 8 caractere.'); return; }
+    request({ name: name, email: email, company: company, password: pass }, false, submitEl, storeMode);
   });
 })();
 </script>
