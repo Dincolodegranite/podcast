@@ -20,6 +20,8 @@ img{max-width:100%}
 .pbrand-logo img{position:absolute;top:3px;left:3px;width:54px;height:54px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #0f1113,0 0 0 3px rgba(201,162,90,.3)}
 @keyframes pglow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
 .pbrand-word{font:600 13.5px var(--font-body);letter-spacing:.06em;color:#f5f6f7;white-space:nowrap}
+.pbrand-txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.pbrand-tag{font:600 8.5px var(--font-body);letter-spacing:.24em;color:rgba(227,192,125,.75);white-space:nowrap}
 .plinks{display:flex;align-items:center;gap:2px}
 .plinks a{display:inline-flex;align-items:center;gap:7px;padding:11px 15px;font:500 14px var(--font-body);color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease,background .25s ease;white-space:nowrap}
 .plinks a svg{flex:none}
@@ -38,7 +40,7 @@ img{max-width:100%}
 .pnav-in.open .pburger span:nth-child(2){opacity:0}
 .pnav-in.open .pburger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 @media (max-width:1040px){.plinks{display:none}.pburger{display:flex}}
-@media (max-width:480px){.pbrand-word{font-size:10px}}
+@media (max-width:480px){.pbrand-word{font-size:10px}.pbrand-tag{font-size:7px;letter-spacing:.18em}}
 
 /* type */
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font:600 12px var(--font-body);letter-spacing:.28em;color:var(--accent);text-transform:uppercase}
