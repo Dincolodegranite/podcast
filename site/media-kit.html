@@ -175,7 +175,7 @@
             <input data-mk-remember type="checkbox" checked style="width:15px;height:15px;accent-color:#c9a25a;cursor:pointer;flex:none">
             Ține-mă minte pe acest dispozitiv
           </label>
-          <button type="submit" data-mk-submit class="btn btn-gold" style="width:100%;border:0;cursor:pointer">DEBLOCHEAZĂ ACCESUL</button>
+          <button type="submit" data-mk-submit class="btn btn-gold" style="width:100%;border:0;cursor:pointer">CREEAZĂ CONT</button>
         </form>
         <p class="muted" style="margin:16px 0 0;font-size:12px;text-align:center">Folosim datele doar ca să știm cine consultă materialele. Zero spam.</p>
       </div>
@@ -258,7 +258,7 @@
     if(ledeEl) ledeEl.textContent = reg
       ? 'Media Kit-ul este destinat managerilor, agențiilor și invitaților publici. Completează formularul și primești acces imediat, fără așteptare.'
       : 'Introdu emailul și parola contului tău.';
-    if(submitEl) submitEl.textContent = reg ? 'DEBLOCHEAZĂ ACCESUL' : 'INTRĂ';
+    if(submitEl) submitEl.textContent = reg ? 'CREEAZĂ CONT' : 'INTRĂ';
     var passEl2 = form ? form.querySelector('[data-mk-pass]') : null;
     if(passEl2){
       passEl2.placeholder = reg ? 'Alege o parolă (min. 8 caractere)' : 'Parola ta';
