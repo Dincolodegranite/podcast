@@ -105,6 +105,7 @@
       <button class="tab active" data-tab="episodes">Episoade</button>
       <button class="tab" data-tab="subscribers">Abonați <span id="sub-count" class="muted"></span></button>
       <button class="tab" data-tab="guests">Invitați <span id="guest-count" class="muted"></span></button>
+      <button class="tab" data-tab="people">Oameni</button>
       <button class="tab" data-tab="pages">Pagini</button>
       <button class="tab" data-tab="settings">Setări</button>
     </div>
@@ -168,6 +169,48 @@
         <h2>Accese Media Kit</h2>
         <p class="muted" style="margin:0 0 14px">Cine s-a înregistrat pentru a vedea pagina /media-kit.</p>
         <div id="mk-lead-list" class="muted">Se încarcă...</div>
+      </div>
+    </div>
+
+    <!-- PEOPLE (profiluri publice pe /oameni) -->
+    <div id="tab-people" class="hidden">
+      <div class="card">
+        <h2 id="pp-form-title">Adaugă profil de invitat</h2>
+        <p class="muted" style="margin:0 0 14px">Profilurile publicate apar pe pagina /oameni, la „Urmează la microfon" sau „Au trecut pragul". Toate linkurile trebuie să înceapă cu https://.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="row">
+            <input id="pp-name" type="text" placeholder="Nume complet">
+            <input id="pp-title" type="text" placeholder="Rol scurt (ex: Antreprenor · Londra)">
+          </div>
+          <textarea id="pp-bio" placeholder="Descriere scurtă (2–3 fraze despre om și experiența lui)"></textarea>
+          <input id="pp-photo" type="url" placeholder="Link poză de profil (https://...)">
+          <div class="row">
+            <select id="pp-status" class="fixed"><option value="upcoming">Urmează la microfon</option><option value="past">A trecut pragul</option></select>
+            <input id="pp-episode" type="url" placeholder="Link episod (pentru cei care au fost)">
+            <input id="pp-sort" type="number" placeholder="Ordine (0 = primul)" style="max-width:160px;flex:none">
+          </div>
+          <div class="row">
+            <input id="pp-website" type="url" placeholder="Site personal (https://...)">
+            <input id="pp-instagram" type="url" placeholder="Instagram (https://...)">
+            <input id="pp-youtube" type="url" placeholder="YouTube (https://...)">
+          </div>
+          <div class="row">
+            <input id="pp-tiktok" type="url" placeholder="TikTok (https://...)">
+            <input id="pp-facebook" type="url" placeholder="Facebook (https://...)">
+            <input id="pp-linkedin" type="url" placeholder="LinkedIn (https://...)">
+            <input id="pp-x" type="url" placeholder="X / Twitter (https://...)">
+          </div>
+          <label class="chk"><input id="pp-published" type="checkbox"> Publicat (vizibil pe site)</label>
+          <div class="row">
+            <button class="btn-gold" id="pp-save">SALVEAZĂ PROFILUL</button>
+            <button class="btn-ghost btn-small hidden" id="pp-cancel">RENUNȚĂ LA EDITARE</button>
+          </div>
+          <div class="err" id="pp-err"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Profiluri</h2>
+        <div id="pp-list" class="muted">Se încarcă...</div>
       </div>
     </div>
 
@@ -339,13 +382,13 @@
     t.addEventListener('click', function(){
       document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
       t.classList.add('active');
-      ['episodes','subscribers','guests','pages','settings'].forEach(function(name){
+      ['episodes','subscribers','guests','people','pages','settings'].forEach(function(name){
         $('tab-' + name).classList.toggle('hidden', name !== t.dataset.tab);
       });
     });
   });
 
-  function loadAll(){ loadEpisodes(); loadSubscribers(); loadGuests(); loadMkLeads(); loadSettings(); }
+  function loadAll(){ loadEpisodes(); loadSubscribers(); loadGuests(); loadMkLeads(); loadPeople(); loadSettings(); }
 
   // ── Site settings (social links) ──────────────────────
   var SETTING_KEYS = { 'set-youtube': 'social_youtube', 'set-instagram': 'social_instagram', 'set-tiktok': 'social_tiktok', 'set-facebook': 'social_facebook', 'set-apple': 'social_apple', 'set-spotify': 'social_spotify', 'set-theme-accent': 'theme_accent', 'set-theme-head-font': 'theme_heading_font', 'set-theme-body-font': 'theme_body_font', 'set-theme-head-weight': 'theme_head_weight', 'set-despre-hero-title': 'despre_hero_title', 'set-despre-hero-lede': 'despre_hero_lede', 'set-despre-bio': 'despre_bio', 'set-despre-portrait': 'despre_portrait', 'set-despre-misiune': 'despre_misiune', 'set-despre-misiune-closing': 'despre_misiune_closing', 'set-despre-studio-title': 'despre_studio_title', 'set-despre-studio-text': 'despre_studio_text', 'set-despre-format1-title': 'despre_format1_title', 'set-despre-format1-text': 'despre_format1_text', 'set-despre-format2-title': 'despre_format2_title', 'set-despre-format2-text': 'despre_format2_text', 'set-despre-format3-title': 'despre_format3_title', 'set-despre-format3-text': 'despre_format3_text', 'set-despre-spec-camere': 'despre_spec_camere', 'set-despre-spec-oriunde': 'despre_spec_oriunde', 'set-despre-spec-limba': 'despre_spec_limba', 'set-despre-spec-lansare': 'despre_spec_lansare', 'set-clip1': 'clip_1', 'set-clip2': 'clip_2', 'set-clip3': 'clip_3', 'set-clip4': 'clip_4', 'set-sponsor-name': 'sponsor_name', 'set-sponsor-text': 'sponsor_text', 'set-sponsor-url': 'sponsor_url', 'set-sponsor-logo': 'sponsor_logo' };
@@ -678,6 +721,91 @@
         box.appendChild(card);
       });
     });
+  }
+  var ppEditId = null;
+  var PP_FIELDS = { name:'pp-name', title:'pp-title', bio:'pp-bio', photo_url:'pp-photo', episode_url:'pp-episode', website:'pp-website', social_instagram:'pp-instagram', social_youtube:'pp-youtube', social_tiktok:'pp-tiktok', social_facebook:'pp-facebook', social_linkedin:'pp-linkedin', social_x:'pp-x' };
+  function ppReset(){
+    ppEditId = null;
+    Object.keys(PP_FIELDS).forEach(function(k){ $(PP_FIELDS[k]).value = ''; });
+    $('pp-status').value = 'upcoming';
+    $('pp-sort').value = '';
+    $('pp-published').checked = false;
+    $('pp-form-title').textContent = 'Adaugă profil de invitat';
+    $('pp-cancel').classList.add('hidden');
+    $('pp-err').textContent = '';
+  }
+  function loadPeople(){
+    db.from('guest_profiles').select('*').order('sort_order', { ascending: true }).order('created_at', { ascending: true }).then(function(res){
+      var box = $('pp-list');
+      if(!box) return;
+      box.textContent = '';
+      if(res.error){ box.textContent = 'Eroare la încărcare: ' + res.error.message; return; }
+      var rows = res.data || [];
+      if(!rows.length){ box.textContent = 'Niciun profil încă. Adaugă primul mai sus.'; return; }
+      rows.forEach(function(g){
+        var card = document.createElement('div');
+        card.className = 'guest';
+        var head = document.createElement('div'); head.className = 'head';
+        var who = document.createElement('div');
+        var name = document.createElement('strong'); name.textContent = g.name;
+        var meta = document.createElement('div'); meta.className = 'muted';
+        meta.textContent = (g.status === 'past' ? 'A trecut pragul' : 'Urmează') + (g.title ? ' · ' + g.title : '') + ' · ordine ' + (g.sort_order || 0);
+        who.appendChild(name); who.appendChild(meta);
+        var controls = document.createElement('div');
+        controls.style.display = 'flex'; controls.style.gap = '8px'; controls.style.alignItems = 'center'; controls.style.flexWrap = 'wrap';
+        var badge = document.createElement('span');
+        badge.className = 'badge ' + (g.published ? 'pub' : 'draft');
+        badge.textContent = g.published ? 'PUBLICAT' : 'ASCUNS';
+        var tog = document.createElement('button');
+        tog.className = 'btn-ghost btn-small';
+        tog.textContent = g.published ? 'ASCUNDE' : 'PUBLICĂ';
+        tog.addEventListener('click', function(){
+          db.from('guest_profiles').update({ published: !g.published }).eq('id', g.id).then(loadPeople);
+        });
+        var edit = document.createElement('button');
+        edit.className = 'btn-ghost btn-small';
+        edit.textContent = 'EDITEAZĂ';
+        edit.addEventListener('click', function(){
+          ppEditId = g.id;
+          Object.keys(PP_FIELDS).forEach(function(k){ $(PP_FIELDS[k]).value = g[k] || ''; });
+          $('pp-status').value = g.status || 'upcoming';
+          $('pp-sort').value = g.sort_order != null ? g.sort_order : '';
+          $('pp-published').checked = !!g.published;
+          $('pp-form-title').textContent = 'Editează: ' + g.name;
+          $('pp-cancel').classList.remove('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        var del = document.createElement('button');
+        del.className = 'btn-danger'; del.textContent = 'ȘTERGE';
+        del.addEventListener('click', function(){
+          if(!confirm('Ștergi profilul ' + g.name + '?')) return;
+          db.from('guest_profiles').delete().eq('id', g.id).then(loadPeople);
+        });
+        controls.appendChild(badge); controls.appendChild(tog); controls.appendChild(edit); controls.appendChild(del);
+        head.appendChild(who); head.appendChild(controls);
+        card.appendChild(head);
+        if(g.bio){ var story = document.createElement('div'); story.className = 'story'; story.textContent = g.bio; card.appendChild(story); }
+        box.appendChild(card);
+      });
+    });
+  }
+  if($('pp-save')){
+    $('pp-save').addEventListener('click', function(){
+      var payload = {};
+      Object.keys(PP_FIELDS).forEach(function(k){ var v = $(PP_FIELDS[k]).value.trim(); payload[k] = v || null; });
+      if(!payload.name){ $('pp-err').textContent = 'Numele e obligatoriu.'; return; }
+      payload.status = $('pp-status').value;
+      payload.sort_order = parseInt($('pp-sort').value || '0', 10) || 0;
+      payload.published = $('pp-published').checked;
+      var q = ppEditId
+        ? db.from('guest_profiles').update(payload).eq('id', ppEditId)
+        : db.from('guest_profiles').insert(payload);
+      q.then(function(res){
+        if(res.error){ $('pp-err').textContent = res.error.message; return; }
+        ppReset(); loadPeople();
+      });
+    });
+    $('pp-cancel').addEventListener('click', ppReset);
   }
   function loadGuests(){
     db.from('guest_applications').select('*').order('created_at', { ascending: false }).then(function(res){
