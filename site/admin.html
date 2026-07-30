@@ -169,17 +169,6 @@
     <!-- PAGES -->
     <div id="tab-pages" class="hidden">
       <div class="card">
-        <h2>Card „Despre" (pagina principală)</h2>
-        <p class="muted" style="margin:0 0 14px">Fișa tehnică din cardul Despre, de pe acasă. Se aplică automat în câteva secunde după salvare.</p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <label class="muted" style="font-size:12px">Format<input id="set-despre-format" type="text" placeholder="Interviuri lungi, în studio și pe Zoom" style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">Eticheta sezonului (ex: SEZONUL 1, SEZONUL 2...)<input id="set-despre-sezon-label" type="text" placeholder="SEZONUL 1" style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">Data sezonului<input id="set-despre-sezon" type="text" placeholder="Septembrie 2026" style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">Filmat în<input id="set-despre-filmat" type="text" placeholder="Kent, Regatul Unit" style="margin-top:5px"></label>
-          <label class="muted" style="font-size:12px">Gazdă<input id="set-despre-gazda" type="text" placeholder="Peter Baghiu" style="margin-top:5px"></label>
-        </div>
-      </div>
-      <div class="card" style="margin-top:20px">
         <h2>Pagina „Despre" — text principal</h2>
         <p class="muted" style="margin:0 0 14px">Textele de pe pagina /despre. Lasă un câmp gol ca să rămână textul implicit. La paragrafe multiple, desparte-le cu o linie goală — <strong>atenție:</strong> orice formatare bold din textul implicit se pierde odată ce editezi din admin.</p>
         <div style="display:flex;flex-direction:column;gap:12px">
@@ -354,7 +343,7 @@
   function loadAll(){ loadEpisodes(); loadSubscribers(); loadGuests(); loadSettings(); }
 
   // ── Site settings (social links) ──────────────────────
-  var SETTING_KEYS = { 'set-youtube': 'social_youtube', 'set-instagram': 'social_instagram', 'set-tiktok': 'social_tiktok', 'set-facebook': 'social_facebook', 'set-apple': 'social_apple', 'set-spotify': 'social_spotify', 'set-theme-accent': 'theme_accent', 'set-theme-head-font': 'theme_heading_font', 'set-theme-body-font': 'theme_body_font', 'set-theme-head-weight': 'theme_head_weight', 'set-despre-format': 'despre_format', 'set-despre-sezon-label': 'despre_sezon_label', 'set-despre-sezon': 'despre_sezon', 'set-despre-filmat': 'despre_filmat', 'set-despre-gazda': 'despre_gazda', 'set-despre-hero-title': 'despre_hero_title', 'set-despre-hero-lede': 'despre_hero_lede', 'set-despre-bio': 'despre_bio', 'set-despre-portrait': 'despre_portrait', 'set-despre-misiune': 'despre_misiune', 'set-despre-misiune-closing': 'despre_misiune_closing', 'set-despre-studio-title': 'despre_studio_title', 'set-despre-studio-text': 'despre_studio_text', 'set-despre-format1-title': 'despre_format1_title', 'set-despre-format1-text': 'despre_format1_text', 'set-despre-format2-title': 'despre_format2_title', 'set-despre-format2-text': 'despre_format2_text', 'set-despre-format3-title': 'despre_format3_title', 'set-despre-format3-text': 'despre_format3_text', 'set-despre-spec-camere': 'despre_spec_camere', 'set-despre-spec-oriunde': 'despre_spec_oriunde', 'set-despre-spec-limba': 'despre_spec_limba', 'set-despre-spec-lansare': 'despre_spec_lansare', 'set-clip1': 'clip_1', 'set-clip2': 'clip_2', 'set-clip3': 'clip_3', 'set-clip4': 'clip_4', 'set-sponsor-name': 'sponsor_name', 'set-sponsor-text': 'sponsor_text', 'set-sponsor-url': 'sponsor_url', 'set-sponsor-logo': 'sponsor_logo' };
+  var SETTING_KEYS = { 'set-youtube': 'social_youtube', 'set-instagram': 'social_instagram', 'set-tiktok': 'social_tiktok', 'set-facebook': 'social_facebook', 'set-apple': 'social_apple', 'set-spotify': 'social_spotify', 'set-theme-accent': 'theme_accent', 'set-theme-head-font': 'theme_heading_font', 'set-theme-body-font': 'theme_body_font', 'set-theme-head-weight': 'theme_head_weight', 'set-despre-hero-title': 'despre_hero_title', 'set-despre-hero-lede': 'despre_hero_lede', 'set-despre-bio': 'despre_bio', 'set-despre-portrait': 'despre_portrait', 'set-despre-misiune': 'despre_misiune', 'set-despre-misiune-closing': 'despre_misiune_closing', 'set-despre-studio-title': 'despre_studio_title', 'set-despre-studio-text': 'despre_studio_text', 'set-despre-format1-title': 'despre_format1_title', 'set-despre-format1-text': 'despre_format1_text', 'set-despre-format2-title': 'despre_format2_title', 'set-despre-format2-text': 'despre_format2_text', 'set-despre-format3-title': 'despre_format3_title', 'set-despre-format3-text': 'despre_format3_text', 'set-despre-spec-camere': 'despre_spec_camere', 'set-despre-spec-oriunde': 'despre_spec_oriunde', 'set-despre-spec-limba': 'despre_spec_limba', 'set-despre-spec-lansare': 'despre_spec_lansare', 'set-clip1': 'clip_1', 'set-clip2': 'clip_2', 'set-clip3': 'clip_3', 'set-clip4': 'clip_4', 'set-sponsor-name': 'sponsor_name', 'set-sponsor-text': 'sponsor_text', 'set-sponsor-url': 'sponsor_url', 'set-sponsor-logo': 'sponsor_logo' };
   function loadSettings(){
     db.from('site_settings').select('*').then(function(res){
       if(res.error) return;
