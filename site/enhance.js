@@ -194,6 +194,44 @@ function haversine(a, b, c, d){
   return Math.round(R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x)));
 }
 
+/* fusuri orare: huburi curate, România pe geografie, restul pe longitudine */
+var TZ_HUBS = {
+  london:'Europe/London', canterbury:'Europe/London', manchester:'Europe/London', birmingham:'Europe/London', leeds:'Europe/London', glasgow:'Europe/London', edinburgh:'Europe/London', liverpool:'Europe/London', bristol:'Europe/London',
+  dublin:'Europe/Dublin', cork:'Europe/Dublin',
+  paris:'Europe/Paris', lyon:'Europe/Paris', marseille:'Europe/Paris',
+  madrid:'Europe/Madrid', barcelona:'Europe/Madrid', valencia:'Europe/Madrid', sevilla:'Europe/Madrid',
+  lisbon:'Europe/Lisbon', porto:'Europe/Lisbon',
+  munich:'Europe/Berlin', berlin:'Europe/Berlin', frankfurt:'Europe/Berlin', hamburg:'Europe/Berlin', stuttgart:'Europe/Berlin', cologne:'Europe/Berlin',
+  vienna:'Europe/Vienna', zurich:'Europe/Zurich', geneva:'Europe/Zurich', brussels:'Europe/Brussels',
+  amsterdam:'Europe/Amsterdam', rotterdam:'Europe/Amsterdam',
+  rome:'Europe/Rome', milan:'Europe/Rome', turin:'Europe/Rome', naples:'Europe/Rome',
+  athens:'Europe/Athens', stockholm:'Europe/Stockholm', oslo:'Europe/Oslo', copenhagen:'Europe/Copenhagen', helsinki:'Europe/Helsinki',
+  warsaw:'Europe/Warsaw', prague:'Europe/Prague', budapest:'Europe/Budapest', chisinau:'Europe/Chisinau', istanbul:'Europe/Istanbul',
+  dubai:'Asia/Dubai', 'abu dhabi':'Asia/Dubai', doha:'Asia/Qatar', 'tel aviv':'Asia/Jerusalem',
+  'new york':'America/New_York', boston:'America/New_York', miami:'America/New_York', philadelphia:'America/New_York', atlanta:'America/New_York', washington:'America/New_York',
+  chicago:'America/Chicago', dallas:'America/Chicago', houston:'America/Chicago', austin:'America/Chicago',
+  denver:'America/Denver', phoenix:'America/Phoenix',
+  'los angeles':'America/Los_Angeles', 'san francisco':'America/Los_Angeles', seattle:'America/Los_Angeles', 'las vegas':'America/Los_Angeles', 'san diego':'America/Los_Angeles', portland:'America/Los_Angeles',
+  toronto:'America/Toronto', montreal:'America/Toronto', ottawa:'America/Toronto', calgary:'America/Edmonton', edmonton:'America/Edmonton', vancouver:'America/Vancouver',
+  sydney:'Australia/Sydney', melbourne:'Australia/Melbourne', brisbane:'Australia/Brisbane', perth:'Australia/Perth', adelaide:'Australia/Adelaide', auckland:'Pacific/Auckland',
+  tokyo:'Asia/Tokyo', seoul:'Asia/Seoul', singapore:'Asia/Singapore', 'hong kong':'Asia/Hong_Kong', shanghai:'Asia/Shanghai', beijing:'Asia/Shanghai', bangkok:'Asia/Bangkok',
+  'mexico city':'America/Mexico_City', 'sao paulo':'America/Sao_Paulo', 'buenos aires':'America/Argentina/Buenos_Aires',
+  johannesburg:'Africa/Johannesburg', cairo:'Africa/Cairo', lagos:'Africa/Lagos', nairobi:'Africa/Nairobi'
+};
+var TZ_FMT = {};
+function cityTime(key, lat, lon){
+  var tz = TZ_HUBS[key];
+  if(!tz && lat >= 43.4 && lat <= 48.4 && lon >= 20 && lon <= 29.9) tz = 'Europe/Bucharest';
+  if(!tz){
+    var off = Math.round(lon / 15);
+    tz = 'Etc/GMT' + (off === 0 ? '' : (off > 0 ? '-' + off : '+' + (-off)));
+  }
+  try {
+    if(!TZ_FMT[tz]) TZ_FMT[tz] = new Intl.DateTimeFormat('ro-RO', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz });
+    return TZ_FMT[tz].format(new Date());
+  } catch(e){ return ''; }
+}
+
 /* ── Diaspora map ──────────────────────────────────────────────── */
 function initMap(){
   var canvas = document.querySelector('[data-harta-canvas]');
@@ -206,6 +244,7 @@ function initMap(){
   var ambient = [];  /* scantei care calatoresc singure spre casa */
   var labels = [];   /* numele oraselor care tocmai au trimis o scanteie */
   var mx = -999, my = -999, lanternA = 0, lanternOn = false;
+  var homeTimeStr = '', homeTimeAt = -99999;
   var spot = document.createElement('canvas');
   var band = document.createElement('canvas');
   var LR = 190; /* raza felinarului, in px CSS */
@@ -244,36 +283,56 @@ function initMap(){
   var land = document.createElement('canvas');
   var bright = document.createElement('canvas');
   function renderLand(){
-    var bctx = bright.getContext('2d');
-    bright.width = Math.round(W * dpr); bright.height = Math.round(H * dpr);
-    bctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var bcw = W / GRID_COLS, bch = H / GRID_ROWS, br = Math.max(0.8, bcw * 0.3);
-    bctx.fillStyle = 'rgba(227,192,125,.5)';
-    for(var brow = 0; brow < GRID_ROWS; brow++){
-      var bline = GRID[brow];
-      for(var bcol = 0; bcol < GRID_COLS; bcol++){
-        if(bline.charAt(bcol) === '#'){
-          bctx.beginPath();
-          bctx.arc(bcol * bcw + bcw / 2, brow * bch + bch / 2, br, 0, 6.2832);
-          bctx.fill();
-        }
-      }
-    }
     var lctx = land.getContext('2d');
+    var bctx = bright.getContext('2d');
     land.width = Math.round(W * dpr); land.height = Math.round(H * dpr);
+    bright.width = land.width; bright.height = land.height;
     lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    bctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var cw = W / GRID_COLS, ch = H / GRID_ROWS, r = Math.max(0.8, cw * 0.3);
-    lctx.fillStyle = 'rgba(201,162,90,.14)';
+    /* caroiaj cartografic discret, sub puncte */
+    lctx.strokeStyle = 'rgba(227,192,125,.045)';
+    lctx.lineWidth = 1;
+    for(var glon = -150; glon <= 150; glon += 30){
+      var gx = (glon + 180) / 360 * W;
+      lctx.beginPath(); lctx.moveTo(gx, 0); lctx.lineTo(gx, H); lctx.stroke();
+    }
+    for(var glat = -60; glat <= 80; glat += 30){
+      if(glat > LAT_TOP || glat < LAT_TOP - LAT_SPAN) continue;
+      var gy = (LAT_TOP - glat) / LAT_SPAN * H;
+      lctx.beginPath(); lctx.moveTo(0, gy); lctx.lineTo(W, gy); lctx.stroke();
+    }
+    function at(col, row){
+      if(row < 0 || row >= GRID_ROWS || col < 0 || col >= GRID_COLS) return false;
+      return GRID[row].charAt(col) === '#';
+    }
     for(var row = 0; row < GRID_ROWS; row++){
       var line = GRID[row];
       for(var col = 0; col < GRID_COLS; col++){
-        if(line.charAt(col) === '#'){
-          lctx.beginPath();
-          lctx.arc(col * cw + cw / 2, row * ch + ch / 2, r, 0, 6.2832);
-          lctx.fill();
-        }
+        if(line.charAt(col) !== '#') continue;
+        var coast = !(at(col-1,row) && at(col+1,row) && at(col,row-1) && at(col,row+1));
+        var h = Math.sin(col * 127.1 + row * 311.7) * 43758.5453;
+        h = h - Math.floor(h);
+        var x = col * cw + cw / 2, y = row * ch + ch / 2;
+        var rr = coast ? r * 1.12 : r * (0.72 + h * 0.5);
+        lctx.beginPath();
+        lctx.fillStyle = coast ? 'rgba(227,192,125,.30)' : 'rgba(201,162,90,' + (0.09 + h * 0.10).toFixed(3) + ')';
+        lctx.arc(x, y, rr, 0, 6.2832);
+        lctx.fill();
+        bctx.beginPath();
+        bctx.fillStyle = coast ? 'rgba(240,210,150,.7)' : 'rgba(227,192,125,' + (0.3 + h * 0.25).toFixed(3) + ')';
+        bctx.arc(x, y, rr, 0, 6.2832);
+        bctx.fill();
       }
     }
+    /* vinieta: harta se stinge usor spre margini */
+    var vg = lctx.createRadialGradient(W/2, H/2, Math.min(W,H) * 0.25, W/2, H/2, Math.max(W,H) * 0.72);
+    vg.addColorStop(0, 'rgba(0,0,0,1)');
+    vg.addColorStop(1, 'rgba(0,0,0,.45)');
+    lctx.globalCompositeOperation = 'destination-in';
+    lctx.fillStyle = vg;
+    lctx.fillRect(0, 0, W, H);
+    lctx.globalCompositeOperation = 'source-over';
   }
   function size(){
     var w = wrap.clientWidth;
@@ -374,7 +433,11 @@ function initMap(){
     ctx.textAlign = 'center';
     ctx.fillStyle = 'rgba(227,192,125,' + (0.4 + 0.25 * hPulse).toFixed(3) + ')';
     ctx.shadowColor = 'rgba(0,0,0,.8)'; ctx.shadowBlur = 4;
-    ctx.fillText('ACASĂ', hp[0], hp[1] + mr * 4.6);
+    if(now - homeTimeAt > 30000){
+      homeTimeStr = cityTime('__home', HOME.lat, HOME.lon);
+      homeTimeAt = now;
+    }
+    ctx.fillText('ACASĂ' + (homeTimeStr ? ' · ' + homeTimeStr : ''), hp[0], hp[1] + mr * 4.6);
     ctx.shadowBlur = 0;
     /* scantei: din cand in cand, un oras trimite una spre casa */
     var gk = Object.keys(guests);
@@ -390,7 +453,8 @@ function initMap(){
       ambient.push({ from: [c0[1], c0[2]], t: 0, v: 0.0045 + Math.random() * 0.004 });
       var lp = proj(c0[1], c0[2]);
       var nn = gcount[pk] || 1;
-      labels.push({ text: String(c0[0]).toUpperCase() + (nn > 1 ? ' ×' + nn : ''), x: lp[0], y: lp[1], t: 0 });
+      var lt = cityTime(pk, c0[1], c0[2]);
+      labels.push({ text: String(c0[0]).toUpperCase() + (nn > 1 ? ' ×' + nn : '') + (lt ? ' · ' + lt : ''), x: lp[0], y: lp[1], t: 0 });
     }
     for(var ai = ambient.length - 1; ai >= 0; ai--){
       var A = ambient[ai];
