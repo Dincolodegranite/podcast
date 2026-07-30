@@ -306,13 +306,10 @@ function initMap(){
   var guests = {};   /* normName -> city entry */
   var gcount = {};   /* normName -> cati invitati are orasul */
   var arc = null;    /* {from:[lat,lon], t:0..1} */
-  var ambient = [];  /* scantei care calatoresc singure spre casa */
-  var labels = [];   /* numele oraselor care tocmai au trimis o scanteie */
   var mx = -999, my = -999, lanternA = 0, lanternOn = false;
   var spot = document.createElement('canvas');
   var band = document.createElement('canvas');
   var LR = 190; /* raza felinarului, in px CSS */
-  var lastSpawn = 0;
   var raf = 0, visible = false, t0 = performance.now();
 
   SEED_GUESTS.forEach(function(n){ var c = findCity(n); if(c) guests[norm(c[0])] = c; });
@@ -401,15 +398,6 @@ function initMap(){
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     renderLand();
   }
-  function bezTo(p1, hp){
-    var dist = Math.hypot(hp[0] - p1[0], hp[1] - p1[1]);
-    var cx = (p1[0] + hp[0]) / 2;
-    var cy = (p1[1] + hp[1]) / 2 - Math.min(H * 0.42, dist * 0.35 + H * 0.06);
-    return function(tt){
-      return [ (1-tt)*(1-tt)*p1[0] + 2*(1-tt)*tt*cx + tt*tt*hp[0],
-               (1-tt)*(1-tt)*p1[1] + 2*(1-tt)*tt*cy + tt*tt*hp[1] ];
-    };
-  }
   function draw(now){
     ctx.clearRect(0, 0, W, H);
     if(land.width) ctx.drawImage(land, 0, 0, W, H);
@@ -482,62 +470,6 @@ function initMap(){
     ctx.beginPath(); ctx.strokeStyle = 'rgba(227,192,125,' + (0.6 * hPulse).toFixed(2) + ')';
     ctx.lineWidth = 1.4;
     ctx.arc(hp[0], hp[1], mr * (2.1 + 1.5 * hPulse), 0, 6.2832); ctx.stroke();
-    /* scantei: din cand in cand, un oras trimite una spre casa */
-    var gk = Object.keys(guests);
-    if(gk.length && now - lastSpawn > 2600 && ambient.length < 3){
-      lastSpawn = now;
-      var pool = [];
-      gk.forEach(function(k2){
-        var w = Math.min(5, gcount[k2] || 1);
-        for(var wi = 0; wi < w; wi++) pool.push(k2);
-      });
-      var pk = pool[Math.floor(Math.random() * pool.length)];
-      var c0 = guests[pk];
-      ambient.push({ from: [c0[1], c0[2]], t: 0, v: 0.0045 + Math.random() * 0.004 });
-      var lp = proj(c0[1], c0[2]);
-      var nn = gcount[pk] || 1;
-      labels.push({ text: String(c0[0]).toUpperCase() + (nn > 1 ? ' ×' + nn : ''), x: lp[0], y: lp[1], t: 0 });
-    }
-    for(var ai = ambient.length - 1; ai >= 0; ai--){
-      var A = ambient[ai];
-      var f = bezTo(proj(A.from[0], A.from[1]), hp);
-      var tHead = Math.min(1, A.t), tTail = Math.max(0, A.t - 0.22), segs = 16;
-      for(var s2 = 0; s2 < segs; s2++){
-        var pa = f(tTail + (tHead - tTail) * (s2 / segs));
-        var pb = f(tTail + (tHead - tTail) * ((s2 + 1) / segs));
-        ctx.beginPath();
-        ctx.strokeStyle = 'rgba(227,192,125,' + (0.38 * (s2 + 1) / segs).toFixed(3) + ')';
-        ctx.lineWidth = 1.1;
-        ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]);
-        ctx.stroke();
-      }
-      var ph2 = f(tHead);
-      ctx.beginPath();
-      ctx.fillStyle = 'rgba(227,192,125,.85)';
-      ctx.shadowColor = 'rgba(227,192,125,.95)'; ctx.shadowBlur = 10;
-      ctx.arc(ph2[0], ph2[1], 2.2, 0, 6.2832); ctx.fill();
-      ctx.shadowBlur = 0;
-      ctx.beginPath();
-      ctx.fillStyle = '#fff6e2';
-      ctx.arc(ph2[0], ph2[1], 1, 0, 6.2832); ctx.fill();
-      A.t += (A.v || 0.006);
-      if(A.t >= 1){ ambient.splice(ai, 1); }
-    }
-    for(var li = labels.length - 1; li >= 0; li--){
-      var L = labels[li];
-      L.t += 0.007;
-      if(L.t >= 1){ labels.splice(li, 1); continue; }
-      var la = L.t < 0.12 ? L.t / 0.12 : (L.t > 0.7 ? (1 - L.t) / 0.3 : 1);
-      var ly = L.y - 16 - L.t * 6;
-      ctx.font = '600 10.5px Inter, sans-serif';
-      ctx.textAlign = 'center';
-      var lw = ctx.measureText(L.text).width;
-      ctx.fillStyle = 'rgba(13,15,17,' + (0.78 * la).toFixed(3) + ')';
-      if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(L.x - lw/2 - 8, ly - 9, lw + 16, 18, 9); ctx.fill(); }
-      else ctx.fillRect(L.x - lw/2 - 8, ly - 9, lw + 16, 18);
-      ctx.fillStyle = 'rgba(245,227,189,' + (0.95 * la).toFixed(3) + ')';
-      ctx.fillText(L.text, L.x, ly + 3.5);
-    }
     if(arc){
       var p1 = proj(arc.from[0], arc.from[1]);
       var mx = (p1[0] + hp[0]) / 2, my = (p1[1] + hp[1]) / 2;
@@ -579,16 +511,6 @@ function initMap(){
     lanternOn = true;
   }, { passive: true });
   canvas.addEventListener('pointerleave', function(){ lanternOn = false; }, { passive: true });
-  canvas.addEventListener('click', function(e){
-    var r2 = canvas.getBoundingClientRect();
-    var cx2 = e.clientX - r2.left, cy2 = e.clientY - r2.top;
-    var hp2 = proj(HOME.lat, HOME.lon);
-    if(Math.hypot(cx2 - hp2[0], cy2 - hp2[1]) < 14) return;
-    if(ambient.length > 5) return;
-    var lon2 = cx2 / W * 360 - 180;
-    var lat2 = LAT_TOP - cy2 / H * LAT_SPAN;
-    ambient.push({ from: [lat2, lon2], t: 0, v: 0.009 });
-  });
 
   /* input + suggestions + result */
   var input = document.querySelector('[data-harta-input]');
