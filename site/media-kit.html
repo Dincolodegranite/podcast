@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html{background:#0f1113}
+@keyframes ldOut{0%{opacity:1;visibility:visible}70%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}
+@keyframes ldIn{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ldFill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes ldShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@media (prefers-reduced-motion:reduce){[data-loader]{display:none!important}}</style>
+<title>Media Kit — Dincolo de Granițe · Podcast cu Peter Baghiu</title>
+<meta name="description" content="Prezentarea oficială Dincolo de Granițe pentru manageri, agenții și invitați publici: despre podcast, public, studio, echipament, procesul de filmare și contact direct.">
+<link rel="canonical" href="https://www.dincolodegranite.com/media-kit">
+<meta name="theme-color" content="#0f1113">
+<link rel="icon" href="assets/logo.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Media Kit — Dincolo de Granițe">
+<meta property="og:description" content="Prezentarea premium a podcastului, pentru manageri, agenții și invitați publici: studio, echipament, proces și contact direct.">
+<meta property="og:url" content="https://www.dincolodegranite.com/media-kit">
+<meta property="og:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="500">
+<meta property="og:site_name" content="Dincolo de Granițe">
+<meta property="og:locale" content="ro_RO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Media Kit — Dincolo de Granițe">
+<meta name="twitter:description" content="Prezentarea premium a podcastului, pentru manageri, agenții și invitați publici.">
+<meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://www.dincolodegranite.com/"},{"@type":"ListItem","position":2,"name":"Media Kit","item":"https://www.dincolodegranite.com/media-kit"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Costă ceva participarea ca invitat?","acceptedAnswer":{"@type":"Answer","text":"Nu. Participarea ca invitat la Dincolo de Granițe este gratuită."}},
+{"@type":"Question","name":"Invitatul primește temele în avans?","acceptedAnswer":{"@type":"Answer","text":"Da. Temele și direcția conversației se stabilesc împreună înainte de filmare. Fără întrebări-surpriză."}},
+{"@type":"Question","name":"Când se publică episodul?","acceptedAnswer":{"@type":"Answer","text":"Nu imediat. Episoadele se înregistrează în avans și se publică programat, în serie, pentru continuitate. Invitatul primește data exactă înainte de lansare."}},
+{"@type":"Question","name":"Se poate filma remote?","acceptedAnswer":{"@type":"Answer","text":"Da. Pentru invitații aflați în altă țară înregistrăm pe Zoom, cu aceeași pregătire și aceeași atenție ca în studio."}},
+{"@type":"Question","name":"În ce limbă se filmează?","acceptedAnswer":{"@type":"Answer","text":"În română sau engleză, iar toate episoadele au subtitrare."}},
+{"@type":"Question","name":"Ce materiale primește invitatul?","acceptedAnswer":{"@type":"Answer","text":"Episodul complet, publicat pe YouTube, plus clipuri scurte pentru rețelele proprii, livrate la publicare."}}
+]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero-studio.jpg" fetchpriority="high">
+<link rel="stylesheet" href="pages.css">
+<script defer src="social.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+  .dhero{position:relative;overflow:hidden;display:flex;align-items:flex-end;min-height:clamp(380px,52vh,540px);padding:120px 0 clamp(80px,9vw,110px)}
+  .dhero-bg{position:absolute;inset:0;background:url(assets/hero-studio.jpg) center 45%/cover no-repeat;animation:dheroSettle 2s ease-out both}
+  @keyframes dheroSettle{from{transform:scale(1.07)}to{transform:scale(1)}}
+  .dhero-shade{position:absolute;inset:0;background:linear-gradient(180deg,#0f1113 0%,rgba(15,17,19,.42) 24%,rgba(15,17,19,.55) 58%,#0f1113 100%),linear-gradient(90deg,rgba(15,17,19,.78),rgba(15,17,19,.25) 60%,rgba(15,17,19,.08))}
+  .dhero-in{position:relative;width:100%;animation:dheroUp .9s cubic-bezier(.2,.8,.2,1) .15s both}
+  @keyframes dheroUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  .dhero h1{font-size:clamp(38px,6.5vw,62px);margin:14px 0 14px;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+  .dhero .lede{max-width:56ch;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+  @media (prefers-reduced-motion:reduce){.dhero-bg,.dhero-in{animation:none}}
+  html.rvjs .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+  html.rvjs .rv.on{opacity:1;transform:none}
+  html.rvjs .grid3 .rv:nth-child(2){transition-delay:.12s}
+  html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
+  @media (prefers-reduced-motion:reduce){html.rvjs .rv{opacity:1;transform:none;transition:none}}
+  .ovh{overflow:hidden}
+  .dsp-glow{position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none}
+  .icon-chip{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:rgba(201,162,90,.16);color:var(--accent-light);flex:none}
+  .ct-eyebrow{display:flex;align-items:center;gap:10px;font:700 10px var(--font-body);letter-spacing:.22em;color:rgba(227,192,125,.85)}
+  /* banda de fapte rapide */
+  .ct-strip{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px clamp(18px,3vw,28px)}
+  .ct-strip-i{display:flex;align-items:center;gap:10px;font:600 12px var(--font-body);letter-spacing:.1em;color:rgba(245,246,247,.7);text-transform:uppercase}
+  .ct-strip-i b{color:var(--accent-light);font-weight:700}
+  /* carduri tematice */
+  .mk-card{display:flex;flex-direction:column;gap:10px}
+  .mk-card h3{font:var(--head-weight) 19px var(--font-head);letter-spacing:.06em;color:#f5f6f7;margin:4px 0 0}
+  .mk-card p{font-size:14px;line-height:1.6;margin:0;color:rgba(245,246,247,.65)}
+  /* statistici */
+  .mk-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(201,162,90,.16);border:1px solid rgba(201,162,90,.2);border-radius:16px;overflow:hidden}
+  .mk-stat{background:rgba(255,255,255,.015);padding:24px 16px;text-align:center;transition:background .25s ease}
+  .mk-stat:hover{background:rgba(201,162,90,.08)}
+  .mk-stat b{display:block;font:var(--head-weight) 40px/1 var(--font-head);background:linear-gradient(180deg,var(--accent-light),var(--accent-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+  .mk-stat span{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85)}
+  /* pasii procesului */
+  .mk-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  @media (max-width:960px){.mk-steps{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.mk-steps{grid-template-columns:1fr}}
+  .mk-n{font:var(--head-weight) 34px/1 var(--font-head);background:linear-gradient(180deg,var(--accent-light),var(--accent-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .mk-t{font:600 15px var(--font-body);color:#f5f6f7;margin:8px 0 6px}
+  .mk-p{margin:0;font-size:13.5px;line-height:1.6;color:rgba(245,246,247,.62)}
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  .faq-i{border:1px solid rgba(201,162,90,.2);border-radius:16px;background:linear-gradient(180deg,#15171b,#101214);overflow:hidden;transition:border-color .3s ease}
+  .faq-i[open]{border-color:rgba(201,162,90,.45)}
+  .faq-i summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;font:600 15px var(--font-body);color:#f5f6f7}
+  .faq-i summary::-webkit-details-marker{display:none}
+  .faq-i summary::after{content:'+';font:400 24px/1 var(--font-head);color:var(--accent);transition:transform .3s ease;flex:none}
+  .faq-i[open] summary::after{transform:rotate(45deg)}
+  .faq-i p{margin:0;padding:0 20px 16px;font-size:14.5px;line-height:1.6;color:rgba(245,246,247,.68)}
+</style>
+</head>
+<body>
+<div data-loader style="position:fixed;inset:0;z-index:999;background:#0f1113;display:flex;align-items:center;justify-content:center;animation:ldOut 1.2s ease forwards">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:18px;animation:ldIn .7s ease forwards">
+    <img src="assets/logo.jpg" alt="" style="width:72px;height:72px;object-fit:cover;border-radius:50%;display:block;box-shadow:0 0 0 1px rgba(201,162,90,.4),0 0 34px rgba(201,162,90,.3)">
+    <div style="font:400 26px/1 'Bebas Neue',Inter,sans-serif;letter-spacing:.03em;background:linear-gradient(90deg,#e3c07d,#c9a25a 50%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:ldShimmer 3s ease-in-out infinite">DINCOLO DE GRANIȚE</div>
+    <div style="width:160px;height:3px;border-radius:3px;background:rgba(201,162,90,.15);overflow:hidden;margin-top:4px">
+      <div style="width:100%;height:100%;background:linear-gradient(90deg,#8a6f3a,#e3c07d);transform-origin:left;animation:ldFill .6s .1s cubic-bezier(.4,0,.2,1) forwards;transform:scaleX(0)"></div>
+    </div>
+    <div id="ld-msg" style="font:600 10px Inter,sans-serif;letter-spacing:.28em;color:rgba(245,246,247,.35);text-align:center">OAMENI. EXPERIENȚE. PERSPECTIVE.</div><script>(function(){var m=["OAMENI. EXPERIENȚE. PERSPECTIVE.","EXPERIENȚELE NU AU GRANIȚE","FIECARE OM E O LUME","PERSPECTIVE CARE SCHIMBĂ VIEȚI","SE DESCHIDE MICROFONUL","DE ORIUNDE, MAI APROAPE DE ACASĂ"];var e=document.getElementById("ld-msg");if(e)e.textContent=m[Math.floor(Math.random()*m.length)];})();</script>
+  </div>
+</div>
+
+<nav class="pnav"><div class="pnav-in">
+  <a class="pbrand" href="index.html" aria-label="Acasă">
+    <span class="pbrand-logo"><img src="assets/logo.jpg" alt="Dincolo de Granițe"></span>
+    <span class="pbrand-word">DINCOLO DE GRANIȚE</span>
+  </a>
+  <div class="plinks">
+    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"></path><path d="M5 9.5V21h14V9.5"></path></svg><span>ACASĂ</span></a>
+    <a href="despre.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="1" fill="var(--accent)" stroke="none"></circle></svg><span>DESPRE</span></a>
+    <a href="episoade.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="2" y="13" width="5" height="7" rx="2"></rect><rect x="17" y="13" width="5" height="7" rx="2"></rect></svg><span>EPISOADE</span></a>
+    <a href="invitati.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>INVITAȚI</span></a>
+    <a href="contact.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span>CONTACT</span></a>
+  </div>
+  <button class="pburger" aria-label="Deschide meniul" type="button"><span></span><span></span><span></span></button>
+  <div class="pmenu">
+    <a href="index.html">ACASĂ</a>
+    <a href="despre.html">DESPRE</a>
+    <a href="episoade.html">EPISOADE</a>
+    <a href="invitati.html">INVITAȚI</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</div></nav>
+
+<section class="dhero">
+  <div class="dhero-bg" aria-hidden="true"></div>
+  <div class="dhero-shade" aria-hidden="true"></div>
+  <div class="wrap dhero-in">
+    <h1 data-gold-last>Media Kit</h1>
+    <p class="lede">Prezentarea oficială a podcastului Dincolo de Granițe, pentru manageri, agenții și invitați publici: cine suntem, cum filmăm și ce primește invitatul.</p>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <section style="padding-bottom:0">
+    <div class="gcard ct-strip rv">
+      <span class="ct-strip-i"><span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg></span>Lansare <b>Septembrie 2026</b></span>
+      <span class="ct-strip-i"><span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></span>Format <b>60–90 min</b></span>
+      <span class="ct-strip-i"><span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>Kent, UK · <b>Zoom oriunde</b></span>
+      <span class="ct-strip-i"><span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg></span>Română + engleză · <b>subtitrare</b></span>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Despre podcast</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Ce este Dincolo de Granițe</h2>
+    <div class="gcard ovh rv" style="margin-top:18px;position:relative">
+      <div class="dsp-glow"></div>
+      <div style="position:relative;max-width:74ch">
+        <p style="margin:0 0 14px;font-size:15px;line-height:1.7">Dincolo de Granițe este un podcast în limba română, cu interviuri lungi filmate cinematic, cu români din întreaga lume: antreprenori, profesioniști, medici, artiști, sportivi și oameni cu parcursuri extraordinare.</p>
+        <p style="margin:0 0 14px;font-size:15px;line-height:1.7">Construim cea mai mare arhivă video a poveștilor românilor din întreaga lume. Nu căutăm varianta lustruită: ne interesează drumul real — alegerile, eșecurile și lecțiile care nu se văd din exterior.</p>
+        <p style="margin:0;font-size:15px;line-height:1.7">Podcastul este găzduit și produs de <strong style="color:#f5f6f7">Peter Baghiu</strong>, fotograf profesionist stabilit în Kent, Marea Britanie. Primul sezon se lansează în septembrie 2026, pe YouTube.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Publicul</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Cui vorbim</h2>
+    <div class="grid3" style="margin-top:18px">
+      <div class="gcard mk-card rv">
+        <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg></span>
+        <h3>ROMÂNII DIN DIASPORA</h3>
+        <p>Marea Britanie, Europa, America de Nord, Australia: români care își construiesc viața departe de casă și caută repere oneste, nu clișee.</p>
+      </div>
+      <div class="gcard mk-card rv">
+        <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"></path><path d="M5 9.5V21h14V9.5"></path></svg></span>
+        <h3>ROMÂNI DIN ROMÂNIA</h3>
+        <p>Cei care vor să înțeleagă cum arată cu adevărat plecarea și construcția în altă țară, direct de la oamenii care au trăit-o.</p>
+      </div>
+      <div class="gcard mk-card rv">
+        <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg></span>
+        <h3>PROFESIONIȘTI ȘI FAMILII</h3>
+        <p>Oameni interesați de carieră, bani, parenting și echilibru: temele mari în jurul cărora construim fiecare episod.</p>
+      </div>
+    </div>
+    <p class="muted rv" style="margin:16px 0 0;font-size:13.5px">Conținut în română și engleză, cu subtitrare. Distribuit pe YouTube, cu fragmente pe Instagram, TikTok și Facebook.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Statistici</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Cifre reale, nu promisiuni</h2>
+    <div class="mk-stats rv" style="margin-top:18px">
+      <div class="mk-stat"><b>—</b><span>EPISOADE</span></div>
+      <div class="mk-stat"><b>—</b><span>ABONAȚI</span></div>
+      <div class="mk-stat"><b>—</b><span>VIZUALIZĂRI</span></div>
+      <div class="mk-stat"><b>—</b><span>ȚĂRI</span></div>
+    </div>
+    <p class="muted rv" style="margin:16px 0 0;font-size:13.5px;max-width:74ch">Lansăm în septembrie 2026. Publicăm aici cifrele reale imediat ce există: fără estimări umflate, fără promisiuni goale. Până atunci, judecă-ne după calitatea producției.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Studioul</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Studioul din Kent</h2>
+    <div class="gcard ovh rv" style="margin-top:18px;position:relative">
+      <div class="dsp-glow" style="top:auto;right:auto;bottom:-160px;left:-120px"></div>
+      <div style="position:relative;max-width:74ch">
+        <p style="margin:0 0 14px;font-size:15px;line-height:1.7">Un spațiu dedicat podcastului, construit în Kent, Marea Britanie: lumină cinematică permanentă, decor consecvent și liniște. Invitații filmează față în față, fără grabă și fără public.</p>
+        <p style="margin:0;font-size:15px;line-height:1.7">Pentru invitații aflați în altă țară, înregistrăm remote pe Zoom, cu aceeași pregătire și aceeași atenție. Totul e construit în jurul unei idei simple: cea mai bună tehnologie e cea pe care o uiți.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Echipament</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Standard de cinema</h2>
+    <div class="grid2" style="margin-top:18px">
+      <div class="gcard mk-card rv">
+        <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 10 6-3v10l-6-3"></path><rect x="2" y="6" width="14" height="12" rx="3"></rect></svg></span>
+        <h3>CAMERE CINEMA</h3>
+        <p>Canon EOS C400, Canon EOS C80 și Canon EOS R1: setup multi-cam cu mai multe unghiuri, pentru o imagine cinematică, nu de webcam.</p>
+      </div>
+      <div class="gcard mk-card rv">
+        <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.9 4.9 1.4 1.4"></path><path d="m17.7 17.7 1.4 1.4"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.3 17.7-1.4 1.4"></path><path d="m19.1 4.9-1.4 1.4"></path></svg></span>
+        <h3>LUMINĂ PROFESIONALĂ</h3>
+        <p>Schemă de lumină cinematică montată permanent în studio, calibrată pentru un aspect consecvent în fiecare episod.</p>
+      </div>
+      <div class="gcard mk-card rv">
+        <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg></span>
+        <h3>SUNET CURAT</h3>
+        <p>Microfoane dedicate pentru fiecare voce, înregistrate pe canale separate: claritate de podcast profesionist, fără ecou și fără zgomot.</p>
+      </div>
+      <div class="gcard mk-card rv">
+        <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg></span>
+        <h3>ÎNREGISTRARE REMOTE</h3>
+        <p>Pentru invitații din alte țări: filmare pe Zoom cu brief tehnic în avans, ca imaginea și sunetul să arate cât mai aproape de studio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Procesul</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">De la primul mesaj la episod</h2>
+    <div class="gcard rv" style="margin-top:18px">
+      <div class="mk-steps">
+        <div>
+          <div class="mk-n">01</div>
+          <div class="mk-t">Contact și brief</div>
+          <p class="mk-p">Ne scrii cu numele invitatului și câteva rânduri de context. Stabilim împreună temele și direcția: fără întrebări-surpriză.</p>
+        </div>
+        <div>
+          <div class="mk-n">02</div>
+          <div class="mk-t">Pre-discuție de 15 minute</div>
+          <p class="mk-p">O convorbire scurtă, online, pentru a ne cunoaște și a confirma că episodul are sens pentru ambele părți.</p>
+        </div>
+        <div>
+          <div class="mk-n">03</div>
+          <div class="mk-t">Filmarea</div>
+          <p class="mk-p">60–90 de minute în studioul din Kent sau pe Zoom. Fără scenariu rigid, cu pauze și timp să spui totul, în ritmul invitatului.</p>
+        </div>
+        <div>
+          <div class="mk-n">04</div>
+          <div class="mk-t">Montaj și publicare programată</div>
+          <p class="mk-p">Episoadele se publică în serie, pentru continuitate. Invitatul primește data exactă înainte de lansare și clipurile la publicare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Exemple video</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Vezi cum arată</h2>
+    <div class="gcard ovh rv" style="margin-top:18px;position:relative;text-align:center;padding:clamp(30px,5vw,46px)">
+      <div class="dsp-glow"></div>
+      <div style="position:relative">
+        <p style="max-width:56ch;margin:0 auto 22px">Trailerul și primele fragmente apar aici odată cu lansarea, în septembrie 2026. Până atunci, arhiva episoadelor și canalul de YouTube sunt punctele de plecare.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-gold" href="episoade.html">Vezi episoadele</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener">Canalul de YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Întrebări frecvente</span>
+    <div class="faq rv">
+      <details class="faq-i">
+        <summary>Costă ceva participarea ca invitat?</summary>
+        <p>Nu. Participarea ca invitat la Dincolo de Granițe este gratuită.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Invitatul primește temele în avans?</summary>
+        <p>Da. Temele și direcția conversației se stabilesc împreună înainte de filmare. Fără întrebări-surpriză.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Când se publică episodul?</summary>
+        <p>Nu imediat. Episoadele se înregistrează în avans și se publică programat, în serie, pentru continuitate. Invitatul primește data exactă înainte de lansare.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Se poate filma remote?</summary>
+        <p>Da. Pentru invitații aflați în altă țară înregistrăm pe Zoom, cu aceeași pregătire și aceeași atenție ca în studio.</p>
+      </details>
+      <details class="faq-i">
+        <summary>În ce limbă se filmează?</summary>
+        <p>În română sau engleză, iar toate episoadele au subtitrare.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Ce materiale primește invitatul?</summary>
+        <p>Episodul complet, publicat pe YouTube, plus clipuri scurte pentru rețelele proprii, livrate la publicare.</p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="gcard ovh rv" style="text-align:center;padding:clamp(30px,5vw,46px)">
+      <div class="dsp-glow"></div>
+      <div style="position:relative">
+        <span class="eyebrow">Contact direct</span>
+        <h2 data-gold-last style="margin:12px 0 10px;font-size:clamp(26px,5vw,36px)">Un singur punct de contact</h2>
+        <p style="max-width:56ch;margin:0 auto 8px">Programare, brief, materiale: totul trece printr-un singur om. Scrie-ne cu numele invitatului și câteva rânduri de context, și revenim în 24–48 de ore.</p>
+        <a href="mailto:contact@dincolodegranite.com?subject=Invitat%20special%20%2F%20Media%20Kit" style="display:inline-block;margin:8px 0 22px;font:var(--head-weight) clamp(20px,3.4vw,28px) var(--font-head);letter-spacing:.04em;color:#f5f6f7;text-decoration:none;word-break:break-all">CONTACT@DINCOLODEGRANITE.COM</a>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-gold" href="mailto:contact@dincolodegranite.com?subject=Invitat%20special%20%2F%20Media%20Kit">Scrie-ne despre invitatul tău</a>
+          <a class="btn btn-ghost" href="contact.html">Pagina de contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="pfoot"><div class="wrap pfoot-in">
+  <span>© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</span>
+  <span class="fsoc-block">
+    <span class="fsoc-row">
+    <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" class="fsoc"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
+    <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+    <a href="https://tiktok.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="TikTok" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-3.4h-3.3v13.9a2.6 2.6 0 1 1-1.8-2.5V10.4a5.9 5.9 0 1 0 5.1 5.9V9.3a7.6 7.6 0 0 0 4.4 1.4V7.4a4.3 4.3 0 0 1-1.8-1.6Z"></path></svg></a>
+    <a href="https://facebook.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Facebook" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"></path></svg></a>
+    <a href="#" data-social="social_apple" target="_blank" rel="noopener" aria-label="Apple Podcasts" class="fsoc" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none"></circle><path d="M8.5 8.2a5 5 0 0 1 7 0"></path><path d="M6 5.6a8.4 8.4 0 0 1 12 0"></path><path d="M10.5 15.5h3l-.6 5h-1.8z"></path></svg></a>
+    <a href="#" data-social="social_spotify" target="_blank" rel="noopener" aria-label="Spotify" class="fsoc" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 9.6c3-1 6.6-.8 9.1.7"></path><path d="M8 12.4c2.5-.8 5.4-.6 7.4.7"></path><path d="M8.6 15.1c1.9-.6 4-.4 5.7.6"></path></svg></a>
+  </span>
+  </span>
+  <span><a href="index.html">Acasă</a> · <a href="despre.html">Despre</a> · <a href="episoade.html">Episoade</a> · <a href="invitati.html">Invitați</a> · <a href="contact.html">Contact</a> · <a href="media-kit.html">Media Kit</a> · <a href="termeni.html">Termeni</a> · <a href="privacy.html">Confidențialitate</a></span>
+</div></footer>
+
+<script>document.querySelector(".pburger").addEventListener("click",function(){this.closest(".pnav-in").classList.toggle("open")});</script>
+<script>
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!els.length || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('rvjs');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target); }
+    });
+  }, { threshold: .15, rootMargin: '0px 0px -40px' });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
