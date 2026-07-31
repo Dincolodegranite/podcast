@@ -183,6 +183,7 @@
           <div class="row">
             <input id="pp-name" type="text" placeholder="Nume complet">
             <input id="pp-title" type="text" placeholder="Rol scurt (ex: Antreprenor · Londra)">
+            <input id="pp-domain" type="text" placeholder="Domeniu (ex: Business, Educație, Psihologie)">
           </div>
           <textarea id="pp-bio" placeholder="Descriere scurtă (2–3 fraze despre om și experiența lui)"></textarea>
           <input id="pp-photo" type="url" placeholder="Link poză de profil (https://...)">
@@ -776,7 +777,7 @@
     });
   }
   var ppEditId = null;
-  var PP_FIELDS = { name:'pp-name', title:'pp-title', bio:'pp-bio', photo_url:'pp-photo', episode_url:'pp-episode', episode_title:'pp-ep-title', episode_duration:'pp-ep-dur', website:'pp-website', social_instagram:'pp-instagram', social_youtube:'pp-youtube', social_tiktok:'pp-tiktok', social_facebook:'pp-facebook', social_linkedin:'pp-linkedin', social_x:'pp-x' };
+  var PP_FIELDS = { name:'pp-name', title:'pp-title', domain:'pp-domain', bio:'pp-bio', photo_url:'pp-photo', episode_url:'pp-episode', episode_title:'pp-ep-title', episode_duration:'pp-ep-dur', website:'pp-website', social_instagram:'pp-instagram', social_youtube:'pp-youtube', social_tiktok:'pp-tiktok', social_facebook:'pp-facebook', social_linkedin:'pp-linkedin', social_x:'pp-x' };
   function ppReset(){
     ppEditId = null;
     Object.keys(PP_FIELDS).forEach(function(k){ $(PP_FIELDS[k]).value = ''; });
