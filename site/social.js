@@ -136,7 +136,7 @@ function initNewsletterForms(){
         if(r.status === 409){ show('Ești deja pe listă. Te anunțăm imediat ce primul episod este publicat.'); return; }
         if(!r.ok) throw new Error('HTTP ' + r.status);
         input.value = '';
-        show('Te-am notat! Îți dăm de veste la primul episod.');
+        show('Te-ai înscris cu succes. Te anunțăm imediat ce primul episod este publicat.');
       }).catch(function(){
         if(btn) btn.disabled = false;
         show('A apărut o eroare. Încearcă din nou.');

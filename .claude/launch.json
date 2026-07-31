@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "site", "-l", "8642"],
+      "port": 8642
+    },
+    {
+      "name": "scratch",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "C:/Users/baghi/AppData/Local/Temp/claude/C--Users-baghi-OneDrive-Desktop-Podcast-Dincolo-de-Granite/cf8111f1-06db-480d-bc55-b97816fab16c/scratchpad", "-l", "8643"],
+      "port": 8643
+    }
+  ]
+}
