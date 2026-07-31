@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/hero-studio.jpg" fetchpriority="high">
-<link rel="stylesheet" href="pages.css?v=14">
+<link rel="stylesheet" href="pages.css?v=15">
 <script defer src="social.js?v=2"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>
@@ -56,7 +56,9 @@
   .icon-chip{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:rgba(201,162,90,.16);color:var(--accent-light);flex:none}
   .ct-eyebrow{display:flex;align-items:center;gap:10px;font:700 10px var(--font-body);letter-spacing:.22em;color:rgba(227,192,125,.85)}
   /* banda cu ceasuri + info rapide */
-  .ct-strip{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px clamp(18px,3vw,28px)}
+  .ct-strip{display:grid;grid-template-columns:repeat(4,1fr);align-items:center;gap:14px 18px;padding:16px clamp(18px,3vw,28px)}
+  .ct-strip-i{justify-content:center;text-align:center}
+  @media (max-width:820px){.ct-strip{grid-template-columns:repeat(2,1fr)}.ct-strip-i{flex-direction:column;gap:6px;text-align:center;font-size:11px;letter-spacing:.08em}}
   .ct-strip-i{display:flex;align-items:center;gap:10px;font:600 12px var(--font-body);letter-spacing:.1em;color:rgba(245,246,247,.7);text-transform:uppercase}
   .ct-strip-i b{color:var(--accent-light);font-variant-numeric:tabular-nums;font-weight:700}
   /* carduri de direcționare */
@@ -68,9 +70,10 @@
   .dir-card:hover .icon-chip{transform:rotate(-8deg) scale(1.12);background:rgba(201,162,90,.28)}
   .dir-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--accent-light),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .dir-card:hover .dir-bar{transform:scaleX(1)}
-  .dir-link{align-self:flex-start;font:600 13px var(--font-body);color:var(--accent-light);text-decoration:none}
+  .dir-link{align-self:flex-start;margin-top:auto;font:600 13px var(--font-body);color:var(--accent-light);text-decoration:none}
   .dir-link:hover{color:#fff}
   /* mini FAQ */
+  .cf-lab{display:flex;flex-direction:column;gap:6px;font:600 10.5px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.8);text-transform:uppercase}
   .cf-field{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:14px;border:1px solid rgba(201,162,90,.3);background:rgba(15,17,19,.5);color:#f5f6f7;font:400 14.5px var(--font-body);outline:none;transition:border-color .25s ease}
   .cf-field:focus{border-color:var(--accent)}
   select.cf-field{cursor:pointer}
@@ -168,7 +171,7 @@
           <a href="#" data-social="social_apple" target="_blank" rel="noopener" class="btn btn-ghost" style="display:none">Apple Podcasts</a>
           <a href="#" data-social="social_spotify" target="_blank" rel="noopener" class="btn btn-ghost" style="display:none">Spotify</a>
         </div>
-        <p class="muted" style="margin:0;font-size:13.5px">Primul episod se lansează în septembrie 2026. Abonează-te ca să nu-l ratezi.</p>
+        <p class="muted" style="margin:0;font-size:13.5px">Primul episod apare în septembrie 2026. Urmărește-ne și fii printre primii care îl descoperă.</p>
       </div>
     </div>
   </section>
@@ -194,7 +197,7 @@
       <div class="gcard dir-card rv">
         <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0V9"></path><path d="M12 6h6"></path><path d="M12 10h6"></path><path d="M12 14h6"></path><path d="M12 18h6"></path></svg></span>
         <h2>Presă și media</h2>
-        <p>Pentru interviuri, informații despre proiect, biografia gazdei, imagini oficiale și materiale de prezentare.</p>
+        <p>Pentru interviuri, informații despre proiect, biografia gazdei, imagini oficiale și materiale de presă.</p>
         <a class="dir-link" href="mailto:contact@dincolodegranite.com?subject=Pres%C4%83">Solicită kitul de presă →</a>
         <span class="dir-bar" aria-hidden="true"></span>
       </div>
@@ -210,17 +213,26 @@
         <form data-cf-form novalidate style="max-width:560px;margin:0 auto;text-align:left;display:flex;flex-direction:column;gap:12px">
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <input data-cf-name class="cf-field" style="flex:1 1 200px" type="text" placeholder="Numele tău" aria-label="Numele tău">
-            <input data-cf-email class="cf-field" style="flex:1 1 200px" type="email" placeholder="Adresa ta de email" aria-label="Adresa ta de email">
+            <label class="cf-lab" style="flex:1 1 200px">Nume
+              <input data-cf-name class="cf-field" type="text" placeholder="Numele tău" autocomplete="name">
+            </label>
+            <label class="cf-lab" style="flex:1 1 200px">Adresă de email
+              <input data-cf-email class="cf-field" type="email" placeholder="nume@exemplu.com" autocomplete="email">
+            </label>
           </div>
-          <select data-cf-reason class="cf-field" aria-label="Motivul mesajului">
-            <option value="general">Întrebare generală</option>
-            <option value="presa">Presă și media</option>
-            <option value="parteneriat">Parteneriat</option>
-            <option value="recomandare">Recomandare de invitat</option>
-            <option value="altceva">Altceva</option>
-          </select>
-          <textarea data-cf-msg-in class="cf-field" rows="5" placeholder="Mesajul tău" aria-label="Mesajul tău"></textarea>
+          <label class="cf-lab">Motivul mesajului
+            <select data-cf-reason class="cf-field">
+              <option value="general">Întrebare generală</option>
+              <option value="recomandare">Recomandare de invitat</option>
+              <option value="presa">Presă și media</option>
+              <option value="parteneriat">Parteneriat</option>
+              <option value="tehnic">Problemă tehnică</option>
+              <option value="altceva">Altceva</option>
+            </select>
+          </label>
+          <label class="cf-lab">Mesaj
+            <textarea data-cf-msg-in class="cf-field" rows="5" placeholder="Spune-ne pe scurt ce ai în minte"></textarea>
+          </label>
           <button type="submit" class="btn btn-gold" style="align-self:center;min-height:44px">Trimite mesajul</button>
           <div data-cf-msg role="status" aria-live="polite" style="display:none;text-align:center;font:500 14px/1.5 var(--font-body);color:var(--accent-light)"></div>
         </form>
@@ -256,11 +268,11 @@
   </section>
 
   <section>
-    <div class="gcard ovh" style="position:relative">
+    <div class="gcard ovh" style="position:relative;padding:clamp(18px,3.2vw,27px)">
       <div class="dsp-glow"></div>
       <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
         <div style="max-width:440px">
-          <div style="font:var(--head-weight) 24px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin-bottom:5px">PRIMEȘTE FIECARE <span class="gold-last">EPISOD</span></div>
+          <div style="font:var(--head-weight) 21px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin-bottom:5px">PRIMEȘTE FIECARE <span class="gold-last">EPISOD</span></div>
           <p class="muted" style="margin:0;font-size:13.5px;color:rgba(245,246,247,.62)">Lasă-ne adresa ta de email și te anunțăm imediat ce publicăm un nou episod. Primul episod apare în septembrie 2026.</p>
         </div>
         <form data-nl-form novalidate style="flex:1 1 300px;max-width:440px">
@@ -347,22 +359,22 @@
       var reason = form.querySelector('[data-cf-reason]').value;
       var text = form.querySelector('[data-cf-msg-in]').value.trim();
       var hp = form.querySelector('input[name="website"]');
-      if(hp && hp.value){ show('Mulțumim. Mesajul tău a ajuns la noi și îți vom răspunde cât mai curând.', true); return; }
-      if(name.length < 2){ show('Spune-ne cum te cheamă.', false); return; }
+      if(hp && hp.value){ show('Mesajul tău a fost trimis. Mulțumim — îți vom răspunde cât mai curând.', true); return; }
+      if(name.length < 2){ show('Completează câmpurile obligatorii.', false); return; }
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ show('Introdu o adresă de email validă.', false); return; }
-      if(text.length < 10){ show('Mesajul e prea scurt — dă-ne câteva detalii.', false); return; }
+      if(text.length < 10){ show('Completează câmpurile obligatorii.', false); return; }
       var btn = form.querySelector('button[type="submit"]');
       var label = btn.textContent;
-      btn.textContent = 'SE TRIMITE...'; btn.disabled = true;
+      btn.textContent = 'Se trimite…'; btn.disabled = true;
       fetch(CF, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: name, email: email, reason: reason, message: text, website: hp ? hp.value : '' }) })
         .then(function(r){ return r.json().then(function(j){ return r.ok && j.ok; }); })
         .then(function(ok){
           btn.textContent = label; btn.disabled = false;
-          if(!ok){ show('A apărut o eroare. Încearcă din nou sau scrie-ne direct pe email.', false); return; }
+          if(!ok){ show('Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-ne direct la contact@dincolodegranite.com.', false); return; }
           form.reset();
-          show('Mulțumim. Mesajul tău a ajuns la noi și îți vom răspunde cât mai curând.', true);
+          show('Mesajul tău a fost trimis. Mulțumim — îți vom răspunde cât mai curând.', true);
         })
-        .catch(function(){ btn.textContent = label; btn.disabled = false; show('A apărut o eroare. Încearcă din nou sau scrie-ne direct pe email.', false); });
+        .catch(function(){ btn.textContent = label; btn.disabled = false; show('Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-ne direct la contact@dincolodegranite.com.', false); });
     });
   }
   var cp = document.querySelector('[data-copy-email]');
