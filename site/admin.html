@@ -178,7 +178,7 @@
     <div id="tab-people" class="hidden">
       <div class="card">
         <h2 id="pp-form-title">Adaugă profil de invitat</h2>
-        <p class="muted" style="margin:0 0 14px">Profilurile publicate apar pe pagina /oameni, la „Urmează la microfon" sau „Au trecut pragul". Toate linkurile trebuie să înceapă cu https://.</p>
+        <p class="muted" style="margin:0 0 14px">Profilurile publicate apar pe pagina /oameni, la „Urmează la microfon" sau „Au fost la microfon". Toate linkurile trebuie să înceapă cu https://.<br>Înainte de publicare, confirmă cu invitatul: numele, fotografia, profesia, orașul, linkurile, descrierea și faptul că va fi anunțat public.</p>
         <div style="display:flex;flex-direction:column;gap:10px">
           <div class="row">
             <input id="pp-name" type="text" placeholder="Nume complet">
@@ -187,8 +187,13 @@
           <textarea id="pp-bio" placeholder="Descriere scurtă (2–3 fraze despre om și experiența lui)"></textarea>
           <input id="pp-photo" type="url" placeholder="Link poză de profil (https://...)">
           <div class="row">
-            <select id="pp-status" class="fixed"><option value="upcoming">Urmează la microfon</option><option value="past">A trecut pragul</option></select>
+            <select id="pp-status" class="fixed"><option value="upcoming">Urmează la microfon</option><option value="past">Episod publicat</option></select>
+            <select id="pp-stage" class="fixed" title="Statusul afișat pe card (doar la Urmează)"><option value="confirmat">Confirmat</option><option value="pregatire">În pregătire</option><option value="programat">Filmarea programată</option><option value="inregistrat">Înregistrat</option><option value="montaj">În montaj</option><option value="publicat">Episod publicat</option></select>
+            <select id="pp-format" class="fixed" title="Formatul episodului"><option value="portret">Portret</option><option value="expertiza">Expertiză</option></select>
             <input id="pp-episode" type="url" placeholder="Link episod (pentru cei care au fost)">
+            <input id="pp-ep-title" type="text" placeholder="Titlul episodului (apare pe card la publicate)">
+            <input id="pp-ep-dur" type="text" placeholder="Durata (ex. 1h 14 min)" style="max-width:180px;flex:none">
+            <input id="pp-ep-num" type="number" placeholder="Nr. episod" style="max-width:130px;flex:none">
             <input id="pp-sort" type="number" placeholder="Ordine (0 = primul)" style="max-width:160px;flex:none">
           </div>
           <div class="row">
@@ -771,11 +776,14 @@
     });
   }
   var ppEditId = null;
-  var PP_FIELDS = { name:'pp-name', title:'pp-title', bio:'pp-bio', photo_url:'pp-photo', episode_url:'pp-episode', website:'pp-website', social_instagram:'pp-instagram', social_youtube:'pp-youtube', social_tiktok:'pp-tiktok', social_facebook:'pp-facebook', social_linkedin:'pp-linkedin', social_x:'pp-x' };
+  var PP_FIELDS = { name:'pp-name', title:'pp-title', bio:'pp-bio', photo_url:'pp-photo', episode_url:'pp-episode', episode_title:'pp-ep-title', episode_duration:'pp-ep-dur', website:'pp-website', social_instagram:'pp-instagram', social_youtube:'pp-youtube', social_tiktok:'pp-tiktok', social_facebook:'pp-facebook', social_linkedin:'pp-linkedin', social_x:'pp-x' };
   function ppReset(){
     ppEditId = null;
     Object.keys(PP_FIELDS).forEach(function(k){ $(PP_FIELDS[k]).value = ''; });
     $('pp-status').value = 'upcoming';
+    $('pp-stage').value = 'confirmat';
+    $('pp-format').value = 'portret';
+    $('pp-ep-num').value = '';
     $('pp-sort').value = '';
     $('pp-published').checked = false;
     $('pp-form-title').textContent = 'Adaugă profil de invitat';
@@ -797,7 +805,8 @@
         var who = document.createElement('div');
         var name = document.createElement('strong'); name.textContent = g.name;
         var meta = document.createElement('div'); meta.className = 'muted';
-        meta.textContent = (g.status === 'past' ? 'A trecut pragul' : 'Urmează') + (g.title ? ' · ' + g.title : '') + ' · ordine ' + (g.sort_order || 0);
+        var STAGE_L = { confirmat: 'Confirmat', pregatire: 'În pregătire', programat: 'Filmarea programată', inregistrat: 'Înregistrat', montaj: 'În montaj', publicat: 'Episod publicat' };
+        meta.textContent = (g.status === 'past' ? 'Episod publicat' : 'Urmează — ' + (STAGE_L[g.stage] || 'Confirmat')) + (g.title ? ' · ' + g.title : '') + ' · ' + (g.format === 'expertiza' ? 'Expertiză' : 'Portret') + ' · ordine ' + (g.sort_order || 0);
         who.appendChild(name); who.appendChild(meta);
         var controls = document.createElement('div');
         controls.style.display = 'flex'; controls.style.gap = '8px'; controls.style.alignItems = 'center'; controls.style.flexWrap = 'wrap';
@@ -817,6 +826,9 @@
           ppEditId = g.id;
           Object.keys(PP_FIELDS).forEach(function(k){ $(PP_FIELDS[k]).value = g[k] || ''; });
           $('pp-status').value = g.status || 'upcoming';
+          $('pp-stage').value = g.stage || 'confirmat';
+          $('pp-format').value = g.format || 'portret';
+          $('pp-ep-num').value = g.episode_number != null ? g.episode_number : '';
           $('pp-sort').value = g.sort_order != null ? g.sort_order : '';
           $('pp-published').checked = !!g.published;
           $('pp-form-title').textContent = 'Editează: ' + g.name;
@@ -843,6 +855,9 @@
       Object.keys(PP_FIELDS).forEach(function(k){ var v = $(PP_FIELDS[k]).value.trim(); payload[k] = v || null; });
       if(!payload.name){ $('pp-err').textContent = 'Numele e obligatoriu.'; return; }
       payload.status = $('pp-status').value;
+      payload.stage = $('pp-stage').value;
+      payload.format = $('pp-format').value;
+      payload.episode_number = parseInt($('pp-ep-num').value, 10) || null;
       payload.sort_order = parseInt($('pp-sort').value || '0', 10) || 0;
       payload.published = $('pp-published').checked;
       var q = ppEditId

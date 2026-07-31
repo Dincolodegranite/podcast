@@ -18,7 +18,7 @@
 <link rel="manifest" href="site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Oamenii podcastului — Dincolo de Granițe">
-<meta property="og:description" content="Invitații care urmează și cei care au trecut pragul: români din întreaga lume, cu experiențe care inspiră.">
+<meta property="og:description" content="Invitați confirmați și conversații publicate cu români din domenii diverse, aflați în România sau oriunde în lume.">
 <meta property="og:url" content="https://www.dincolodegranite.com/oameni">
 <meta property="og:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 <meta property="og:locale" content="ro_RO">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Oamenii podcastului — Dincolo de Granițe">
-<meta name="twitter:description" content="Invitații care urmează și cei care au trecut pragul studioului.">
+<meta name="twitter:description" content="Invitați confirmați și conversații publicate cu români din domenii diverse.">
 <meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://www.dincolodegranite.com/"},{"@type":"ListItem","position":2,"name":"Oameni","item":"https://www.dincolodegranite.com/oameni"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +54,7 @@
   .dsp-glow{position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none}
   .icon-chip{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:rgba(201,162,90,.16);color:var(--accent-light);flex:none}
   /* grila de profiluri */
-  .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px;margin-top:18px}
+  .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,320px));justify-content:center;gap:28px;margin-top:18px}
   .pcard{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:0;border-radius:22px;border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 24px 50px rgba(0,0,0,.35);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
   .pcard:hover{transform:translateY(-5px);box-shadow:0 40px 80px rgba(0,0,0,.5)}
   .pphoto{position:relative;aspect-ratio:4/4.6;overflow:hidden;background:linear-gradient(160deg,#1a1d21,#101214)}
@@ -68,6 +68,8 @@
   .pbody{position:relative;display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px;flex:1}
   .pname{font:var(--head-weight) 24px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0}
   .prole{font:600 10.5px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);text-transform:uppercase}
+  .pept{font:italic 500 15.5px/1.5 var(--font-serif),Georgia,serif;color:#f5f6f7;margin:8px 0 0}
+  .pmeta{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-top:10px}
   .pbio{font:400 13.5px/1.6 var(--font-body);color:rgba(245,246,247,.62);margin:0;flex:1}
   .psoc{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
   .psoc a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);transition:all .25s ease}
@@ -118,21 +120,21 @@
   <div class="dhero-shade" aria-hidden="true"></div>
   <div class="wrap dhero-in">
     <h1 data-gold-last>Oamenii podcastului</h1>
-    <p class="lede">Cei care urmează să treacă pragul studioului și cei care au făcut-o deja: antreprenori, profesioniști, artiști — români din întreaga lume, cu experiențe care inspiră.</p>
+    <p class="lede">Invitați confirmați și conversații publicate cu români din domenii diverse, aflați în România sau oriunde în lume. Oameni pe care îi invităm pentru ceea ce știu și îi ascultăm pentru cine sunt.</p>
   </div>
 </section>
 
 <div class="wrap">
 
   <section id="sec-upcoming" style="display:none">
-    <span class="eyebrow">În curând</span>
+    <span class="eyebrow">Invitați confirmați</span>
     <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Urmează la microfon</h2>
     <div class="pgrid" id="grid-upcoming"></div>
   </section>
 
   <section id="sec-past" style="display:none">
-    <span class="eyebrow">Arhiva</span>
-    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Au trecut pragul</h2>
+    <span class="eyebrow">Episoade publicate</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Au fost la microfon</h2>
     <div class="pgrid" id="grid-past"></div>
   </section>
 
@@ -152,8 +154,11 @@
       <div class="dsp-glow"></div>
       <div style="position:relative">
         <h2 data-gold-last style="margin:0 0 10px;font-size:clamp(26px,5vw,36px)">Poate următoarea perspectivă vine de la tine.</h2>
-        <p style="max-width:52ch;margin:0 auto 22px">Nu căutăm povești perfecte. Căutăm oameni autentici, experiențe reale și perspective care rămân.</p>
-        <a class="btn btn-gold" href="invitati.html#aplica">Împărtășește-ți experiența</a>
+        <p style="max-width:56ch;margin:0 auto 22px">Căutăm oameni cu expertiză, idei, experiențe sau perspective care pot aduce valoare publicului. Nu trebuie să ai un parcurs perfect și nici să fii cunoscut. Trebuie să ai ceva relevant și sincer de împărtășit.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <a class="btn btn-gold" href="invitati.html#aplica">Propune-te ca invitat</a>
+          <a class="btn btn-ghost" href="mailto:contact@dincolodegranite.com?subject=Recomand%20un%20invitat">Recomandă un invitat</a>
+        </div>
       </div>
     </div>
   </section>
@@ -229,9 +234,11 @@
     var photo = p.photo_url && /^https:\/\//.test(p.photo_url)
       ? '<img src="' + esc(p.photo_url) + '" alt="' + esc(p.name) + '" loading="lazy">'
       : '<div class="pinit" aria-hidden="true">' + esc(initials(p.name)) + '</div>';
+    var STAGE = { confirmat: 'CONFIRMAT', pregatire: 'ÎN PREGĂTIRE', programat: 'FILMAREA PROGRAMATĂ', inregistrat: 'ÎNREGISTRAT', montaj: 'ÎN MONTAJ', publicat: 'EPISOD PUBLICAT' };
+    var FMT = { portret: 'PORTRET', expertiza: 'EXPERTIZĂ' };
     var badge = p.status === 'past'
-      ? '<span class="pbadge past">A TRECUT PRAGUL</span>'
-      : '<span class="pbadge up">ÎN CURÂND</span>';
+      ? '<span class="pbadge past">EPISOD PUBLICAT</span>'
+      : '<span class="pbadge up">' + (STAGE[p.stage] || 'CONFIRMAT') + '</span>';
     var soc = '';
     Object.keys(IC).forEach(function(k){
       var url = p[k];
@@ -240,14 +247,29 @@
       }
     });
     var ep = (p.status === 'past' && p.episode_url && /^https:\/\//.test(p.episode_url))
-      ? '<div class="pep"><a class="btn btn-gold" style="padding:11px 22px;font-size:12.5px" href="' + esc(p.episode_url) + '" target="_blank" rel="noopener">Vezi episodul</a></div>'
+      ? '<div class="pep"><a class="btn btn-gold" style="padding:11px 22px;font-size:12.5px" href="' + esc(p.episode_url) + '" target="_blank" rel="noopener">Urmărește episodul</a></div>'
       : '';
+    /* invitatii viitori poarta formatul in prima linie; la episoadele publicate
+       formatul coboara in linia meta a episodului */
+    var role = p.status === 'past'
+      ? (p.title ? '<span class="prole">' + esc(p.title) + '</span>' : '')
+      : '<span class="prole">' + (FMT[p.format] || 'PORTRET') + (p.title ? ' · ' + esc(p.title) : '') + '</span>';
+    var epTitle = (p.status === 'past' && p.episode_title) ? '<p class="pept">' + esc(p.episode_title) + '</p>' : '';
+    var metaParts = [];
+    if(p.status === 'past'){
+      metaParts.push(FMT[p.format] || 'PORTRET');
+      if(p.episode_duration) metaParts.push(esc(p.episode_duration));
+      if(p.episode_number) metaParts.push('EP. ' + (p.episode_number < 10 ? '0' : '') + p.episode_number);
+    }
+    var epMeta = metaParts.length ? '<div class="pmeta">' + metaParts.join(' · ') + '</div>' : '';
     el.innerHTML =
       '<div class="pphoto">' + badge + photo + '</div>' +
       '<div class="pbody">' +
-        (p.title ? '<span class="prole">' + esc(p.title) + '</span>' : '') +
+        role +
         '<h3 class="pname">' + esc(p.name) + '</h3>' +
-        (p.bio ? '<p class="pbio">' + esc(p.bio) + '</p>' : '') +
+        (p.status === 'past'
+          ? epTitle + epMeta
+          : (p.bio ? '<p class="pbio">' + esc(p.bio) + '</p>' : '')) +
         (soc ? '<div class="psoc">' + soc + '</div>' : '') +
         ep +
       '</div>';
