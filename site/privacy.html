@@ -29,16 +29,18 @@
   .fsoc:hover{border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)}
   .fsoc-row{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
   .fsoc-block{display:flex;flex-direction:column;align-items:center;gap:10px}
-  .pfoot{margin-top:clamp(48px,8vw,80px);padding:0 0 44px}
+  .pfoot{margin-top:clamp(32px,5.5vw,56px);padding:0 0 44px}
   .pfoot-wrap{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,44px)}
   .pfoot-hair{height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.14) 30%,rgba(201,162,90,.14) 70%,transparent)}
   .pfoot-brand{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;padding:clamp(30px,4.5vw,46px) 0 clamp(28px,4vw,40px)}
   .pfoot-logo{width:86px;height:86px;border-radius:50%;border:1px solid rgba(201,162,90,.5);box-shadow:0 0 0 7px rgba(201,162,90,.07),0 14px 34px rgba(0,0,0,.5);margin-bottom:18px}
-  .pfoot-mission{font:italic 500 clamp(16px,2.8vw,19px)/1.6 var(--font-serif),serif;color:rgba(245,246,247,.72);max-width:600px;margin:0}
+  .pfoot-mission{font:italic 500 clamp(17px,2.9vw,20px)/1.6 var(--font-serif),serif;color:rgba(245,246,247,.8);max-width:600px;margin:0}
+  .pfoot-mission-sub{font:400 13.5px/1.6 var(--font-body);color:rgba(245,246,247,.45);max-width:560px;margin:-8px 0 0}
   .pfoot-in{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid rgba(245,246,247,.08);padding-top:22px;font:400 12.5px var(--font-body);color:rgba(245,246,247,.45)}
   .pfoot-cr{display:flex;flex-direction:column;gap:3px;font-size:13px;color:rgba(245,246,247,.4)}
   .pfoot-cr em{font-style:normal;font-size:11px;color:rgba(245,246,247,.26)}
-  .pfoot-links{display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center;font-size:12px}
+  .pfoot-links{display:flex;gap:8px 16px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:12px}
+  .pfoot-sep{width:1px;height:12px;background:rgba(245,246,247,.18);flex:none}
   .pfoot-in a{color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease}
   .pfoot-in a:hover{color:var(--accent-light)}
   @media (max-width:760px){.pfoot-in{flex-direction:column;justify-content:center;text-align:center;gap:18px;padding-bottom:52px}.pfoot-cr{align-items:center}}
@@ -85,7 +87,8 @@
   <div class="pfoot-hair"></div>
   <div class="pfoot-brand">
     <img src="assets/logo.jpg" alt="Dincolo de Granițe" width="86" height="86" loading="lazy" decoding="async" class="pfoot-logo">
-    <p class="pfoot-mission">Dincolo de Granițe este un podcast despre oameni, experiențe și perspective care apropie românii din întreaga lume.</p>
+    <p class="pfoot-mission">Îi invităm pentru ceea ce știu. Îi ascultăm pentru cine sunt.</p>
+    <p class="pfoot-mission-sub">Interviuri pregătite în profunzime cu români din domenii diverse, din România și din întreaga lume.</p>
     <span class="fsoc-row">
       <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" class="fsoc"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
       <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
@@ -96,10 +99,10 @@
     </span>
   </div>
   <div class="pfoot-in">
-    <span class="pfoot-cr">© 2026 Dincolo de Granițe. Toate drepturile rezervate.<em>Creat și găzduit de Peter Baghiu</em></span>
-    <span class="pfoot-links"><a href="index.html">Acasă</a><a href="despre.html">Despre</a><a href="episoade.html">Episoade</a><a href="oameni.html">Oameni</a><a href="invitati.html">Devino invitat</a><a href="contact.html">Contact</a><a href="parteneriate.html">Parteneriate</a><a href="termeni.html">Termeni</a><a href="privacy.html">Confidențialitate</a></span>
+    <span class="pfoot-cr">© 2026 Dincolo de Granițe. Toate drepturile rezervate.<em>Creat și prezentat de Peter Baghiu.</em></span>
+    <span class="pfoot-links"><a href="index.html">Acasă</a><a href="despre.html">Despre</a><a href="episoade.html">Episoade</a><a href="oameni.html">Oameni</a><a href="invitati.html">Devino invitat</a><a href="parteneriate.html">Parteneriate</a><a href="contact.html">Contact</a><span class="pfoot-sep" aria-hidden="true"></span><a href="termeni.html">Termeni</a><a href="privacy.html">Confidențialitate</a></span>
   </div>
 </div></footer>
-<script defer src="social.js"></script>
+<script defer src="social.js?v=2"></script>
 </body>
 </html>

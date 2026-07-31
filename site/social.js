@@ -123,9 +123,9 @@ function initNewsletterForms(){
       var msg = form.querySelector('[data-nl-msg]');
       var btn = form.querySelector('button[type="submit"]');
       function show(t){ if(msg){ msg.textContent = t; msg.style.opacity = '1'; } }
-      if(hp && hp.value){ input.value = ''; show('Te-am notat! Îți dăm de veste la primul episod.'); return; }
+      if(hp && hp.value){ input.value = ''; show('Te-ai înscris cu succes. Te anunțăm imediat ce primul episod este publicat.'); return; }
       var email = (input.value || '').trim();
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('Te rog introdu o adresă de email validă.'); return; }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('Introdu o adresă de email validă.'); return; }
       if(btn) btn.disabled = true;
       fetch(SUPA_URL + '/rest/v1/subscribers', {
         method: 'POST',
@@ -133,7 +133,7 @@ function initNewsletterForms(){
         body: JSON.stringify({ email: email })
       }).then(function(r){
         if(btn) btn.disabled = false;
-        if(r.status === 409){ show('Ești deja pe listă! Te anunțăm la primul episod.'); return; }
+        if(r.status === 409){ show('Ești deja pe listă. Te anunțăm imediat ce primul episod este publicat.'); return; }
         if(!r.ok) throw new Error('HTTP ' + r.status);
         input.value = '';
         show('Te-am notat! Îți dăm de veste la primul episod.');
