@@ -332,6 +332,36 @@
     return;
   }
   var db = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  var FN_ANNOUNCE = SUPA_URL + '/functions/v1/announce-episode';
+
+  // ── Anunt episod nou catre abonati ────────────────────
+  function announceEpisode(ep, test){
+    db.auth.getSession().then(function(sess){
+      var token = sess.data.session && sess.data.session.access_token;
+      if(!token){ alert('Sesiunea a expirat. Reautentifică-te.'); return; }
+      function send(){
+        fetch(FN_ANNOUNCE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+          body: JSON.stringify({ episode_id: ep.id, test: !!test, force: !!ep.announced_at })
+        }).then(function(r){ return r.json(); }).then(function(res){
+          if(!res.ok){ alert('Eroare la trimitere: ' + (res.error || 'necunoscută') + (res.errors ? '\n' + res.errors.join('\n') : '')); return; }
+          alert(test
+            ? 'Email de test trimis către contact@dincolodegranite.com. Verifică inboxul înainte de trimiterea reală.'
+            : 'Anunțul a plecat către ' + res.sent + ' abonați.');
+          loadEpisodes();
+        }).catch(function(){ alert('Eroare de rețea. Încearcă din nou.'); });
+      }
+      if(test){ send(); return; }
+      db.from('subscribers').select('id', { count: 'exact', head: true }).then(function(r){
+        var n = r.count || 0;
+        if(!n){ alert('Niciun abonat încă — nu are cui să-i trimită.'); return; }
+        var msg = 'Trimiți emailul despre „' + ep.title + '" către ' + n + ' abonați?';
+        if(ep.announced_at) msg = 'ATENȚIE: episodul a mai fost anunțat pe ' + new Date(ep.announced_at).toLocaleString('ro-RO') + '.\nAbonații vor primi emailul ÎNCĂ O DATĂ.\n\n' + msg;
+        if(confirm(msg)) send();
+      });
+    });
+  }
 
   var $ = function(id){ return document.getElementById(id); };
   var editingId = null;
@@ -523,6 +553,20 @@
           if(!confirm('Ștergi episodul „' + ep.title + '"?')) return;
           db.from('episodes').delete().eq('id', ep.id).then(loadEpisodes);
         });
+        if(ep.published){
+          var tst = document.createElement('button');
+          tst.className = 'btn-ghost btn-small'; tst.textContent = 'TEST EMAIL';
+          tst.title = 'Trimite emailul de anunț doar către contact@dincolodegranite.com, ca să-l vezi înainte';
+          tst.addEventListener('click', function(){ announceEpisode(ep, true); });
+          var ann = document.createElement('button');
+          ann.className = 'btn-ghost btn-small';
+          ann.textContent = ep.announced_at ? 'ANUNȚAT ✓' : 'ANUNȚĂ ABONAȚII';
+          ann.title = ep.announced_at
+            ? 'Anunțat pe ' + new Date(ep.announced_at).toLocaleString('ro-RO') + ' — click pentru retrimitere'
+            : 'Trimite emailul cu episodul către toți abonații';
+          ann.addEventListener('click', function(){ announceEpisode(ep, false); });
+          actions.appendChild(tst); actions.appendChild(ann);
+        }
         actions.appendChild(togg); actions.appendChild(edit); actions.appendChild(del);
         row.appendChild(num); row.appendChild(mid); row.appendChild(badge); row.appendChild(actions);
         box.appendChild(row);
