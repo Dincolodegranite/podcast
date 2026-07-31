@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/despre-headphones.jpg" fetchpriority="high">
-<link rel="stylesheet" href="pages.css?v=11">
+<link rel="stylesheet" href="pages.css?v=12">
 <script defer src="social.js?v=2"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>
@@ -70,14 +70,16 @@
   .pbody{position:relative;display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px;flex:1}
   .pname{font:var(--head-weight) 24px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0}
   .prole{font:600 10.5px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);text-transform:uppercase}
-  .psub{font:500 13px var(--font-body);color:rgba(245,246,247,.6);margin-top:4px;display:block}
+  .psub{font:500 13.5px var(--font-body);color:rgba(245,246,247,.68);margin-top:4px;display:block}
   .pept{font:italic 500 15.5px/1.5 var(--font-serif),Georgia,serif;color:#f5f6f7;margin:8px 0 0}
   .pmeta{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-top:10px}
-  .pbio{font:400 13.5px/1.6 var(--font-body);color:rgba(245,246,247,.62);margin:0;flex:1}
+  .pbio{font:400 14.5px/1.6 var(--font-body);color:rgba(245,246,247,.72);margin:0;flex:1}
   .psoc{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
   .psoc a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);transition:all .25s ease}
   .psoc a:hover{border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.12)}
-  .pep{margin-top:12px}
+  .pep{margin-top:auto;padding-top:14px}
+  .pclick{cursor:pointer}
+  .pclick:focus-visible{outline:2px solid rgba(227,192,125,.75);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -238,7 +240,7 @@
     var photo = p.photo_url && /^https:\/\//.test(p.photo_url)
       ? '<img src="' + esc(p.photo_url) + '" alt="' + esc(p.name) + '" loading="lazy">'
       : '<div class="pinit" aria-hidden="true">' + esc(initials(p.name)) + '</div>';
-    var STAGE = { confirmat: 'CONFIRMAT', pregatire: 'ÎN PREGĂTIRE', programat: 'FILMAREA PROGRAMATĂ', inregistrat: 'ÎNREGISTRAT', montaj: 'ÎN MONTAJ', publicat: 'EPISOD PUBLICAT' };
+    var STAGE = { confirmat: 'CONFIRMAT', pregatire: 'ÎN PREGĂTIRE', programat: 'FILMAREA PROGRAMATĂ', inregistrat: 'ÎNREGISTRAT', montaj: 'ÎN MONTAJ', premiera: 'PREMIERĂ PROGRAMATĂ', publicat: 'EPISOD PUBLICAT' };
     var FMT = { portret: 'PORTRET', expertiza: 'EXPERTIZĂ' };
     var badge = p.status === 'past'
       ? '<span class="pbadge past">EPISOD PUBLICAT</span>'
@@ -250,8 +252,9 @@
         soc += '<a href="' + esc(url) + '" target="_blank" rel="noopener" aria-label="' + LABELS[k] + '" title="' + LABELS[k] + '">' + IC[k] + '</a>';
       }
     });
-    var ep = (p.status === 'past' && p.episode_url && /^https:\/\//.test(p.episode_url))
-      ? '<div class="pep"><a class="btn btn-gold" style="padding:11px 22px;font-size:12.5px" href="' + esc(p.episode_url) + '" target="_blank" rel="noopener">Urmărește episodul</a></div>'
+    var epUrl = (p.status === 'past' && p.episode_url && /^https:\/\//.test(p.episode_url)) ? p.episode_url : null;
+    var ep = epUrl
+      ? '<div class="pep"><a class="btn btn-gold" style="padding:11px 22px;font-size:12.5px" href="' + esc(epUrl) + '" target="_blank" rel="noopener">Urmărește episodul</a></div>'
       : '';
     /* invitatii viitori poarta formatul in prima linie; la episoadele publicate
        formatul coboara in linia meta a episodului */
@@ -274,10 +277,23 @@
         '<h3 class="pname">' + esc(p.name) + '</h3>' + sub +
         (p.status === 'past'
           ? epTitle + epMeta
-          : (p.bio ? '<p class="pbio">' + esc(p.bio) + '</p>' : '')) +
-        (soc ? '<div class="psoc">' + soc + '</div>' : '') +
+          : (p.bio ? '<p class="pbio">' + esc(p.bio) + '</p>' : '') + (soc ? '<div class="psoc">' + soc + '</div>' : '')) +
         ep +
       '</div>';
+    /* 6. cardul publicat e clicabil in intregime; butonul ramane semnalul vizual */
+    if(epUrl){
+      el.classList.add('pclick');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('role', 'link');
+      el.setAttribute('aria-label', 'Urmărește episodul cu ' + p.name);
+      el.addEventListener('click', function(e){
+        if(e.target.closest('a')) return;
+        window.open(epUrl, '_blank', 'noopener');
+      });
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); window.open(epUrl, '_blank', 'noopener'); }
+      });
+    }
     return el;
   }
   function reveal(){

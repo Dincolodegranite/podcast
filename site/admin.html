@@ -189,7 +189,7 @@
           <input id="pp-photo" type="url" placeholder="Link poză de profil (https://...)">
           <div class="row">
             <select id="pp-status" class="fixed"><option value="upcoming">Urmează la microfon</option><option value="past">Episod publicat</option></select>
-            <select id="pp-stage" class="fixed" title="Statusul afișat pe card (doar la Urmează)"><option value="confirmat">Confirmat</option><option value="pregatire">În pregătire</option><option value="programat">Filmarea programată</option><option value="inregistrat">Înregistrat</option><option value="montaj">În montaj</option><option value="publicat">Episod publicat</option></select>
+            <select id="pp-stage" class="fixed" title="Statusul afișat pe card (doar la Urmează)"><option value="confirmat">Confirmat</option><option value="pregatire">În pregătire</option><option value="programat">Filmarea programată</option><option value="inregistrat">Înregistrat</option><option value="montaj">În montaj</option><option value="premiera">Premieră programată</option><option value="publicat">Episod publicat</option></select>
             <select id="pp-format" class="fixed" title="Formatul episodului"><option value="portret">Portret</option><option value="expertiza">Expertiză</option></select>
             <input id="pp-episode" type="url" placeholder="Link episod (pentru cei care au fost)">
             <input id="pp-ep-title" type="text" placeholder="Titlul episodului (apare pe card la publicate)">
@@ -806,7 +806,7 @@
         var who = document.createElement('div');
         var name = document.createElement('strong'); name.textContent = g.name;
         var meta = document.createElement('div'); meta.className = 'muted';
-        var STAGE_L = { confirmat: 'Confirmat', pregatire: 'În pregătire', programat: 'Filmarea programată', inregistrat: 'Înregistrat', montaj: 'În montaj', publicat: 'Episod publicat' };
+        var STAGE_L = { confirmat: 'Confirmat', pregatire: 'În pregătire', programat: 'Filmarea programată', inregistrat: 'Înregistrat', montaj: 'În montaj', premiera: 'Premieră programată', publicat: 'Episod publicat' };
         meta.textContent = (g.status === 'past' ? 'Episod publicat' : 'Urmează — ' + (STAGE_L[g.stage] || 'Confirmat')) + (g.title ? ' · ' + g.title : '') + ' · ' + (g.format === 'expertiza' ? 'Expertiză' : 'Portret') + ' · ordine ' + (g.sort_order || 0);
         who.appendChild(name); who.appendChild(meta);
         var controls = document.createElement('div');
