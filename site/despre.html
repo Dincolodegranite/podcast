@@ -58,6 +58,8 @@
   .fmt-card:hover .fmt-wm{color:rgba(227,192,125,.14);transform:translateY(-5px)}
   .fmt-card h2,.fmt-card p{position:relative}
   .fmt-top{position:relative;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .fmt-badge{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.06);font-size:12.5px;color:rgba(245,246,247,.78)}
+  .fmt-badge strong{color:var(--accent-light);font-size:10.5px;letter-spacing:.16em}
   .fmt-act{font:700 10px var(--font-body);letter-spacing:.22em;color:rgba(227,192,125,.85)}
   .fmt-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--accent-light),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .fmt-card:hover .fmt-bar{transform:scaleX(1)}
@@ -102,8 +104,9 @@
   html.rvjs .grid3 .rv:nth-child(2){transition-delay:.12s}
   html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
   @media (prefers-reduced-motion:reduce){html.rvjs .rv{opacity:1;transform:none;transition:none}}
-  @font-face{font-family:'Amsterdam Handwriting';src:url('assets/fonts/amsterdam-handwriting.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-  .sig-name{position:absolute;right:26px;bottom:34px;z-index:2;font:400 clamp(34px,5vw,48px)/1 'Amsterdam Handwriting',cursive;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6),0 0 26px rgba(0,0,0,.35);pointer-events:none;white-space:nowrap}
+  .sig-id{position:absolute;right:24px;bottom:24px;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:4px;pointer-events:none;text-align:right}
+  .sig-id strong{font:700 16px 'Inter',sans-serif;color:#fff;letter-spacing:.02em;text-shadow:0 2px 10px rgba(0,0,0,.65)}
+  .sig-id span{font:600 9.5px 'Inter',sans-serif;letter-spacing:.2em;color:rgba(227,192,125,.95);text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.6)}
   .hp-frame img{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
   .gcard:hover .hp-frame img{transform:scale(1.045)}
   .icon-chip{transition:transform .35s cubic-bezier(.2,.8,.2,1),background .35s ease}
@@ -111,26 +114,27 @@
   .spec-cell:hover .icon-chip{transform:scale(1.12)}
   .bn-t{display:flex;align-items:center;gap:10px;font:600 14px var(--font-body);color:var(--accent-light);margin-bottom:8px}
   .topics-head{font:700 10px var(--font-body);letter-spacing:.22em;color:rgba(227,192,125,.85);margin-bottom:20px}
+  .faq-i summary:focus-visible{outline:2px solid rgba(227,192,125,.75);outline-offset:3px;border-radius:6px}
   .topics-sep{height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.35),transparent);margin:30px 0 24px}
   .sday{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   @media (max-width:860px){.sday{grid-template-columns:1fr 1fr}}
   @media (max-width:480px){.sday{grid-template-columns:1fr}}
   .sday-n{font:var(--head-weight) 30px/1 var(--font-head);background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
   .sday-t{font:600 14px var(--font-body);color:#f5f6f7;margin-bottom:5px}
-  .sday-p{font-size:13.5px;line-height:1.55;margin:0;color:rgba(245,246,247,.62)}
+  .sday-p{font-size:14px;line-height:1.6;margin:0;color:rgba(245,246,247,.7)}
   .tl{position:relative;margin-top:16px;max-width:640px}
   .tl::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent-light),rgba(201,162,90,.08))}
-  .tl-item{position:relative;padding:0 0 26px 34px}
+  .tl-item{position:relative;padding:0 0 21px 34px}
   .tl-item:last-child{padding-bottom:0}
   .tl-item::before{content:'';position:absolute;left:3px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(201,162,90,.18)}
   .tl-l{font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);margin-bottom:4px}
   .tl-t{font:var(--head-weight) 20px var(--font-head);letter-spacing:.04em;color:#f5f6f7;margin:0 0 4px}
-  .tl-p{font-size:14px;margin:0;color:rgba(245,246,247,.65)}
+  .tl-p{font-size:14.5px;line-height:1.6;margin:0;color:rgba(245,246,247,.72)}
   /* desktop: zigzag față de linia centrală */
   @media (min-width:860px){
     .tl{max-width:940px}
     .tl::before{left:50%;margin-left:-1px}
-    .tl-item{width:50%;padding:0 40px 36px 0;text-align:right}
+    .tl-item{width:50%;padding:0 40px 29px 0;text-align:right}
     .tl-item::before{left:auto;right:-7px}
     .tl-item:nth-child(even){margin-left:50%;padding:0 0 36px 40px;text-align:left}
     .tl-item:nth-child(even)::before{right:auto;left:-7px}
@@ -200,7 +204,7 @@
   <div class="dhero-shade" aria-hidden="true"></div>
   <div class="wrap dhero-in">
     <h1 data-set="despre_hero_title" data-gold-last>Povestea din spatele <span class="gold-last">podcastului</span></h1>
-    <p class="lede" data-set="despre_hero_lede">Nu am creat acest podcast doar pentru a realiza interviuri. L-am creat pentru că am descoperit că unele conversații nu ar trebui să se încheie odată cu întâlnirea. Unele merită să fie ascultate de mult mai mulți oameni.</p>
+    <p class="lede" data-set="despre_hero_lede">Am creat Dincolo de Granițe pentru conversații care merg dincolo de funcții, titluri și aparențe. Aducem în fața publicului români cu expertiză, idei și parcursuri care merită înțelese în profunzime. Fiecare episod este documentat, iar întrebările sunt pregătite în jurul invitatului. Structura oferă direcție. Răspunsurile păstrează conversația autentică.</p>
   </div>
 </section>
 
@@ -213,16 +217,18 @@
       <div class="story-grid">
         <div class="story-text">
           <div style="position:relative" data-set-html="despre_bio">
-          <p><strong style="color:#f5f6f7">Nu am pornit acest podcast pentru a deveni podcaster.</strong> Sunt fotograf profesionist, stabilit în Kent, Marea Britanie, unul dintre milioanele de români care au plecat de acasă ca să construiască ceva în altă parte.</p>
-          <p>Ani de zile, profesia mea a fost să surprind momente: oameni, evenimente, fracțiuni de secundă care spun o poveste întreagă. Cu timpul am înțeles că cele mai valoroase lucruri pe care le-am întâlnit nu erau imaginile, ci poveștile din spatele lor. Oameni plecați cu o valiză și un plan vag, care azi conduc afaceri, echipe și proiecte pe care puțini le-ar fi crezut posibile.</p>
-          <p style="margin-bottom:0">Poveștile astea rămâneau spuse pe jumătate, între două cadre. Așa a apărut podcastul.</p>
+          <p><strong style="color:#f5f6f7">Sunt Peter Baghiu, fotograf profesionist stabilit în Kent, Marea Britanie.</strong></p>
+          <p>Ani la rând, meseria m-a adus în fața unor oameni din domenii foarte diferite și m-a învățat să observ detaliile pe care graba le ascunde.</p>
+          <p>Am descoperit că, după ce aparatul era oprit, începeau adesea cele mai valoroase discuții: despre decizii, îndoieli, expertiză, eșecuri, reușite și lecții care nu încăpeau într-o fotografie.</p>
+          <p>Dincolo de Granițe s-a născut din dorința de a pregăti și păstra astfel de conversații — cu medici, psihologi, profesori, antreprenori, artiști, sportivi, specialiști și oameni care au ceva relevant de explicat sau de împărtășit.</p>
+          <p style="margin-bottom:0">Cred că o întrebare bine pregătită poate deschide o perspectivă pe care altfel nu am fi descoperit-o.</p>
           </div>
         </div>
         <div class="story-photo">
           <img data-set-img="despre_portrait" src="assets/despre-portrait.jpg" alt="Peter Baghiu" loading="lazy">
           <div class="story-shade" aria-hidden="true"></div>
           <div class="story-frame" aria-hidden="true"></div>
-          <span class="sig-name">Peter</span>
+          <span class="sig-id"><strong>Peter Baghiu</strong><span>Fondator și gazdă</span></span>
         </div>
       </div>
     </div>
@@ -230,10 +236,11 @@
 
   <section class="sec-gap">
     <span class="eyebrow">Traseul</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">De la obiectiv la microfon</h2>
     <div class="tl">
       <div class="tl-item rv">
         <div class="tl-l">1990</div>
-        <div class="tl-t">Unde începe povestea</div>
+        <div class="tl-t">Unde începe drumul</div>
         <p class="tl-p">Născut și crescut în România: primii ani, primele lecții, rădăcinile care nu se uită.</p>
       </div>
       <div class="tl-item rv">
@@ -248,13 +255,13 @@
       </div>
       <div class="tl-item rv">
         <div class="tl-l">2016</div>
-        <div class="tl-t">Cu o valiză spre Anglia</div>
-        <p class="tl-p">Mutarea în Marea Britanie, alături de milioanele de români plecați de acasă să construiască ceva în altă parte.</p>
+        <div class="tl-t">Un nou început în Marea Britanie</div>
+        <p class="tl-p">M-am mutat în Anglia și am început să construiesc un nou capitol, personal și profesional.</p>
       </div>
       <div class="tl-item rv">
         <div class="tl-l">FOTOGRAF</div>
         <div class="tl-t">Ani în spatele obiectivului</div>
-        <p class="tl-p">Portrete, evenimente, oameni și povești care rămâneau spuse pe jumătate, între două cadre.</p>
+        <p class="tl-p">Portrete, evenimente și conversații care rămâneau spuse pe jumătate, între două cadre.</p>
       </div>
       <div class="tl-item rv">
         <div class="tl-l">2021</div>
@@ -263,7 +270,7 @@
       </div>
       <div class="tl-item rv">
         <div class="tl-l">IDEEA</div>
-        <div class="tl-t">Poveștile cer mai mult</div>
+        <div class="tl-t">Conversațiile cer mai mult</div>
         <p class="tl-p">Conversațiile din spatele ședințelor foto meritau microfoane, nu doar cadre.</p>
       </div>
       <div class="tl-item rv">
@@ -274,7 +281,7 @@
       <div class="tl-item rv">
         <div class="tl-l">STUDIOUL</div>
         <div class="tl-t">Construit în Kent</div>
-        <p class="tl-p">Camere de cinema, lumini calde și un spațiu gândit pentru conversații lungi, fără grabă.</p>
+        <p class="tl-p">Camere Canon Cinema, iluminare profesională și un spațiu conceput pentru interviuri lungi, bine pregătite.</p>
       </div>
       <div class="tl-item rv">
         <div class="tl-l">LANSAREA</div>
@@ -286,18 +293,69 @@
 
   <section class="sec-gap">
     <span class="eyebrow">Misiunea</span>
-    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">De ce „Dincolo de Granițe"</h2>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">De ce „Dincolo de Granițe"?</h2>
     <div class="gcard ovh rv" style="margin-top:18px">
       <div class="dsp-glow"></div>
       <span class="quote-mark" aria-hidden="true">&ldquo;</span>
       <div style="position:relative">
       <div data-set-html="despre_misiune">
-      <p><strong style="color:#f5f6f7">Dincolo de Granițe este locul unde românii din întreaga lume își spun povestea.</strong> Fie că locuiesc în România, Marea Britanie, Europa, America, Canada, Australia sau oriunde în lume, fiecare invitat aduce o perspectivă unică despre curaj, schimbare și succes.</p>
-      <p>În studioul nostru din Kent sau online, purtăm conversații autentice despre viață, antreprenoriat, carieră, investiții, educație, familie, credință, cultură, provocări și lecțiile care ne formează. Nu căutăm doar realizările, ci și drumul până la ele. Pentru că, dincolo de fiecare succes, există o poveste care merită ascultată.</p>
-      <p style="margin-bottom:0">Nu ne interesează varianta lustruită de LinkedIn. Ne interesează drumul întreg: primii ani grei, banii, riscurile, eșecurile prin care nu se laudă nimeni, și felul în care, pas cu pas, se construiește ceva al tău.</p>
+      <p><strong style="color:#f5f6f7">Pentru noi, granițele nu sunt doar geografice.</strong> Sunt și limitele dintre profesii, generații, idei și experiențe.</p>
+      <p>Dincolo de Granițe aduce la aceeași masă români din România și din întreaga lume — medici, psihologi, profesori, antreprenori, artiști, sportivi, cercetători, creatori și alți specialiști.</p>
+      <p>Uneori discutăm despre medicină, psihologie, educație, business, familie, cultură, tehnologie sau sport. Alteori mergem dincolo de domeniu și descoperim alegerile, îndoielile și experiențele care au format omul.</p>
+      <p>Fiecare episod este documentat înainte de filmare. Întrebările sunt pregătite în jurul invitatului, al profesiei sale și al temelor pe care vrem să le înțelegem în profunzime. Structura oferă direcție, iar răspunsurile duc discuția mai departe.</p>
+      <p style="margin-bottom:0">Nu căutăm doar rezultate, titluri sau imaginea publică. Căutăm explicații clare, perspective bine argumentate și lucrurile care nu încap într-un CV.</p>
       </div>
       <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.4),transparent);margin-top:26px"></div>
-      <div class="closing" data-set="despre_misiune_closing">Pentru că cele mai valoroase lecții vin din experiențele oamenilor.</div>
+      <div class="closing" data-set="despre_misiune_closing">Îi invităm pentru ceea ce știu. Îi ascultăm pentru cine sunt.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-gap">
+    <span class="eyebrow">Invitații</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Cine vine la masă</h2>
+    <div class="gcard ovh rv" style="margin-top:18px">
+      <div class="dsp-glow"></div>
+      <div style="position:relative">
+      <p style="max-width:72ch;margin:0 0 22px">Medici, psihologi, profesori, antreprenori, artiști, sportivi, cercetători, creatori și alți specialiști — români din România și din întreaga lume, cu domenii și perspective diferite.</p>
+      <div class="grid3" style="gap:24px 28px">
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"></path></svg></span>Psihologie și sănătate mintală</div>
+          <p style="font-size:15px;margin:0">Emoții, relații, traumă, echilibru, epuizare și comportament.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg></span>Medicină și sănătate</div>
+          <p style="font-size:15px;margin:0">Prevenție, tratamente, sănătate publică și explicații oferite de specialiști.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>Familie, relații și creșterea copiilor</div>
+          <p style="font-size:15px;margin:0">Cuplu, parenting, adolescență și viața de familie.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5z"></path><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg></span>Educație și dezvoltare</div>
+          <p style="font-size:15px;margin:0">Școală, învățare, carieră, copii și societatea în schimbare.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 7-7"></path><path d="M14 8h6v6"></path></svg></span>Carieră, leadership și bani</div>
+          <p style="font-size:15px;margin:0">Decizii profesionale, conducere, finanțe și dezvoltare personală.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a7 7 0 0 1 4 12.5c-.7.6-1 1.3-1 2.5h-6c0-1.2-.3-1.9-1-2.5A7 7 0 0 1 12 3z"></path></svg></span>Știință, tehnologie și inovație</div>
+          <p style="font-size:15px;margin:0">Idei, cercetare, inteligență artificială și transformarea lumii în care trăim.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"></rect><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg></span>Antreprenoriat și investiții</div>
+          <p style="font-size:15px;margin:0">Construcția unei afaceri, risc, strategie, eșec și creștere.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 4 4.5 4 7a4 4 0 0 1-8 0c0-2.5 2-4 4-7z"></path><path d="M8 21h8"></path></svg></span>Cultură, credință și identitate</div>
+          <p style="font-size:15px;margin:0">Valori, tradiții, apartenență și viața între lumi.</p>
+        </div>
+        <div>
+          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v4a5 5 0 0 1-10 0z"></path><path d="M17 5h3a2 2 0 0 1-2 4h-1"></path><path d="M7 5H4a2 2 0 0 0 2 4h1"></path></svg></span>Sport și performanță</div>
+          <p style="font-size:15px;margin:0">Disciplină, pregătire, presiune, recuperare și mentalitatea performanței.</p>
+        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -308,68 +366,69 @@
     <div class="gcard ovh rv" style="margin-top:18px">
       <div class="dsp-glow"></div>
       <div style="position:relative">
-      <p style="max-width:72ch;margin-bottom:24px">Aici nu vii doar pentru poveștile altora. Vii pentru ce rămâne cu tine după: întrebări mai bune, perspective noi și lecții pe care le poți folosi în propria viață.</p>
+      <p style="max-width:72ch;margin-bottom:24px">Aici nu vii doar pentru parcursul altora. Vii pentru ce rămâne cu tine după: întrebări mai bune, perspective noi și lecții pe care le poți folosi în propria viață.</p>
       <div class="grid3">
         <div>
           <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"></path></svg></span>Te cunoști mai bine</div>
-          <p style="font-size:14px;margin:0">În drumul altora îți recunoști propriile alegeri, frici și întrebări. Uneori, povestea altcuiva îți explică viața ta.</p>
+          <p style="font-size:15px;margin:0">În drumul altora îți recunoști propriile alegeri, frici și întrebări. Uneori, experiența altcuiva îți explică viața ta.</p>
         </div>
         <div>
           <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>Îi înțelegi pe ceilalți</div>
-          <p style="font-size:14px;margin:0">Nu doar antreprenori: medici, artiști, părinți, profesioniști din domenii diverse, cu perspective pe care altfel nu le-ai întâlni.</p>
+          <p style="font-size:15px;margin:0">Nu doar antreprenori: medici, artiști, părinți, profesioniști din domenii diverse, cu perspective pe care altfel nu le-ai întâlni.</p>
         </div>
         <div>
           <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m15.5 8.5-2 5-5 2 2-5z"></path></svg></span>Pleci cu ceva concret</div>
-          <p style="font-size:14px;margin:0">Idei și unelte pentru viața ta interioară, pentru relațiile tale și pentru deciziile care contează.</p>
+          <p style="font-size:15px;margin:0">Idei și unelte pentru viața ta interioară, pentru relațiile tale și pentru deciziile care contează.</p>
         </div>
       </div>
-      <div class="topics-sep" aria-hidden="true"></div>
-      <div class="topics-head">TEME ȘI PERSPECTIVE</div>
-      <div class="grid3" style="gap:24px 28px">
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"></path></svg></span>Sănătate mentală</div>
-          <p style="font-size:14px;margin:0">Presiune, epuizare, echilibru. Cum arată viața interioară a oamenilor care par că le au pe toate.</p>
-        </div>
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>Familie și cuplu</div>
-          <p style="font-size:14px;margin:0">Cum reziști în doi când construiești departe de casă: distanța, sacrificiile și deciziile luate împreună.</p>
-        </div>
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.5"></circle><path d="M2 21v-1a6 6 0 0 1 9-5"></path><circle cx="17.5" cy="11.5" r="2.5"></circle><path d="M13.5 21v-.5a4 4 0 0 1 8 0v.5"></path></svg></span>Parenting</div>
-          <p style="font-size:14px;margin:0">Ce înseamnă să crești copii între două culturi: limba, valorile de acasă și lumea în care cresc ei de fapt.</p>
-        </div>
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5z"></path><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg></span>Provocările adolescenților</div>
-          <p style="font-size:14px;margin:0">Generația care crește altfel: presiunea rețelelor, alegerea drumului și încrederea în sine.</p>
-        </div>
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 7-7"></path><path d="M14 8h6v6"></path></svg></span>Carieră și bani</div>
-          <p style="font-size:14px;margin:0">Drumul real: primii ani grei, riscuri, investiții și eșecurile despre care nu se laudă nimeni.</p>
-        </div>
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 4 4.5 4 7a4 4 0 0 1-8 0c0-2.5 2-4 4-7z"></path><path d="M8 21h8"></path></svg></span>Credință și cultură</div>
-          <p style="font-size:14px;margin:0">Ce păstrezi și ce lași în urmă când pleci: credința, tradițiile și identitatea care te ține întreg.</p>
-        </div>
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"></rect><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg></span>Antreprenoriat</div>
-          <p style="font-size:14px;margin:0">Cum construiești o afacere de la zero în altă țară: deciziile grele și momentele în care puteai pierde tot.</p>
-        </div>
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg></span>Viața departe de casă</div>
-          <p style="font-size:14px;margin:0">Dorul, adaptarea și viața dintre două lumi. Cum rămâi tu însuți când totul în jur se schimbă.</p>
-        </div>
-        <div>
-          <div class="bn-t"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v4a5 5 0 0 1-10 0z"></path><path d="M17 5h3a2 2 0 0 1-2 4h-1"></path><path d="M7 5H4a2 2 0 0 0 2 4h1"></path></svg></span>Sport și performanță</div>
-          <p style="font-size:14px;margin:0">Disciplina din spatele rezultatelor: antrenamentul, sacrificiile și mentalitatea celor care împing limita.</p>
-        </div>
+
       </div>
+    </div>
+  </section>
+
+  <section class="sec-gap">
+    <span class="eyebrow">Pregătirea</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Fiecare întrebare are un motiv</h2>
+    <div class="gcard ovh rv" style="margin-top:18px">
+      <div class="dsp-glow"></div>
+      <div style="position:relative">
+        <p style="max-width:72ch;margin:0">Înainte de fiecare episod documentăm domeniul, parcursul și aparițiile publice ale invitatului. Avem o conversație preliminară, stabilim temele relevante și pregătim întrebări personalizate.</p>
+        <p style="max-width:72ch;margin:12px 0 24px">În studio, întrebările ne oferă o direcție clară. Follow-up-urile apar firesc, în funcție de răspunsuri.</p>
+        <div class="sday">
+          <div>
+            <div class="sday-n">01</div>
+            <div class="sday-t">Cercetare</div>
+            <p class="sday-p">Documentăm persoana, profesia și subiectul.</p>
+          </div>
+          <div>
+            <div class="sday-n">02</div>
+            <div class="sday-t">Discuție preliminară</div>
+            <p class="sday-p">Stabilim temele, limitele și direcția episodului.</p>
+          </div>
+          <div>
+            <div class="sday-n">03</div>
+            <div class="sday-t">Întrebări personalizate</div>
+            <p class="sday-p">Nu folosim aceeași listă pentru fiecare invitat.</p>
+          </div>
+          <div>
+            <div class="sday-n">04</div>
+            <div class="sday-t">Follow-up-uri naturale</div>
+            <p class="sday-p">Ascultăm răspunsul și mergem acolo unde apare valoarea.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="sec-gap">
     <span class="eyebrow">Formatul</span>
-    <div class="grid3" style="margin-top:14px">
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Portret și expertiză</h2>
+    <p style="max-width:72ch;margin:14px 0 0">Structura fiecărui episod este adaptată invitatului și subiectului. Conversațiile de tip portret urmează trei acte: începutul, parcursul și lecțiile. Episoadele tematice cu specialiști pornesc de la context, continuă cu explicația și se încheie cu idei aplicabile.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+      <span class="fmt-badge"><strong>PORTRET</strong> Începutul · Parcursul · Lecțiile</span>
+      <span class="fmt-badge"><strong>EXPERTIZĂ</strong> Contextul · Explicația · Ce putem aplica</span>
+    </div>
+    <div class="grid3" style="margin-top:18px">
       <div class="gcard fmt-card rv">
         <span class="fmt-wm" aria-hidden="true">01</span>
         <div class="fmt-top">
@@ -405,21 +464,21 @@
 
   <section class="sec-gap">
     <span class="eyebrow">Studioul</span>
-    <h2 data-set="despre_studio_title" data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Filmat cinematic, în Kent</h2>
+    <h2 data-set="despre_studio_title" data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Unde tehnologia susține conversația, nu o eclipsează.</h2>
     <div class="gcard ovh rv" style="margin-top:18px">
       <div class="studio-bg" aria-hidden="true"></div>
       <div class="studio-shade" aria-hidden="true"></div>
       <div class="dsp-glow"></div>
       <div style="position:relative;display:flex;align-items:center;gap:clamp(28px,5vw,52px);flex-wrap:wrap">
         <div style="flex:1 1 300px;min-width:260px">
-          <p style="margin:0" data-set="despre_studio_text">Episoadele se filmează în studio propriu, pe camere de cinema Canon, cu invitați față în față, iar pentru românii din alte colțuri ale lumii, pe Zoom. În limba română, cu subtitrare.</p>
+          <p style="margin:0" data-set="despre_studio_text">Episoadele se filmează în studioul nostru din Kent, cu înregistrare multicameră pe sisteme Canon Cinema, iar invitații care nu pot ajunge în studio ni se alătură online. În română sau engleză, cu subtitrare.</p>
           <p style="margin:14px 0 0">Totul e construit în jurul unei idei simple: cea mai bună tehnologie e cea pe care o uiți. Camerele, luminile și microfoanele își fac treaba discret, ca în cadru să rămână doar ce contează: omul și conversația.</p>
         </div>
         <div class="spec-grid" style="flex:1 1 300px;min-width:260px;max-width:420px">
           <div class="spec-cell">
             <span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="13" height="12" rx="2.5"></rect><path d="M15 10.5 22 7v10l-7-3.5"></path></svg></span>
             <div class="spec-l">CAMERE</div>
-            <div class="spec-v" data-set="despre_spec_camere">Canon Cinema, în studio propriu</div>
+            <div class="spec-v" data-set="despre_spec_camere">Înregistrare multicameră, sisteme Canon Cinema</div>
           </div>
           <div class="spec-cell">
             <span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg></span>
@@ -429,7 +488,7 @@
           <div class="spec-cell">
             <span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.9 4.9 1.4 1.4"></path><path d="m17.7 17.7 1.4 1.4"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.3 17.7-1.4 1.4"></path><path d="m19.1 4.9-1.4 1.4"></path></svg></span>
             <div class="spec-l">LUMINĂ</div>
-            <div class="spec-v">Setup cald, look cinematic</div>
+            <div class="spec-v">Iluminare profesională, atmosferă caldă</div>
           </div>
           <div class="spec-cell">
             <span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"></path></svg></span>
@@ -439,7 +498,7 @@
           <div class="spec-cell">
             <span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7"></path><path d="M7 3v2c0 4-2.5 7.5-5 9"></path><path d="M5 9c1.5 2.5 4 4.5 6 5"></path><path d="M13 21l4-9 4 9"></path><path d="M14.5 17.5h5"></path></svg></span>
             <div class="spec-l">LIMBA</div>
-            <div class="spec-v" data-set="despre_spec_limba">Română, cu subtitrare</div>
+            <div class="spec-v" data-set="despre_spec_limba">Română sau engleză, cu subtitrare</div>
           </div>
           <div class="spec-cell">
             <span class="icon-chip" style="width:28px;height:28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18"></path><path d="M8 3v4"></path><path d="M16 3v4"></path></svg></span>
@@ -465,12 +524,12 @@
           <div>
             <div class="sday-n">03</div>
             <div class="sday-t">Vorbim 60–90 de minute</div>
-            <p class="sday-p">Fără scenariu rigid, cu pauze și timp să spui totul, în ritmul tău.</p>
+            <p class="sday-p">Întrebări pregătite, follow-up-uri naturale și timp pentru nuanțe, în ritmul tău.</p>
           </div>
           <div>
             <div class="sday-n">04</div>
-            <div class="sday-t">Restul e la mine</div>
-            <p class="sday-p">Episodul intră la montaj și se publică programat, în serie. Primești data exactă și clipurile înainte de lansare.</p>
+            <div class="sday-t">Producția și publicarea</div>
+            <p class="sday-p">Ne ocupăm de montaj, subtitrare, clipurile scurte și programarea lansării. Primești data exactă înainte de lansare.</p>
           </div>
         </div>
       </div>
@@ -479,10 +538,11 @@
 
   <section class="sec-gap">
     <span class="eyebrow">Întrebări frecvente</span>
-    <div class="faq rv">
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Tot ce trebuie să știi înainte de filmare</h2>
+    <div class="faq rv" style="margin-top:18px">
       <details class="faq-i">
         <summary>Cine poate fi invitat la podcast?</summary>
-        <p>Români de oriunde din lume care au construit ceva: antreprenori, profesioniști, investitori, creatori. Nu contează dimensiunea poveștii, ci autenticitatea ei. Îți poți împărtăși experiența din <a href="invitati.html">pagina Invitați</a>.</p>
+        <p>Români din România și din întreaga lume care au ceva relevant de împărtășit: medici, psihologi, profesori, antreprenori, artiști, sportivi, cercetători și alți specialiști. Te poți propune din <a href="invitati.html">pagina Devino invitat</a>.</p>
       </details>
       <details class="faq-i">
         <summary>Trebuie să vin fizic în Kent?</summary>
@@ -508,6 +568,22 @@
         <summary>Când apare episodul meu după filmare?</summary>
         <p>Nu imediat. Înregistrăm în avans și construim un calendar de publicare, ca episoadele să apară constant, în serie. Primești data exactă înainte de lansare.</p>
       </details>
+      <details class="faq-i">
+        <summary>Cum sunt pregătite întrebările?</summary>
+        <p>Fiecare interviu este documentat și pregătit individual. Întrebările sunt construite în jurul profesiei, experiențelor și perspectivelor invitatului, nu preluate dintr-un formular generic.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Primesc temele înainte de filmare?</summary>
+        <p>Da. Înainte de înregistrare discutăm direcția episodului, temele principale și eventualele limite. Conversația rămâne naturală, iar întrebările de follow-up apar în funcție de răspunsuri.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Pot evita un subiect personal?</summary>
+        <p>Da. Respectăm limitele fiecărui invitat și stabilim înainte ce teme sunt sau nu sunt potrivite pentru conversație.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Cum vor fi folosite clipurile?</summary>
+        <p>Din episodul complet selectăm fragmente pentru promovarea podcastului pe YouTube și pe rețelele sociale. Invitatul primește informațiile despre publicare înainte de lansare.</p>
+      </details>
     </div>
   </section>
 
@@ -517,9 +593,9 @@
       <div class="dsp-glow"></div>
       <div style="position:relative">
         <h2 data-gold-last style="margin:0 0 10px;font-size:clamp(26px,5vw,38px)">Poate următoarea perspectivă vine de la tine.</h2>
-        <p style="max-width:52ch;margin:0 auto 24px">Nu căutăm povești perfecte. Căutăm oameni autentici, experiențe reale și perspective care rămân.</p>
+        <p style="max-width:56ch;margin:0 auto 24px">Căutăm oameni cu expertiză, idei, experiențe sau perspective care pot aduce valoare publicului. Nu trebuie să ai o imagine perfectă și nici un parcurs spectaculos. Trebuie să ai ceva relevant, sincer și bine argumentat de împărtășit.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-          <a class="btn btn-gold" href="invitati.html">Împărtășește-ți experiența</a>
+          <a class="btn btn-gold" href="invitati.html">Propune-te ca invitat</a>
           <a class="btn btn-ghost" href="episoade.html">Descoperă episoadele</a>
         </div>
       </div>
