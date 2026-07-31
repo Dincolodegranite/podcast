@@ -29,10 +29,19 @@
   .fsoc:hover{border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)}
   .fsoc-row{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
   .fsoc-block{display:flex;flex-direction:column;align-items:center;gap:10px}
-  .pfoot{border-top:1px solid rgba(201,162,90,.18);padding:26px 0 44px}
-  .pfoot-in{max-width:760px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;font:400 12.5px var(--font-body);color:rgba(245,246,247,.45)}
-  .pfoot-in a{color:rgba(245,246,247,.55);text-decoration:none}
+  .pfoot{margin-top:clamp(48px,8vw,80px);padding:0 0 44px}
+  .pfoot-wrap{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,44px)}
+  .pfoot-hair{height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.14) 30%,rgba(201,162,90,.14) 70%,transparent)}
+  .pfoot-brand{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;padding:clamp(30px,4.5vw,46px) 0 clamp(28px,4vw,40px)}
+  .pfoot-logo{width:86px;height:86px;border-radius:50%;border:1px solid rgba(201,162,90,.5);box-shadow:0 0 0 7px rgba(201,162,90,.07),0 14px 34px rgba(0,0,0,.5);margin-bottom:18px}
+  .pfoot-mission{font:italic 500 clamp(16px,2.8vw,19px)/1.6 var(--font-serif),serif;color:rgba(245,246,247,.72);max-width:600px;margin:0}
+  .pfoot-in{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid rgba(245,246,247,.08);padding-top:22px;font:400 12.5px var(--font-body);color:rgba(245,246,247,.45)}
+  .pfoot-cr{display:flex;flex-direction:column;gap:3px;font-size:13px;color:rgba(245,246,247,.4)}
+  .pfoot-cr em{font-style:normal;font-size:11px;color:rgba(245,246,247,.26)}
+  .pfoot-links{display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center;font-size:12px}
+  .pfoot-in a{color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease}
   .pfoot-in a:hover{color:var(--accent-light)}
+  @media (max-width:760px){.pfoot-in{flex-direction:column;justify-content:center;text-align:center;gap:18px;padding-bottom:52px}.pfoot-cr{align-items:center}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -72,19 +81,24 @@
   <h2>English summary</h2>
   <p>This site collects your email address only if you voluntarily subscribe to episode notifications (processed via Formspree, hosted on Vercel). No tracking cookies, no analytics. Your language preference is stored locally in your browser only. We use your email solely to notify you about the podcast, never share it for marketing, and delete it on request. Contact: <a href="mailto:contact@dincolodegranite.com">contact@dincolodegranite.com</a>.</p>
 </div>
-<footer class="pfoot"><div class="pfoot-in">
-  <span>&copy; 2026 Dincolo de Grani&#539;e &middot; Un podcast de Peter Baghiu</span>
-  <span class="fsoc-block">
+<footer class="pfoot"><div class="pfoot-wrap">
+  <div class="pfoot-hair"></div>
+  <div class="pfoot-brand">
+    <img src="assets/logo.jpg" alt="Dincolo de Granițe" width="86" height="86" loading="lazy" decoding="async" class="pfoot-logo">
+    <p class="pfoot-mission">Dincolo de Granițe este un podcast despre oameni, experiențe și perspective care apropie românii din întreaga lume.</p>
     <span class="fsoc-row">
-        <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" class="fsoc"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
-        <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
-        <a href="https://tiktok.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="TikTok" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-3.4h-3.3v13.9a2.6 2.6 0 1 1-1.8-2.5V10.4a5.9 5.9 0 1 0 5.1 5.9V9.3a7.6 7.6 0 0 0 4.4 1.4V7.4a4.3 4.3 0 0 1-1.8-1.6Z"></path></svg></a>
-        <a href="https://facebook.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Facebook" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"></path></svg></a>
-        <a href="#" data-social="social_apple" target="_blank" rel="noopener" aria-label="Apple Podcasts" class="fsoc" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none"></circle><path d="M8.5 8.2a5 5 0 0 1 7 0"></path><path d="M6 5.6a8.4 8.4 0 0 1 12 0"></path><path d="M10.5 15.5h3l-.6 5h-1.8z"></path></svg></a>
-        <a href="#" data-social="social_spotify" target="_blank" rel="noopener" aria-label="Spotify" class="fsoc" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 9.6c3-1 6.6-.8 9.1.7"></path><path d="M8 12.4c2.5-.8 5.4-.6 7.4.7"></path><path d="M8.6 15.1c1.9-.6 4-.4 5.7.6"></path></svg></a>
+      <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" class="fsoc"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
+      <a href="https://instagram.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Instagram" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+      <a href="https://tiktok.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="TikTok" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-2.6-3.4h-3.3v13.9a2.6 2.6 0 1 1-1.8-2.5V10.4a5.9 5.9 0 1 0 5.1 5.9V9.3a7.6 7.6 0 0 0 4.4 1.4V7.4a4.3 4.3 0 0 1-1.8-1.6Z"></path></svg></a>
+      <a href="https://facebook.com/dincolo.de.granite" target="_blank" rel="noopener" aria-label="Facebook" class="fsoc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"></path></svg></a>
+      <a href="#" data-social="social_apple" target="_blank" rel="noopener" aria-label="Apple Podcasts" class="fsoc" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none"></circle><path d="M8.5 8.2a5 5 0 0 1 7 0"></path><path d="M6 5.6a8.4 8.4 0 0 1 12 0"></path><path d="M10.5 15.5h3l-.6 5h-1.8z"></path></svg></a>
+      <a href="#" data-social="social_spotify" target="_blank" rel="noopener" aria-label="Spotify" class="fsoc" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 9.6c3-1 6.6-.8 9.1.7"></path><path d="M8 12.4c2.5-.8 5.4-.6 7.4.7"></path><path d="M8.6 15.1c1.9-.6 4-.4 5.7.6"></path></svg></a>
     </span>
-  </span>
-  <span><a href="index.html">Acas&#259;</a> &middot; <a href="episoade.html">Episoade</a> &middot; <a href="invitati.html">Invita&#539;i</a> &middot; <a href="contact.html">Contact</a> &middot; <a href="termeni.html">Termeni</a> &middot; <a href="privacy.html">Confiden&#539;ialitate</a></span>
+  </div>
+  <div class="pfoot-in">
+    <span class="pfoot-cr">© 2026 Dincolo de Granițe. Toate drepturile rezervate.<em>Creat și găzduit de Peter Baghiu</em></span>
+    <span class="pfoot-links"><a href="index.html">Acasă</a><a href="despre.html">Despre</a><a href="episoade.html">Episoade</a><a href="oameni.html">Oameni</a><a href="invitati.html">Devino invitat</a><a href="contact.html">Contact</a><a href="parteneriate.html">Parteneriate</a><a href="termeni.html">Termeni</a><a href="privacy.html">Confidențialitate</a></span>
+  </div>
 </div></footer>
 <script defer src="social.js"></script>
 </body>
