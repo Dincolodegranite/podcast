@@ -684,7 +684,7 @@ document.addEventListener('pointerout', function(e){
       board_title:"DESTINAȚII · EPISOADE", board_lon:"LONDRA", board_buc:"BUCUREȘTI", board_gate:"POARTA", board_boarding:"ÎMBARCARE DESCHISĂ", board_col_flight:"ZBOR", board_col_story:"POVESTEA", board_col_time:"PLECARE", board_col_status:"STATUS",
       board_nyc:"NEW YORK", board_project_label:"PROIECT", scale_label:"SCARĂ 1:1 — POVESTE REALĂ", ep_view_link:"VEZI →", ep_view:"VEZI EPISODUL", ep_all:"VEZI TOATE EPISOADELE →",
       newsletter_consent:'Prin abonare ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>.', footer_privacy:"Confidențialitate",
-      footer_mission:"Dincolo de Granițe este un podcast despre oameni, experiențe și perspective care apropie românii din întreaga lume.", footer_copyright:"© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu", loader_text:"OAMENI. EXPERIENȚE. PERSPECTIVE."
+      footer_mission:"Dincolo de Granițe este un podcast despre oameni, experiențe și perspective care apropie românii din întreaga lume.", footer_copyright:"© 2026 Dincolo de Granițe. Toate drepturile rezervate.", footer_credit:"Creat și găzduit de Peter Baghiu", loader_text:"OAMENI. EXPERIENȚE. PERSPECTIVE."
     },
     en: {
       nav_despre:"ABOUT", nav_episoade:"EPISODES", nav_playlist:"PLAYLIST", nav_oameni:"OAMENI", nav_mediakit:"PARTENERIATE", nav_contact:"CONTACT", nav_subscribe:"SUBSCRIBE",
@@ -721,7 +721,7 @@ document.addEventListener('pointerout', function(e){
       board_title:"DESTINATIONS · EPISODES", board_lon:"LONDON", board_buc:"BUCHAREST", board_gate:"GATE", board_boarding:"NOW BOARDING", board_col_flight:"FLIGHT", board_col_story:"THE STORY", board_col_time:"DEPARTURE", board_col_status:"STATUS",
       board_nyc:"NEW YORK", board_project_label:"PROJECT", scale_label:"SCALE 1:1 — REAL STORY", ep_view_link:"WATCH →", ep_view:"WATCH EPISODE", ep_all:"SEE ALL EPISODES →",
       newsletter_consent:'By subscribing you agree to the <a href="privacy.html" style="color:var(--accent)">privacy policy</a>.', footer_privacy:"Privacy",
-      footer_mission:"Dincolo de Granițe is a podcast about people, experiences and perspectives, bringing Romanians around the world closer together.", footer_copyright:"© 2026 Dincolo de Granițe · A podcast by Peter Baghiu", loader_text:"PEOPLE. EXPERIENCES. PERSPECTIVES."
+      footer_mission:"Dincolo de Granițe is a podcast about people, experiences and perspectives, bringing Romanians around the world closer together.", footer_copyright:"© 2026 Dincolo de Granițe. All rights reserved.", footer_credit:"Created and hosted by Peter Baghiu", loader_text:"PEOPLE. EXPERIENCES. PERSPECTIVES."
     }
   };
   var MSGS = {
@@ -1286,8 +1286,9 @@ document.addEventListener('pointerout', function(e){
 
 <!-- FOOTER -->
 <div style="max-width:1280px;margin:0 auto;padding:clamp(32px,5vw,48px) clamp(20px,7vw,90px) 40px;box-sizing:border-box">
-  <div style="display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;padding:clamp(30px,4.5vw,46px) 0 clamp(28px,4vw,40px);border-top:1px solid rgba(201,162,90,.2)">
-    <img src="assets/logo.jpg" alt="Dincolo de Granițe" width="86" height="86" loading="lazy" decoding="async" style="width:86px;height:86px;border-radius:50%;border:1px solid rgba(201,162,90,.5);box-shadow:0 0 0 7px rgba(201,162,90,.07),0 14px 34px rgba(0,0,0,.5)">
+  <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.14) 30%,rgba(201,162,90,.14) 70%,transparent)"></div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;padding:clamp(30px,4.5vw,46px) 0 clamp(28px,4vw,40px)">
+    <img src="assets/logo.jpg" alt="Dincolo de Granițe" width="86" height="86" loading="lazy" decoding="async" style="width:86px;height:86px;border-radius:50%;border:1px solid rgba(201,162,90,.5);box-shadow:0 0 0 7px rgba(201,162,90,.07),0 14px 34px rgba(0,0,0,.5);margin-bottom:18px">
     <div style="font:italic 500 clamp(16px,2.8vw,19px)/1.6 var(--font-serif);color:rgba(245,246,247,.72);max-width:600px" data-i18n="footer_mission">Dincolo de Granițe este un podcast despre oameni, experiențe și perspective care apropie românii din întreaga lume.</div>
     <div style="display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center">
       <a href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,90,.3);border-radius:50%;color:var(--accent);text-decoration:none;transition:all .25s ease" style-hover="border-color:var(--accent-light);color:#f5f6f7;background:rgba(201,162,90,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg></a>
@@ -1299,7 +1300,7 @@ document.addEventListener('pointerout', function(e){
     </div>
   </div>
   <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(245,246,247,.08)">
-    <div style="font:400 13px var(--font-body);color:rgba(245,246,247,.4)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe · Un podcast de Peter Baghiu</div>
+    <div style="display:flex;flex-direction:column;gap:3px"><div style="font:400 13px var(--font-body);color:rgba(245,246,247,.4)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe. Toate drepturile rezervate.</div><div style="font:400 11px var(--font-body);color:rgba(245,246,247,.26)" data-i18n="footer_credit">Creat și găzduit de Peter Baghiu</div></div>
     <div style="display:flex;gap:16px;flex-wrap:wrap;font:400 12px var(--font-body)">
       <a href="despre.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Despre</a>
 
