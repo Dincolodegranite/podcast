@@ -86,6 +86,9 @@
   .gf-cap select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:38px}
   .gf-cap select option{background:#15171b;color:#f5f6f7}
   .gf-chev{position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;display:flex;color:rgba(227,192,125,.7)}
+  .gf-cap.err,.gf-area.err{background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55)) padding-box,linear-gradient(150deg,rgba(224,138,106,.75),rgba(224,138,106,.3) 55%,rgba(224,138,106,.5)) border-box}
+  .gf-fe{display:none;margin:2px 0 0 20px;font:500 12px var(--font-body);color:#e8a184;text-transform:none;letter-spacing:normal}
+  .gf-fe.on{display:block}
   .faq{display:flex;flex-direction:column;gap:10px;margin-top:14px}
   .faq-i{border:1px solid rgba(201,162,90,.2);border-radius:16px;background:linear-gradient(180deg,#15171b,#101214);overflow:hidden;transition:border-color .3s ease}
   .faq-i[open]{border-color:rgba(201,162,90,.45)}
@@ -219,13 +222,19 @@
         <h2 data-gold-last style="margin:0 0 10px;font-size:clamp(26px,5vw,36px)">Un mesaj bun începe simplu.</h2>
         <p style="max-width:52ch;margin:0 auto 26px">Nu trebuie să găsești formularea perfectă. Spune-ne pe scurt ce ai în minte, iar noi continuăm conversația.</p>
         <form data-cf-form novalidate style="max-width:560px;margin:0 auto;text-align:left;display:flex;flex-direction:column;gap:12px">
+          <div data-cf-msg role="status" aria-live="polite" style="display:none;align-items:center;gap:10px;box-sizing:border-box;padding:11px 16px 11px 13px;border-radius:12px;border:1px solid transparent;opacity:0;transform:translateY(-4px);transition:opacity .3s ease,transform .3s cubic-bezier(.2,.8,.2,1)">
+            <span data-cf-ic style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%" aria-hidden="true"></span>
+            <span data-cf-msg-text style="font:500 13.5px/1.45 var(--font-body)"></span>
+          </div>
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <label class="cf-lab" style="flex:1 1 200px">Nume
               <span class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"></path></svg></span><input data-cf-name type="text" placeholder="Numele tău" autocomplete="name"></span>
+              <span class="gf-fe" data-fe="name">Scrie-ți numele (minim 2 caractere).</span>
             </label>
             <label class="cf-lab" style="flex:1 1 200px">Adresă de email
               <span class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span><input data-cf-email type="email" placeholder="nume@exemplu.com" autocomplete="email"></span>
+              <span class="gf-fe" data-fe="email">Adresa de email nu e validă.</span>
             </label>
           </div>
           <label class="cf-lab">Motivul mesajului
@@ -240,9 +249,9 @@
           </label>
           <label class="cf-lab">Mesaj
             <span class="gf-area"><span class="gf-ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span><textarea data-cf-msg-in rows="5" placeholder="Spune-ne pe scurt ce ai în minte"></textarea></span>
+            <span class="gf-fe" data-fe="mesaj">Mesajul e prea scurt (minim 10 caractere).</span>
           </label>
           <button type="submit" class="btn btn-gold" style="align-self:center;min-height:44px">Trimite mesajul</button>
-          <div data-cf-msg role="status" aria-live="polite" style="display:none;text-align:center;font:500 14px/1.5 var(--font-body);color:var(--accent-light)"></div>
         </form>
         <p class="muted" style="margin:18px 0 0;font-size:12.5px">De regulă, răspundem în 24–48 de ore lucrătoare. Prin trimitere ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>.</p>
       </div>
@@ -359,18 +368,61 @@
   var form = document.querySelector('[data-cf-form]');
   if(form){
     var box = form.querySelector('[data-cf-msg]');
-    var show = function(t, ok){ box.style.display = 'block'; box.style.color = ok ? 'var(--accent-light)' : '#e08a6a'; box.textContent = t; };
+    var boxIc = form.querySelector('[data-cf-ic]');
+    var boxTxt = form.querySelector('[data-cf-msg-text]');
+    var IC_ERR = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6"></path><circle cx="12" cy="17" r="0.5" fill="currentColor"></circle></svg>';
+    var IC_OK = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>';
+    function hideBox(){
+      box.style.opacity = '0'; box.style.transform = 'translateY(-4px)';
+      setTimeout(function(){ box.style.display = 'none'; }, 300);
+    }
+    function showBox(t, ok){
+      box.style.background = ok
+        ? 'linear-gradient(180deg,rgba(201,162,90,.12),rgba(201,162,90,.06)) padding-box,linear-gradient(150deg,rgba(201,162,90,.5),rgba(201,162,90,.18)) border-box'
+        : 'linear-gradient(180deg,rgba(224,138,106,.12),rgba(224,138,106,.06)) padding-box,linear-gradient(150deg,rgba(224,138,106,.5),rgba(224,138,106,.18)) border-box';
+      boxIc.style.background = ok ? 'rgba(143,206,154,.16)' : 'rgba(224,138,106,.16)';
+      boxIc.style.color = ok ? '#8fce9a' : '#e8a184';
+      boxIc.innerHTML = ok ? IC_OK : IC_ERR;
+      boxTxt.style.color = ok ? '#e9d9b8' : '#f0c9b8';
+      boxTxt.textContent = t;
+      box.style.display = 'flex';
+      void box.offsetHeight;
+      box.style.opacity = '1'; box.style.transform = 'none';
+    }
+    var F = [
+      { inp: form.querySelector('[data-cf-name]'), fe: 'name', ok: function(v){ return v.trim().length >= 2; } },
+      { inp: form.querySelector('[data-cf-email]'), fe: 'email', ok: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } },
+      { inp: form.querySelector('[data-cf-msg-in]'), fe: 'mesaj', ok: function(v){ return v.trim().length >= 10; } }
+    ];
+    function capOf(inp){ return inp.closest('.gf-cap, .gf-area'); }
+    function feOf(name){ return form.querySelector('.gf-fe[data-fe="' + name + '"]'); }
+    function setErr(f, on){
+      var cap = capOf(f.inp), fe = feOf(f.fe);
+      if(cap) cap.classList.toggle('err', on);
+      if(fe) fe.classList.toggle('on', on);
+    }
+    F.forEach(function(f){
+      f.inp.addEventListener('input', function(){ setErr(f, false); hideBox(); });
+    });
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var name = form.querySelector('[data-cf-name]').value.trim();
-      var email = form.querySelector('[data-cf-email]').value.trim();
-      var reason = form.querySelector('[data-cf-reason]').value;
-      var text = form.querySelector('[data-cf-msg-in]').value.trim();
       var hp = form.querySelector('input[name="website"]');
-      if(hp && hp.value){ show('Mesajul tău a fost trimis. Mulțumim — îți vom răspunde cât mai curând.', true); return; }
-      if(name.length < 2){ show('Completează câmpurile obligatorii.', false); return; }
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ show('Introdu o adresă de email validă.', false); return; }
-      if(text.length < 10){ show('Completează câmpurile obligatorii.', false); return; }
+      if(hp && hp.value){ showBox('Mesajul tău a fost trimis. Mulțumim — îți vom răspunde cât mai curând.', true); return; }
+      var first = null;
+      F.forEach(function(f){
+        var bad = !f.ok(f.inp.value);
+        setErr(f, bad);
+        if(bad && !first) first = f.inp;
+      });
+      if(first){
+        showBox('Completează câmpurile obligatorii.', false);
+        first.focus();
+        return;
+      }
+      var name = F[0].inp.value.trim();
+      var email = F[1].inp.value.trim();
+      var text = F[2].inp.value.trim();
+      var reason = form.querySelector('[data-cf-reason]').value;
       var btn = form.querySelector('button[type="submit"]');
       var label = btn.textContent;
       btn.textContent = 'Se trimite…'; btn.disabled = true;
@@ -378,11 +430,11 @@
         .then(function(r){ return r.json().then(function(j){ return r.ok && j.ok; }); })
         .then(function(ok){
           btn.textContent = label; btn.disabled = false;
-          if(!ok){ show('Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-ne direct la contact@dincolodegranite.com.', false); return; }
+          if(!ok){ showBox('Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-ne direct la contact@dincolodegranite.com.', false); return; }
           form.reset();
-          show('Mesajul tău a fost trimis. Mulțumim — îți vom răspunde cât mai curând.', true);
+          showBox('Mesajul tău a fost trimis. Mulțumim — îți vom răspunde cât mai curând.', true);
         })
-        .catch(function(){ btn.textContent = label; btn.disabled = false; show('Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-ne direct la contact@dincolodegranite.com.', false); });
+        .catch(function(){ btn.textContent = label; btn.disabled = false; showBox('Mesajul nu a putut fi trimis. Încearcă din nou sau scrie-ne direct la contact@dincolodegranite.com.', false); });
     });
   }
   var cp = document.querySelector('[data-copy-email]');
