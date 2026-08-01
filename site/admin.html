@@ -763,7 +763,7 @@
         var who = document.createElement('div');
         var name = document.createElement('strong'); name.textContent = l.name;
         var meta = document.createElement('div'); meta.className = 'muted';
-        meta.textContent = l.email + (l.company ? ' · ' + l.company : '') + ' · ' + fmtDate(l.created_at);
+        meta.textContent = l.email + (l.company ? ' · ' + l.company : '') + (l.role ? ' · ' + l.role : '') + ' · ' + fmtDate(l.created_at);
         who.appendChild(name); who.appendChild(meta);
         var del = document.createElement('button');
         del.className = 'btn-danger'; del.textContent = 'ȘTERGE';

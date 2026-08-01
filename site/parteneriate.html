@@ -65,6 +65,11 @@
   .mk-card{display:flex;flex-direction:column;gap:10px}
   .mk-card h3{font:var(--head-weight) 19px var(--font-head);letter-spacing:.06em;color:#f5f6f7;margin:4px 0 0}
   .mk-card p{font-size:14px;line-height:1.6;margin:0;color:rgba(245,246,247,.65)}
+  .mk-lab{display:flex;flex-direction:column;gap:6px;font:600 10.5px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.8);text-transform:uppercase;text-align:left}
+  .mk-lab .gf-fe{text-transform:none;letter-spacing:normal}
+  .pk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px 28px}
+  .pk-li{display:flex;align-items:flex-start;gap:11px;font:400 14.5px/1.6 var(--font-body);color:rgba(245,246,247,.75)}
+  .pk-li svg{flex:none;margin-top:4px}
   /* statistici */
   .mk-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(201,162,90,.16);border:1px solid rgba(201,162,90,.2);border-radius:16px;overflow:hidden}
   .mk-stat{background:rgba(255,255,255,.015);padding:24px 16px;text-align:center;transition:background .25s ease}
@@ -149,43 +154,144 @@
 
 <div class="wrap">
 
-  <section id="mk-gate">
+  <div id="mk-public">
+
+  <section>
+    <span class="eyebrow">Parteneriat</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">De ce să devii partener</h2>
+    <div class="gcard ovh rv" style="margin-top:18px;position:relative">
+      <div class="dsp-glow"></div>
+      <div class="pk-grid" style="position:relative">
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Public român din România și din diaspora</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Invitați din profesii și domenii diverse</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Conținut premium, documentat înainte de filmare</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Distribuție video pe YouTube și clipuri pe rețelele sociale</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Integrare atentă a partenerilor, potrivită publicului și temei</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Publicul</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Publicul și temele podcastului</h2>
+    <div class="gcard ovh rv" style="margin-top:18px;position:relative">
+      <div class="dsp-glow"></div>
+      <div style="position:relative">
+        <p style="margin:0 0 16px;font-size:15px;line-height:1.7;max-width:74ch">Vorbim cu români din România și din întreaga lume, prin interviuri documentate în două formate: portret și expertiză. Lansăm în septembrie 2026 și publicăm cifrele reale de audiență imediat ce există — fără estimări umflate.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Medicină și sănătate</span>
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Psihologie</span>
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Educație</span>
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Business și carieră</span>
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Finanțe și investiții</span>
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Familie și relații</span>
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Știință și tehnologie</span>
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Artă și cultură</span>
+        <span style="padding:7px 15px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:600 13px var(--font-body);letter-spacing:.03em;color:rgba(245,246,247,.82);white-space:nowrap">Sport și performanță</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Colaborare</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Formatele de colaborare</h2>
+    <div class="gcard ovh rv" style="margin-top:18px;position:relative">
+      <div class="dsp-glow"></div>
+      <div class="pk-grid" style="position:relative">
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Partener de episod</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Partener de sezon</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Integrare de brand</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Susținerea unei teme editoriale</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Clipuri și conținut social</span></div>
+        <div class="pk-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span>Parteneriate cu organizații și evenimente</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Principii</span>
+    <h2 data-gold-last style="margin:12px 0 0;font-size:clamp(26px,4.6vw,34px)">Principii editoriale și transparență</h2>
+    <div class="gcard ovh rv" style="margin-top:18px;position:relative">
+      <div class="dsp-glow"></div>
+      <p style="position:relative;margin:0;font-size:15px;line-height:1.7;max-width:74ch">Integrările sunt marcate transparent, trebuie să fie relevante pentru public și nu influențează independența editorială sau răspunsurile invitaților.</p>
+    </div>
+  </section>
+
+  </div>
+
+  <section id="mk-gate" style="scroll-margin-top:110px">
     <div class="gcard ovh rv" style="position:relative;max-width:560px;margin:0 auto;padding:clamp(26px,4.5vw,40px)">
       <div class="dsp-glow"></div>
       <div style="position:relative">
-        <div class="ct-eyebrow" style="justify-content:center"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>ACCES PARTENERIATE</div>
-        <div style="display:flex;gap:6px;margin:16px 0 18px;padding:5px;border:1px solid rgba(201,162,90,.22);border-radius:999px;background:rgba(15,17,19,.5)">
-          <button type="button" data-mk-tab="register" style="flex:1;padding:10px 0;border:0;border-radius:999px;cursor:pointer;font:700 12px var(--font-body);letter-spacing:.08em;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;transition:background .25s ease,color .25s ease">ÎNREGISTRARE</button>
-          <button type="button" data-mk-tab="login" style="flex:1;padding:10px 0;border:0;border-radius:999px;cursor:pointer;font:600 12px var(--font-body);letter-spacing:.08em;background:transparent;color:rgba(245,246,247,.65);transition:background .25s ease,color .25s ease">AUTENTIFICARE</button>
-        </div>
-        <h2 data-mk-title data-gold-last style="margin:6px 0 10px;font-size:clamp(24px,4.2vw,32px);text-align:center">Spune-ne cine ești</h2>
-        <p data-mk-lede class="muted" style="margin:0 0 20px;font-size:14px;text-align:center">Pagina de parteneriate este destinată managerilor, agențiilor și invitaților publici. Completează formularul și primești acces imediat, fără așteptare.</p>
+        <div class="ct-eyebrow" style="justify-content:center"><span class="icon-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>ACCES MEDIA KIT</div>
+        <h2 data-gold-last style="margin:14px 0 8px;font-size:clamp(24px,4vw,30px);text-align:center">Accesează media kit-ul</h2>
+        <p class="muted" style="margin:0 0 20px;font-size:14px;text-align:center;color:rgba(245,246,247,.68)">Completează datele profesionale și consulți imediat oportunitățile de colaborare.</p>
         <form data-mk-form novalidate style="display:flex;flex-direction:column;gap:12px">
           <div data-mk-msg style="display:none;align-items:center;gap:10px;box-sizing:border-box;padding:11px 16px 11px 13px;border-radius:12px;border:1px solid transparent;background:linear-gradient(180deg,rgba(224,138,106,.12),rgba(224,138,106,.06)) padding-box,linear-gradient(150deg,rgba(224,138,106,.5),rgba(224,138,106,.18)) border-box;opacity:0;transform:translateY(-4px);transition:opacity .3s ease,transform .3s cubic-bezier(.2,.8,.2,1)">
             <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(224,138,106,.16);color:#e8a184" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 8v5"></path><path d="M12 16.5h.01"></path></svg></span>
             <span data-mk-msg-text style="font:500 13.5px/1.45 var(--font-body);color:#f0c9b8"></span>
           </div>
-          <label class="gf-cap" data-mk-reg><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg></span><input data-mk-name type="text" required placeholder="Numele tău complet" aria-label="Nume"></label>
-          <span class="gf-fe" data-fe="name">Scrie numele complet (minim 2 caractere).</span>
-          <label class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span><input data-mk-email type="email" required placeholder="adresa@email.com" aria-label="Email"></label>
-          <span class="gf-fe" data-fe="email">Adresa de email nu e validă.</span>
-          <label class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span><input data-mk-pass type="password" required placeholder="Alege o parolă (min. 8 caractere)" aria-label="Parolă" autocomplete="new-password"></label>
-          <span class="gf-fe" data-fe="pass">Parola are minim 8 caractere.</span>
-          <label class="gf-cap" data-mk-reg><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path><path d="M12 15v3"></path></svg></span><input data-mk-pass2 type="password" placeholder="Confirmă parola" aria-label="Confirmă parola" autocomplete="new-password"></label>
-          <span class="gf-fe" data-fe="pass2">Parolele nu coincid.</span>
-          <label class="gf-cap" data-mk-reg><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg></span><input data-mk-company type="text" placeholder="Companie / rol (opțional)" aria-label="Companie sau rol"></label>
-          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-          <label style="display:flex;align-items:center;gap:9px;padding:0 6px;cursor:pointer;font:500 13px var(--font-body);color:rgba(245,246,247,.65)">
-            <input data-mk-remember type="checkbox" checked style="width:15px;height:15px;accent-color:#c9a25a;cursor:pointer;flex:none">
-            Ține-mă minte pe acest dispozitiv
+          <label class="mk-lab">Nume complet
+            <span class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg></span><input data-mk-name type="text" placeholder="Numele tău complet" autocomplete="name"></span>
+            <span class="gf-fe" data-fe="name">Scrie numele complet (minim 2 caractere).</span>
           </label>
-          <button type="submit" data-mk-submit class="btn btn-gold" style="width:100%;border:0;cursor:pointer">CREEAZĂ CONT</button>
+          <label class="mk-lab">Email profesional
+            <span class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span><input data-mk-email type="email" placeholder="nume@companie.com" autocomplete="email"></span>
+            <span class="gf-fe" data-fe="email">Adresa de email nu e validă.</span>
+          </label>
+          <label class="mk-lab">Companie / organizație
+            <span class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg></span><input data-mk-company type="text" placeholder="Numele companiei sau organizației" autocomplete="organization"></span>
+            <span class="gf-fe" data-fe="company">Spune-ne compania sau organizația.</span>
+          </label>
+          <label class="mk-lab">Rol / funcție (opțional)
+            <span class="gf-cap"><span class="gf-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path><circle cx="8" cy="14" r="1.6"></circle><path d="M12.5 13h5"></path><path d="M12.5 16h3.5"></path></svg></span><input data-mk-role type="text" placeholder="Ex: Marketing Manager, PR, agent" autocomplete="organization-title"></span>
+          </label>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <button type="submit" data-mk-submit class="btn btn-gold" style="width:100%;border:0;cursor:pointer;min-height:44px">ACCESEAZĂ MEDIA KIT-UL</button>
         </form>
-        <p class="muted" style="margin:16px 0 0;font-size:12px;text-align:center">Folosim datele doar ca să știm cine consultă materialele. Zero spam.</p>
+        <p class="muted" style="margin:16px 0 0;font-size:12px;text-align:center">Folosim datele exclusiv pentru administrarea accesului și comunicarea legată de parteneriate. Detalii în <a href="privacy.html" style="color:var(--accent)">Politica de confidențialitate</a>.</p>
       </div>
     </div>
+  </section>
 
-</section>
+  <div id="mk-public2">
+
+  <section>
+    <div class="gcard ovh rv" style="text-align:center;padding:clamp(30px,5vw,46px)">
+      <div class="dsp-glow"></div>
+      <div style="position:relative">
+        <span class="eyebrow">Discuție directă</span>
+        <h2 data-gold-last style="margin:12px 0 10px;font-size:clamp(24px,4.4vw,32px)">Preferi să vorbim direct?</h2>
+        <p style="max-width:52ch;margin:0 auto 22px">Scrie-ne câteva rânduri despre brand și obiectivele tale — revenim în 1–2 zile lucrătoare.</p>
+        <a class="btn btn-gold" href="contact.html">Discută un parteneriat</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Întrebări frecvente</span>
+    <div class="faq rv" style="margin-top:14px">
+      <details class="faq-i">
+        <summary>Ce primesc după completarea formularului?</summary>
+        <p>Acces imediat la media kit: publicul, studioul și echipamentele, procesul de filmare, exemplele video și contactul direct.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Integrările sunt marcate?</summary>
+        <p>Da. Integrările sunt marcate transparent, trebuie să fie relevante pentru public și nu influențează independența editorială sau răspunsurile invitaților.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Aveți deja cifre de audiență?</summary>
+        <p>Lansăm în septembrie 2026. Publicăm cifrele reale imediat ce există — fără estimări umflate, fără promisiuni goale.</p>
+      </details>
+      <details class="faq-i">
+        <summary>Cum începe o colaborare?</summary>
+        <p>Ne scrii prin <a href="contact.html">formularul de contact</a> sau la contact@dincolodegranite.com, cu câteva detalii despre brand și obiective. Revenim în 1–2 zile lucrătoare.</p>
+      </details>
+    </div>
+  </section>
+
+  </div>
 
   <div id="mk-bar" style="display:none;position:sticky;top:118px;z-index:40;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:12px 12px 12px 20px;border:1px solid rgba(201,162,90,.28);border-radius:999px;background:rgba(15,17,19,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 12px 30px rgba(0,0,0,.35);margin:6px 0 0">
     <span class="muted" style="display:inline-flex;align-items:center;gap:10px;font-size:13px"><span class="icon-chip" style="width:26px;height:26px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg></span>Bine ai venit, <strong id="mk-bar-name" style="color:#f5f6f7;font-weight:600"></strong></span>
@@ -221,74 +327,46 @@
   var KEY = 'dg_mk_reg';
   var FN = 'https://fgwsmrwhuzkvrixcgovk.supabase.co/functions/v1/media-kit';
   var gate = document.getElementById('mk-gate');
+  var pub1 = document.getElementById('mk-public');
+  var pub2 = document.getElementById('mk-public2');
   var content = document.getElementById('mk-gated');
-  var form = document.querySelector('[data-mk-form]');
-  var msg = form ? form.querySelector('[data-mk-msg]') : null;
-  function show(t){
-    if(!msg) return;
-    var tx = msg.querySelector('[data-mk-msg-text]');
-    if(tx) tx.textContent = t; else msg.textContent = t;
-    msg.style.display = 'flex';
-    void msg.offsetHeight;
-    msg.style.opacity = '1';
-    msg.style.transform = 'none';
-  }
-  function fieldErr(sel, key, on){
-    var inp = form ? form.querySelector(sel) : null;
-    if(inp){ var lab = inp.closest('label'); if(lab) lab.classList[on ? 'add' : 'remove']('err'); }
-    var fe = form ? form.querySelector('[data-fe="' + key + '"]') : null;
-    if(fe) fe.classList[on ? 'add' : 'remove']('on');
-  }
-  var FIELD_MAP = { name: '[data-mk-name]', email: '[data-mk-email]', pass: '[data-mk-pass]', pass2: '[data-mk-pass2]' };
-  function clearFieldErrs(){
-    Object.keys(FIELD_MAP).forEach(function(k){ fieldErr(FIELD_MAP[k], k, false); });
-  }
-  function hideMsg(){
-    if(msg){ msg.style.display = 'none'; msg.style.opacity = '0'; msg.style.transform = 'translateY(-4px)'; }
-  }
-  if(form){
-    Object.keys(FIELD_MAP).forEach(function(k){
-      var inp = form.querySelector(FIELD_MAP[k]);
-      if(inp) inp.addEventListener('input', function(){ fieldErr(FIELD_MAP[k], k, false); });
-    });
-  }
-  var uiMode = 'register';
-  var titleEl = document.querySelector('[data-mk-title]');
-  var ledeEl = document.querySelector('[data-mk-lede]');
-  var tabBtns = document.querySelectorAll('[data-mk-tab]');
-  var submitEl = form ? form.querySelector('[data-mk-submit]') : null;
-  function setMode(m){
-    uiMode = m;
-    var reg = m === 'register';
-    document.querySelectorAll('[data-mk-reg]').forEach(function(el){ el.style.display = reg ? 'flex' : 'none'; });
-    if(titleEl){
-      titleEl.textContent = reg ? 'Spune-ne cine ești' : 'Bine ai revenit';
-      if(window.__goldLast) try { window.__goldLast(); } catch(err){}
-    }
-    if(ledeEl) ledeEl.textContent = reg
-      ? 'Pagina de parteneriate este destinată managerilor, agențiilor și invitaților publici. Completează formularul și primești acces imediat, fără așteptare.'
-      : 'Introdu emailul și parola contului tău.';
-    if(submitEl) submitEl.textContent = reg ? 'CREEAZĂ CONT' : 'INTRĂ';
-    var passEl2 = form ? form.querySelector('[data-mk-pass]') : null;
-    if(passEl2){
-      passEl2.placeholder = reg ? 'Alege o parolă (min. 8 caractere)' : 'Parola ta';
-      passEl2.setAttribute('autocomplete', reg ? 'new-password' : 'current-password');
-    }
-    tabBtns.forEach(function(b){
-      var on = b.getAttribute('data-mk-tab') === m;
-      b.style.background = on ? 'linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark))' : 'transparent';
-      b.style.color = on ? '#0f1113' : 'rgba(245,246,247,.65)';
-      b.style.fontWeight = on ? '700' : '600';
-    });
-    hideMsg();
-    clearFieldErrs();
-  }
-  tabBtns.forEach(function(b){
-    b.addEventListener('click', function(){ setMode(b.getAttribute('data-mk-tab')); });
-  });
   var bar = document.getElementById('mk-bar');
   var barName = document.getElementById('mk-bar-name');
   var logoutBtn = document.getElementById('mk-logout');
+  var form = document.querySelector('[data-mk-form]');
+  var submitEl = form ? form.querySelector('[data-mk-submit]') : null;
+  var msgEl = document.querySelector('[data-mk-msg]');
+  var msgTxt = document.querySelector('[data-mk-msg-text]');
+  var msgTimer = null;
+  function show(t){
+    if(!msgEl) return;
+    if(msgTimer){ clearTimeout(msgTimer); msgTimer = null; }
+    if(msgTxt) msgTxt.textContent = t;
+    msgEl.style.display = 'flex';
+    void msgEl.offsetHeight;
+    msgEl.style.opacity = '1'; msgEl.style.transform = 'none';
+  }
+  function hideMsg(){
+    if(!msgEl) return;
+    msgEl.style.opacity = '0'; msgEl.style.transform = 'translateY(-4px)';
+    msgTimer = setTimeout(function(){ msgEl.style.display = 'none'; msgTimer = null; }, 300);
+  }
+  function fieldErr(sel, key, on){
+    var inp = form ? form.querySelector(sel) : null;
+    if(inp){ var cap = inp.closest('.gf-cap'); if(cap) cap.classList[on ? 'add' : 'remove']('err'); }
+    var fe = form ? form.querySelector('[data-fe="' + key + '"]') : null;
+    if(fe) fe.classList[on ? 'add' : 'remove']('on');
+  }
+  var FIELD_MAP = { name: '[data-mk-name]', email: '[data-mk-email]', company: '[data-mk-company]' };
+  function clearFieldErrs(){
+    Object.keys(FIELD_MAP).forEach(function(k){ fieldErr(FIELD_MAP[k], k, false); });
+  }
+  if(form){
+    Object.keys(FIELD_MAP).forEach(function(k){
+      var el = form.querySelector(FIELD_MAP[k]);
+      if(el) el.addEventListener('input', function(){ fieldErr(FIELD_MAP[k], k, false); hideMsg(); });
+    });
+  }
   if(logoutBtn){
     logoutBtn.addEventListener('click', function(){
       try { localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); } catch(e){}
@@ -305,6 +383,8 @@
     content.innerHTML = html;
     content.removeAttribute('hidden');
     if(gate) gate.style.display = 'none';
+    if(pub1) pub1.style.display = 'none';
+    if(pub2) pub2.style.display = 'none';
     if(window.__goldLast) try { window.__goldLast(); } catch(e){}
     var els = content.querySelectorAll('.rv');
     if(els.length && 'IntersectionObserver' in window){
@@ -318,14 +398,13 @@
       els.forEach(function(el){ el.classList.add('on'); });
     }
   }
-  function persist(data, mode){
+  function persist(data){
     try {
-      var payload = JSON.stringify({ n: data.name, e: data.email, t: data.token || '' });
-      if(mode === 'session'){ sessionStorage.setItem(KEY, payload); localStorage.removeItem(KEY); }
-      else { localStorage.setItem(KEY, payload); sessionStorage.removeItem(KEY); }
+      localStorage.setItem(KEY, JSON.stringify({ n: data.name, e: data.email, t: data.token || '' }));
+      sessionStorage.removeItem(KEY);
     } catch(e){}
   }
-  function request(data, silent, btn, mode){
+  function request(data, silent, btn){
     if(btn) btn.disabled = true;
     return fetch(FN, {
       method: 'POST',
@@ -336,34 +415,27 @@
       if(btn) btn.disabled = false;
       if(res.j && res.j.ok && res.j.html){
         var who = { name: (res.j.name || data.name || ''), email: data.email, token: (res.j.token || data.token || '') };
-        persist(who, mode);
-        reveal(res.j.html);
+        persist(who);
         showBar(who.name);
+        reveal(res.j.html);
         return true;
       }
-      if(silent && (res.status === 401 || res.status === 404)){
-        try { localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); } catch(err){}
-      }
-      if(!silent){
-        if(res.status === 404){ show('Emailul nu e înregistrat încă. Alege Înregistrare și completează formularul.'); setMode('register'); }
-        else if(res.status === 401) show('Parolă greșită. Încearcă din nou.');
-        else if(res.status === 409){ show('Există deja un cont cu acest email. Autentifică-te cu parola.'); setMode('login'); }
-        else if(res.status === 400) show('Verifică datele introduse.');
-        else show('A apărut o eroare. Încearcă din nou sau scrie-ne la contact@dincolodegranite.com.');
-      }
+      if(silent) return false;
+      if(res.status === 400) show('Verifică datele completate și încearcă din nou.');
+      else show('A apărut o eroare. Încearcă din nou sau scrie-ne la contact@dincolodegranite.com.');
       return false;
-    }).catch(function(){
+    })
+    .catch(function(){
       if(btn) btn.disabled = false;
       if(!silent) show('A apărut o eroare de rețea. Încearcă din nou.');
       return false;
     });
   }
-  /* vizitator care s-a inregistrat deja: recuperam continutul automat */
+  /* vizitator care a primit deja acces: recuperam continutul automat */
   try {
-    var savedRaw = localStorage.getItem(KEY), savedMode = 'local';
-    if(!savedRaw){ savedRaw = sessionStorage.getItem(KEY); savedMode = 'session'; }
+    var savedRaw = localStorage.getItem(KEY) || sessionStorage.getItem(KEY);
     var saved = JSON.parse(savedRaw || 'null');
-    if(saved && saved.e && saved.t){ request({ mode: 'token', name: saved.n, email: saved.e, token: saved.t }, true, null, savedMode); }
+    if(saved && saved.e && saved.t){ request({ mode: 'token', name: saved.n, email: saved.e, token: saved.t }, true, null); }
   } catch(e){}
   if(!form) return;
   form.addEventListener('submit', function(e){
@@ -372,28 +444,17 @@
     if(hp && hp.value) return;
     hideMsg();
     clearFieldErrs();
+    var name = (form.querySelector('[data-mk-name]').value || '').trim();
     var email = (form.querySelector('[data-mk-email]').value || '').trim();
-    var pass = (form.querySelector('[data-mk-pass]').value || '');
+    var company = (form.querySelector('[data-mk-company]').value || '').trim();
+    var role = (form.querySelector('[data-mk-role]').value || '').trim();
     var bad = false, firstBad = null;
     var mark = function(sel, key){ fieldErr(sel, key, true); bad = true; if(!firstBad) firstBad = form.querySelector(sel); };
+    if(name.length < 2) mark('[data-mk-name]', 'name');
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) mark('[data-mk-email]', 'email');
-    if(pass.length < 8) mark('[data-mk-pass]', 'pass');
-    var name = '', company = '';
-    if(uiMode === 'register'){
-      name = (form.querySelector('[data-mk-name]').value || '').trim();
-      company = (form.querySelector('[data-mk-company]').value || '').trim();
-      if(name.length < 2) mark('[data-mk-name]', 'name');
-      var pass2 = (form.querySelector('[data-mk-pass2]').value || '');
-      if(pass.length >= 8 && pass !== pass2) mark('[data-mk-pass2]', 'pass2');
-    }
+    if(company.length < 2) mark('[data-mk-company]', 'company');
     if(bad){ if(firstBad) firstBad.focus(); return; }
-    var rememberEl = form.querySelector('[data-mk-remember]');
-    var storeMode = rememberEl && !rememberEl.checked ? 'session' : 'local';
-    if(uiMode === 'login'){
-      request({ mode: 'login', email: email, password: pass }, false, submitEl, storeMode);
-      return;
-    }
-    request({ name: name, email: email, company: company, password: pass }, false, submitEl, storeMode);
+    request({ name: name, email: email, company: company, role: role }, false, submitEl);
   });
 })();
 </script>
