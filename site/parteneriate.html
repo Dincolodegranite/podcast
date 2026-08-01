@@ -311,9 +311,10 @@
 
   </div>
 
-  <div id="mk-bar" style="display:none;position:sticky;top:118px;z-index:40;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:12px 12px 12px 20px;border:1px solid rgba(201,162,90,.28);border-radius:999px;background:rgba(15,17,19,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 12px 30px rgba(0,0,0,.35);margin:6px 0 0">
-    <span class="muted" style="display:inline-flex;align-items:center;gap:10px;font-size:13px"><span class="icon-chip" style="width:26px;height:26px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg></span>Bine ai venit, <strong id="mk-bar-name" style="color:#f5f6f7;font-weight:600"></strong></span>
-    <button id="mk-logout" type="button" class="btn btn-ghost" style="padding:9px 20px;font-size:12px;cursor:pointer">Deconectează-te</button>
+  <div id="mk-bar" style="display:none;align-items:center;justify-content:flex-end;gap:12px;margin:12px 0 0;font:500 12.5px var(--font-body);color:rgba(245,246,247,.55)">
+    <span style="display:inline-flex;align-items:center;gap:8px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(227,192,125,.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.2-6 7-6s7 2.4 7 6"></path></svg>Bine ai venit, <strong id="mk-bar-name" style="color:rgba(227,192,125,.9);font-weight:600"></strong></span>
+    <span aria-hidden="true" style="width:1px;height:12px;background:rgba(245,246,247,.18);flex:none"></span>
+    <button id="mk-logout" type="button" style="background:none;border:none;padding:0;cursor:pointer;font:500 12.5px var(--font-body);color:rgba(245,246,247,.5);text-decoration:underline;text-underline-offset:3px;transition:color .25s ease" onmouseover="this.style.color=&quot;rgba(227,192,125,.9)&quot;" onmouseout="this.style.color=&quot;rgba(245,246,247,.5)&quot;">Deconectează-te</button>
   </div>
 
   <div id="mk-gated" hidden></div>
