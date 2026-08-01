@@ -148,7 +148,7 @@
     <div style="font:700 11px var(--font-body);letter-spacing:.26em;color:rgba(227,192,125,.85);margin-bottom:12px">PARTENERIATE CARE AU SENS</div>
     <h1 data-gold-last>Susține conversații care aduc valoare</h1>
     <p class="lede">Colaborăm cu branduri și organizații ale căror valori se potrivesc cu publicul și temele Dincolo de Granițe. Construim integrări transparente, relevante și naturale, care aduc valoare atât comunității, cât și partenerului.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px"><a class="btn btn-gold" href="contact.html">Discută un parteneriat</a><a class="btn btn-ghost" href="#mk-gate">Accesează media kit-ul</a></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px"><a class="btn btn-gold" href="contact.html">Discută un parteneriat</a><a class="btn btn-ghost" data-mk-cta href="#mk-gate">Accesează media kit-ul</a></div>
     <div style="display:flex;gap:8px 0;flex-wrap:wrap;align-items:center;margin-top:18px;font:600 10.5px var(--font-body);letter-spacing:.18em;color:rgba(227,192,125,.75);text-transform:uppercase"><span style="white-space:nowrap">Producție premium</span><span style="margin:0 10px;color:rgba(201,162,90,.5)">•</span><span style="white-space:nowrap">Distribuție multi-platformă</span><span style="margin:0 10px;color:rgba(201,162,90,.5)">•</span><span style="white-space:nowrap">Integrare relevantă</span><span style="margin:0 10px;color:rgba(201,162,90,.5)">•</span><span style="white-space:nowrap">Transparență editorială</span></div>
   </div>
 </section>
@@ -402,6 +402,8 @@
     if(gate) gate.style.display = 'none';
     if(pub1) pub1.style.display = 'none';
     if(pub2) pub2.style.display = 'none';
+    var heroCta = document.querySelector('[data-mk-cta]');
+    if(heroCta) heroCta.style.display = 'none';
     if(window.__goldLast) try { window.__goldLast(); } catch(e){}
     var els = content.querySelectorAll('.rv');
     if(els.length && 'IntersectionObserver' in window){
