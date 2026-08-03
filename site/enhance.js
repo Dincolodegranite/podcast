@@ -147,35 +147,35 @@ var HOME = { name: 'România', lat: 44.43, lon: 26.10 };
 
 /* name, lat, lon, aliases (Romanian exonyms + variants) */
 var CITIES = [
-['London',51.51,-0.13,['londra']],['Canterbury',51.28,1.08,['kent']],['Manchester',53.48,-2.24,[]],
+['Londra',51.51,-0.13,['london']],['Canterbury',51.28,1.08,['kent']],['Manchester',53.48,-2.24,[]],
 ['Birmingham',52.48,-1.90,[]],['Leeds',53.80,-1.55,[]],['Liverpool',53.41,-2.98,[]],
 ['Sheffield',53.38,-1.47,[]],['Nottingham',52.95,-1.15,[]],['Bristol',51.45,-2.59,[]],
 ['Southampton',50.90,-1.40,[]],['Portsmouth',50.82,-1.09,[]],['Cambridge',52.21,0.12,[]],
 ['Oxford',51.75,-1.26,[]],['Glasgow',55.86,-4.25,[]],['Edinburgh',55.95,-3.19,[]],
 ['Cardiff',51.48,-3.18,[]],['Belfast',54.60,-5.93,[]],['Dublin',53.35,-6.26,[]],['Cork',51.90,-8.47,[]],
-['Paris',48.86,2.35,[]],['Lyon',45.76,4.84,[]],['Marseille',43.30,5.37,['marsilia']],['Nice',43.70,7.27,[]],
-['Brussels',50.85,4.35,['bruxelles']],['Antwerp',51.22,4.40,['anvers']],
-['Amsterdam',52.37,4.90,[]],['Rotterdam',51.92,4.48,[]],['The Hague',52.08,4.31,['haga']],
-['Berlin',52.52,13.41,[]],['Munich',48.14,11.58,['munchen','münchen']],['Frankfurt',50.11,8.68,[]],
-['Hamburg',53.55,9.99,[]],['Cologne',50.94,6.96,['koln','köln']],['Stuttgart',48.78,9.18,[]],
-['Dusseldorf',51.23,6.77,['düsseldorf']],['Nuremberg',49.45,11.08,['nurnberg','nürnberg']],
-['Vienna',48.21,16.37,['viena']],['Zurich',47.37,8.54,['zürich']],['Geneva',46.20,6.14,['geneva']],
-['Basel',47.56,7.59,[]],['Milan',45.46,9.19,['milano']],['Rome',41.90,12.50,['roma']],
-['Turin',45.07,7.69,['torino']],['Naples',40.85,14.27,['napoli']],['Bologna',44.49,11.34,[]],
-['Florence',43.77,11.26,['florenta','florența']],['Venice',45.44,12.32,['venetia','veneția']],
-['Padua',45.41,11.88,['padova']],['Verona',45.44,10.99,[]],['Brescia',45.54,10.22,[]],
+['Paris',48.86,2.35,[]],['Lyon',45.76,4.84,[]],['Marsilia',43.30,5.37,['marseille']],['Nice',43.70,7.27,[]],
+['Bruxelles',50.85,4.35,['brussels']],['Anvers',51.22,4.40,['antwerp']],
+['Amsterdam',52.37,4.90,[]],['Rotterdam',51.92,4.48,[]],['Haga',52.08,4.31,['the hague']],
+['Berlin',52.52,13.41,[]],['München',48.14,11.58,['munich','munchen']],['Frankfurt',50.11,8.68,[]],
+['Hamburg',53.55,9.99,[]],['Köln',50.94,6.96,['cologne','koln','colonia']],['Stuttgart',48.78,9.18,[]],
+['Düsseldorf',51.23,6.77,['dusseldorf']],['Nürnberg',49.45,11.08,['nuremberg','nurnberg']],
+['Viena',48.21,16.37,['vienna']],['Zürich',47.37,8.54,['zurich']],['Geneva',46.20,6.14,['geneva']],
+['Basel',47.56,7.59,[]],['Milano',45.46,9.19,['milan']],['Roma',41.90,12.50,['rome']],
+['Torino',45.07,7.69,['turin']],['Napoli',40.85,14.27,['naples']],['Bologna',44.49,11.34,[]],
+['Florența',43.77,11.26,['florence','florenta']],['Veneția',45.44,12.32,['venice','venetia']],
+['Padova',45.41,11.88,['padua']],['Verona',45.44,10.99,[]],['Brescia',45.54,10.22,[]],
 ['Madrid',40.42,-3.70,[]],['Barcelona',41.39,2.17,[]],['Valencia',39.47,-0.38,[]],
-['Seville',37.39,-5.99,['sevilla']],['Zaragoza',41.65,-0.89,[]],['Malaga',36.72,-4.42,[]],
-['Lisbon',38.72,-9.14,['lisabona']],['Porto',41.15,-8.61,[]],
-['Copenhagen',55.68,12.57,['copenhaga']],['Stockholm',59.33,18.06,[]],['Gothenburg',57.71,11.97,[]],
-['Oslo',59.91,10.75,[]],['Helsinki',60.17,24.94,[]],['Warsaw',52.23,21.01,['varsovia','varșovia']],
-['Krakow',50.06,19.94,['cracovia']],['Prague',50.08,14.44,['praga']],['Budapest',47.50,19.04,['budapesta']],
-['Athens',37.98,23.73,['atena']],['Thessaloniki',40.64,22.94,['salonic']],['Nicosia',35.19,33.38,['cyprus','cipru']],
-['Valletta',35.90,14.51,['malta']],['Luxembourg',49.61,6.13,['luxemburg']],
-['Istanbul',41.01,28.98,[]],['Sofia',42.70,23.32,[]],['Belgrade',44.80,20.47,['belgrad']],
-['Kyiv',50.45,30.52,['kiev']],['Moscow',55.75,37.62,['moscova']],['Tel Aviv',32.08,34.78,['israel']],
+['Sevilla',37.39,-5.99,['seville']],['Zaragoza',41.65,-0.89,[]],['Malaga',36.72,-4.42,[]],
+['Lisabona',38.72,-9.14,['lisbon']],['Porto',41.15,-8.61,[]],
+['Copenhaga',55.68,12.57,['copenhagen']],['Stockholm',59.33,18.06,[]],['Gothenburg',57.71,11.97,[]],
+['Oslo',59.91,10.75,[]],['Helsinki',60.17,24.94,[]],['Varșovia',52.23,21.01,['warsaw','varsovia']],
+['Cracovia',50.06,19.94,['krakow']],['Praga',50.08,14.44,['prague']],['Budapesta',47.50,19.04,['budapest']],
+['Atena',37.98,23.73,['athens']],['Salonic',40.64,22.94,['thessaloniki']],['Nicosia',35.19,33.38,['cyprus','cipru']],
+['Valletta',35.90,14.51,['malta']],['Luxemburg',49.61,6.13,['luxembourg']],
+['Istanbul',41.01,28.98,[]],['Sofia',42.70,23.32,[]],['Belgrad',44.80,20.47,['belgrade']],
+['Kiev',50.45,30.52,['kyiv']],['Moscova',55.75,37.62,['moscow']],['Tel Aviv',32.08,34.78,['israel']],
 ['Dubai',25.20,55.27,[]],['Abu Dhabi',24.45,54.38,[]],['Doha',25.29,51.53,[]],
-['Riyadh',24.71,46.68,['riad','saudi arabia','arabia saudita']],['Kuwait City',29.38,47.99,['kuweit','kuwait']],['Manama',26.23,50.59,['bahrain']],
+['Riyadh',24.71,46.68,['riad','saudi arabia','arabia saudita']],['Kuweit',29.38,47.99,['kuwait city','kuwait']],['Manama',26.23,50.59,['bahrain']],
 ['Muscat',23.59,58.41,['oman']],['Jeddah',21.49,39.19,[]],
 ['New York',40.71,-74.01,[]],['Los Angeles',34.05,-118.24,[]],['Chicago',41.88,-87.63,[]],
 ['Miami',25.76,-80.19,[]],['Houston',29.76,-95.37,[]],['Dallas',32.78,-96.80,[]],
@@ -232,6 +232,12 @@ function norm(s){
     .replace(/ț/g,'t').replace(/ţ/g,'t').replace(/é/g,'e').replace(/è/g,'e').replace(/ü/g,'u')
     .replace(/ö/g,'o').replace(/ä/g,'a').replace(/ç/g,'c').replace(/ñ/g,'n').replace(/ã/g,'a')
     .trim();
+}
+function tzKey(c){
+  var k = norm(c[0]);
+  if(TZ_HUBS[k]) return k;
+  for(var i = 0; i < c[3].length; i++){ if(TZ_HUBS[c[3][i]]) return c[3][i]; }
+  return k;
 }
 function findCity(q){
   var n = norm(q);
@@ -486,8 +492,9 @@ function initMap(){
     ctx.arc(hp[0], hp[1], mr * (2.1 + 1.5 * hPulse), 0, 6.2832); ctx.stroke();
     if(arc){
       var p1 = proj(arc.from[0], arc.from[1]);
-      var mx = (p1[0] + hp[0]) / 2, my = (p1[1] + hp[1]) / 2;
-      var dist = Math.hypot(hp[0] - p1[0], hp[1] - p1[1]);
+      var p2 = arc.to ? proj(arc.to[0], arc.to[1]) : hp;
+      var mx = (p1[0] + p2[0]) / 2, my = (p1[1] + p2[1]) / 2;
+      var dist = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]);
       var cx = mx, cy = my - Math.min(H * 0.42, dist * 0.35 + H * 0.06);
       var steps = 60, upto = Math.floor(steps * Math.min(1, arc.t));
       ctx.beginPath();
@@ -496,14 +503,15 @@ function initMap(){
       ctx.shadowColor = 'rgba(227,192,125,.8)'; ctx.shadowBlur = 6;
       for(var s = 0; s <= upto; s++){
         var tt = s / steps;
-        var x = (1-tt)*(1-tt)*p1[0] + 2*(1-tt)*tt*cx + tt*tt*hp[0];
-        var y = (1-tt)*(1-tt)*p1[1] + 2*(1-tt)*tt*cy + tt*tt*hp[1];
+        var x = (1-tt)*(1-tt)*p1[0] + 2*(1-tt)*tt*cx + tt*tt*p2[0];
+        var y = (1-tt)*(1-tt)*p1[1] + 2*(1-tt)*tt*cy + tt*tt*p2[1];
         if(s === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
       ctx.stroke();
       ctx.shadowBlur = 0;
       ctx.beginPath(); ctx.fillStyle = '#f5e3bd';
       ctx.arc(p1[0], p1[1], mr * 1.15, 0, 6.2832); ctx.fill();
+      ctx.beginPath(); ctx.arc(p2[0], p2[1], mr * 1.15, 0, 6.2832); ctx.fill();
       if(arc.t < 1) arc.t += 0.016;
     }
   }
@@ -555,26 +563,33 @@ function initMap(){
     }
   }
 
-  function pick(city){
-    sug.style.display = 'none';
+  var input2 = document.querySelector('[data-harta-input2]');
+  var sug2 = document.querySelector('[data-harta-suggestions2]');
+  var BUC = findCity('bucuresti');
+  function pick(city, home){
+    if(sug) sug.style.display = 'none';
+    if(sug2) sug2.style.display = 'none';
     input.value = city[0];
+    var isDefaultHome = !home;
+    var h = home || BUC;
+    if(input2 && home) input2.value = h[0];
     showErr(false);
-    arc = { from: [city[1], city[2]], t: 0 };
-    var km = haversine(city[1], city[2], HOME.lat, HOME.lon);
+    arc = { from: [city[1], city[2]], to: [h[1], h[2]], t: 0 };
+    var km = haversine(city[1], city[2], h[1], h[2]);
     var tEl = document.querySelector('[data-harta-times]');
     if(tEl){
-      var ct = cityTime(norm(city[0]), city[1], city[2]);
-      var ht = cityTime('__home', HOME.lat, HOME.lon);
-      tEl.textContent = (ct ? String(city[0]).toUpperCase() + ' ' + ct : '') + (ct && ht ? '   ·   ' : '') + (ht ? 'ROMÂNIA ' + ht : '');
+      var ct = cityTime(tzKey(city), city[1], city[2]);
+      var ht = cityTime(isDefaultHome ? '__home' : tzKey(h), h[1], h[2]);
+      var hLabel = isDefaultHome ? 'ROMÂNIA' : String(h[0]).toUpperCase();
+      tEl.textContent = (ct ? String(city[0]).toUpperCase() + ' ' + ct : '') + (ct && ht ? '   ·   ' : '') + (ht ? hLabel + ' ' + ht : '');
     }
     var routeEl = document.querySelector('[data-harta-route]');
-    if(routeEl) routeEl.textContent = String(city[0]).toUpperCase() + ' → BUCUREȘTI';
+    if(routeEl) routeEl.textContent = String(city[0]).toUpperCase() + ' ↔ ' + String(h[0]).toUpperCase();
     var storyEl = document.querySelector('[data-harta-story]');
     if(storyEl){
-      var inHome = (typeof inRO === 'function') && inRO(city[2], city[1]);
-      storyEl.textContent = inHome
-        ? 'Ești acasă — iar experiențele românilor din lume sunt la un episod distanță.'
-        : 'Uneori, distanța se măsoară în kilometri. Alteori, în dor.';
+      storyEl.textContent = km < 40
+        ? 'Ești deja acasă — iar experiențele românilor din lume sunt la un episod distanță.'
+        : 'Distanța se măsoară în kilometri. Legătura, în oameni.';
     }
     result.style.display = 'block';
     var start = null, dur = 1400;
@@ -589,33 +604,41 @@ function initMap(){
     setTimeout(function(){ result.style.opacity = '1'; result.style.transform = 'none'; }, 60);
   }
   function go(){
-    var c = findCity(input.value) || suggest(input.value)[0];
-    if(c){ pick(c); }
+    var a = findCity(input.value) || suggest(input.value)[0];
+    var hVal = input2 ? input2.value.trim() : '';
+    var b = hVal ? (findCity(hVal) || suggest(hVal)[0]) : null;
+    if(a && (b || !hVal)){ pick(a, b); }
     else {
       showErr(true);
       result.style.display = 'none';
     }
   }
-  input.addEventListener('input', function(){
-    var list = suggest(input.value);
-    showErr(false);
-    if(!list.length){ sug.style.display = 'none'; return; }
-    sug.textContent = '';
-    list.forEach(function(c){
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = c[0];
-      b.setAttribute('style', 'display:block;width:100%;text-align:left;padding:10px 16px;background:transparent;border:none;color:#f5f6f7;font:400 14px Inter,sans-serif;cursor:pointer');
-      b.addEventListener('mouseenter', function(){ b.style.background = 'rgba(201,162,90,.14)'; });
-      b.addEventListener('mouseleave', function(){ b.style.background = 'transparent'; });
-      b.addEventListener('click', function(){ pick(c); });
-      sug.appendChild(b);
+  function bindSug(inp, box){
+    if(!inp || !box) return;
+    inp.addEventListener('input', function(){
+      var list = suggest(inp.value);
+      showErr(false);
+      if(!list.length){ box.style.display = 'none'; return; }
+      box.textContent = '';
+      list.forEach(function(c){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = c[0];
+        b.setAttribute('style', 'display:block;width:100%;text-align:left;padding:10px 16px;background:transparent;border:none;color:#f5f6f7;font:400 14px Inter,sans-serif;cursor:pointer');
+        b.addEventListener('mouseenter', function(){ b.style.background = 'rgba(201,162,90,.14)'; });
+        b.addEventListener('mouseleave', function(){ b.style.background = 'transparent'; });
+        b.addEventListener('click', function(){ inp.value = c[0]; box.style.display = 'none'; go(); });
+        box.appendChild(b);
+      });
+      box.style.display = 'block';
     });
-    sug.style.display = 'block';
-  });
-  input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); } });
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); } });
+  }
+  bindSug(input, sug);
+  bindSug(input2, sug2);
   document.addEventListener('click', function(e){
-    if(!sug.contains(e.target) && e.target !== input) sug.style.display = 'none';
+    if(sug && !sug.contains(e.target) && e.target !== input) sug.style.display = 'none';
+    if(sug2 && !sug2.contains(e.target) && e.target !== input2) sug2.style.display = 'none';
   });
   btn.addEventListener('click', go);
   document.querySelectorAll('[data-harta-ex]').forEach(function(el){
