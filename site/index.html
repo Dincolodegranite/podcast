@@ -138,8 +138,14 @@ a:hover{color:var(--accent-light)}
 .brd-head{position:relative;overflow:hidden}
 .brd-head::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(227,192,125,.09) 50%,transparent 58%);transform:translateX(-120%);animation:brdSweep 7s ease-in-out infinite;pointer-events:none}
 @keyframes brdSweep{0%,64%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
-.brd-row{transition:background .25s ease}
-.brd-row:hover{background:rgba(255,255,255,.035);outline:1px solid rgba(227,192,125,.4);outline-offset:-1px}
+.brd-row{transition:background .3s ease;overflow:hidden}
+.brd-row::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.08) 50%,transparent);transform:skewX(-18deg);pointer-events:none}
+.brd-row:hover::after{animation:btnShine .8s ease forwards}
+.brd-row:hover{background:linear-gradient(90deg,rgba(201,162,90,.13),rgba(201,162,90,.04) 55%,transparent);outline:1px solid rgba(227,192,125,.45);outline-offset:-1px}
+.brd-title{transition:color .3s ease}
+.brd-row:hover .brd-title{color:var(--accent-light)}
+.brd-thumb{transition:border-color .3s ease,box-shadow .3s ease}
+.brd-row:hover .brd-thumb{border-color:rgba(227,192,125,.75);box-shadow:0 0 16px rgba(201,162,90,.4)}
 .brd-row img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .brd-row:hover img{transform:scale(1.08)}
 .brd-arrow{display:inline-block;transition:transform .3s ease,color .3s ease}
