@@ -102,12 +102,13 @@ a:hover{color:var(--accent-light)}
 .ep-yt-thumb::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:50%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.24) 50%,transparent);transform:skewX(-18deg);z-index:2;pointer-events:none}
 .ep-card:hover .ep-yt-thumb::after{animation:btnShine .9s ease forwards}
 .ep-yt-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,19,0) 55%,rgba(15,17,19,.45) 100%);pointer-events:none}
-.ep-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.92);width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(15,17,19,.62);border:1px solid rgba(227,192,125,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,border-color .3s ease}
+.ep-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.92);width:86px;height:86px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(15,17,19,.45);border:2px solid rgba(227,192,125,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,border-color .3s ease}
 .ep-card .ep-play{display:none}
 .ep-card:hover .ep-play{transform:translate(-50%,-50%) scale(1.08);background:rgba(201,162,90,.94);border-color:var(--accent-light)}
 .ep-play svg path{fill:var(--accent-light);transition:fill .3s ease}
 .ep-card:hover .ep-play svg path{fill:#0f1113}
-.ep-dur{position:absolute;right:10px;bottom:10px;padding:4px 9px;border-radius:6px;background:rgba(10,11,12,.82);color:var(--accent-light);font:700 10px var(--font-body);letter-spacing:.08em}
+.ep-dur{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;padding:12px 26px;border-radius:999px;border:1px solid rgba(227,192,125,.55);background:rgba(15,17,19,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--accent-light);font:700 12px var(--font-body);letter-spacing:.18em;white-space:nowrap}
+.ep-new{display:none;position:absolute;left:12px;bottom:12px;z-index:2;align-items:center;padding:6px 14px;border-radius:999px;border:1px solid rgba(227,192,125,.5);background:rgba(15,17,19,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light)}
 .ep-yt-body{display:flex;gap:12px;padding:16px 18px 18px;align-items:flex-start}
 .ep-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;border:1px solid rgba(201,162,90,.35)}
 .ep-yt-text{display:flex;flex-direction:column;gap:4px;min-width:0}
@@ -463,15 +464,11 @@ document.addEventListener('submit', function(e){
       if(ep.route){ __all('[data-ep-route="' + n + '"]').forEach(function(el){ el.textContent = String(ep.route).toUpperCase(); }); }
       if(ep.youtube_url){
         __all('.ep-card[data-ep-link="' + n + '"] .ep-play').forEach(function(el){ el.style.display = 'flex'; });
+        __all('.ep-card[data-ep-link="' + n + '"] .ep-new').forEach(function(el){ el.style.display = 'inline-flex'; });
         __all('[data-ep-status="' + n + '"]').forEach(function(el){
           el.removeAttribute('data-i18n');
           if(el.classList.contains('ep-dur')){
-            el.textContent = (window.__dgLang === 'en' ? 'WATCH' : 'VIZIONEAZĂ');
-            el.style.background = 'linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark))';
-            el.style.color = '#0f1113';
-            el.style.borderColor = 'transparent';
-            el.style.fontWeight = '700';
-            el.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3)';
+            el.style.display = 'none';
           } else {
             el.textContent = (window.__dgLang === 'en' ? 'DEPARTED' : 'DECOLAT');
             el.style.background = 'rgba(143,206,154,.12)';
@@ -682,7 +679,7 @@ document.addEventListener('pointerout', function(e){
       despre_li6:"Și despre toate granițele – vizibile și invizibile – pe care le treci ca să construiești ceva al tău.",
       despre_closing:"Pentru că cele mai valoroase lecții vin din experiențele oamenilor.",
       despre_pil1_t:"OAMENI", despre_pil1_d:"Români cu experiențe, idei și perspective valoroase, din România și din întreaga lume.", despre_pil2_t:"EXPERIENȚE", despre_pil2_d:"Alegeri, lecții și momente care nu se văd întotdeauna din exterior.", despre_pil3_t:"PERSPECTIVE", despre_pil3_d:"Conversații care aduc context și perspective noi asupra vieții, profesiei și societății.", despre_quote_by:"FILOSOFIA DINCOLO DE GRANIȚE",
-      label_live:"SEZONUL 1", episoade_title:"Explorează perspectivele", episoade_sub:"Fiecare episod este o conversație autentică despre alegeri, provocări și experiențe care îi formează pe oameni. Descoperă perspective din România și din întreaga lume, într-un singur loc.", playlist_sub:"Fiecare episod deschide o nouă perspectivă. Conversația continuă pe YouTube.", ep_ph1:"Construirea unei vieți de la zero", ep_ph2:"Drumul din spatele profesiei", ep_ph3:"Alegeri, risc și reinventare", ep_quote_ph1:"Departe înveți ce înseamnă acasă.", ep_quote_ph2:"Două valize, o adresă — restul, de la zero.", ep_quote_ph3:"Granițele sunt pe hartă. Curajul e în oameni.",
+      label_live:"SEZONUL 1", episoade_title:"Explorează perspectivele", episoade_sub:"Fiecare episod este o conversație autentică despre alegeri, provocări și experiențe care îi formează pe oameni. Descoperă perspective din România și din întreaga lume, într-un singur loc.", playlist_sub:"Fiecare episod deschide o nouă perspectivă. Conversația continuă pe YouTube.", ep_ph1:"Construirea unei vieți de la zero", ep_ph2:"Drumul din spatele profesiei", ep_ph3:"Alegeri, risc și reinventare", ep_quote_ph1:"„Departe înveți ce înseamnă acasă.”", ep_quote_ph2:"„Două valize, o adresă — restul, de la zero.”", ep_quote_ph3:"„Granițele sunt pe hartă. Curajul e în oameni.”",
       ep1_desc:"Cum se construiește o afacere de la zero într-o țară străină.", ep2_desc:"Drumul unui profesionist român spre vârful industriei lui.",
       ep3_desc:"O poveste neobișnuită despre risc, muncă și noroc provocat.", ep_follow_yt:"URMĂREȘTE PE YOUTUBE",
       newsletter_title:"FIECARE EPISOD ADUCE O PERSPECTIVĂ NOUĂ", newsletter_desc:"Primești un singur email la lansarea fiecărui episod. Fără spam. Te poți dezabona oricând.",
@@ -1029,14 +1026,14 @@ document.addEventListener('pointerout', function(e){
       <span class="ep-yt-thumb">
         <img loading="lazy" decoding="async" data-ep-img="1" src="assets/ep-cover-brand.jpg?v=2" alt="Episodul 1 — în pregătire">
         <span class="ep-yt-shade"></span>
-        <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span><span data-ep-status="1" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
+        <span class="ep-play"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span><span class="ep-new">EPISOD NOU</span><span data-ep-status="1" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
         
         <span class="ep-yt-text">
           <span data-ep-title="1" class="ep-yt-title" data-i18n="ep_ph1">Construirea unei vieți de la zero</span>
           <span data-ep-quote="1" class="ep-quote" data-i18n="ep_quote_ph1">„Uneori trebuie să pleci departe ca să înțelegi ce înseamnă acasă.”</span>
-          <span class="ep-yt-meta"><span data-ep-badge="1">DG001</span></span>
+          <span class="ep-yt-meta"><span data-ep-badge="1">DG001</span><span style="opacity:.4;margin:0 8px">|</span>Dincolo de Granițe</span>
         </span>
       </span>
     </a>
@@ -1045,14 +1042,14 @@ document.addEventListener('pointerout', function(e){
       <span class="ep-yt-thumb">
         <img loading="lazy" decoding="async" data-ep-img="2" src="assets/ep-cover-brand.jpg?v=2" alt="Episodul 2 — în pregătire">
         <span class="ep-yt-shade"></span>
-        <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span><span data-ep-status="2" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
+        <span class="ep-play"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span><span class="ep-new">EPISOD NOU</span><span data-ep-status="2" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
         
         <span class="ep-yt-text">
           <span data-ep-title="2" class="ep-yt-title" data-i18n="ep_ph2">Drumul din spatele profesiei</span>
           <span data-ep-quote="2" class="ep-quote" data-i18n="ep_quote_ph2">„Am plecat cu două valize și o adresă. Restul a trebuit construit de la zero.”</span>
-          <span class="ep-yt-meta"><span data-ep-badge="2">DG002</span></span>
+          <span class="ep-yt-meta"><span data-ep-badge="2">DG002</span><span style="opacity:.4;margin:0 8px">|</span>Dincolo de Granițe</span>
         </span>
       </span>
     </a>
@@ -1061,18 +1058,19 @@ document.addEventListener('pointerout', function(e){
       <span class="ep-yt-thumb">
         <img loading="lazy" decoding="async" data-ep-img="3" src="assets/ep-cover-brand.jpg?v=2" alt="Episodul 3 — în pregătire">
         <span class="ep-yt-shade"></span>
-        <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span><span data-ep-status="3" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
+        <span class="ep-play"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span><span class="ep-new">EPISOD NOU</span><span data-ep-status="3" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
         
         <span class="ep-yt-text">
           <span data-ep-title="3" class="ep-yt-title" data-i18n="ep_ph3">Alegeri, risc și reinventare</span>
           <span data-ep-quote="3" class="ep-quote" data-i18n="ep_quote_ph3">„Granițele există doar pe hartă. Restul e curaj.”</span>
-          <span class="ep-yt-meta"><span data-ep-badge="3">DG003</span></span>
+          <span class="ep-yt-meta"><span data-ep-badge="3">DG003</span><span style="opacity:.4;margin:0 8px">|</span>Dincolo de Granițe</span>
         </span>
       </span>
     </a>
   </div>
+  <div style="display:flex;align-items:center;gap:18px;margin-top:clamp(32px,4.4vw,48px)"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.35))"></span><span style="display:inline-flex;align-items:center;gap:10px;font:700 12px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.72);white-space:nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg>EPISOADE NOI ÎN FIECARE LUNĂ</span><span style="flex:1;height:1px;background:linear-gradient(270deg,transparent,rgba(201,162,90,.35))"></span></div>
 </div>
 
 <!-- COMUNITATE (countdown + newsletter) -->
