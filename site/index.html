@@ -63,7 +63,7 @@ a:hover{color:var(--accent-light)}
 @keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes cdPulse{0%{transform:scale(1);opacity:.65}70%{transform:scale(3.2);opacity:0}100%{transform:scale(3.2);opacity:0}}
 .nl-capsule:focus-within{box-shadow:0 0 0 3px rgba(201,162,90,.16)}
-.nl-capsule input::placeholder{color:rgba(245,246,247,.38)}
+.nl-capsule input::placeholder{color:rgba(245,246,247,.46)}
 @media (max-width:560px){
   .nl-capsule{flex-wrap:wrap!important;border-radius:22px!important;padding:10px!important}
   .nl-icon{margin-left:8px!important}
@@ -166,7 +166,8 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) #0f1113}
 ::selection{background:var(--accent);color:#0f1113}
 html{scroll-padding-top:124px}
 [id]{scroll-margin-top:124px}
-#top::before{content:'';position:fixed;top:0;left:0;right:0;height:128px;z-index:-1;pointer-events:none;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:linear-gradient(180deg,rgba(15,17,19,.82),rgba(15,17,19,.38) 60%,transparent);-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
+input::placeholder,textarea::placeholder{color:rgba(245,246,247,.48)}
+#top::before{content:'';position:fixed;top:0;left:0;right:0;height:128px;z-index:-1;pointer-events:none;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:linear-gradient(180deg,rgba(15,17,19,.96),rgba(15,17,19,.5) 62%,transparent);-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,[role="button"]:focus-visible{outline:2px solid rgba(227,192,125,.75);outline-offset:3px;border-radius:6px}
 </style>
@@ -449,6 +450,7 @@ document.addEventListener('submit', function(e){
         el.removeAttribute('rel');
       });
       if(ep.cover_url){ __all('[data-ep-img="' + n + '"]').forEach(function(el){ el.src = ep.cover_url; }); }
+      __all('[data-ep-rtag="' + n + '"]').forEach(function(el){ el.style.display = 'none'; });
       __all('[data-ep-badge="' + n + '"]').forEach(function(el){ el.textContent = 'DG' + ('00' + ep.episode_number).slice(-3); });
       if(ep.route){ __all('[data-ep-route="' + n + '"]').forEach(function(el){ el.textContent = String(ep.route).toUpperCase(); }); }
       if(ep.youtube_url){
@@ -672,15 +674,15 @@ document.addEventListener('pointerout', function(e){
       despre_li6:"Și despre toate granițele – vizibile și invizibile – pe care le treci ca să construiești ceva al tău.",
       despre_closing:"Pentru că cele mai valoroase lecții vin din experiențele oamenilor.",
       despre_pil1_t:"OAMENI", despre_pil1_d:"Români care au construit ceva valoros, oriunde în lume.", despre_pil2_t:"EXPERIENȚE", despre_pil2_d:"Alegeri, eșecuri și lecții care nu se văd din exterior.", despre_pil3_t:"PERSPECTIVE", despre_pil3_d:"Conversații care schimbă felul în care privim viața și profesia.", despre_quote_by:"PETER BAGHIU · GAZDA PODCASTULUI",
-      label_live:"SEZONUL 1", episoade_title:"Explorează perspectivele", episoade_sub:"Fiecare episod este o conversație autentică despre alegeri, provocări și experiențele care formează oameni. Descoperă perspective din întreaga lume, într-un singur loc.", playlist_sub:"Fiecare episod e o plecare peste graniță. Îmbarcarea se face pe YouTube.", ep_ph1:"Construirea unei vieți de la zero", ep_ph2:"Drumul din spatele profesiei", ep_ph3:"Alegeri, risc și reinventare", ep_quote_ph1:"„Uneori trebuie să pleci departe ca să înțelegi ce înseamnă acasă.”", ep_quote_ph2:"„Am plecat cu două valize și o adresă. Restul a trebuit construit de la zero.”", ep_quote_ph3:"„Granițele există doar pe hartă. Restul e curaj.”",
+      label_live:"SEZONUL 1", episoade_title:"Explorează perspectivele", episoade_sub:"Fiecare episod este o conversație autentică despre alegeri, provocări și experiențele care formează oameni. Descoperă perspective din întreaga lume, într-un singur loc.", playlist_sub:"Fiecare episod deschide o nouă perspectivă. Conversația continuă pe YouTube.", ep_ph1:"Construirea unei vieți de la zero", ep_ph2:"Drumul din spatele profesiei", ep_ph3:"Alegeri, risc și reinventare", ep_quote_ph1:"„Uneori trebuie să pleci departe ca să înțelegi ce înseamnă acasă.”", ep_quote_ph2:"„Am plecat cu două valize și o adresă. Restul a trebuit construit de la zero.”", ep_quote_ph3:"„Granițele există doar pe hartă. Restul e curaj.”",
       ep1_desc:"Cum se construiește o afacere de la zero într-o țară străină.", ep2_desc:"Drumul unui profesionist român spre vârful industriei lui.",
       ep3_desc:"O poveste neobișnuită despre risc, muncă și noroc provocat.", ep_follow_yt:"URMĂREȘTE PE YOUTUBE",
       newsletter_title:"FIECARE EPISOD ADUCE O PERSPECTIVĂ NOUĂ", newsletter_desc:"Primești un singur email la lansarea fiecărui episod. Fără spam. Te poți dezabona oricând.",
       newsletter_placeholder:"adresa@email.com", newsletter_btn:"ANUNȚĂ-MĂ LA LANSARE",
       newsletter_trust1:"Primești episodul imediat ce este publicat", newsletter_trust2:"Nu trimitem newslettere comerciale", newsletter_trust3:"Te poți dezabona oricând", section_label_newsletter:"COMUNITATE",
       clips_label:"CLIPURI", clips_title:"MOMENTELE CARE RĂMÂN", clips_sub:"Fragmente scurte din episoade, pentru când ai două minute.",
-      playlist_title:"URMĂTOAREA PLECARE ÎNCEPE PE YOUTUBE", playlist_open_channel:"ABONEAZĂ-TE PE YOUTUBE",
-      playlist_in_playlist:"ÎN PLAYLIST", playlist_3_episodes:"PRIMELE 3 EPISOADE", coming_soon:"ÎN PREGĂTIRE", board_in_studio:"ÎN STUDIO",
+      playlist_title:"URMĂTOAREA PLECARE ÎNCEPE PE YOUTUBE", playlist_open_channel:"DESCHIDE CANALUL",
+      playlist_in_playlist:"ÎN PLAYLIST", playlist_3_episodes:"PRIMELE 3 EPISOADE", coming_soon:"ÎN PREGĂTIRE", board_in_studio:"FILMARE PROGRAMATĂ",
       playlist_card_desc:"Fii la curent cu fiecare episod nou. Urmărește-ne pe platforma ta preferată.", playlist_card_yt:"Urmărește pe YouTube",
       label_contact:"CONTACT", contact_title:"HAI SĂ VORBIM",
       guest_title:"VREI SĂ FII INVITAT LA PODCAST?", guest_desc:"Ai o experiență de împărtășit: o afacere, o carieră, un drum neobișnuit? Oriunde te afli în lume, scrie-ne.", guest_btn:"PROPUNE-TE CA INVITAT",
@@ -709,15 +711,15 @@ document.addEventListener('pointerout', function(e){
       despre_li6:"And about all the borders – visible and invisible – you cross to build something of your own.",
       despre_closing:"Because the most valuable lessons come from people's own experience.",
       despre_pil1_t:"PEOPLE", despre_pil1_d:"Romanians who built something valuable, anywhere in the world.", despre_pil2_t:"EXPERIENCES", despre_pil2_d:"Choices, failures and lessons you never see from the outside.", despre_pil3_t:"PERSPECTIVES", despre_pil3_d:"Conversations that change how we see life and profession.", despre_quote_by:"PETER BAGHIU · HOST",
-      label_live:"SEASON 1", episoade_title:"Explore the perspectives", episoade_sub:"Every episode is an honest conversation about choices, challenges and the experiences that shape people. Discover perspectives from around the world, in one place.", playlist_sub:"Every episode is a departure across the border. Boarding happens on YouTube.", ep_ph1:"Building a life from scratch", ep_ph2:"The road behind the profession", ep_ph3:"Choices, risk and reinvention", ep_quote_ph1:"“Sometimes you have to go far away to understand what home means.”", ep_quote_ph2:"“I left with two suitcases and an address. The rest had to be built from scratch.”", ep_quote_ph3:"“Borders only exist on maps. The rest is courage.”",
+      label_live:"SEASON 1", episoade_title:"Explore the perspectives", episoade_sub:"Every episode is an honest conversation about choices, challenges and the experiences that shape people. Discover perspectives from around the world, in one place.", playlist_sub:"Every episode opens a new perspective. The conversation continues on YouTube.", ep_ph1:"Building a life from scratch", ep_ph2:"The road behind the profession", ep_ph3:"Choices, risk and reinvention", ep_quote_ph1:"“Sometimes you have to go far away to understand what home means.”", ep_quote_ph2:"“I left with two suitcases and an address. The rest had to be built from scratch.”", ep_quote_ph3:"“Borders only exist on maps. The rest is courage.”",
       ep1_desc:"How a business gets built from zero in a foreign country.", ep2_desc:"A Romanian professional's road to the top of their industry.",
       ep3_desc:"An unusual story about risk, work and self-made luck.", ep_follow_yt:"FOLLOW ON YOUTUBE",
       newsletter_title:"EVERY EPISODE BRINGS A NEW PERSPECTIVE", newsletter_desc:"You get a single email when each episode launches. No spam. Unsubscribe anytime.",
       newsletter_placeholder:"adresa@email.com", newsletter_btn:"NOTIFY ME AT LAUNCH",
       newsletter_trust1:"You get the episode as soon as it is published", newsletter_trust2:"No commercial newsletters", newsletter_trust3:"Unsubscribe anytime", section_label_newsletter:"COMMUNITY",
       clips_label:"CLIPS", clips_title:"THE MOMENTS THAT STAY", clips_sub:"Short cuts from the episodes, for when you have two minutes.",
-      playlist_title:"THE NEXT DEPARTURE BEGINS ON YOUTUBE", playlist_open_channel:"SUBSCRIBE ON YOUTUBE",
-      playlist_in_playlist:"IN PLAYLIST", playlist_3_episodes:"FIRST 3 EPISODES", coming_soon:"IN THE WORKS", board_in_studio:"IN THE STUDIO",
+      playlist_title:"THE NEXT DEPARTURE BEGINS ON YOUTUBE", playlist_open_channel:"OPEN THE CHANNEL",
+      playlist_in_playlist:"IN PLAYLIST", playlist_3_episodes:"FIRST 3 EPISODES", coming_soon:"IN THE WORKS", board_in_studio:"FILMING SCHEDULED",
       playlist_card_desc:"Stay up to date with every new episode. Follow us on your favorite platform.", playlist_card_yt:"Follow on YouTube",
       label_contact:"CONTACT", contact_title:"LET'S TALK",
       guest_title:"WANT TO BE A GUEST ON THE PODCAST?", guest_desc:"Do you have an experience worth sharing: a business, a career, an unusual path? Wherever you are in the world, write to us.", guest_btn:"PROPOSE YOURSELF AS A GUEST",
@@ -801,7 +803,7 @@ document.addEventListener('pointerout', function(e){
 
 <!-- NAV (sticky, floating island) -->
 <div id="top" style="position:fixed;top:18px;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:0 clamp(20px,7vw,90px);box-sizing:border-box;pointer-events:none">
-  <div data-nav-pill style="position:relative;pointer-events:auto;box-sizing:border-box;width:100%;max-width:1100px;background:rgba(18,20,22,.65);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(201,162,90,.2);border-radius:999px;box-shadow:0 16px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:9px 9px 9px 22px;transition:all .35s cubic-bezier(.2,.8,.2,1);opacity:0;animation:fadeInDown .7s cubic-bezier(.2,.8,.2,1) .2s forwards">
+  <div data-nav-pill style="position:relative;pointer-events:auto;box-sizing:border-box;width:100%;max-width:1100px;background:rgba(16,18,20,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(201,162,90,.2);border-radius:999px;box-shadow:0 16px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:9px 9px 9px 22px;transition:all .35s cubic-bezier(.2,.8,.2,1);opacity:0;animation:fadeInDown .7s cubic-bezier(.2,.8,.2,1) .2s forwards">
     <a href="#top" aria-label="Acasă" style="display:flex;align-items:center;gap:11px;flex:none;text-decoration:none;cursor:pointer">
       <div data-nav-logo style="position:relative;width:68px;height:68px;flex:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)" style-before="content:'';position:absolute;inset:-10px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.45),transparent 70%);animation:pulseGlow 2s ease-in-out infinite;z-index:0">
         <div data-scroll-ring style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--ring-p, 0) * 1%), rgba(201,162,90,.22) 0)"></div>
@@ -942,7 +944,7 @@ document.addEventListener('pointerout', function(e){
 </div>
 
 <!-- DESPRE (card) -->
-<div id="despre" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(48px,8vw,84px) clamp(20px,7vw,90px) 0;box-sizing:border-box">
+<div id="despre" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(38px,6.2vw,64px) clamp(20px,7vw,90px) 0;box-sizing:border-box">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:42px;flex-wrap:wrap;gap:20px">
     <div>
       <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
@@ -981,13 +983,13 @@ document.addEventListener('pointerout', function(e){
           <span style="width:64px;height:1px;background:linear-gradient(270deg,transparent,rgba(201,162,90,.5))"></span>
         </div>
         <div class="dsp-quote" style="position:relative;z-index:1;font:italic 600 clamp(19px,2.8vw,24px)/1.5 var(--font-serif);color:var(--accent)" data-i18n="despre_closing">Pentru că cele mai valoroase lecții vin din experiențele oamenilor.</div>
-        <div style="margin-top:15px;font:600 10.5px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.45)" data-i18n="despre_quote_by">PETER BAGHIU · GAZDA PODCASTULUI</div>
+        <div style="margin-top:15px;font:600 10.5px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.55)" data-i18n="despre_quote_by">PETER BAGHIU · GAZDA PODCASTULUI</div>
       </div>
     </div>
   </div>
 </div>
 
-<div data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(20px,3.5vw,34px) clamp(20px,7vw,90px) clamp(48px,7vw,76px);box-sizing:border-box">
+<div data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(20px,3.5vw,34px) clamp(20px,7vw,90px) clamp(38px,5.5vw,58px);box-sizing:border-box">
   <div role="link" tabindex="0" aria-label="Descoperă povestea gazdei" onclick="if(!event.target.closest('a'))location.href='despre.html'" onkeydown="if(event.key==='Enter')location.href='despre.html'" style="cursor:pointer;position:relative;overflow:hidden;display:flex;align-items:center;gap:clamp(20px,3.5vw,36px);flex-wrap:wrap;padding:clamp(24px,4vw,38px) clamp(22px,4vw,38px);border:1px solid transparent;border-radius:26px;background:linear-gradient(180deg,#181b1f,#111316) padding-box,linear-gradient(170deg,rgba(227,192,125,.55),rgba(201,162,90,.14) 34%,rgba(201,162,90,.08) 66%,rgba(227,192,125,.32) 100%) border-box;box-shadow:0 34px 70px rgba(0,0,0,.45)">
     <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.55),transparent)" aria-hidden="true"></div>
     <div style="position:absolute;top:-140px;right:-90px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none" aria-hidden="true"></div>
@@ -1002,7 +1004,7 @@ document.addEventListener('pointerout', function(e){
 </div>
 
 <!-- HARTA DIASPOREI -->
-<div id="harta" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(48px,8vw,84px) clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+<div id="harta" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(38px,6.2vw,64px) clamp(20px,7vw,90px) clamp(44px,6.2vw,68px);box-sizing:border-box">
   <div style="position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;margin-bottom:42px;flex-wrap:wrap;gap:20px">
     <div>
     <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
@@ -1045,7 +1047,7 @@ document.addEventListener('pointerout', function(e){
 </div>
 
 <!-- EPISOADE -->
-<div id="episoade" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+<div id="episoade" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(44px,6.2vw,68px);box-sizing:border-box">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:42px;flex-wrap:wrap;gap:20px">
     <div>
       <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
@@ -1064,7 +1066,7 @@ document.addEventListener('pointerout', function(e){
         <img loading="lazy" decoding="async" data-ep-img="1" src="assets/ep-cover-london.jpg" alt="Episodul 1 — în pregătire">
         <span class="ep-yt-shade"></span>
         <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
-        <span data-ep-status="1" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
+        <span data-ep-rtag="1" style="position:absolute;left:10px;bottom:10px;z-index:2;padding:5px 11px;border-radius:999px;background:rgba(15,17,19,.75);border:1px solid rgba(201,162,90,.4);font:700 9px var(--font-body);letter-spacing:.12em;color:var(--accent-light)">LONDRA → BUCUREȘTI</span><span data-ep-status="1" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
         <img loading="lazy" decoding="async" src="assets/logo.jpg" alt="" class="ep-avatar">
@@ -1081,7 +1083,7 @@ document.addEventListener('pointerout', function(e){
         <img loading="lazy" decoding="async" data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="Episodul 2 — în pregătire">
         <span class="ep-yt-shade"></span>
         <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
-        <span data-ep-status="2" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
+        <span data-ep-rtag="2" style="position:absolute;left:10px;bottom:10px;z-index:2;padding:5px 11px;border-radius:999px;background:rgba(15,17,19,.75);border:1px solid rgba(201,162,90,.4);font:700 9px var(--font-body);letter-spacing:.12em;color:var(--accent-light)">NEW YORK → CLUJ</span><span data-ep-status="2" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
         <img loading="lazy" decoding="async" src="assets/logo.jpg" alt="" class="ep-avatar">
@@ -1098,7 +1100,7 @@ document.addEventListener('pointerout', function(e){
         <img loading="lazy" decoding="async" data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="Episodul 3 — în pregătire">
         <span class="ep-yt-shade"></span>
         <span class="ep-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
-        <span data-ep-status="3" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
+        <span data-ep-rtag="3" style="position:absolute;left:10px;bottom:10px;z-index:2;padding:5px 11px;border-radius:999px;background:rgba(15,17,19,.75);border:1px solid rgba(201,162,90,.4);font:700 9px var(--font-body);letter-spacing:.12em;color:var(--accent-light)">DUBAI → BUCUREȘTI</span><span data-ep-status="3" data-i18n="coming_soon" class="ep-dur">ÎN CURÂND</span>
       </span>
       <span class="ep-yt-body">
         <img loading="lazy" decoding="async" src="assets/logo.jpg" alt="" class="ep-avatar">
@@ -1167,12 +1169,12 @@ document.addEventListener('pointerout', function(e){
       <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.5)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust2">Nu trimitem newslettere comerciale</span></span>
       <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.5)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust3">Te poți dezabona oricând</span></span>
     </div>
-    <div style="position:relative;font:400 11.5px/1.6 var(--font-body);color:rgba(245,246,247,.38);text-align:center;max-width:460px" data-i18n="newsletter_consent" data-i18n-html="1">Prin abonare ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>.</div>
+    <div style="position:relative;font:400 11.5px/1.6 var(--font-body);color:rgba(245,246,247,.46);text-align:center;max-width:460px" data-i18n="newsletter_consent" data-i18n-html="1">Prin abonare ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>.</div>
   </div>
 </div>
 
 <!-- CLIPURI (hidden until Peter adds clip links in /admin) -->
-<div data-clips-section data-reveal style="display:none;max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+<div data-clips-section data-reveal style="display:none;max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(44px,6.2vw,68px);box-sizing:border-box">
   <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
     <span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>
     <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)" data-i18n="clips_label">CLIPURI</span>
@@ -1183,7 +1185,7 @@ document.addEventListener('pointerout', function(e){
 </div>
 
 <!-- PLAYLIST -->
-<div id="playlist" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(56px,8vw,88px);box-sizing:border-box">
+<div id="playlist" data-reveal style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px) clamp(44px,6.2vw,68px);box-sizing:border-box">
   <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
     <span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>
     <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)">PLAYLIST</span>
@@ -1203,14 +1205,14 @@ document.addEventListener('pointerout', function(e){
         <span style="font:var(--head-weight) 21px/1 var(--font-head);letter-spacing:.14em;color:var(--accent-light)" data-i18n="board_title">DESTINAȚII · EPISOADE</span>
       </div>
       <div style="display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap">
-        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.4)" data-i18n="board_lon">LONDRA</span><span data-clock-lon style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
+        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.5)" data-i18n="board_lon">LONDRA</span><span data-clock-lon style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
         <span style="width:1px;height:14px;background:rgba(201,162,90,.35)"></span>
-        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.4)" data-i18n="board_buc">BUCUREȘTI</span><span data-clock-buc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
+        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.5)" data-i18n="board_buc">BUCUREȘTI</span><span data-clock-buc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
         <span style="width:1px;height:14px;background:rgba(201,162,90,.35)"></span>
-        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.4)" data-i18n="board_nyc">NEW YORK</span><span data-clock-nyc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
+        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.5)" data-i18n="board_nyc">NEW YORK</span><span data-clock-nyc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
       </div>
     </div>
-    <div class="brd-cols" style="display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:13px clamp(14px,3vw,28px) 9px;font:700 9px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.32)">
+    <div class="brd-cols" style="display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:13px clamp(14px,3vw,28px) 9px;font:700 9px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.42)">
       <span style="width:106px;flex:none" data-i18n="board_col_flight">EPISOD</span>
       <span class="brd-thumb-sp" style="width:52px;flex:none"></span>
       <span style="flex:1" data-i18n="board_col_story">POVESTE</span>
@@ -1230,12 +1232,12 @@ document.addEventListener('pointerout', function(e){
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
         <span data-ep-title="1" class="brd-title" style="font:600 15px var(--font-body);color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_ph1">Construirea unei vieți de la zero</span>
-        <span data-ep-desc="1" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
+        <span data-ep-desc="1" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.55);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
       </span>
       <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
-        <span data-ep-status="1" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="board_in_studio">ÎN STUDIO</span>
+        <span data-ep-status="1" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="board_in_studio">FILMARE PROGRAMATĂ</span>
       </span>
       <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
     </a>
@@ -1250,7 +1252,7 @@ document.addEventListener('pointerout', function(e){
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
         <span data-ep-title="2" class="brd-title" style="font:600 15px var(--font-body);color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_ph2">Drumul din spatele profesiei</span>
-        <span data-ep-desc="2" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
+        <span data-ep-desc="2" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.55);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
       </span>
       <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span class="brd-break"></span>
@@ -1270,7 +1272,7 @@ document.addEventListener('pointerout', function(e){
       </span>
       <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
         <span data-ep-title="3" class="brd-title" style="font:600 15px var(--font-body);color:#f5f6f7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep_ph3">Alegeri, risc și reinventare</span>
-        <span data-ep-desc="3" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
+        <span data-ep-desc="3" class="brd-desc" style="font:400 12.5px var(--font-body);color:rgba(245,246,247,.55);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
       </span>
       <span class="brd-time" style="flex:none;width:78px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.75);white-space:nowrap">SEP 2026</span>
       <span class="brd-break"></span>
@@ -1281,7 +1283,7 @@ document.addEventListener('pointerout', function(e){
     </a>
     <div class="brd-foot" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(201,162,90,.22);background:rgba(201,162,90,.05)">
       <div class="brd-foot-gate" style="display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap">
-        <span style="font:700 9.5px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.4)" data-i18n="board_gate">POARTA</span>
+        <span style="font:700 9.5px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.5)" data-i18n="board_gate">POARTA</span>
         <span style="font:var(--head-weight) 19px/1 var(--font-head);letter-spacing:.1em;color:#f5f6f7">YOUTUBE</span>
         <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;background:rgba(143,206,154,.12);border:1px solid rgba(143,206,154,.35)"><span style="width:5px;height:5px;border-radius:50%;background:#8fce9a;animation:livePulse 2s infinite"></span><span style="font:700 9.5px var(--font-body);letter-spacing:.08em;color:#8fce9a" data-i18n="board_boarding">ÎMBARCARE DESCHISĂ</span></span>
       </div>
@@ -1298,7 +1300,7 @@ document.addEventListener('pointerout', function(e){
 </div>
 
 <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px);box-sizing:border-box">
-  <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:12px;opacity:.8">
+  <div style="display:flex;flex-direction:column;gap:1px;margin:6px 0 8px;opacity:.8">
   <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:3px;height:44px;padding:0 2px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)"><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.000s"></span><span style="width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.045s"></span><span style="width:4px;height:28px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.090s"></span><span style="width:4px;height:34px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.135s"></span><span style="width:4px;height:39px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.180s"></span><span style="width:4px;height:42px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.225s"></span><span style="width:4px;height:44px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.270s"></span><span style="width:4px;height:44px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.315s"></span><span style="width:4px;height:42px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.360s"></span><span style="width:4px;height:39px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.405s"></span><span style="width:4px;height:34px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.450s"></span><span style="width:4px;height:28px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.495s"></span><span style="width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.540s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.585s"></span></div>
   <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:3px;height:19px;padding:0 2px;opacity:.55;-webkit-mask-image:linear-gradient(180deg,#000,transparent),linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,#000,transparent),linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-composite:intersect"><span style="width:4px;height:7px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.000s"></span><span style="width:4px;height:9px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.045s"></span><span style="width:4px;height:12px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.090s"></span><span style="width:4px;height:14px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.135s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.180s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.225s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.270s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.315s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.360s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.405s"></span><span style="width:4px;height:14px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.450s"></span><span style="width:4px;height:12px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.495s"></span><span style="width:4px;height:9px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.540s"></span><span style="width:4px;height:7px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.585s"></span></div>
 </div>
@@ -1321,17 +1323,17 @@ document.addEventListener('pointerout', function(e){
     </div>
   </div>
   <div class="ftr-bottom" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(245,246,247,.08)">
-    <div class="ftr-cr" style="display:flex;flex-direction:column;gap:3px"><div style="font:400 13px var(--font-body);color:rgba(245,246,247,.4)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe. Toate drepturile rezervate.</div><div style="font:400 11px var(--font-body);color:rgba(245,246,247,.26)" data-i18n="footer_credit">Creat și prezentat de Peter Baghiu.</div></div>
-    <div class="ftr-links" style="display:flex;gap:16px 18px;align-items:center;flex-wrap:wrap;justify-content:center;font:400 12px var(--font-body)"><a href="index.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Acasă</a>
-      <a href="despre.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Despre</a>
-      <a href="episoade.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Episoade</a>
-      <a href="oameni.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Oameni</a>
-      <a href="invitati.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Devino invitat</a>
-      <a href="parteneriate.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Parteneriate</a>
-      <a href="contact.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Contact</a>
+    <div class="ftr-cr" style="display:flex;flex-direction:column;gap:3px"><div style="font:400 13px var(--font-body);color:rgba(245,246,247,.5)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe. Toate drepturile rezervate.</div><div style="font:400 11px var(--font-body);color:rgba(245,246,247,.34)" data-i18n="footer_credit">Creat și prezentat de Peter Baghiu.</div></div>
+    <div class="ftr-links" style="display:flex;gap:16px 18px;align-items:center;flex-wrap:wrap;justify-content:center;font:400 12px var(--font-body)"><a href="index.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Acasă</a>
+      <a href="despre.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Despre</a>
+      <a href="episoade.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Episoade</a>
+      <a href="oameni.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Oameni</a>
+      <a href="invitati.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Devino invitat</a>
+      <a href="parteneriate.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Parteneriate</a>
+      <a href="contact.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Contact</a>
       <span style="width:1px;height:12px;background:rgba(245,246,247,.18);flex:none" aria-hidden="true"></span>
-      <a href="termeni.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Termeni</a>
-      <a href="privacy.html" style="color:rgba(245,246,247,.45);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)" data-i18n="footer_privacy">Confidențialitate</a></div>
+      <a href="termeni.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Termeni</a>
+      <a href="privacy.html" style="color:rgba(245,246,247,.55);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)" data-i18n="footer_privacy">Confidențialitate</a></div>
   </div>
 </div>
 

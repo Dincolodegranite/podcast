@@ -574,7 +574,7 @@ function initMap(){
       var inHome = (typeof inRO === 'function') && inRO(city[2], city[1]);
       storyEl.textContent = inHome
         ? 'Ești acasă — iar experiențele românilor din lume sunt la un episod distanță.'
-        : city[0] + ' se află la ' + Math.round(km).toLocaleString('ro-RO') + ' km de București. Dar uneori, oamenii reușesc să apropie distanțele prin conversații sincere.';
+        : city[0] + ' se află la ' + Math.round(km).toLocaleString('ro-RO') + ' km de București. Distanța se măsoară în kilometri. Dorul, altfel.';
     }
     result.style.display = 'block';
     var start = null, dur = 1400;
@@ -640,7 +640,7 @@ function initCountdown(){
         box.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">' +
           '<div style="font:var(--head-weight) clamp(26px,5vw,40px)/1.15 var(--font-head);color:#f5f6f7;letter-spacing:.01em">Primul episod este <span style="background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">acum disponibil</span></div>' +
           '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">' +
-          '<a href="episoade.html" style="display:inline-flex;align-items:center;padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)">Urm\u0103re\u0219te episodul</a>' +
+          '<a href="episoade.html" style="display:inline-flex;align-items:center;padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)">Vezi episodul</a>' +
           '<a href="#abonare-home" style="display:inline-flex;align-items:center;padding:13px 26px;border-radius:999px;border:1px solid rgba(201,162,90,.45);color:var(--accent-light);font:600 13px var(--font-body);letter-spacing:.04em;text-decoration:none">Prime\u0219te urm\u0103torul episod</a>' +
           '</div></div>';
         return;
