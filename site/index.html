@@ -166,6 +166,10 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) #0f1113}
 ::selection{background:var(--accent);color:#0f1113}
 html{scroll-padding-top:132px}
 a[style*="border-radius:999px"]:hover,button[style*="border-radius:999px"]:hover,.nl-btn:hover,.nlx-btn:hover,.gf-btn:hover{outline:1px solid rgba(227,192,125,.8);outline-offset:0;filter:drop-shadow(0 0 8px rgba(227,192,125,.45))}
+a[style*="border-radius:999px"],button[style*="border-radius:999px"],.nl-btn,.nlx-btn,.gf-btn{position:relative;overflow:hidden}
+a[style*="border-radius:999px"]::after,button[style*="border-radius:999px"]::after,.nl-btn::after,.nlx-btn::after,.gf-btn::after{content:"";position:absolute;top:-4px;bottom:-4px;left:-80%;width:55%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.38) 50%,transparent);transform:skewX(-20deg);pointer-events:none}
+a[style*="border-radius:999px"]:hover::after,button[style*="border-radius:999px"]:hover::after,.nl-btn:hover::after,.nlx-btn:hover::after,.gf-btn:hover::after{animation:btnShine .7s ease forwards}
+@keyframes btnShine{to{left:130%}}
 @media (max-width:760px){.hero-pad{padding-top:74px!important}}
 @media (max-width:760px){.hero-pad{padding-top:74px!important}}
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid rgba(227,192,125,.85);outline-offset:3px;border-radius:6px}
