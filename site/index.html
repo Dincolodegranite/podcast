@@ -458,7 +458,7 @@ document.addEventListener('submit', function(e){
       });
       if(ep.cover_url){ __all('[data-ep-img="' + n + '"]').forEach(function(el){ el.src = ep.cover_url; }); }
       __all('[data-ep-rtag="' + n + '"]').forEach(function(el){ el.style.display = 'none'; });
-      __all('[data-ep-badge="' + n + '"]').forEach(function(el){ el.textContent = 'EPISODUL ' + ('0' + ep.episode_number).slice(-2); });
+      __all('[data-ep-badge="' + n + '"]').forEach(function(el){ el.textContent = el.closest('.brd-row') ? String(ep.episode_number) : 'EPISODUL ' + ('0' + ep.episode_number).slice(-2); });
       if(ep.route){ __all('[data-ep-route="' + n + '"]').forEach(function(el){ el.textContent = String(ep.route).toUpperCase(); }); }
       if(ep.youtube_url){
         __all('.ep-card[data-ep-link="' + n + '"] .ep-play').forEach(function(el){ el.style.display = 'flex'; });
@@ -1170,7 +1170,7 @@ document.addEventListener('pointerout', function(e){
     </div>
     <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:106px;flex:none;display:flex;flex-direction:column;gap:4px">
-        <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="1">DG001</span>
+        <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="1">1</span>
         <span data-ep-route="1" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">LONDRA → BUCUREȘTI</span>
       </span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
@@ -1190,7 +1190,7 @@ document.addEventListener('pointerout', function(e){
     </a>
     <a data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:106px;flex:none;display:flex;flex-direction:column;gap:4px">
-        <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="2">DG002</span>
+        <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="2">2</span>
         <span data-ep-route="2" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">NEW YORK → CLUJ</span>
       </span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
@@ -1210,7 +1210,7 @@ document.addEventListener('pointerout', function(e){
     </a>
     <a data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:106px;flex:none;display:flex;flex-direction:column;gap:4px">
-        <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="3">DG003</span>
+        <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="3">3</span>
         <span data-ep-route="3" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">DUBAI → BUCUREȘTI</span>
       </span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
