@@ -623,7 +623,7 @@ function initMap(){
 /* ── Countdown ─────────────────────────────────────────────────── */
 function initCountdown(){
   var box = document.querySelector('[data-countdown]');
-  var fallback = new Date('2026-09-01T00:00:00+01:00').getTime();
+  var fallback = new Date('2026-12-01T00:00:00+00:00').getTime();
   var d = box.querySelector('[data-count-d]'), h = box.querySelector('[data-count-h]');
   var m = box.querySelector('[data-count-m]'), s = box.querySelector('[data-count-s]');
   function pad(n){ return n < 10 ? '0' + n : String(n); }
