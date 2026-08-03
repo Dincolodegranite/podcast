@@ -119,8 +119,8 @@ a:hover{color:var(--accent-light)}
 @media (max-width:900px){.clip-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){.ftr-bottom{flex-direction:column!important;justify-content:center!important;gap:18px!important;text-align:center}.ftr-cr{align-items:center}.ftr-links{justify-content:center!important}.ftr-bottom{padding-bottom:52px!important}}
 .clip{position:relative;display:block;aspect-ratio:9/16;border-radius:18px;overflow:hidden;text-decoration:none;
-  border:1px solid transparent;
-  background:linear-gradient(180deg,#191c1f,#131618) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 40%,rgba(227,192,125,.25)) border-box;
+  border:1px solid rgba(201,162,90,.32);
+  background:linear-gradient(180deg,#191c1f,#131618);
   box-shadow:0 18px 40px rgba(0,0,0,.35);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
 .clip:hover{transform:translateY(-4px);box-shadow:0 26px 54px rgba(0,0,0,.45)}
 .clip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
@@ -958,7 +958,7 @@ document.addEventListener('pointerout', function(e){
     </div>
     <a class="sec-cta" href="despre.html" style="flex:none;align-self:flex-end;margin-bottom:4px;display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border:1px solid rgba(201,162,90,.5);background:rgba(201,162,90,.07);color:var(--accent-light);font:600 13px var(--font-body);letter-spacing:.04em;border-radius:999px;text-decoration:none;box-shadow:none;transition:all .25s ease" style-hover="transform:translateY(-2px);background:rgba(201,162,90,.15);border-color:var(--accent-light)" data-i18n="despre_more">DESCOPERĂ PODCASTUL →</a>
   </div>
-  <div class="dsp-card" style="position:relative;overflow:hidden;border-radius:28px;border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4);padding:clamp(26px,5vw,54px)">
+  <div class="dsp-card" style="position:relative;overflow:hidden;border-radius:28px;border:1px solid rgba(201,162,90,.32);background:linear-gradient(180deg,#15171b,#101214);box-shadow:0 40px 80px rgba(0,0,0,.4);padding:clamp(26px,5vw,54px)">
     <div style="position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none"></div>
         <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(201,162,90,.16);border:1px solid rgba(201,162,90,.2);border-radius:16px;overflow:hidden;margin-bottom:clamp(28px,4.5vw,46px)">
       <div style="background:rgba(21,23,27,.9);padding:24px 26px 25px;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
@@ -988,7 +988,7 @@ document.addEventListener('pointerout', function(e){
         <div style="margin-top:15px;font:600 10.5px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.62)" data-i18n="despre_quote_by">FILOSOFIA DINCOLO DE GRANIȚE</div>
       </div>
     </div>
-    <div role="link" tabindex="0" aria-label="Cunoaște gazda" onclick="if(!event.target.closest('a'))location.href='despre.html'" onkeydown="if(event.key==='Enter')location.href='despre.html'" style="cursor:pointer;position:relative;overflow:hidden;display:flex;align-items:center;gap:clamp(22px,3.4vw,40px);flex-wrap:wrap;margin-top:clamp(44px,5.4vw,66px);padding:clamp(24px,3.4vw,36px) clamp(20px,3.2vw,36px);border-radius:24px;border:1px solid transparent;background:linear-gradient(160deg,#191c20,#111316) padding-box,linear-gradient(150deg,rgba(227,192,125,.6),rgba(201,162,90,.12) 40%,rgba(201,162,90,.1) 65%,rgba(227,192,125,.4)) border-box;transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-3px);box-shadow:0 22px 54px rgba(0,0,0,.5),0 0 30px rgba(201,162,90,.12)">
+    <div role="link" tabindex="0" aria-label="Cunoaște gazda" onclick="if(!event.target.closest('a'))location.href='despre.html'" onkeydown="if(event.key==='Enter')location.href='despre.html'" style="cursor:pointer;position:relative;overflow:hidden;display:flex;align-items:center;gap:clamp(22px,3.4vw,40px);flex-wrap:wrap;margin-top:clamp(44px,5.4vw,66px);padding:clamp(24px,3.4vw,36px) clamp(20px,3.2vw,36px);border-radius:24px;border:1px solid rgba(201,162,90,.32);background:linear-gradient(160deg,#191c20,#111316);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-3px);box-shadow:0 22px 54px rgba(0,0,0,.5),0 0 30px rgba(201,162,90,.12)">
       <div style="position:absolute;top:-120px;left:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.16),transparent 65%)" aria-hidden="true"></div>
       <div style="position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)" aria-hidden="true"></div>
       <span style="position:relative;flex:none;display:inline-flex;padding:5px;border-radius:50%;background:conic-gradient(from 210deg,rgba(227,192,125,.65),rgba(201,162,90,.11),rgba(227,192,125,.46),rgba(201,162,90,.08),rgba(227,192,125,.65));box-shadow:0 0 24px rgba(201,162,90,.2),0 16px 34px rgba(0,0,0,.5)">
@@ -1080,7 +1080,7 @@ document.addEventListener('pointerout', function(e){
     </div>
     
   </div>
-  <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;padding:44px 32px;border:1px solid transparent;border-radius:28px;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
+  <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;padding:44px 32px;border:1px solid rgba(201,162,90,.32);border-radius:28px;background:linear-gradient(180deg,#15171b,#101214);box-shadow:0 40px 80px rgba(0,0,0,.4)">
     <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent)"></div>
     <div style="position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none"></div>
     <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:10px">
@@ -1114,7 +1114,7 @@ document.addEventListener('pointerout', function(e){
     </div>
     <div style="font:400 13px var(--font-body);color:rgba(245,246,247,.62);text-align:center">Primești un email în momentul în care episodul devine live.</div>
     <form id="abonare-home" data-notify-form method="POST" style="position:relative;width:100%;max-width:560px">
-      <div class="nl-capsule" style="display:flex;align-items:center;gap:8px;padding:6px;border-radius:999px;border:1px solid transparent;background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55)) padding-box,linear-gradient(150deg,rgba(227,192,125,.45),rgba(201,162,90,.12) 55%,rgba(227,192,125,.28)) border-box;transition:box-shadow .3s ease">
+      <div class="nl-capsule" style="display:flex;align-items:center;gap:8px;padding:6px;border-radius:999px;border:1px solid rgba(201,162,90,.32);background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55));transition:box-shadow .3s ease">
         <span class="nl-icon" style="flex:none;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:16px;color:rgba(227,192,125,.8)" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span>
         <input data-hp-nl type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <input data-notify-email name="email" type="email" required placeholder="adresa@email.com" data-i18n-placeholder="newsletter_placeholder" style="flex:1;min-width:0;padding:12px 8px;border:none;background:transparent;color:#f5f6f7;font:400 15px var(--font-body);outline:none">
@@ -1144,7 +1144,7 @@ document.addEventListener('pointerout', function(e){
     </div>
       <a class="sec-cta" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" style="flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;border:1px solid rgba(201,162,90,.5);background:rgba(201,162,90,.07);color:var(--accent-light);font:600 13px var(--font-body);letter-spacing:.04em;border-radius:999px;box-shadow:none;transition:all .3s ease;cursor:pointer;text-decoration:none;white-space:nowrap" style-hover="transform:translateY(-2px);background:rgba(201,162,90,.15);border-color:var(--accent-light)" style-active="transform:scale(0.96)"><span data-i18n="playlist_open_channel">DESCHIDE CANALUL</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
   </div>
-  <div style="position:relative;width:1100px;max-width:100%;box-sizing:border-box;margin:0 auto;border-radius:26px;overflow:hidden;border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.5),rgba(201,162,90,.12) 34%,rgba(201,162,90,.08) 66%,rgba(227,192,125,.3) 100%) border-box;box-shadow:0 50px 100px rgba(0,0,0,.5)">
+  <div style="position:relative;width:1100px;max-width:100%;box-sizing:border-box;margin:0 auto;border-radius:26px;overflow:hidden;border:1px solid rgba(201,162,90,.32);background:linear-gradient(180deg,#15171b,#101214);box-shadow:0 50px 100px rgba(0,0,0,.5)">
     <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent);pointer-events:none"></div>
     <div class="brd-head" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px clamp(14px,3vw,28px);background:rgba(201,162,90,.07);border-bottom:1px solid rgba(201,162,90,.22)">
       <div style="display:inline-flex;align-items:center;gap:11px">
@@ -1272,7 +1272,7 @@ document.addEventListener('pointerout', function(e){
       </div>
     </div>
   </div>
-  <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);border:1px solid transparent;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
+  <div style="position:relative;border-radius:28px;padding:clamp(18px,3.5vw,32px);border:1px solid rgba(201,162,90,.32);background:linear-gradient(180deg,#15171b,#101214);box-shadow:0 40px 80px rgba(0,0,0,.4)">
     <div data-harta-result style="display:none;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:6px 12px 30px">
       <div data-harta-route style="font:600 12px var(--font-body);letter-spacing:.22em;color:rgba(227,192,125,.85);margin-bottom:10px"></div>
       <div style="font:var(--head-weight) clamp(44px,8vw,72px)/1 var(--font-head);color:var(--accent-light)"><span data-harta-km>0</span> KM</div>
