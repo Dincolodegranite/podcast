@@ -570,7 +570,12 @@ function initMap(){
     var routeEl = document.querySelector('[data-harta-route]');
     if(routeEl) routeEl.textContent = String(city[0]).toUpperCase() + ' → ROMÂNIA';
     var storyEl = document.querySelector('[data-harta-story]');
-    if(storyEl) storyEl.textContent = 'Din ' + city[0] + ' până acasă sunt ' + Math.round(km).toLocaleString('ro-RO') + ' km. Dar uneori, oamenii reușesc să apropie distanțele prin conversații sincere.';
+    if(storyEl){
+      var inHome = (typeof inRO === 'function') && inRO(city[2], city[1]);
+      storyEl.textContent = inHome
+        ? 'Ești acasă — iar experiențele românilor din lume sunt la un episod distanță.'
+        : city[0] + ' se află la ' + Math.round(km).toLocaleString('ro-RO') + ' km de București. Dar uneori, oamenii reușesc să apropie distanțele prin conversații sincere.';
+    }
     result.style.display = 'block';
     var start = null, dur = 1400;
     function count(ts){

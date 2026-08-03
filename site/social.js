@@ -123,7 +123,7 @@ function initNewsletterForms(){
       var msg = form.querySelector('[data-nl-msg]');
       var btn = form.querySelector('button[type="submit"]');
       function show(t){ if(msg){ msg.textContent = t; msg.style.opacity = '1'; } }
-      if(hp && hp.value){ input.value = ''; show('Te-ai înscris cu succes. Te anunțăm imediat ce primul episod este publicat.'); return; }
+      if(hp && hp.value){ input.value = ''; show('Ești pe listă. Îți trimitem un email imediat ce primul episod este publicat.'); return; }
       var email = (input.value || '').trim();
       if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('Introdu o adresă de email validă.'); return; }
       if(btn) btn.disabled = true;
