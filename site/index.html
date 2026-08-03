@@ -63,7 +63,7 @@ a:hover{color:var(--accent-light)}
 @keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes cdPulse{0%{transform:scale(1);opacity:.65}70%{transform:scale(3.2);opacity:0}100%{transform:scale(3.2);opacity:0}}
 .nl-capsule:focus-within{box-shadow:0 0 0 3px rgba(201,162,90,.16)}
-.nl-capsule input::placeholder{color:rgba(245,246,247,.52)}
+.nl-capsule input::placeholder{color:rgba(245,246,247,.58)}
 @media (max-width:560px){
   .nl-capsule{flex-wrap:wrap!important;border-radius:22px!important;padding:10px!important}
   .nl-icon{margin-left:8px!important}
@@ -113,7 +113,7 @@ a:hover{color:var(--accent-light)}
 .ep-yt-text{display:flex;flex-direction:column;gap:4px;min-width:0}
 .ep-yt-title{font:600 15.5px/1.4 var(--font-body);color:#f5f6f7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ep-quote{display:block;font:italic 500 13.5px/1.55 var(--font-serif);color:rgba(227,192,125,.78);margin-top:7px}
-.ep-yt-meta{font:400 12.5px var(--font-body);color:rgba(245,246,247,.56)}
+.ep-yt-meta{font:400 12.5px var(--font-body);color:rgba(245,246,247,.62)}
 .ep-yt-meta [data-ep-badge]{color:rgba(227,192,125,.9);font-weight:600}
 .clip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,20px)}
 @media (max-width:900px){.clip-grid{grid-template-columns:repeat(2,1fr)}}
@@ -168,7 +168,7 @@ html{scroll-padding-top:132px}
 @media (max-width:760px){.hero-pad{padding-top:74px!important}}
 @media (max-width:760px){.hero-pad{padding-top:74px!important}}
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid rgba(227,192,125,.85);outline-offset:3px;border-radius:6px}
-input::placeholder,textarea::placeholder{color:rgba(245,246,247,.55)}
+input::placeholder,textarea::placeholder{color:rgba(245,246,247,.62)}
 #top::before{content:'';position:fixed;top:0;left:0;right:0;height:136px;z-index:-1;pointer-events:none;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:linear-gradient(180deg,rgba(15,17,19,.98),rgba(15,17,19,.58) 62%,transparent);-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,[role="button"]:focus-visible{outline:2px solid rgba(227,192,125,.75);outline-offset:3px;border-radius:6px}
@@ -661,7 +661,7 @@ document.addEventListener('pointerout', function(e){
   var I18N = {
     ro: {
       nav_despre:"DESPRE", nav_episoade:"EPISOADE", nav_playlist:"PLAYLIST", nav_oameni:"OAMENI", nav_mediakit:"PARTENERIATE", nav_contact:"CONTACT", nav_subscribe:"ABONEAZĂ-TE PE YOUTUBE",
-      hero_kicker:"UN PODCAST DESPRE OAMENI", hero_subtitle:"Oameni. Experiențe. Perspective care inspiră.",
+      hero_kicker:"UN PODCAST DESPRE OAMENI", hero_subtitle:"Conversații în profunzime cu oameni care au experiență, expertiză și o perspectivă relevantă de împărtășit.",
       hero_cta_listen:"ABONEAZĂ-TE PE YOUTUBE", hero_cta_about:"PROPUNE-TE CA INVITAT",
       hero_meta2:"INTERVIURI DOCUMENTATE", hero_meta4:"PRODUCȚIE PROFESIONALĂ", hero_meta3:"ROMÂNI DIN ÎNTREAGA LUME",
       label_podcast:"PODCAST", hero_card_label:"GAZDĂ", host_name:"Peter Baghiu", host_role:"Gazda podcastului Dincolo de Granițe",
@@ -698,7 +698,7 @@ document.addEventListener('pointerout', function(e){
     },
     en: {
       nav_despre:"ABOUT", nav_episoade:"EPISODES", nav_playlist:"PLAYLIST", nav_oameni:"OAMENI", nav_mediakit:"PARTENERIATE", nav_contact:"CONTACT", nav_subscribe:"SUBSCRIBE ON YOUTUBE",
-      hero_kicker:"A PODCAST ABOUT PEOPLE", hero_subtitle:"People. Experiences. Perspectives that inspire.",
+      hero_kicker:"A PODCAST ABOUT PEOPLE", hero_subtitle:"In-depth conversations with people who have experience, expertise and a relevant perspective to share.",
       hero_cta_listen:"SUBSCRIBE ON YOUTUBE", hero_cta_about:"PROPOSE YOURSELF AS A GUEST",
       hero_meta2:"DOCUMENTED INTERVIEWS", hero_meta4:"PROFESSIONAL PRODUCTION", hero_meta3:"ROMANIANS AROUND THE WORLD",
       label_podcast:"PODCAST", hero_card_label:"HOST", host_name:"Peter Baghiu", host_role:"Host of the Dincolo de Granițe podcast",
@@ -756,8 +756,8 @@ document.addEventListener('pointerout', function(e){
     var btnEn = document.querySelector('[data-lang-btn="en"]');
     var langPill = document.querySelector('[data-lang-pill]');
     if(btnRo && btnEn){
-      btnRo.style.color = lang === 'ro' ? '#0f1113' : 'rgba(245,246,247,.56)';
-      btnEn.style.color = lang === 'en' ? '#0f1113' : 'rgba(245,246,247,.56)';
+      btnRo.style.color = lang === 'ro' ? '#0f1113' : 'rgba(245,246,247,.62)';
+      btnEn.style.color = lang === 'en' ? '#0f1113' : 'rgba(245,246,247,.62)';
       btnRo.style.transform = lang === 'ro' ? 'scale(1.06)' : 'scale(1)';
       btnEn.style.transform = lang === 'en' ? 'scale(1.06)' : 'scale(1)';
     }
@@ -795,7 +795,7 @@ document.addEventListener('pointerout', function(e){
     <div style="width:160px;height:3px;border-radius:3px;background:rgba(201,162,90,.15);overflow:hidden;margin-top:6px">
       <div style="width:100%;height:100%;background:linear-gradient(90deg,#8a6f3a,var(--accent-light));transform-origin:left;animation:loaderFill .6s .1s cubic-bezier(.4,0,.2,1) forwards;transform:scaleX(0)"></div>
     </div>
-    <div id="ld-msg" style="font:600 10px var(--font-body);letter-spacing:.28em;color:rgba(245,246,247,.44);margin-top:2px;text-align:center">OAMENI. EXPERIENȚE. PERSPECTIVE.</div><script>(function(){var m=["OAMENI. EXPERIENȚE. PERSPECTIVE.","EXPERIENȚELE NU AU GRANIȚE","FIECARE OM E O LUME","PERSPECTIVE CARE SCHIMBĂ VIEȚI","SE DESCHIDE MICROFONUL","DE ORIUNDE, MAI APROAPE DE ACASĂ"];var e=document.getElementById("ld-msg");if(e)e.textContent=m[Math.floor(Math.random()*m.length)];})();</script>
+    <div id="ld-msg" style="font:600 10px var(--font-body);letter-spacing:.28em;color:rgba(245,246,247,.52);margin-top:2px;text-align:center">OAMENI. EXPERIENȚE. PERSPECTIVE.</div><script>(function(){var m=["OAMENI. EXPERIENȚE. PERSPECTIVE.","EXPERIENȚELE NU AU GRANIȚE","FIECARE OM E O LUME","PERSPECTIVE CARE SCHIMBĂ VIEȚI","SE DESCHIDE MICROFONUL","DE ORIUNDE, MAI APROAPE DE ACASĂ"];var e=document.getElementById("ld-msg");if(e)e.textContent=m[Math.floor(Math.random()*m.length)];})();</script>
   </div>
 </div>
 
@@ -860,10 +860,10 @@ document.addEventListener('pointerout', function(e){
       </div>
       <h1 style="margin:0;font:var(--head-weight) clamp(52px,13vw,140px)/.94 var(--font-head);color:#f5f6f7;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.4);opacity:0;animation:fadeInUp .9s cubic-bezier(.2,.8,.2,1) 1.75s forwards">DINCOLO DE<br><span style="background:linear-gradient(90deg,var(--accent-light),var(--accent) 45%,#a8874c);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 6s ease-in-out infinite">GRANIȚE</span></h1>
       <div style="width:96px;height:2px;background:linear-gradient(90deg,var(--accent-light),var(--accent) 55%,transparent);margin:30px 0 26px;opacity:0;animation:fadeInUp .7s cubic-bezier(.2,.8,.2,1) 1.9s forwards"></div>
-      <div style="font:italic 500 clamp(19px,4.2vw,27px)/1.45 var(--font-serif);color:#f5f6f7;max-width:580px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2s forwards" data-i18n="hero_subtitle" data-i18n-html="1">Oameni. Experiențe. Perspective care inspiră.</div>
+      <div style="font:italic 500 clamp(19px,4.2vw,27px)/1.45 var(--font-serif);color:#f5f6f7;max-width:580px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2s forwards" data-i18n="hero_subtitle" data-i18n-html="1">Conversații în profunzime cu oameni care au experiență, expertiză și o perspectivă relevantă de împărtășit.</div>
       <div style="display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2.15s forwards">
         <a class="hero-btn" href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="padding:16px 34px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 14px var(--font-body);letter-spacing:.04em;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:box-shadow .3s ease;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px" style-hover="box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 30px 5px rgba(201,162,90,.55)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(15,17,19,.16);flex:none"><svg width="10" height="10" viewBox="0 0 24 24" style="margin-left:1px" aria-hidden="true"><path d="M6 4.5v15l13-7.5z" fill="#0f1113"></path></svg></span><span data-i18n="hero_cta_listen">ABONEAZĂ-TE PE YOUTUBE</span></a>
-        <a class="hero-btn" href="invitati.html#aplica" style="padding:16px 34px;border:1px solid rgba(245,246,247,.44);background:rgba(15,17,19,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#f5f6f7;font:600 14px var(--font-body);letter-spacing:.03em;border-radius:999px;text-decoration:none;display:inline-block;transition:box-shadow .3s ease,border-color .3s ease" style-hover="box-shadow:0 0 24px 2px rgba(201,162,90,.45);border-color:var(--accent)" data-i18n="hero_cta_about">PROPUNE-TE CA INVITAT</a>
+        <a class="hero-btn" href="invitati.html#aplica" style="padding:16px 34px;border:1px solid rgba(245,246,247,.52);background:rgba(15,17,19,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#f5f6f7;font:600 14px var(--font-body);letter-spacing:.03em;border-radius:999px;text-decoration:none;display:inline-block;transition:box-shadow .3s ease,border-color .3s ease" style-hover="box-shadow:0 0 24px 2px rgba(201,162,90,.45);border-color:var(--accent)" data-i18n="hero_cta_about">PROPUNE-TE CA INVITAT</a>
       </div>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:38px;opacity:0;animation:fadeInUp .8s cubic-bezier(.2,.8,.2,1) 2.3s forwards">
         <span style="display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.28);background:rgba(15,17,19,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 10.5px var(--font-body);letter-spacing:.14em;color:rgba(245,246,247,.75)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span data-i18n="hero_meta2">INTERVIURI DOCUMENTATE</span></span>
@@ -873,7 +873,7 @@ document.addEventListener('pointerout', function(e){
     </div>
     </div>
   <div data-scroll-hint style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;z-index:1;white-space:nowrap;transition:opacity .45s ease">
-    <span style="font:600 9.5px var(--font-body);letter-spacing:.3em;color:rgba(245,246,247,.44)">EXPLOREAZĂ</span>
+    <span style="font:600 9.5px var(--font-body);letter-spacing:.3em;color:rgba(245,246,247,.52)">EXPLOREAZĂ</span>
     <div style="width:1px;height:50px;position:relative;overflow:hidden;background:rgba(201,162,90,.12)">
       <div style="position:absolute;left:0;top:0;width:1px;height:16px;background:linear-gradient(180deg,transparent,var(--accent-light),transparent);animation:scrollBeam 2.2s cubic-bezier(.4,0,.2,1) infinite"></div>
     </div>
@@ -884,62 +884,62 @@ document.addEventListener('pointerout', function(e){
 <div style="position:relative;width:100%;background:#16191b;overflow:hidden">
   <div style="position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.4),transparent);z-index:2"></div>
   <div style="position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.4),transparent);z-index:2"></div>
-  <div style="display:flex;width:max-content;opacity:.55;animation:marquee 90s linear infinite">
+  <div style="display:flex;width:max-content;opacity:.75;animation:marquee 90s linear infinite">
     <div style="display:flex;align-items:center;gap:22px;padding:18px 11px 18px 0;flex:none">
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_2">MEDICI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_3">SPORTIVI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_4">ARTIȘTI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_5">PROFESIONIȘTI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_6">ROMÂNI DIN ÎNTREAGA LUME</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_2">MEDICI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_3">SPORTIVI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_4">ARTIȘTI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_5">PROFESIONIȘTI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_6">ROMÂNI DIN ÎNTREAGA LUME</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
     </div>
     <div style="display:flex;align-items:center;gap:22px;padding:18px 11px 18px 0;flex:none">
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_2">MEDICI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_3">SPORTIVI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_4">ARTIȘTI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_5">PROFESIONIȘTI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_6">ROMÂNI DIN ÎNTREAGA LUME</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_2">MEDICI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_3">SPORTIVI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_4">ARTIȘTI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_5">PROFESIONIȘTI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_6">ROMÂNI DIN ÎNTREAGA LUME</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
     </div>
     <div style="display:flex;align-items:center;gap:22px;padding:18px 11px 18px 0;flex:none">
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_2">MEDICI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_3">SPORTIVI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_4">ARTIȘTI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_5">PROFESIONIȘTI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_6">ROMÂNI DIN ÎNTREAGA LUME</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_2">MEDICI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_3">SPORTIVI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_4">ARTIȘTI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_5">PROFESIONIȘTI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_6">ROMÂNI DIN ÎNTREAGA LUME</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
     </div>
     <div style="display:flex;align-items:center;gap:22px;padding:18px 11px 18px 0;flex:none">
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_2">MEDICI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_3">SPORTIVI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_4">ARTIȘTI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.42);white-space:nowrap" data-i18n="marquee_5">PROFESIONIȘTI</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
-      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.48);white-space:nowrap" data-i18n="marquee_6">ROMÂNI DIN ÎNTREAGA LUME</span>
-      <span style="color:rgba(201,162,90,.4);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_1">ANTREPRENORI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_2">MEDICI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_3">SPORTIVI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_4">ARTIȘTI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(245,246,247,.58);white-space:nowrap" data-i18n="marquee_5">PROFESIONIȘTI</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
+      <span style="font:var(--head-weight) clamp(13px,3vw,18px) var(--font-head);letter-spacing:.12em;color:rgba(227,192,125,.62);white-space:nowrap" data-i18n="marquee_6">ROMÂNI DIN ÎNTREAGA LUME</span>
+      <span style="color:rgba(201,162,90,.5);font-size:11px">•</span>
     </div>
   </div>
 </div>
@@ -1073,6 +1073,70 @@ document.addEventListener('pointerout', function(e){
   </div>
 </div>
 
+<!-- COMUNITATE (countdown + newsletter) -->
+<div id="comunitate" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.2vw,55px) clamp(20px,7vw,90px) clamp(30px,4.2vw,55px);box-sizing:border-box">
+  <div style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
+    <div>
+    <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none"></span>
+      <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)" data-i18n="section_label_newsletter">COMUNITATE</span>
+    </div>
+    <h2 style="margin:0 0 10px;font:var(--head-weight) clamp(32px,6vw,44px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.01em" data-gold-last data-i18n="newsletter_title">FIECARE EPISOD ADUCE O PERSPECTIVĂ NOUĂ</h2>
+    <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px" data-i18n="newsletter_desc">Primești un singur email la lansarea fiecărui episod. Fără spam. Te poți dezabona oricând.</div>
+    </div>
+    
+  </div>
+  <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;padding:44px 32px;border:1px solid transparent;border-radius:28px;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
+    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent)"></div>
+    <div style="position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none"></div>
+    <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:700 10px var(--font-body);letter-spacing:.24em;color:var(--accent-light)">
+        <span style="position:relative;width:6px;height:6px;flex:none"><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light)"></span><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light);animation:cdPulse 2.4s ease-out infinite"></span></span>
+        <span data-i18n="count_label">URMĂTORUL EPISOD</span>
+      </span>
+      <div data-count-date style="font:var(--head-weight) clamp(22px,4.4vw,32px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.02em;margin:-2px 0 2px"></div>
+      <div class="cd-grid" style="display:flex;align-items:stretch;gap:10px">
+        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
+          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
+          <div data-count-d style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.55);margin-top:8px" data-i18n="count_d">ZILE</div>
+        </div>
+        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
+          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
+          <div data-count-h style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.55);margin-top:8px" data-i18n="count_h">ORE</div>
+        </div>
+        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
+          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
+          <div data-count-m style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.55);margin-top:8px" data-i18n="count_m">MIN</div>
+        </div>
+        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
+          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
+          <div data-count-s style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:rgba(227,192,125,.72);font-variant-numeric:tabular-nums">–</div>
+          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.55);margin-top:8px" data-i18n="count_s">SEC</div>
+        </div>
+      </div>
+    </div>
+    <div style="font:400 13px var(--font-body);color:rgba(245,246,247,.62);text-align:center">Primești un email în momentul în care episodul devine live.</div>
+    <form id="abonare-home" data-notify-form method="POST" style="position:relative;width:100%;max-width:560px">
+      <div class="nl-capsule" style="display:flex;align-items:center;gap:8px;padding:6px;border-radius:999px;border:1px solid transparent;background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55)) padding-box,linear-gradient(150deg,rgba(227,192,125,.45),rgba(201,162,90,.12) 55%,rgba(227,192,125,.28)) border-box;transition:box-shadow .3s ease">
+        <span class="nl-icon" style="flex:none;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:16px;color:rgba(227,192,125,.8)" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span>
+        <input data-hp-nl type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <input data-notify-email name="email" type="email" required placeholder="adresa@email.com" data-i18n-placeholder="newsletter_placeholder" style="flex:1;min-width:0;padding:12px 8px;border:none;background:transparent;color:#f5f6f7;font:400 15px var(--font-body);outline:none">
+        <button type="submit" class="nl-btn" style="flex:none;min-height:44px;padding:13px 26px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 12.5px var(--font-body);letter-spacing:.06em;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3);transition:filter .25s ease,box-shadow .25s ease" style-hover="filter:brightness(1.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 18px rgba(201,162,90,.4)" data-i18n="newsletter_btn">ANUNȚĂ-MĂ LA LANSARE</button>
+      </div>
+    </form>
+    <div data-notify-msg style="position:relative;font:500 13px var(--font-body);color:var(--accent);opacity:0;transition:opacity .3s ease;min-height:16px"></div>
+    <div style="position:relative;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:-4px">
+      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.62)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust1">Primești episodul imediat ce este publicat</span></span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.62)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust2">Nu trimitem newslettere comerciale</span></span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.62)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust3">Te poți dezabona oricând</span></span>
+    </div>
+    <div style="position:relative;font:400 11.5px/1.6 var(--font-body);color:rgba(245,246,247,.58);text-align:center;max-width:460px" data-i18n="newsletter_consent" data-i18n-html="1">Prin abonare ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>.</div>
+  </div>
+</div>
+
 <!-- PLAYLIST -->
 <div id="playlist" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.2vw,55px) clamp(20px,7vw,90px) clamp(30px,4.2vw,55px);box-sizing:border-box">
   <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
@@ -1094,14 +1158,14 @@ document.addEventListener('pointerout', function(e){
         <span style="font:var(--head-weight) 21px/1 var(--font-head);letter-spacing:.14em;color:var(--accent-light)" data-i18n="board_title">DESTINAȚII · EPISOADE</span>
       </div>
       <div style="display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap">
-        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.56)" data-i18n="board_lon">LONDRA</span><span data-clock-lon style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
+        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.62)" data-i18n="board_lon">LONDRA</span><span data-clock-lon style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
         <span style="width:1px;height:14px;background:rgba(201,162,90,.35)"></span>
-        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.56)" data-i18n="board_buc">BUCUREȘTI</span><span data-clock-buc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
+        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.62)" data-i18n="board_buc">BUCUREȘTI</span><span data-clock-buc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
         <span style="width:1px;height:14px;background:rgba(201,162,90,.35)"></span>
-        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.56)" data-i18n="board_nyc">NEW YORK</span><span data-clock-nyc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
+        <span style="display:inline-flex;align-items:baseline;gap:8px"><span style="font:600 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.62)" data-i18n="board_nyc">NEW YORK</span><span data-clock-nyc style="font:600 14px 'Courier New',monospace;letter-spacing:.1em;color:var(--accent-light)">--:--</span></span>
       </div>
     </div>
-    <div class="brd-cols" style="display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:13px clamp(14px,3vw,28px) 9px;font:700 9px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.48)">
+    <div class="brd-cols" style="display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:13px clamp(14px,3vw,28px) 9px;font:700 9px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.55)">
       <span style="width:106px;flex:none" data-i18n="board_col_flight">EPISOD</span>
       <span class="brd-thumb-sp" style="width:52px;flex:none"></span>
       <span style="flex:1" data-i18n="board_col_story">POVESTE</span>
@@ -1113,7 +1177,7 @@ document.addEventListener('pointerout', function(e){
     <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:106px;flex:none;display:flex;flex-direction:column;gap:4px">
         <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="1">DG001</span>
-        <span data-ep-route="1" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">LONDRA → BUCUREȘTI</span>
+        <span data-ep-route="1" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">LONDRA → BUCUREȘTI</span>
       </span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="1" src="assets/ep-cover-london.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
@@ -1133,7 +1197,7 @@ document.addEventListener('pointerout', function(e){
     <a data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:106px;flex:none;display:flex;flex-direction:column;gap:4px">
         <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="2">DG002</span>
-        <span data-ep-route="2" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">NEW YORK → CLUJ</span>
+        <span data-ep-route="2" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">NEW YORK → CLUJ</span>
       </span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="2" src="assets/ep-cover-nyc.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
@@ -1153,7 +1217,7 @@ document.addEventListener('pointerout', function(e){
     <a data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(245,246,247,.06);text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:106px;flex:none;display:flex;flex-direction:column;gap:4px">
         <span style="font:var(--head-weight) 24px/1 var(--font-head);letter-spacing:.06em;color:rgba(227,192,125,.9)" data-ep-badge="3">DG003</span>
-        <span data-ep-route="3" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">DUBAI → BUCUREȘTI</span>
+        <span data-ep-route="3" style="font:600 8px var(--font-body);letter-spacing:.08em;color:rgba(245,246,247,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">DUBAI → BUCUREȘTI</span>
       </span>
       <span class="brd-thumb" style="position:relative;width:52px;height:52px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(201,162,90,.25)">
         <img loading="lazy" decoding="async" data-ep-img="3" src="assets/ep-cover-dubai.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
@@ -1172,7 +1236,7 @@ document.addEventListener('pointerout', function(e){
     </a>
     <div class="brd-foot" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(201,162,90,.22);background:rgba(201,162,90,.05)">
       <div class="brd-foot-gate" style="display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap">
-        <span style="font:700 9.5px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.56)" data-i18n="board_gate">POARTA</span>
+        <span style="font:700 9.5px var(--font-body);letter-spacing:.24em;color:rgba(245,246,247,.62)" data-i18n="board_gate">POARTA</span>
         <span style="font:var(--head-weight) 19px/1 var(--font-head);letter-spacing:.1em;color:#f5f6f7">YOUTUBE</span>
         <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;background:rgba(143,206,154,.12);border:1px solid rgba(143,206,154,.35)"><span style="width:5px;height:5px;border-radius:50%;background:#8fce9a;animation:livePulse 2s infinite"></span><span style="font:700 9.5px var(--font-body);letter-spacing:.08em;color:#8fce9a" data-i18n="board_boarding">ÎMBARCARE DESCHISĂ</span></span>
       </div>
@@ -1207,7 +1271,7 @@ document.addEventListener('pointerout', function(e){
         </div>
         <button data-harta-btn type="button" style="flex:none;padding:14px 28px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;cursor:pointer;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease" style-hover="transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)" data-i18n="harta_btn">VEZI DISTANȚA</button>
       </div>
-      <div style="margin-top:10px;font:400 12.5px var(--font-body);color:rgba(245,246,247,.55)">Ex: <span data-harta-ex="Londra" style="cursor:pointer;color:rgba(227,192,125,.8);transition:color .25s ease" style-hover="color:var(--accent-light)">Londra</span> · <span data-harta-ex="Roma" style="cursor:pointer;color:rgba(227,192,125,.8);transition:color .25s ease" style-hover="color:var(--accent-light)">Roma</span> · <span data-harta-ex="Madrid" style="cursor:pointer;color:rgba(227,192,125,.8);transition:color .25s ease" style-hover="color:var(--accent-light)">Madrid</span> · <span data-harta-ex="Toronto" style="cursor:pointer;color:rgba(227,192,125,.8);transition:color .25s ease" style-hover="color:var(--accent-light)">Toronto</span></div>
+      <div style="margin-top:10px;font:400 12.5px var(--font-body);color:rgba(245,246,247,.62)">Ex: <span data-harta-ex="Londra" style="cursor:pointer;color:rgba(227,192,125,.8);transition:color .25s ease" style-hover="color:var(--accent-light)">Londra</span> · <span data-harta-ex="Roma" style="cursor:pointer;color:rgba(227,192,125,.8);transition:color .25s ease" style-hover="color:var(--accent-light)">Roma</span> · <span data-harta-ex="Madrid" style="cursor:pointer;color:rgba(227,192,125,.8);transition:color .25s ease" style-hover="color:var(--accent-light)">Madrid</span> · <span data-harta-ex="Toronto" style="cursor:pointer;color:rgba(227,192,125,.8);transition:color .25s ease" style-hover="color:var(--accent-light)">Toronto</span></div>
       <div data-harta-err class="hmsg" style="display:none;align-items:center;gap:10px;box-sizing:border-box;padding:11px 16px 11px 13px;border-radius:12px;border:1px solid transparent;background:linear-gradient(180deg,rgba(224,138,106,.12),rgba(224,138,106,.06)) padding-box,linear-gradient(150deg,rgba(224,138,106,.5),rgba(224,138,106,.18)) border-box;opacity:0;transform:translateY(-4px);transition:opacity .3s ease,transform .3s cubic-bezier(.2,.8,.2,1)">
         <span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(224,138,106,.16);color:#e8a184" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 8v5"></path><path d="M12 16.5h.01"></path></svg></span>
         <span style="font:500 13px/1.45 var(--font-body);color:#eaab90" data-i18n="harta_notfound">Nu găsesc orașul. Încearcă un oraș mare din apropiere.</span>
@@ -1244,82 +1308,18 @@ document.addEventListener('pointerout', function(e){
 </div>
 
 
-<!-- COMUNITATE (countdown + newsletter) -->
-<div id="comunitate" data-reveal style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.2vw,55px) clamp(20px,7vw,90px) clamp(30px,4.2vw,55px);box-sizing:border-box">
-  <div style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
-    <div>
-    <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
-      <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none"></span>
-      <span style="font:600 13px var(--font-body);letter-spacing:.28em;color:var(--accent)" data-i18n="section_label_newsletter">COMUNITATE</span>
-    </div>
-    <h2 style="margin:0 0 10px;font:var(--head-weight) clamp(32px,6vw,44px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.01em" data-gold-last data-i18n="newsletter_title">FIECARE EPISOD ADUCE O PERSPECTIVĂ NOUĂ</h2>
-    <div style="font:400 clamp(15px,3vw,17px)/1.6 var(--font-body);color:rgba(245,246,247,.6);max-width:560px" data-i18n="newsletter_desc">Primești un singur email la lansarea fiecărui episod. Fără spam. Te poți dezabona oricând.</div>
-    </div>
-    
-  </div>
-  <div data-newsletter-card style="position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:18px;padding:44px 32px;border:1px solid transparent;border-radius:28px;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;box-shadow:0 40px 80px rgba(0,0,0,.4)">
-    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.5),transparent)"></div>
-    <div style="position:absolute;top:-140px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.13),transparent 65%);pointer-events:none"></div>
-    <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:10px">
-      <span style="display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:700 10px var(--font-body);letter-spacing:.24em;color:var(--accent-light)">
-        <span style="position:relative;width:6px;height:6px;flex:none"><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light)"></span><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light);animation:cdPulse 2.4s ease-out infinite"></span></span>
-        <span data-i18n="count_label">URMĂTORUL EPISOD</span>
-      </span>
-      <div data-count-date style="font:var(--head-weight) clamp(22px,4.4vw,32px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.02em;margin:-2px 0 2px"></div>
-      <div class="cd-grid" style="display:flex;align-items:stretch;gap:10px">
-        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
-          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
-          <div data-count-d style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
-          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.48);margin-top:8px" data-i18n="count_d">ZILE</div>
-        </div>
-        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
-          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
-          <div data-count-h style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
-          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.48);margin-top:8px" data-i18n="count_h">ORE</div>
-        </div>
-        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
-          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
-          <div data-count-m style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:var(--accent-light);font-variant-numeric:tabular-nums">–</div>
-          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.48);margin-top:8px" data-i18n="count_m">MIN</div>
-        </div>
-        <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
-          <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
-          <div data-count-s style="font:var(--head-weight) clamp(32px,6.4vw,50px)/1 var(--font-head);color:rgba(227,192,125,.72);font-variant-numeric:tabular-nums">–</div>
-          <div style="font:700 9px var(--font-body);letter-spacing:.2em;color:rgba(245,246,247,.48);margin-top:8px" data-i18n="count_s">SEC</div>
-        </div>
-      </div>
-    </div>
-    <div style="font:400 13px var(--font-body);color:rgba(245,246,247,.55);text-align:center">Primești un email în momentul în care episodul devine live.</div>
-    <form id="abonare-home" data-notify-form method="POST" style="position:relative;width:100%;max-width:560px">
-      <div class="nl-capsule" style="display:flex;align-items:center;gap:8px;padding:6px;border-radius:999px;border:1px solid transparent;background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55)) padding-box,linear-gradient(150deg,rgba(227,192,125,.45),rgba(201,162,90,.12) 55%,rgba(227,192,125,.28)) border-box;transition:box-shadow .3s ease">
-        <span class="nl-icon" style="flex:none;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:16px;color:rgba(227,192,125,.8)" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span>
-        <input data-hp-nl type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <input data-notify-email name="email" type="email" required placeholder="adresa@email.com" data-i18n-placeholder="newsletter_placeholder" style="flex:1;min-width:0;padding:12px 8px;border:none;background:transparent;color:#f5f6f7;font:400 15px var(--font-body);outline:none">
-        <button type="submit" class="nl-btn" style="flex:none;min-height:44px;padding:13px 26px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 12.5px var(--font-body);letter-spacing:.06em;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3);transition:filter .25s ease,box-shadow .25s ease" style-hover="filter:brightness(1.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 18px rgba(201,162,90,.4)" data-i18n="newsletter_btn">ANUNȚĂ-MĂ LA LANSARE</button>
-      </div>
-    </form>
-    <div data-notify-msg style="position:relative;font:500 13px var(--font-body);color:var(--accent);opacity:0;transition:opacity .3s ease;min-height:16px"></div>
-    <div style="position:relative;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:-4px">
-      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.56)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust1">Primești episodul imediat ce este publicat</span></span>
-      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.56)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust2">Nu trimitem newslettere comerciale</span></span>
-      <span style="display:inline-flex;align-items:center;gap:6px;font:600 11px var(--font-body);letter-spacing:.05em;color:rgba(245,246,247,.56)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,162,90,.85)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="newsletter_trust3">Te poți dezabona oricând</span></span>
-    </div>
-    <div style="position:relative;font:400 11.5px/1.6 var(--font-body);color:rgba(245,246,247,.52);text-align:center;max-width:460px" data-i18n="newsletter_consent" data-i18n-html="1">Prin abonare ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>.</div>
-  </div>
-</div>
-
 <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,7vw,90px);box-sizing:border-box">
-  <div style="display:flex;flex-direction:column;gap:1px;margin:14px 0 10px;opacity:.8">
+  <div style="display:flex;flex-direction:column;gap:1px;margin:10px 0 6px;opacity:.8">
   <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:3px;height:44px;padding:0 2px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)"><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.000s"></span><span style="width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.045s"></span><span style="width:4px;height:28px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.090s"></span><span style="width:4px;height:34px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.135s"></span><span style="width:4px;height:39px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.180s"></span><span style="width:4px;height:42px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.225s"></span><span style="width:4px;height:44px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.270s"></span><span style="width:4px;height:44px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.315s"></span><span style="width:4px;height:42px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.360s"></span><span style="width:4px;height:39px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.405s"></span><span style="width:4px;height:34px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.450s"></span><span style="width:4px;height:28px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.495s"></span><span style="width:4px;height:22px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.540s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.585s"></span></div>
   <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:3px;height:19px;padding:0 2px;opacity:.55;-webkit-mask-image:linear-gradient(180deg,#000,transparent),linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,#000,transparent),linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-composite:intersect"><span style="width:4px;height:7px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.000s"></span><span style="width:4px;height:9px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.045s"></span><span style="width:4px;height:12px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.090s"></span><span style="width:4px;height:14px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.135s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.180s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.225s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.270s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.315s"></span><span style="width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.360s"></span><span style="width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.405s"></span><span style="width:4px;height:14px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.450s"></span><span style="width:4px;height:12px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.495s"></span><span style="width:4px;height:9px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.540s"></span><span style="width:4px;height:7px;border-radius:2px;background:linear-gradient(180deg,rgba(227,192,125,.4),transparent);flex:none;transform-origin:top;animation:waveBar 1.3s ease-in-out infinite;animation-delay:0.585s"></span></div>
 </div>
 </div>
 
 <!-- FOOTER -->
-<div style="max-width:1280px;margin:0 auto;padding:12px clamp(20px,7vw,90px) 36px;box-sizing:border-box">
+<div style="max-width:1280px;margin:0 auto;padding:8px clamp(20px,7vw,90px) 32px;box-sizing:border-box">
   <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,90,.14) 30%,rgba(201,162,90,.14) 70%,transparent)"></div>
-  <div style="display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;padding:clamp(34px,4.4vw,50px) 0 clamp(30px,4.2vw,44px)">
-    <img src="assets/logo.jpg" alt="Dincolo de Granițe" width="86" height="86" loading="lazy" decoding="async" style="width:86px;height:86px;border-radius:50%;border:1px solid rgba(201,162,90,.5);box-shadow:0 0 0 7px rgba(201,162,90,.07),0 14px 34px rgba(0,0,0,.5);margin-bottom:18px">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:clamp(26px,3.6vw,38px) 0 clamp(22px,3.2vw,32px)">
+    <img src="assets/logo.jpg" alt="Dincolo de Granițe" width="86" height="86" loading="lazy" decoding="async" style="width:86px;height:86px;border-radius:50%;border:1px solid rgba(201,162,90,.5);box-shadow:0 0 0 7px rgba(201,162,90,.07),0 14px 34px rgba(0,0,0,.5);margin-bottom:8px">
     <div style="font:italic 500 clamp(17px,2.9vw,20px)/1.6 var(--font-serif);color:rgba(245,246,247,.8);max-width:600px" data-i18n="footer_mission">Îi invităm pentru ceea ce știu. Îi ascultăm pentru cine sunt.</div>
     <div style="font:400 13.5px/1.6 var(--font-body);color:rgba(245,246,247,.62);max-width:560px;margin-top:-8px" data-i18n="footer_mission_sub">Interviuri în profunzime cu români din întreaga lume.</div>
     <div style="display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center">
@@ -1332,9 +1332,9 @@ document.addEventListener('pointerout', function(e){
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px"><a href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;border:1px solid rgba(201,162,90,.32);color:rgba(227,192,125,.78);font:600 11px var(--font-body);letter-spacing:.08em;text-decoration:none;transition:all .25s ease" style-hover="background:rgba(201,162,90,.1);border-color:var(--accent-light)">ABONEAZĂ-TE PE YOUTUBE</a><a href="invitati.html" style="display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;border:1px solid rgba(201,162,90,.32);color:rgba(227,192,125,.78);font:600 11px var(--font-body);letter-spacing:.08em;text-decoration:none;transition:all .25s ease" style-hover="background:rgba(201,162,90,.1);border-color:var(--accent-light)">PROPUNE-TE CA INVITAT</a></div>
   </div>
-  <div class="ftr-bottom" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding-top:30px;border-top:1px solid rgba(245,246,247,.07)">
-    <div class="ftr-cr" style="display:flex;flex-direction:column;gap:3px;order:2;align-items:center;text-align:center"><div style="font:400 13px var(--font-body);color:rgba(245,246,247,.56)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe. Toate drepturile rezervate.</div><div style="font:400 11px var(--font-body);color:rgba(245,246,247,.4)" data-i18n="footer_credit">Creat și prezentat de Peter Baghiu.</div></div>
-    <div class="ftr-links" style="display:flex;gap:16px 18px;align-items:center;flex-wrap:wrap;justify-content:center;font:400 12px var(--font-body)"><a href="index.html" style="color:rgba(245,246,247,.62);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Acasă</a>
+  <div class="ftr-bottom" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding-top:22px;border-top:1px solid rgba(245,246,247,.07)">
+    <div class="ftr-cr" style="display:flex;flex-direction:column;gap:3px;order:2;align-items:center;text-align:center"><div style="font:400 13.5px var(--font-body);color:rgba(245,246,247,.75)" data-i18n="footer_copyright">© 2026 Dincolo de Granițe. Toate drepturile rezervate.</div><div style="font:400 11px var(--font-body);color:rgba(245,246,247,.48)" data-i18n="footer_credit">Creat și prezentat de Peter Baghiu.</div></div>
+    <div class="ftr-links" style="display:flex;gap:16px 18px;align-items:center;flex-wrap:wrap;justify-content:center;font:400 13px var(--font-body)"><a href="index.html" style="color:rgba(245,246,247,.62);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Acasă</a>
       <a href="despre.html" style="color:rgba(245,246,247,.62);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Despre</a>
       <a href="episoade.html" style="color:rgba(245,246,247,.62);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Episoade</a>
       <a href="oameni.html" style="color:rgba(245,246,247,.62);text-decoration:none;transition:color .25s ease" style-hover="color:var(--accent)">Oameni</a>
