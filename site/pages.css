@@ -77,7 +77,8 @@ section{padding:clamp(20px,4vw,36px) 0}
 .pfoot-logo{width:86px;height:86px;border-radius:50%;border:1px solid rgba(201,162,90,.5);box-shadow:0 0 0 7px rgba(201,162,90,.07),0 14px 34px rgba(0,0,0,.5);margin-bottom:18px}
 .pfoot-mission{font:italic 500 clamp(17px,2.9vw,20px)/1.6 var(--font-serif),serif;color:rgba(245,246,247,.8);max-width:600px;margin:0}
 .pfoot-mission-sub{font:400 13.5px/1.6 var(--font-body);color:rgba(245,246,247,.62);max-width:560px;margin:-8px 0 0}
-.pfoot-in{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid rgba(245,246,247,.08);padding-top:22px;font:400 12.5px var(--font-body);color:rgba(245,246,247,.45)}
+.pfoot-in{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border-top:1px solid rgba(245,246,247,.08);padding-top:22px;font:400 12.5px var(--font-body);color:rgba(245,246,247,.45);text-align:center}
+.pfoot-cr{order:2;align-items:center}
 .pfoot-cr{display:flex;flex-direction:column;gap:3px;font-size:13px;color:rgba(245,246,247,.56)}
 .pfoot-cr em{font-style:normal;font-size:11px;color:rgba(245,246,247,.36)}
 .pfoot-links{display:flex;gap:8px 16px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:12px}
