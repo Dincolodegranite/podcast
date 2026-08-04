@@ -155,9 +155,6 @@ a:hover{color:var(--accent-light)}
 .brd-thumb{transition:border-color .3s ease,box-shadow .3s ease}
 .brd-row:hover .brd-thumb{border-color:rgba(227,192,125,.75);box-shadow:0 0 16px rgba(201,162,90,.4)}
 .brd-row:hover .brd-date{border-color:rgba(227,192,125,.55)}
-.flap-d{position:relative;display:inline-flex;align-items:center;justify-content:center;width:21px;height:28px;border-radius:5px;background:linear-gradient(180deg,#1b1e23,#0c0e11);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),inset 0 -1px 0 rgba(0,0,0,.4);font:var(--head-weight) 19px/1 var(--font-head);color:#efd8a6;font-style:normal}
-.flap-d::after{content:'';position:absolute;left:2px;right:2px;top:50%;height:1px;background:rgba(0,0,0,.55)}
-.brd-row:hover .flap-d{color:#f5e3bd}
 .brd-row img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .brd-next::before{content:'';position:absolute;left:0;top:16%;bottom:16%;width:2px;border-radius:2px;background:linear-gradient(180deg,transparent,rgba(227,192,125,.75) 30%,rgba(227,192,125,.75) 70%,transparent);pointer-events:none}
 .brd-row:hover img{transform:scale(1.08)}
@@ -166,9 +163,8 @@ a:hover{color:var(--accent-light)}
 .brd-break{display:none;flex-basis:100%;height:0}
 @media (max-width:760px){
   .brd-row .brd-time{order:5;flex:0 0 auto!important;width:auto!important;margin-top:12px;align-self:center;justify-content:flex-start!important}
-  .brd-row .brd-date{width:92px!important;padding:7px 6px 6px!important}
-  .brd-row .brd-date .flap-d{width:17px;height:23px;font-size:15px}
-  .brd-row .brd-date>span:last-child{font-size:7.5px!important;letter-spacing:.08em!important;margin-right:-.08em!important}
+  .brd-row .brd-date{padding:6px 11px 5px!important}
+  .brd-row .brd-date [data-ep-days]{font-size:15px!important}
   .brd-cols .brd-time,.brd-cols .brd-status-cell{display:none!important}
   .brd-row>span:first-child{width:auto!important;min-width:34px}
   .brd-thumb-sp{width:40px!important}
@@ -1164,7 +1160,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="1" class="brd-title" style="font:600 15px/1.4 var(--font-body);color:#f5f6f7" data-i18n="ep_ph1">Construirea unei vieți de la zero</span>
         <span data-ep-desc="1" class="brd-desc" style="font:400 12.5px/1.5 var(--font-body);color:rgba(245,246,247,.72)" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
       </span>
-      <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:3px;box-sizing:border-box;width:110px;padding:9px 8px 7px;border-radius:12px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));overflow:hidden;transition:border-color .3s ease"><span style="position:absolute;top:0;left:12px;right:12px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)" aria-hidden="true"></span><span style="display:inline-flex;gap:3px"><b class="flap-d">0</b><b class="flap-d">1</b></span><span style="width:22px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.5),transparent);margin:1px 0" aria-hidden="true"></span><span style="font:700 9px var(--font-body);letter-spacing:.12em;margin-right:-.12em;white-space:nowrap;color:#ecd8a8">DECEMBRIE 2026</span></span></span>
+      <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;align-items:baseline;gap:5px;box-sizing:border-box;padding:7px 13px 6px;border-radius:999px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));white-space:nowrap;transition:border-color .3s ease"><b data-ep-days="2026-12-01T00:00:00+02:00" data-ep-date="01 DEC 2026" style="font:var(--head-weight) 17px/1 var(--font-head);letter-spacing:.03em;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">–</b><span style="font:700 8px var(--font-body);letter-spacing:.14em;color:rgba(227,192,125,.6)">ZILE</span></span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(227,192,125,.85);flex:none" aria-hidden="true"></span><span data-ep-status="1" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="board_in_studio">FILMARE PROGRAMATĂ</span></span>
@@ -1182,7 +1178,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="2" class="brd-title" style="font:600 15px/1.4 var(--font-body);color:#f5f6f7" data-i18n="ep_ph2">Drumul din spatele profesiei</span>
         <span data-ep-desc="2" class="brd-desc" style="font:400 12.5px/1.5 var(--font-body);color:rgba(245,246,247,.72)" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
       </span>
-      <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:3px;box-sizing:border-box;width:110px;padding:9px 8px 7px;border-radius:12px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));overflow:hidden;transition:border-color .3s ease"><span style="position:absolute;top:0;left:12px;right:12px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)" aria-hidden="true"></span><span style="display:inline-flex;gap:3px"><b class="flap-d">1</b><b class="flap-d">4</b></span><span style="width:22px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.5),transparent);margin:1px 0" aria-hidden="true"></span><span style="font:700 9px var(--font-body);letter-spacing:.12em;margin-right:-.12em;white-space:nowrap;color:#ecd8a8">DECEMBRIE 2026</span></span></span>
+      <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;align-items:baseline;gap:5px;box-sizing:border-box;padding:7px 13px 6px;border-radius:999px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));white-space:nowrap;transition:border-color .3s ease"><b data-ep-days="2026-12-14T00:00:00+02:00" data-ep-date="14 DEC 2026" style="font:var(--head-weight) 17px/1 var(--font-head);letter-spacing:.03em;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">–</b><span style="font:700 8px var(--font-body);letter-spacing:.14em;color:rgba(227,192,125,.6)">ZILE</span></span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(245,246,247,.3);flex:none" aria-hidden="true"></span><span data-ep-status="2" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55);animation:boardFlip 7s ease-in-out infinite;animation-delay:3.4s" data-i18n="coming_soon">ÎN PREGĂTIRE</span></span>
@@ -1200,7 +1196,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="3" class="brd-title" style="font:600 15px/1.4 var(--font-body);color:#f5f6f7" data-i18n="ep_ph3">Alegeri, risc și reinventare</span>
         <span data-ep-desc="3" class="brd-desc" style="font:400 12.5px/1.5 var(--font-body);color:rgba(245,246,247,.72)" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
       </span>
-      <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:3px;box-sizing:border-box;width:110px;padding:9px 8px 7px;border-radius:12px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));overflow:hidden;transition:border-color .3s ease"><span style="position:absolute;top:0;left:12px;right:12px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)" aria-hidden="true"></span><span style="display:inline-flex;gap:3px"><b class="flap-d">2</b><b class="flap-d">8</b></span><span style="width:22px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.5),transparent);margin:1px 0" aria-hidden="true"></span><span style="font:700 9px var(--font-body);letter-spacing:.12em;margin-right:-.12em;white-space:nowrap;color:#ecd8a8">DECEMBRIE 2026</span></span></span>
+      <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;align-items:baseline;gap:5px;box-sizing:border-box;padding:7px 13px 6px;border-radius:999px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));white-space:nowrap;transition:border-color .3s ease"><b data-ep-days="2026-12-28T00:00:00+02:00" data-ep-date="28 DEC 2026" style="font:var(--head-weight) 17px/1 var(--font-head);letter-spacing:.03em;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">–</b><span style="font:700 8px var(--font-body);letter-spacing:.14em;color:rgba(227,192,125,.6)">ZILE</span></span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(245,246,247,.3);flex:none" aria-hidden="true"></span><span data-ep-status="3" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55);animation:boardFlip 7s ease-in-out infinite;animation-delay:5.8s" data-i18n="coming_soon">ÎN PREGĂTIRE</span></span>
@@ -1334,6 +1330,32 @@ document.addEventListener('pointerout', function(e){
 class Component extends DCLogic {
 }
 
+</script>
+<script>
+(function(){
+  var els = document.querySelectorAll('[data-ep-days]');
+  if(!els.length) return;
+  function upd(){
+    for(var i = 0; i < els.length; i++){
+      var el = els[i];
+      var t = new Date(el.getAttribute('data-ep-days')).getTime();
+      var z = Math.ceil((t - Date.now()) / 86400000);
+      var lbl = el.nextElementSibling;
+      if(z <= 0){
+        el.style.font = '700 9.5px var(--font-body)';
+        el.style.letterSpacing = '.12em';
+        el.style.webkitTextFillColor = '#ecd8a8';
+        el.textContent = el.getAttribute('data-ep-date');
+        if(lbl){ lbl.style.display = 'none'; }
+        continue;
+      }
+      el.textContent = z;
+      if(lbl){ lbl.textContent = (z === 1 ? 'ZI' : 'ZILE'); }
+    }
+  }
+  upd();
+  setInterval(upd, 3600000);
+})();
 </script>
 </body>
 </html>
