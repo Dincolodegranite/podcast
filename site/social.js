@@ -313,3 +313,5 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+

@@ -178,11 +178,8 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) #0f1113}
 ::-webkit-scrollbar-thumb:hover{background:var(--accent-light)}
 ::selection{background:var(--accent);color:#0f1113}
 html{scroll-padding-top:132px}
-[data-nav-link]{transition:background .3s ease}
-[data-nav-link]::after{content:'';position:absolute;left:16px;right:16px;bottom:6px;height:1.5px;border-radius:2px;background:linear-gradient(90deg,var(--accent-light),var(--accent));transform:scaleX(0);transform-origin:center;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-[data-nav-link]:hover::after{transform:scaleX(1)}
-[data-nav-link]:hover{background:rgba(201,162,90,.12)}
-[data-nav-link]:hover span{color:var(--accent-light);transition:color .3s ease}
+[data-nav-link] span{transition:color .3s ease}
+[data-nav-link]:hover span{color:var(--accent-light)}
 a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link]):hover,button[style*="border-radius:999px"]:hover,.nl-btn:hover,.nlx-btn:hover,.gf-btn:hover{outline:1px solid rgba(227,192,125,.8);outline-offset:0;filter:drop-shadow(0 0 8px rgba(227,192,125,.45))}
 a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link]),button[style*="border-radius:999px"],.nl-btn,.nlx-btn,.gf-btn{position:relative;overflow:hidden}
 a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link])::after,button[style*="border-radius:999px"]::after,.nl-btn::after,.nlx-btn::after,.gf-btn::after{content:"";position:absolute;top:-4px;bottom:-4px;left:-80%;width:55%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.38) 50%,transparent);transform:skewX(-20deg);pointer-events:none}
@@ -833,7 +830,7 @@ document.addEventListener('pointerout', function(e){
       <div style="display:flex;flex-direction:column;gap:3px;min-width:0"><div data-nav-word style="font:600 clamp(10px,3.4vw,13.5px) var(--font-body);letter-spacing:.06em;color:#f5f6f7;white-space:nowrap;transition:font-size .3s ease,opacity .3s ease">DINCOLO DE GRANIȚE</div><div style="font:600 clamp(7px,2vw,8.5px) var(--font-body);letter-spacing:.24em;color:rgba(227,192,125,.75);white-space:nowrap">UN PODCAST DESPRE OAMENI</div></div>
     </a>
     <div data-nav-links style="position:relative;display:flex;align-items:center;gap:2px">
-      <a href="index.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:11px 12px;font:600 14px var(--font-body);color:#f5f6f7;text-decoration:none;border-radius:999px;background:rgba(201,162,90,.14)"><span data-i18n="nav_acasa">ACASĂ</span></a>
+      <a href="index.html" data-nav-link data-nav-active style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:11px 12px;font:600 14px var(--font-body);color:#f5f6f7;text-decoration:none;border-radius:999px;background:rgba(201,162,90,.14)"><span data-i18n="nav_acasa">ACASĂ</span></a>
       <a href="despre.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;padding:11px 12px;font:500 14px var(--font-body);color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><span data-i18n="nav_despre">DESPRE</span></a>
 
       <a href="episoade.html" data-nav-link style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;padding:11px 12px;font:500 14px var(--font-body);color:rgba(245,246,247,.7);text-decoration:none;border-radius:999px;transition:color .25s ease,letter-spacing .25s ease" style-hover="background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmerText 1.2s linear infinite;letter-spacing:.03em"><span data-i18n="nav_episoade">EPISOADE</span></a>
