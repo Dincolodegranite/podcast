@@ -158,8 +158,9 @@ a:hover{color:var(--accent-light)}
 .brd-row img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .brd-next::before{content:'';position:absolute;left:0;top:16%;bottom:16%;width:2px;border-radius:2px;background:linear-gradient(180deg,transparent,rgba(227,192,125,.75) 30%,rgba(227,192,125,.75) 70%,transparent);pointer-events:none}
 .brd-row:hover img{transform:scale(1.08)}
-.brd-arrow{display:inline-block;transition:transform .3s ease,color .3s ease}
-.brd-row:hover .brd-arrow{transform:translateX(4px);color:var(--accent-light)}
+.brd-arrow{flex:none;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:1px solid rgba(245,246,247,.16);background:rgba(245,246,247,.04);color:rgba(245,246,247,.32);transition:all .3s ease;cursor:default}
+.brd-arrow.on{border-color:rgba(201,162,90,.4);background:rgba(201,162,90,.08);color:var(--accent);cursor:pointer}
+.brd-row:hover .brd-arrow.on{transform:translateX(3px);background:var(--accent);border-color:var(--accent-light);color:#0f1113}
 .brd-break{display:none;flex-basis:100%;height:0}
 @media (max-width:760px){
   .brd-row .brd-time{order:5;flex:0 0 auto!important;width:auto!important;margin-top:12px;align-self:center;justify-content:flex-start!important}
@@ -175,7 +176,8 @@ a:hover{color:var(--accent-light)}
   .brd-row .brd-status-cell{order:6;margin-left:auto!important;margin-top:12px!important;width:auto!important;align-self:center;text-align:right}
   .brd-title{white-space:normal!important;overflow:visible!important}
   .brd-desc{white-space:normal!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-  .brd-arrow,.brd-arrow-sp{display:none!important}
+  .brd-arrow-sp{display:none!important}
+  .brd-arrow{order:7;margin-top:12px;align-self:center;width:30px;height:30px}
 }
 html{scrollbar-width:thin;scrollbar-color:var(--accent) #0f1113}
 ::-webkit-scrollbar{width:10px;height:10px}
@@ -519,6 +521,7 @@ document.addEventListener('submit', function(e){
             el.style.color = 'var(--accent-light)';
             var __dot = el.parentElement && el.parentElement.querySelector('.brd-st-dot');
             if(__dot){ __dot.style.display = 'none'; }
+            __all('.brd-row[data-ep-link=\"' + n + '\"] .brd-arrow').forEach(function(a){ a.classList.add('on'); });
           }
           el.style.animation = 'none';
         });
@@ -738,7 +741,7 @@ document.addEventListener('pointerout', function(e){
       guest_title:"VREI SĂ FII INVITAT LA PODCAST?", guest_desc:"Ai o experiență de împărtășit: o afacere, o carieră, un drum neobișnuit? Oriunde te afli în lume, scrie-ne.", guest_btn:"PROPUNE-TE CA INVITAT",
       guest_name_ph:"Numele tău", guest_email_ph:"adresa@email.com", guest_location_ph:"Orașul / țara (opțional)", guest_story_ph:"Pe scurt: cine ești, unde locuiești și care e povestea ta", guest_send:"TRIMITE PROPUNEREA",
       nav_acasa:"ACASĂ", nav_harta:"HARTA", nav_invitati:"DEVINO INVITAT", despre_more:"DESCOPERĂ PODCASTUL →", guest_page_btn:"PROPUNE-TE CA INVITAT →", harta_label:"HARTA DIASPOREI", harta_title:"CÂT DE DEPARTE EȘTI DE CASĂ?", harta_sub:"Uneori, distanța se măsoară în kilometri. Alteori, în dor. Introdu orașul în care locuiești și orașul pe care îl numești acasă.", harta_placeholder:"Unde locuiești acum?", harta_placeholder2:"Orașul tău de acasă", harta_btn:"CALCULEAZĂ DISTANȚA", harta_notfound:"Nu găsesc orașul. Încearcă un oraș mare din apropiere.", harta_legend_home:"ROMÂNIA", harta_legend_guests:"ORAȘELE COMUNITĂȚII",  harta_cta_q:"Ai o experiență sau o perspectivă care merită auzită?", harta_cta:"Propune-te ca invitat →",
-      count_label:"LANSARE PRIMUL EPISOD", count_d:"ZILE", count_h:"ORE", count_m:"MIN", count_s:"SEC",
+      count_label:"LANSAREA PRIMULUI EPISOD", count_d:"ZILE", count_h:"ORE", count_m:"MIN", count_s:"SEC",
       board_title:"SEZONUL 1", board_lon:"LONDRA", board_buc:"BUCUREȘTI", board_gate:"POARTA", board_boarding:"ÎMBARCARE DESCHISĂ", board_col_flight:"EPISOD", board_col_story:"CONVERSAȚIE", board_col_time:"LANSARE ÎN", board_col_status:"STATUS",
       board_nyc:"NEW YORK", board_project_label:"PROIECT", scale_label:"SCARĂ 1:1 — POVESTE REALĂ", ep_view_link:"VEZI →", ep_view:"VEZI EPISODUL", ep_all:"VEZI TOATE EPISOADELE →",
       newsletter_consent:'Prin abonare ești de acord cu <a href="privacy.html" style="color:var(--accent)">politica de confidențialitate</a>.', footer_privacy:"Confidențialitate",
@@ -1066,7 +1069,7 @@ document.addEventListener('pointerout', function(e){
     <div data-countdown style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:10px">
       <span style="display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.3);background:rgba(201,162,90,.07);font:700 10px var(--font-body);letter-spacing:.24em;color:var(--accent-light)">
         <span style="position:relative;width:6px;height:6px;flex:none"><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light)"></span><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light);animation:cdPulse 2.4s ease-out infinite"></span></span>
-        <span data-i18n="count_label">LANSARE PRIMUL EPISOD</span>
+        <span data-i18n="count_label">LANSAREA PRIMULUI EPISOD</span>
       </span>
       <div data-count-date style="font:var(--head-weight) clamp(22px,4.4vw,32px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.02em;margin:-2px 0 2px"></div>
       <div class="cd-grid" style="display:flex;align-items:stretch;gap:10px">
@@ -1092,7 +1095,7 @@ document.addEventListener('pointerout', function(e){
         </div>
       </div>
     </div>
-    <div style="font:400 13px var(--font-body);color:rgba(245,246,247,.62);text-align:center">Primești un email în momentul în care episodul devine live.</div>
+    <div style="font:400 13px var(--font-body);color:rgba(245,246,247,.62);text-align:center">Primești un email imediat ce episodul este publicat.</div>
     <form id="abonare-home" data-notify-form method="POST" style="position:relative;width:100%;max-width:560px">
       <div class="nl-capsule" style="display:flex;align-items:center;gap:8px;padding:6px;border-radius:999px;border:1px solid rgba(201,162,90,.32);background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55));transition:box-shadow .3s ease">
         <span class="nl-icon" style="flex:none;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:16px;color:rgba(227,192,125,.8)" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg></span>
@@ -1165,7 +1168,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="position:relative;width:6px;height:6px;flex:none" aria-hidden="true"><span style="position:absolute;inset:0;border-radius:50%;background:rgba(227,192,125,.9)"></span><span style="position:absolute;inset:0;border-radius:50%;background:rgba(227,192,125,.9);animation:cdPulse 2.4s ease-out infinite"></span></span><span data-ep-status="1" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85)" data-i18n="board_in_studio">FILMARE PROGRAMATĂ</span></span>
       </span>
-      <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
+      <span class="brd-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
     </a>
     <a data-ep-link="2" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(201,162,90,.28) 18%,rgba(201,162,90,.28) 82%,transparent) 1;text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:44px;flex:none;display:flex;flex-direction:column;gap:4px">
@@ -1183,7 +1186,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(245,246,247,.3);flex:none" aria-hidden="true"></span><span data-ep-status="2" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55)" data-i18n="coming_soon">ÎN PREGĂTIRE</span></span>
       </span>
-      <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
+      <span class="brd-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
     </a>
     <a data-ep-link="3" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(201,162,90,.28) 18%,rgba(201,162,90,.28) 82%,transparent) 1;text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:44px;flex:none;display:flex;flex-direction:column;gap:4px">
@@ -1201,7 +1204,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(245,246,247,.3);flex:none" aria-hidden="true"></span><span data-ep-status="3" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55)" data-i18n="coming_soon">ÎN PREGĂTIRE</span></span>
       </span>
-      <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
+      <span class="brd-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
     </a>
     <div class="brd-foot" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px clamp(14px,3vw,28px);border-top:1px solid rgba(201,162,90,.22);background:rgba(201,162,90,.05)">
       <div class="brd-foot-gate" style="display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap">
@@ -1402,6 +1405,12 @@ class Component extends DCLogic {
     if(row){ row.addEventListener('mouseenter', function(){ scramble(el); }); }
   });
 })();
+</script>
+<script>
+document.addEventListener('click', function(e){
+  var ar = e.target.closest && e.target.closest('.brd-arrow');
+  if(ar && !ar.classList.contains('on')){ e.preventDefault(); e.stopPropagation(); }
+}, true);
 </script>
 </body>
 </html>
