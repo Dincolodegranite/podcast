@@ -179,6 +179,8 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) #0f1113}
 ::selection{background:var(--accent);color:#0f1113}
 html{scroll-padding-top:132px}
 [data-nav-link]{transition:background .3s ease}
+[data-nav-link]::after{content:'';position:absolute;left:16px;right:16px;bottom:6px;height:1.5px;border-radius:2px;background:linear-gradient(90deg,var(--accent-light),var(--accent));transform:scaleX(0);transform-origin:center;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+[data-nav-link]:hover::after{transform:scaleX(1)}
 [data-nav-link]:hover{background:rgba(201,162,90,.12)}
 [data-nav-link]:hover span{color:var(--accent-light);transition:color .3s ease}
 a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link]):hover,button[style*="border-radius:999px"]:hover,.nl-btn:hover,.nlx-btn:hover,.gf-btn:hover{outline:1px solid rgba(227,192,125,.8);outline-offset:0;filter:drop-shadow(0 0 8px rgba(227,192,125,.45))}
