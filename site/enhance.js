@@ -341,9 +341,11 @@ function updateHartaClocks(){
     el.querySelector('[data-hc-label]').textContent = label;
     if(t){
       var hh = parseInt(t.slice(0, 2), 10), mm = parseInt(t.slice(3, 5), 10);
-      var hEl = el.querySelector('[data-hc-hour]'), mEl = el.querySelector('[data-hc-min]');
+      var ss = new Date().getSeconds();
+      var hEl = el.querySelector('[data-hc-hour]'), mEl = el.querySelector('[data-hc-min]'), sEl = el.querySelector('[data-hc-sec]');
       if(hEl) hEl.style.transform = 'translateX(-50%) rotate(' + ((hh % 12) * 30 + mm * 0.5) + 'deg)';
-      if(mEl) mEl.style.transform = 'translateX(-50%) rotate(' + (mm * 6) + 'deg)';
+      if(mEl) mEl.style.transform = 'translateX(-50%) rotate(' + (mm * 6 + ss * 0.1) + 'deg)';
+      if(sEl) sEl.style.transform = 'translateX(-50%) rotate(' + (ss * 6) + 'deg)';
     }
   }
   setClock(document.querySelector('[data-harta-clock-a]'), ct, a.label);
@@ -685,7 +687,7 @@ function initMap(){
     window.__hcA = { k: tzKey(city), lat: city[1], lon: city[2], label: String(city[0]).toUpperCase() };
     window.__hcB = { k: isDefaultHome ? '__home' : tzKey(h), lat: h[1], lon: h[2], label: hLabel };
     updateHartaClocks();
-    if(!window.__hcTimer){ window.__hcTimer = setInterval(updateHartaClocks, 20000); }
+    if(!window.__hcTimer){ window.__hcTimer = setInterval(updateHartaClocks, 1000); }
     var routeEl = document.querySelector('[data-harta-route]');
     if(routeEl){
       var SEP = '<span style="display:inline-flex;align-items:center;gap:7px;margin:0 12px;vertical-align:middle">' +
