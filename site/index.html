@@ -153,6 +153,7 @@ a:hover{color:var(--accent-light)}
 .brd-thumb{transition:border-color .3s ease,box-shadow .3s ease}
 .brd-row:hover .brd-thumb{border-color:rgba(227,192,125,.75);box-shadow:0 0 16px rgba(201,162,90,.4)}
 .brd-row img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.brd-next::before{content:'';position:absolute;left:0;top:16%;bottom:16%;width:2px;border-radius:2px;background:linear-gradient(180deg,transparent,rgba(227,192,125,.75) 30%,rgba(227,192,125,.75) 70%,transparent);pointer-events:none}
 .brd-row:hover img{transform:scale(1.08)}
 .brd-arrow{display:inline-block;transition:transform .3s ease,color .3s ease}
 .brd-row:hover .brd-arrow{transform:translateX(4px);color:var(--accent-light)}
@@ -489,6 +490,15 @@ document.addEventListener('submit', function(e){
       __all('[data-ep-rtag="' + n + '"]').forEach(function(el){ el.style.display = 'none'; });
       __all('[data-ep-badge="' + n + '"]').forEach(function(el){ el.textContent = el.closest('.brd-row') ? ('0' + ep.episode_number).slice(-2) : 'EPISODUL ' + ('0' + ep.episode_number).slice(-2); });
       if(ep.route){ __all('[data-ep-route="' + n + '"]').forEach(function(el){ el.textContent = String(ep.route).toUpperCase(); }); }
+      (function(){
+        var rows = __all('.brd-row');
+        var nextIdx = -1;
+        for(var j = 0; j < rows.length; j++){
+          var epj = __epsCache[j];
+          if(!epj || !epj.youtube_url){ nextIdx = j; break; }
+        }
+        for(var j2 = 0; j2 < rows.length; j2++){ rows[j2].classList.toggle('brd-next', j2 === nextIdx); }
+      })();
       if(ep.youtube_url){
         __all('.ep-card[data-ep-link="' + n + '"] .ep-play').forEach(function(el){ el.style.display = 'flex'; });
         __all('.ep-card[data-ep-link="' + n + '"] .ep-new').forEach(function(el){ el.style.display = 'inline-flex'; });
@@ -1131,7 +1141,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-status-cell" style="flex:none;width:112px" data-i18n="board_col_status">STATUS</span>
       <span class="brd-arrow-sp" style="flex:none;width:14px"></span>
     </div>
-    <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(201,162,90,.28) 18%,rgba(201,162,90,.28) 82%,transparent) 1;text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
+    <a data-ep-link="1" href="https://www.youtube.com/@dincolo.de.granite" target="_blank" rel="noopener" class="brd-row brd-next" style="position:relative;display:flex;align-items:center;gap:clamp(12px,2.5vw,22px);padding:16px clamp(14px,3vw,28px);border-top:1px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(201,162,90,.28) 18%,rgba(201,162,90,.28) 82%,transparent) 1;text-decoration:none;transition:background .25s ease" style-hover="background:rgba(201,162,90,.07)">
       <span style="width:44px;flex:none;display:flex;flex-direction:column;gap:4px">
         <span style="font:var(--head-weight) 28px/1 var(--font-head);letter-spacing:.06em;background:linear-gradient(180deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent" data-ep-badge="1">01</span>
       </span>
