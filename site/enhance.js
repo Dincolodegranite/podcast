@@ -335,9 +335,19 @@ function updateHartaClocks(){
   var tEl = document.querySelector('[data-harta-times]');
   var ct = cityTime(a.k, a.lat, a.lon), ht = cityTime(b.k, b.lat, b.lon);
   if(tEl) tEl.textContent = (ct ? a.label + ' ' + ct : '') + (ct && ht ? '   ·   ' : '') + (ht ? b.label + ' ' + ht : '');
-  var ca = document.querySelector('[data-harta-clock-a]'), cb = document.querySelector('[data-harta-clock-b]');
-  if(ca){ ca.querySelector('[data-hc-time]').textContent = ct || '--:--'; ca.querySelector('[data-hc-label]').textContent = a.label; }
-  if(cb){ cb.querySelector('[data-hc-time]').textContent = ht || '--:--'; cb.querySelector('[data-hc-label]').textContent = b.label; }
+  function setClock(el, t, label){
+    if(!el) return;
+    el.querySelector('[data-hc-time]').textContent = t || '--:--';
+    el.querySelector('[data-hc-label]').textContent = label;
+    if(t){
+      var hh = parseInt(t.slice(0, 2), 10), mm = parseInt(t.slice(3, 5), 10);
+      var hEl = el.querySelector('[data-hc-hour]'), mEl = el.querySelector('[data-hc-min]');
+      if(hEl) hEl.style.transform = 'translateX(-50%) rotate(' + ((hh % 12) * 30 + mm * 0.5) + 'deg)';
+      if(mEl) mEl.style.transform = 'translateX(-50%) rotate(' + (mm * 6) + 'deg)';
+    }
+  }
+  setClock(document.querySelector('[data-harta-clock-a]'), ct, a.label);
+  setClock(document.querySelector('[data-harta-clock-b]'), ht, b.label);
 }
 function cityInRO(c){ return (typeof inRO === 'function') && inRO(c[2], c[1]); }
 function suggest(q, mode){
