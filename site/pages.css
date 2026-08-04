@@ -64,7 +64,7 @@ h2{margin:0 0 14px;font:var(--head-weight) clamp(24px,4vw,32px)/1.15 var(--font-
 @keyframes goldShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
 /* newsletter sitewide — capsula de abonare de deasupra footerului */
-.nlx-cap{position:relative;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px;border-radius:22px;border:1px solid transparent;background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55)) padding-box,linear-gradient(150deg,rgba(227,192,125,.45),rgba(201,162,90,.12) 55%,rgba(227,192,125,.28)) border-box;transition:box-shadow .3s ease}
+.nlx-cap{position:relative;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px;border-radius:22px;border:1px solid rgba(201,162,90,.32);background:linear-gradient(180deg,rgba(15,17,19,.72),rgba(15,17,19,.55));transition:box-shadow .3s ease}
 .nlx-cap:focus-within{box-shadow:0 0 0 3px rgba(201,162,90,.16)}
 .nlx-ic{flex:none;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:14px;color:rgba(227,192,125,.8)}
 .nlx-cap input[type=email]{flex:1;min-width:0;padding:11px 8px 11px 2px;border:none;background:transparent;color:#f5f6f7;font:400 15px var(--font-body);outline:none}
@@ -102,7 +102,7 @@ section{padding:clamp(20px,4vw,36px) 0}
 .fsoc-block{display:flex;flex-direction:column;align-items:center;gap:10px}
 
 /* cards — gradient hairline system */
-.gcard{position:relative;border:1px solid transparent;border-radius:22px;background:linear-gradient(180deg,#15171b,#101214) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;padding:clamp(22px,4vw,34px)}
+.gcard{position:relative;border:1px solid rgba(201,162,90,.32);border-radius:22px;background:linear-gradient(180deg,#15171b,#101214);padding:clamp(22px,4vw,34px)}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
 
@@ -121,8 +121,8 @@ textarea.field{resize:vertical;min-height:120px}
 /* episode cards (YouTube anatomy, same as homepage) */
 .ep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
 @media (min-width:1000px){.ep-grid{grid-template-columns:repeat(3,1fr)}}
-.ep-card{position:relative;display:flex;flex-direction:column;border:1px solid transparent;border-radius:20px;overflow:hidden;text-decoration:none;background:linear-gradient(#131518,#131518) padding-box,linear-gradient(170deg,rgba(227,192,125,.45),rgba(201,162,90,.10) 34%,rgba(201,162,90,.06) 66%,rgba(227,192,125,.25) 100%) border-box;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease}
-.ep-card:hover{transform:translateY(-8px);box-shadow:0 32px 64px rgba(0,0,0,.5),0 0 44px -8px rgba(201,162,90,.28)}
+.ep-card{position:relative;display:flex;flex-direction:column;border:1px solid rgba(201,162,90,.32);border-radius:20px;overflow:hidden;text-decoration:none;background:#131518;transition:border-color .4s ease,box-shadow .4s ease}
+.ep-card:hover{border-color:rgba(233,200,135,.85);box-shadow:0 26px 60px rgba(0,0,0,.55),0 0 34px -6px rgba(201,162,90,.38)}
 .ep-yt-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;flex:none;background:#0b0c0e}
 .ep-yt-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform .6s cubic-bezier(.2,.8,.2,1);filter:saturate(.92)}
 .ep-card:hover .ep-yt-thumb img{transform:scale(1.06)}
