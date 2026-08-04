@@ -314,4 +314,25 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   else init();
 })();
 
-
+/* ── motorul style-hover: aplica stilurile din atributul style-hover la mouseenter ── */
+(function(){
+  function init(){
+    var els = document.querySelectorAll('[style-hover]');
+    for(var k = 0; k < els.length; k++){
+      (function(el){
+        var hoverCss = el.getAttribute('style-hover');
+        if(!hoverCss) return;
+        var base = null;
+        el.addEventListener('mouseenter', function(){
+          base = el.getAttribute('style') || '';
+          el.setAttribute('style', base + ';' + hoverCss);
+        });
+        el.addEventListener('mouseleave', function(){
+          if(base !== null){ el.setAttribute('style', base); base = null; }
+        });
+      })(els[k]);
+    }
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
