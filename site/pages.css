@@ -50,6 +50,7 @@ img{max-width:100%}
 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
 h1{margin:14px 0 12px;font:var(--head-weight) clamp(34px,6vw,52px)/1.05 var(--font-head),var(--font-body),sans-serif;letter-spacing:.01em;color:#f5f6f7}
 html{scroll-padding-top:132px}
+a:hover .cta-arr,button:hover .cta-arr{transform:translateY(-1px) translateX(5px)}
 a[style*="border-radius:999px"]:hover,button[style*="border-radius:999px"]:hover,.nl-btn:hover,.nlx-btn:hover,.gf-btn:hover{outline:1px solid rgba(227,192,125,.8);outline-offset:0;filter:drop-shadow(0 0 8px rgba(227,192,125,.45))}
 a[style*="border-radius:999px"],button[style*="border-radius:999px"],.nl-btn,.nlx-btn,.gf-btn{position:relative;overflow:hidden}
 a[style*="border-radius:999px"]::after,button[style*="border-radius:999px"]::after,.nl-btn::after,.nlx-btn::after,.gf-btn::after{content:"";position:absolute;top:-4px;bottom:-4px;left:-80%;width:55%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.38) 50%,transparent);transform:skewX(-20deg);pointer-events:none}

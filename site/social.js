@@ -336,3 +336,27 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* ── sagetile CTA devin vii: aluneca spre dreapta la hover pe buton ── */
+(function(){
+  function wrap(){
+    var els = document.querySelectorAll('a, button');
+    for(var k = 0; k < els.length; k++){
+      var el = els[k];
+      var last = el.lastChild;
+      if(last && last.nodeType === 3 && /→\s*$/.test(last.nodeValue)){
+        last.nodeValue = last.nodeValue.replace(/\s*→\s*$/, '');
+        var sp = document.createElement('span');
+        sp.className = 'cta-arr';
+        sp.textContent = '→';
+        sp.setAttribute('aria-hidden', 'true');
+        sp.style.cssText = 'display:inline-block;margin-left:8px;transform:translateY(-1px);transition:transform .35s cubic-bezier(.2,.8,.2,1)';
+        el.appendChild(sp);
+        el.setAttribute('data-arr', '1');
+      }
+    }
+  }
+  function init(){ [80, 400, 900, 1800, 3200].forEach(function(t){ setTimeout(wrap, t); }); window.addEventListener('load', function(){ setTimeout(wrap, 200); }); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
