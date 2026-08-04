@@ -291,3 +291,25 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   })
   .catch(function(){});
 })();
+
+/* ── bara de progres la scroll (toate paginile; homepage-ul are deja una proprie) ── */
+(function(){
+  function init(){
+    if(document.querySelector('[data-scroll-bar]')) return;
+    var bar = document.createElement('div');
+    bar.setAttribute('data-scroll-bar', '');
+    bar.style.cssText = 'position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#c9a25a,#e3c07d);z-index:100;transition:width .1s linear;pointer-events:none';
+    document.body.appendChild(bar);
+    var ticking = false;
+    function upd(){
+      ticking = false;
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + '%';
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(upd); } }, { passive: true });
+    window.addEventListener('resize', upd, { passive: true });
+    upd();
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
