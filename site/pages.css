@@ -29,7 +29,7 @@ img{max-width:100%}
 .plinks a{position:relative;z-index:1}
 .plinks a:hover span{background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:pshimmer 1.2s linear infinite}
 @keyframes pshimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.plinks a::after{content:'';position:absolute;left:12px;right:12px;bottom:4px;height:1px;border-radius:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55) 35%,#f5e3bd 50%,rgba(227,192,125,.55) 65%,transparent);box-shadow:0 0 6px rgba(227,192,125,.55),0 0 12px rgba(201,162,90,.3);transform:scaleX(0);transform-origin:center;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.plinks a::after{content:'';position:absolute;left:12px;right:12px;bottom:4px;height:1px;border-radius:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55) 35%,#f5e3bd 50%,rgba(227,192,125,.55) 65%,transparent);transform:scaleX(0);transform-origin:center;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .plinks a:hover::after{transform:scaleX(1)}
 .plinks a.on span{color:var(--accent-light);font-weight:600}
 .pburger{display:none;width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,162,90,.25);background:rgba(201,162,90,.1);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:none;transition:background .25s ease;padding:0}
