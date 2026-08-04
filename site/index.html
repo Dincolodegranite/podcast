@@ -56,7 +56,7 @@ a:hover{color:var(--accent-light)}
 @keyframes ctaGlow{0%,100%{box-shadow:0 4px 14px rgba(0,0,0,.3),0 0 0 0 rgba(201,162,90,.45)}50%{box-shadow:0 8px 22px rgba(0,0,0,.35),0 0 32px 8px rgba(201,162,90,.45)}}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(201,162,90,.45)}70%{box-shadow:0 0 0 9px rgba(201,162,90,0)}100%{box-shadow:0 0 0 0 rgba(201,162,90,0)}}
-@keyframes scrollBeam{0%{transform:translateY(-16px);opacity:0}18%{opacity:1}82%{opacity:1}100%{transform:translateY(50px);opacity:0}}
+@keyframes scrollBeam{0%{transform:translateY(-12px);opacity:0}18%{opacity:1}82%{opacity:1}100%{transform:translateY(28px);opacity:0}}
 @keyframes waveBar{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
 @keyframes fadeInRight{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:translateX(0)}}
 @keyframes kenBurns{0%{transform:scale(1)}100%{transform:scale(1.07)}}
@@ -929,9 +929,9 @@ document.addEventListener('pointerout', function(e){
     </div>
     </div>
   <div data-scroll-hint style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;z-index:1;white-space:nowrap;transition:opacity .45s ease">
-    <span style="font:600 9.5px var(--font-body);letter-spacing:.3em;color:rgba(245,246,247,.52)">EXPLOREAZĂ</span>
-    <div style="width:1px;height:50px;position:relative;overflow:hidden;background:rgba(201,162,90,.12)">
-      <div style="position:absolute;left:0;top:0;width:1px;height:16px;background:linear-gradient(180deg,transparent,var(--accent-light),transparent);animation:scrollBeam 2.2s cubic-bezier(.4,0,.2,1) infinite"></div>
+    <span style="font:700 9.5px var(--font-body);letter-spacing:.34em;color:rgba(227,192,125,.8)">EXPLOREAZĂ</span>
+    <div style="width:1px;height:28px;position:relative;overflow:hidden;background:rgba(201,162,90,.22)">
+      <div style="position:absolute;left:0;top:0;width:1px;height:12px;background:linear-gradient(180deg,transparent,#f5e3bd);box-shadow:0 0 6px rgba(227,192,125,.85);animation:scrollBeam 1.9s cubic-bezier(.4,0,.2,1) infinite"></div>
     </div>
   </div>
 </div>
