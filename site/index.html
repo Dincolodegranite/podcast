@@ -160,6 +160,7 @@ a:hover{color:var(--accent-light)}
 .brd-row:hover img{transform:scale(1.08)}
 .brd-arrow{flex:none;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:1px solid rgba(245,246,247,.16);background:rgba(245,246,247,.04);color:rgba(245,246,247,.32);transition:all .3s ease;cursor:default}
 .brd-arrow.on{border-color:rgba(201,162,90,.4);background:rgba(201,162,90,.08);color:var(--accent);cursor:pointer}
+.brd-row[data-ep-link="1"] .brd-arrow:not(.on){border-color:rgba(227,87,79,.4);background:rgba(227,87,79,.07);color:rgba(229,130,116,.85)}
 .brd-row:hover .brd-arrow.on{transform:translateX(3px);background:var(--accent);border-color:var(--accent-light);color:#0f1113}
 .brd-break{display:none;flex-basis:100%;height:0}
 @media (max-width:760px){
@@ -1166,7 +1167,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;align-items:baseline;gap:5px;box-sizing:border-box;padding:7px 13px 6px;border-radius:999px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));white-space:nowrap;transition:border-color .3s ease"><b data-ep-days="2026-12-01T00:00:00+02:00" data-ep-date="01 DEC 2026" style="font:var(--head-weight) 17px/1 var(--font-head);letter-spacing:.03em;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">–</b><span style="font:700 8px var(--font-body);letter-spacing:.14em;color:rgba(227,192,125,.6)">ZILE</span></span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
-        <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="position:relative;width:6px;height:6px;flex:none" aria-hidden="true"><span style="position:absolute;inset:0;border-radius:50%;background:#8fce9a"></span><span style="position:absolute;inset:0;border-radius:50%;background:#8fce9a;animation:cdPulse 2.4s ease-out infinite"></span></span><span data-ep-status="1" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:#8fce9a" data-i18n="board_in_studio">FILMARE PROGRAMATĂ</span></span>
+        <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="position:relative;width:6px;height:6px;flex:none" aria-hidden="true"><span style="position:absolute;inset:0;border-radius:50%;background:#e3574f"></span><span style="position:absolute;inset:0;border-radius:50%;background:#e3574f;animation:cdPulse 2.4s ease-out infinite"></span></span><span data-ep-status="1" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:#e58274" data-i18n="board_in_studio">FILMARE PROGRAMATĂ</span></span>
       </span>
       <span class="brd-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
     </a>
