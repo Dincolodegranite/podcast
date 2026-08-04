@@ -1368,6 +1368,9 @@ class Component extends DCLogic {
     var target = el.textContent;
     if(target.indexOf('\u25B6') !== -1) return; /* episod live: e buton, nu-l atingem */
     el.__scr = true;
+    /* textele de un singur rand nu au voie sa se rupa cand literele aleatoare ies mai late */
+    var oneLine = el.offsetHeight < 16;
+    if(oneLine){ el.style.whiteSpace = 'nowrap'; }
     var start = null, D = 85;
     function frame(ts){
       if(!start) start = ts;
@@ -1381,7 +1384,7 @@ class Component extends DCLogic {
       }
       el.textContent = out;
       if(t < target.length * D + 240){ requestAnimationFrame(frame); }
-      else { el.textContent = target; el.__scr = false; }
+      else { el.textContent = target; if(oneLine){ el.style.whiteSpace = ''; } el.__scr = false; }
     }
     requestAnimationFrame(frame);
   }
