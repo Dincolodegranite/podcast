@@ -335,6 +335,16 @@ function initMap(){
         }
       });
     }).catch(function(){});
+    fetch(supa.url + '/rest/v1/map_community?select=city,lat,lon&order=created_at.desc&limit=1000', {
+      headers: { 'apikey': supa.key, 'Authorization': 'Bearer ' + supa.key }
+    }).then(function(r){ return r.ok ? r.json() : []; }).then(function(rows){
+      (rows || []).forEach(function(row){
+        if(row && row.city && typeof row.lat === 'number' && typeof row.lon === 'number'){
+          var k = norm(row.city);
+          if(!guests[k]) guests[k] = [row.city, row.lat, row.lon, []];
+        }
+      });
+    }).catch(function(){});
   }
 
   function proj(lat, lon){
@@ -602,6 +612,20 @@ function initMap(){
     }
     requestAnimationFrame(count);
     setTimeout(function(){ result.style.opacity = '1'; result.style.transform = 'none'; }, 60);
+    /* orasul devine punct al comunitatii pe harta; persistam o singura data per browser */
+    try {
+      guests[norm(city[0])] = city;
+      var sp = window.__dgSupa;
+      var seen = 'dg_map_' + norm(city[0]);
+      if(sp && !localStorage.getItem(seen)){
+        localStorage.setItem(seen, '1');
+        fetch(sp.url + '/rest/v1/map_community', {
+          method: 'POST',
+          headers: { 'apikey': sp.key, 'Authorization': 'Bearer ' + sp.key, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ city: city[0], lat: city[1], lon: city[2] })
+        }).catch(function(){});
+      }
+    } catch(e){}
   }
   function go(){
     var a = findCity(input.value) || suggest(input.value)[0];
@@ -627,7 +651,7 @@ function initMap(){
         b.setAttribute('style', 'display:block;width:100%;text-align:left;padding:10px 16px;background:transparent;border:none;color:#f5f6f7;font:400 14px Inter,sans-serif;cursor:pointer');
         b.addEventListener('mouseenter', function(){ b.style.background = 'rgba(201,162,90,.14)'; });
         b.addEventListener('mouseleave', function(){ b.style.background = 'transparent'; });
-        b.addEventListener('click', function(){ inp.value = c[0]; box.style.display = 'none'; go(); });
+        b.addEventListener('click', function(){ inp.value = c[0]; box.style.display = 'none'; showErr(false); });
         box.appendChild(b);
       });
       box.style.display = 'block';
@@ -642,7 +666,7 @@ function initMap(){
   });
   btn.addEventListener('click', go);
   document.querySelectorAll('[data-harta-ex]').forEach(function(el){
-    el.addEventListener('click', function(){ input.value = el.getAttribute('data-harta-ex'); go(); });
+    el.addEventListener('click', function(){ input.value = el.getAttribute('data-harta-ex'); showErr(false); });
   });
 }
 
