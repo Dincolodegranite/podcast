@@ -1399,7 +1399,10 @@ class Component extends DCLogic {
   for(var i = 0; i < els.length; i++){ io.observe(els[i]); }
   els.forEach(function(el){
     var row = el.closest('.brd-row');
-    if(row){ row.addEventListener('mouseenter', function(){ scramble(el); }); }
+    if(row){
+      row.addEventListener('mouseenter', function(){ scramble(el); });
+      row.addEventListener('touchstart', function(){ scramble(el); }, { passive: true });
+    }
   });
 })();
 </script>
