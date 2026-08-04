@@ -300,10 +300,23 @@ function findCity(q){
   }
   return null;
 }
-function suggest(q){
+var RO_POLY = [22.71,47.88,23.14,48.1,23.76,47.99,24.4,47.98,24.87,47.74,25.21,47.89,25.95,47.99,26.2,48.22,26.62,48.22,26.92,48.12,27.23,47.83,27.55,47.41,28.13,46.81,28.16,46.37,28.05,45.94,28.23,45.49,28.68,45.3,29.15,45.46,29.6,45.29,29.63,45.04,29.14,44.82,28.84,44.91,28.56,43.71,27.97,43.81,27.24,44.18,26.07,43.94,25.57,43.69,24.1,43.74,23.33,43.9,22.94,43.82,22.66,44.23,22.47,44.41,22.71,44.58,22.46,44.7,22.15,44.48,21.56,44.77,21.48,45.18,20.87,45.42,20.76,45.73,20.22,46.13,21.02,46.32,21.63,46.99,22.1,47.67,22.71,47.88];
+function inRO(lon, lat){
+  if(lon < 20.2 || lon > 29.8 || lat < 43.6 || lat > 48.3) return false;
+  var inside = false;
+  for(var i = 0, j = RO_POLY.length - 2; i < RO_POLY.length; j = i, i += 2){
+    var xi = RO_POLY[i], yi = RO_POLY[i + 1], xj = RO_POLY[j], yj = RO_POLY[j + 1];
+    if((yi > lat) !== (yj > lat) && lon < (xj - xi) * (lat - yi) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+function cityInRO(c){ return (typeof inRO === 'function') && inRO(c[2], c[1]); }
+function suggest(q, mode){
   var n = norm(q), out = [];
   if(n.length < 2) return out;
   for(var i = 0; i < CITIES.length && out.length < 6; i++){
+    if(mode === 'abroad' && cityInRO(CITIES[i])) continue;
+    if(mode === 'ro' && !cityInRO(CITIES[i])) continue;
     var hit = norm(CITIES[i][0]).indexOf(n) === 0;
     if(!hit){ for(var j = 0; j < CITIES[i][3].length; j++){ if(CITIES[i][3][j].indexOf(n) === 0){ hit = true; break; } } }
     if(hit) out.push(CITIES[i]);
@@ -405,16 +418,7 @@ function initMap(){
   var land = document.createElement('canvas');
   var bright = document.createElement('canvas');
   /* conturul real al Romaniei (din world.geo.json), pentru evidentierea pe harta */
-  var RO_POLY = [22.71,47.88,23.14,48.1,23.76,47.99,24.4,47.98,24.87,47.74,25.21,47.89,25.95,47.99,26.2,48.22,26.62,48.22,26.92,48.12,27.23,47.83,27.55,47.41,28.13,46.81,28.16,46.37,28.05,45.94,28.23,45.49,28.68,45.3,29.15,45.46,29.6,45.29,29.63,45.04,29.14,44.82,28.84,44.91,28.56,43.71,27.97,43.81,27.24,44.18,26.07,43.94,25.57,43.69,24.1,43.74,23.33,43.9,22.94,43.82,22.66,44.23,22.47,44.41,22.71,44.58,22.46,44.7,22.15,44.48,21.56,44.77,21.48,45.18,20.87,45.42,20.76,45.73,20.22,46.13,21.02,46.32,21.63,46.99,22.1,47.67,22.71,47.88];
-  function inRO(lon, lat){
-    if(lon < 20.2 || lon > 29.8 || lat < 43.6 || lat > 48.3) return false;
-    var inside = false;
-    for(var i = 0, j = RO_POLY.length - 2; i < RO_POLY.length; j = i, i += 2){
-      var xi = RO_POLY[i], yi = RO_POLY[i + 1], xj = RO_POLY[j], yj = RO_POLY[j + 1];
-      if((yi > lat) !== (yj > lat) && lon < (xj - xi) * (lat - yi) / (yj - yi) + xi) inside = !inside;
-    }
-    return inside;
-  }
+
   function renderLand(){
     var lctx = land.getContext('2d');
     var bctx = bright.getContext('2d');
@@ -680,19 +684,21 @@ function initMap(){
     } catch(e){}
   }
   function go(){
-    var a = findCity(input.value) || suggest(input.value)[0];
+    var a = findCity(input.value) || suggest(input.value, 'abroad')[0];
+    if(a && cityInRO(a)) a = null;
     var hVal = input2 ? input2.value.trim() : '';
-    var b = hVal ? (findCity(hVal) || suggest(hVal)[0]) : null;
+    var b = hVal ? (findCity(hVal) || suggest(hVal, 'ro')[0]) : null;
+    if(b && !cityInRO(b)) b = null;
     if(a && (b || !hVal)){ pick(a, b); }
     else {
       showErr(true);
       result.style.display = 'none';
     }
   }
-  function bindSug(inp, box){
+  function bindSug(inp, box, mode){
     if(!inp || !box) return;
     inp.addEventListener('input', function(){
-      var list = suggest(inp.value);
+      var list = suggest(inp.value, mode);
       showErr(false);
       if(!list.length){ box.style.display = 'none'; return; }
       box.textContent = '';
@@ -710,8 +716,8 @@ function initMap(){
     });
     inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); } });
   }
-  bindSug(input, sug);
-  bindSug(input2, sug2);
+  bindSug(input, sug, 'abroad');
+  bindSug(input2, sug2, 'ro');
   document.addEventListener('click', function(e){
     if(sug && !sug.contains(e.target) && e.target !== input) sug.style.display = 'none';
     if(sug2 && !sug2.contains(e.target) && e.target !== input2) sug2.style.display = 'none';
