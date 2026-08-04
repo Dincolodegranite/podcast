@@ -345,18 +345,30 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
       var el = els[k];
       var last = el.lastChild;
       if(last && last.nodeType === 3 && /→\s*$/.test(last.nodeValue)){
-        last.nodeValue = last.nodeValue.replace(/\s*→\s*$/, '');
+        last.nodeValue = last.nodeValue.replace(/→\s*$/, '');
         var sp = document.createElement('span');
         sp.className = 'cta-arr';
         sp.textContent = '→';
         sp.setAttribute('aria-hidden', 'true');
-        sp.style.cssText = 'display:inline-block;margin-left:8px;transform:translateY(-1px);transition:transform .35s cubic-bezier(.2,.8,.2,1)';
+        sp.style.cssText = 'display:inline-block;transform:translateY(-1px);transition:transform .35s cubic-bezier(.2,.8,.2,1)';
         el.appendChild(sp);
         el.setAttribute('data-arr', '1');
       }
     }
   }
-  function init(){ [80, 400, 900, 1800, 3200].forEach(function(t){ setTimeout(wrap, t); }); window.addEventListener('load', function(){ setTimeout(wrap, 200); }); }
+  function init(){
+    wrap();
+    /* i18n rescrie textele dupa incarcare si distruge span-urile: re-ambalam
+       inainte de urmatorul paint, ca butonul sa nu-si schimbe latimea vizibil */
+    var pend = false;
+    var mo = new MutationObserver(function(){
+      if(pend) return;
+      pend = true;
+      requestAnimationFrame(function(){ pend = false; wrap(); });
+    });
+    mo.observe(document.body, { childList: true, subtree: true, characterData: true });
+    window.addEventListener('load', function(){ setTimeout(wrap, 200); });
+  }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
