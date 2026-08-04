@@ -115,13 +115,13 @@ a:hover{color:var(--accent-light)}
 .ep-card:hover .ep-play svg path{fill:#0f1113}
 .ep-dur{position:absolute;top:12px;right:12px;z-index:2;display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(227,192,125,.4);background:rgba(10,12,14,.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--accent-light);font:700 9.5px var(--font-body);letter-spacing:.14em;white-space:nowrap}
 .ep-new{display:none;position:absolute;left:12px;bottom:12px;z-index:2;align-items:center;padding:6px 14px;border-radius:999px;border:1px solid rgba(227,192,125,.5);background:rgba(15,17,19,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light)}
-.ep-yt-body{display:flex;gap:12px;padding:16px 18px 18px;align-items:flex-start}
+.ep-yt-body{display:flex;gap:12px;padding:16px 18px 18px;flex:1}
 .ep-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;border:1px solid rgba(201,162,90,.35)}
-.ep-yt-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ep-yt-text{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
 .ep-yt-title{font:600 15.5px/1.4 var(--font-body);color:#f5f6f7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .35s ease}
 .ep-card:hover .ep-yt-title{color:var(--accent-light)}
 .ep-quote{display:block;font:italic 500 13.5px/1.55 var(--font-serif);color:rgba(227,192,125,.78);margin-top:7px}
-.ep-yt-meta{font:400 12.5px var(--font-body);color:rgba(245,246,247,.62)}
+.ep-yt-meta{font:400 12.5px var(--font-body);color:rgba(245,246,247,.62);margin-top:auto;padding-top:4px}
 .ep-yt-meta [data-ep-badge]{color:rgba(227,192,125,.9);font-weight:600}
 .clip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,20px)}
 @media (max-width:900px){.clip-grid{grid-template-columns:repeat(2,1fr)}}
