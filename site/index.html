@@ -90,9 +90,6 @@ a:hover{color:var(--accent-light)}
   .brd-clocks [data-clock-lon],.brd-clocks [data-clock-buc],.brd-clocks [data-clock-nyc]{font-size:11.5px!important}
   .brd-foot-soc{align-items:center;gap:14px!important}
   .brd-foot-soc{gap:16px!important}
-  .brd-foot-soc>a:first-child{flex:0 0 auto;width:42px!important;height:42px!important;padding:0!important;border-radius:50%!important;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)!important;margin-bottom:0}
-  .brd-foot-soc>a:first-child span{display:none}
-  .brd-foot-soc>span a{width:42px!important;height:42px!important;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark))!important;border:none!important;color:#0f1113!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)}
   /* countdown stays on one row: full-width 4-col grid, slimmer tiles */
   [data-newsletter-card]{padding:36px 16px!important}
   [data-countdown]{width:100%}
@@ -212,6 +209,10 @@ a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link])
 a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link]):hover::after,button[style*="border-radius:999px"]:hover::after,.nl-btn:hover::after,.nlx-btn:hover::after,.gf-btn:hover::after{animation:btnShine .7s ease forwards}
 @keyframes btnShine{to{left:130%}}
 .brd-foot-soc a svg{display:block;margin:auto}
+.brd-foot-soc{gap:14px!important}
+.brd-foot-soc>a:first-child{flex:0 0 auto;width:42px!important;height:42px!important;padding:0!important;border-radius:50%!important;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)!important}
+.brd-foot-soc>a:first-child span{display:none}
+.brd-foot-soc>span a{width:42px!important;height:42px!important;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark))!important;border:none!important;color:#0f1113!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)}
 @media (max-width:760px){.hero-pad{padding-top:74px!important;padding-bottom:64px!important}[data-spotlight]{min-height:0!important}}
 @media (max-width:560px){.gazda-role{font-size:11px!important;letter-spacing:.16em!important}.gazda-role span:not(:first-child){display:none}.gazda-panel{flex-direction:column;align-items:flex-start;gap:16px}.gazda-panel>span:first-of-type{align-self:center}.gazda-panel>div{flex:0 1 auto!important;min-width:0}.gazda-panel a[href="despre.html"]{margin-left:auto!important;margin-right:auto!important}}
 @media (max-width:560px){.nl-trust{flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;gap:10px!important}.nl-trust>span{text-align:left}[data-harta-btn]{margin-left:auto!important;margin-right:auto!important}.harta-ex-row{text-align:center!important}.harta-btn-col{margin-left:auto!important;margin-right:auto!important}}
