@@ -1061,11 +1061,7 @@ document.addEventListener('pointerout', function(e){
         <span style="position:relative;width:6px;height:6px;flex:none"><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light)"></span><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light);animation:cdPulse 2.4s ease-out infinite"></span></span>
         <span data-i18n="count_label">URMĂTORUL EPISOD</span>
       </span>
-      <div style="display:flex;align-items:center;gap:clamp(12px,2.6vw,20px);margin:-2px 0 2px">
-        <span aria-hidden="true" style="width:clamp(26px,7vw,64px);height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55))"></span>
-        <div data-count-date style="font:var(--head-weight) clamp(30px,5.6vw,46px)/1.05 var(--font-head);letter-spacing:.045em;background:linear-gradient(90deg,#f5e3bd,var(--accent-light) 45%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent"></div>
-        <span aria-hidden="true" style="width:clamp(26px,7vw,64px);height:1px;background:linear-gradient(90deg,rgba(227,192,125,.55),transparent)"></span>
-      </div>
+      <div data-count-date style="font:var(--head-weight) clamp(22px,4.4vw,32px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.02em;margin:-2px 0 2px"></div>
       <div class="cd-grid" style="display:flex;align-items:stretch;gap:10px">
         <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
           <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
@@ -1157,7 +1153,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="1" class="brd-title" style="font:600 15px/1.4 var(--font-body);color:#f5f6f7" data-i18n="ep_ph1">Construirea unei vieți de la zero</span>
         <span data-ep-desc="1" class="brd-desc" style="font:400 12.5px/1.5 var(--font-body);color:rgba(245,246,247,.72)" data-i18n="ep1_desc">Cum se construiește o afacere de la zero într-o țară străină.</span>
       </span>
-      <span class="brd-time" style="flex:none;width:112px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.85);white-space:nowrap">1 DECEMBRIE 2026</span>
+      <span class="brd-time" style="flex:none;width:112px;display:inline-flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap"><b style="font:var(--head-weight) 21px/1 var(--font-head);letter-spacing:.05em;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">01</b><span style="font:600 8.5px 'Courier New',monospace;letter-spacing:.16em;color:rgba(245,246,247,.55)">DECEMBRIE 2026</span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span data-ep-status="1" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="board_in_studio">FILMARE PROGRAMATĂ</span>
@@ -1175,7 +1171,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="2" class="brd-title" style="font:600 15px/1.4 var(--font-body);color:#f5f6f7" data-i18n="ep_ph2">Drumul din spatele profesiei</span>
         <span data-ep-desc="2" class="brd-desc" style="font:400 12.5px/1.5 var(--font-body);color:rgba(245,246,247,.72)" data-i18n="ep2_desc">Drumul unui profesionist român spre vârful industriei lui.</span>
       </span>
-      <span class="brd-time" style="flex:none;width:112px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.85);white-space:nowrap">14 DECEMBRIE 2026</span>
+      <span class="brd-time" style="flex:none;width:112px;display:inline-flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap"><b style="font:var(--head-weight) 21px/1 var(--font-head);letter-spacing:.05em;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">14</b><span style="font:600 8.5px 'Courier New',monospace;letter-spacing:.16em;color:rgba(245,246,247,.55)">DECEMBRIE 2026</span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span data-ep-status="2" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:3.4s" data-i18n="coming_soon">ÎN PREGĂTIRE</span>
@@ -1193,7 +1189,7 @@ document.addEventListener('pointerout', function(e){
         <span data-ep-title="3" class="brd-title" style="font:600 15px/1.4 var(--font-body);color:#f5f6f7" data-i18n="ep_ph3">Alegeri, risc și reinventare</span>
         <span data-ep-desc="3" class="brd-desc" style="font:400 12.5px/1.5 var(--font-body);color:rgba(245,246,247,.72)" data-i18n="ep3_desc">O poveste neobișnuită despre risc, muncă și noroc provocat.</span>
       </span>
-      <span class="brd-time" style="flex:none;width:112px;font:600 10.5px 'Courier New',monospace;letter-spacing:.08em;color:rgba(227,192,125,.85);white-space:nowrap">28 DECEMBRIE 2026</span>
+      <span class="brd-time" style="flex:none;width:112px;display:inline-flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap"><b style="font:var(--head-weight) 21px/1 var(--font-head);letter-spacing:.05em;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">28</b><span style="font:600 8.5px 'Courier New',monospace;letter-spacing:.16em;color:rgba(245,246,247,.55)">DECEMBRIE 2026</span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
         <span data-ep-status="3" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:5.8s" data-i18n="coming_soon">ÎN PREGĂTIRE</span>
