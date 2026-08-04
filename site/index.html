@@ -45,6 +45,9 @@ a{color:var(--accent)}
 a:hover{color:var(--accent-light)}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
 @keyframes pulseGlow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+[data-nav-logo]::before,[data-loader] [style-before]::before{content:'';position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(201,162,90,.45),transparent 70%);animation:pulseGlow 2s ease-in-out infinite;z-index:0}
+[data-nav-logo]::before{inset:-10px}
+[data-loader] [style-before]::before{inset:-14px}
 @keyframes shimmerText{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .gold-last{background:linear-gradient(90deg,var(--accent-light),var(--accent) 50%,var(--accent-light));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 6s ease-in-out infinite}
 @keyframes blobMove{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-18px) scale(1.08)}}
