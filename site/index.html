@@ -1061,7 +1061,11 @@ document.addEventListener('pointerout', function(e){
         <span style="position:relative;width:6px;height:6px;flex:none"><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light)"></span><span style="position:absolute;inset:0;border-radius:50%;background:var(--accent-light);animation:cdPulse 2.4s ease-out infinite"></span></span>
         <span data-i18n="count_label">URMĂTORUL EPISOD</span>
       </span>
-      <div data-count-date style="font:var(--head-weight) clamp(22px,4.4vw,32px)/1.1 var(--font-head);color:#f5f6f7;letter-spacing:.02em;margin:-2px 0 2px"></div>
+      <div style="display:flex;align-items:center;gap:clamp(12px,2.6vw,20px);margin:-2px 0 2px">
+        <span aria-hidden="true" style="width:clamp(26px,7vw,64px);height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55))"></span>
+        <div data-count-date style="font:var(--head-weight) clamp(30px,5.6vw,46px)/1.05 var(--font-head);letter-spacing:.045em;background:linear-gradient(90deg,#f5e3bd,var(--accent-light) 45%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent"></div>
+        <span aria-hidden="true" style="width:clamp(26px,7vw,64px);height:1px;background:linear-gradient(90deg,rgba(227,192,125,.55),transparent)"></span>
+      </div>
       <div class="cd-grid" style="display:flex;align-items:stretch;gap:10px">
         <div class="cd-cell" style="position:relative;min-width:74px;padding:16px 10px 12px;border-radius:16px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));text-align:center;overflow:hidden">
           <span style="position:absolute;top:0;left:14px;right:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)"></span>
