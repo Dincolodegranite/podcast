@@ -310,6 +310,25 @@ function inRO(lon, lat){
   }
   return inside;
 }
+var DOR_QUOTES = [
+  'Distanța se măsoară în kilometri. Legătura, în oameni.',
+  'Acasă nu e un punct pe hartă. E ceva ce porți cu tine.',
+  'Kilometrii despart orașe. Nu și oameni.',
+  'Oricât de departe ai pleca, o parte din tine rămâne mereu acasă.',
+  'Între două orașe, dorul e cel mai scurt drum.',
+  'Depărtarea te învață ce înseamnă acasă.',
+  'Dorul e felul în care acasă îți dă de veste.',
+  'Harta arată drumul. Inima știe direcția.',
+  'Nicio distanță nu e prea mare când știi de unde vii.',
+  'Unele drumuri duc departe. Toate se întorc, cumva, acasă.'
+];
+var __lastDor = -1;
+function dorQuote(){
+  var i;
+  do { i = Math.floor(Math.random() * DOR_QUOTES.length); } while(i === __lastDor && DOR_QUOTES.length > 1);
+  __lastDor = i;
+  return DOR_QUOTES[i];
+}
 function cityInRO(c){ return (typeof inRO === 'function') && inRO(c[2], c[1]); }
 function suggest(q, mode){
   var n = norm(q), out = [];
@@ -650,12 +669,19 @@ function initMap(){
       tEl.textContent = (ct ? String(city[0]).toUpperCase() + ' ' + ct : '') + (ct && ht ? '   ·   ' : '') + (ht ? hLabel + ' ' + ht : '');
     }
     var routeEl = document.querySelector('[data-harta-route]');
-    if(routeEl) routeEl.textContent = String(city[0]).toUpperCase() + ' ↔ ' + String(h[0]).toUpperCase();
+    if(routeEl){
+      var SEP = '<span style="display:inline-flex;align-items:center;gap:7px;margin:0 12px;vertical-align:middle">' +
+        '<span style="width:20px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.65))"></span>' +
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M21 3 3 10.5l7 2.5"></path><path d="M21 3l-6 18-4.5-8"></path><path d="M21 3 10 13"></path></svg>' +
+        '<span style="width:20px;height:1px;background:linear-gradient(270deg,transparent,rgba(227,192,125,.65))"></span>' +
+        '</span>';
+      routeEl.innerHTML = String(city[0]).toUpperCase() + SEP + String(h[0]).toUpperCase();
+    }
     var storyEl = document.querySelector('[data-harta-story]');
     if(storyEl){
       storyEl.textContent = km < 40
         ? 'Ești deja acasă — iar experiențele românilor din lume sunt la un episod distanță.'
-        : 'Distanța se măsoară în kilometri. Legătura, în oameni.';
+        : dorQuote();
     }
     result.style.display = 'block';
     var start = null, dur = 1400;
