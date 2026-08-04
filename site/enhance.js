@@ -681,7 +681,7 @@ function initMap(){
     showErr(false);
     arc = { from: [city[1], city[2]], to: [h[1], h[2]], t: 0 };
     var km = haversine(city[1], city[2], h[1], h[2]);
-    var hLabel = isDefaultHome ? 'ROMÂNIA' : String(h[0]).toUpperCase();
+    var hLabel = String(h[0]).toUpperCase();
     window.__hcA = { k: tzKey(city), lat: city[1], lon: city[2], label: String(city[0]).toUpperCase() };
     window.__hcB = { k: isDefaultHome ? '__home' : tzKey(h), lat: h[1], lon: h[2], label: hLabel };
     updateHartaClocks();
