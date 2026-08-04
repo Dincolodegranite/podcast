@@ -663,7 +663,7 @@ function initMap(){
       if(!start) start = ts;
       var p = Math.min(1, (ts - start) / dur);
       var eased = 1 - Math.pow(1 - p, 3);
-      kmEl.textContent = Math.round(km * eased).toLocaleString('ro-RO');
+      kmEl.textContent = String(Math.round(km * eased)).replace(/\B(?=(\d{3})+(?!\d))/g, String.fromCharCode(160));
       if(p < 1) requestAnimationFrame(count);
     }
     requestAnimationFrame(count);
@@ -717,6 +717,8 @@ function initMap(){
     inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); } });
   }
   bindSug(input, sug, 'abroad');
+  var chg = document.querySelector('[data-harta-change]');
+  if(chg){ chg.addEventListener('click', function(){ input.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function(){ input.focus(); input.select(); }, 350); }); }
   bindSug(input2, sug2, 'ro');
   document.addEventListener('click', function(e){
     if(sug && !sug.contains(e.target) && e.target !== input) sug.style.display = 'none';
