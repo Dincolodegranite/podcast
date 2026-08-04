@@ -510,9 +510,13 @@ document.addEventListener('submit', function(e){
             el.style.display = 'none';
           } else {
             el.textContent = (window.__dgLang === 'en' ? 'WATCH EPISODE ▶' : 'VEZI EPISODUL ▶');
+            el.style.padding = '6px 14px';
+            el.style.borderRadius = '8px';
+            el.style.border = '1px solid rgba(227,192,125,.6)';
             el.style.background = 'rgba(201,162,90,.18)';
-            el.style.borderColor = 'rgba(227,192,125,.6)';
             el.style.color = 'var(--accent-light)';
+            var __dot = el.parentElement && el.parentElement.querySelector('.brd-st-dot');
+            if(__dot){ __dot.style.display = 'none'; }
           }
           el.style.animation = 'none';
         });
@@ -1157,7 +1161,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:3px;box-sizing:border-box;width:104px;padding:9px 8px 7px;border-radius:12px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));overflow:hidden;transition:border-color .3s ease"><span style="position:absolute;top:0;left:12px;right:12px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)" aria-hidden="true"></span><b style="font:var(--head-weight) 22px/1 var(--font-head);letter-spacing:.05em;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">01</b><span style="font:600 8px var(--font-body);letter-spacing:.14em;color:rgba(227,192,125,.62);white-space:nowrap">DECEMBRIE 2026</span></span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
-        <span data-ep-status="1" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="board_in_studio">FILMARE PROGRAMATĂ</span>
+        <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(227,192,125,.85);flex:none" aria-hidden="true"></span><span data-ep-status="1" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(227,192,125,.85);animation:boardFlip 7s ease-in-out infinite;animation-delay:1s" data-i18n="board_in_studio">FILMARE PROGRAMATĂ</span></span>
       </span>
       <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
     </a>
@@ -1175,7 +1179,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:3px;box-sizing:border-box;width:104px;padding:9px 8px 7px;border-radius:12px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));overflow:hidden;transition:border-color .3s ease"><span style="position:absolute;top:0;left:12px;right:12px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)" aria-hidden="true"></span><b style="font:var(--head-weight) 22px/1 var(--font-head);letter-spacing:.05em;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">14</b><span style="font:600 8px var(--font-body);letter-spacing:.14em;color:rgba(227,192,125,.62);white-space:nowrap">DECEMBRIE 2026</span></span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
-        <span data-ep-status="2" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:3.4s" data-i18n="coming_soon">ÎN PREGĂTIRE</span>
+        <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(245,246,247,.3);flex:none" aria-hidden="true"></span><span data-ep-status="2" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55);animation:boardFlip 7s ease-in-out infinite;animation-delay:3.4s" data-i18n="coming_soon">ÎN PREGĂTIRE</span></span>
       </span>
       <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
     </a>
@@ -1193,7 +1197,7 @@ document.addEventListener('pointerout', function(e){
       <span class="brd-time" style="flex:none;width:112px;display:flex;justify-content:center"><span class="brd-date" style="position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:3px;box-sizing:border-box;width:104px;padding:9px 8px 7px;border-radius:12px;border:1px solid rgba(201,162,90,.22);background:linear-gradient(180deg,rgba(201,162,90,.09),rgba(201,162,90,.02));overflow:hidden;transition:border-color .3s ease"><span style="position:absolute;top:0;left:12px;right:12px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,192,125,.55),transparent)" aria-hidden="true"></span><b style="font:var(--head-weight) 22px/1 var(--font-head);letter-spacing:.05em;background:linear-gradient(180deg,#f5e3bd,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">28</b><span style="font:600 8px var(--font-body);letter-spacing:.14em;color:rgba(227,192,125,.62);white-space:nowrap">DECEMBRIE 2026</span></span></span>
       <span class="brd-break"></span>
       <span class="brd-status-cell" style="flex:none;width:112px;perspective:400px">
-        <span data-ep-status="3" style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10px var(--font-body);letter-spacing:.14em;color:var(--accent-light);animation:boardFlip 7s ease-in-out infinite;animation-delay:5.8s" data-i18n="coming_soon">ÎN PREGĂTIRE</span>
+        <span style="display:inline-flex;align-items:center;gap:8px"><span class="brd-st-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(245,246,247,.3);flex:none" aria-hidden="true"></span><span data-ep-status="3" style="display:inline-block;font:700 10px var(--font-body);letter-spacing:.16em;color:rgba(245,246,247,.55);animation:boardFlip 7s ease-in-out infinite;animation-delay:5.8s" data-i18n="coming_soon">ÎN PREGĂTIRE</span></span>
       </span>
       <span class="brd-arrow" style="flex:none;color:rgba(227,192,125,.5);font-size:14px" aria-hidden="true">▸</span>
     </a>
