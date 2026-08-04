@@ -198,10 +198,9 @@ a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link])
 a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link])::after,button[style*="border-radius:999px"]::after,.nl-btn::after,.nlx-btn::after,.gf-btn::after{content:"";position:absolute;top:-4px;bottom:-4px;left:-80%;width:55%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.38) 50%,transparent);transform:skewX(-20deg);pointer-events:none}
 a[style*="border-radius:999px"]:not([data-nav-link]):not([data-nav-mobile-link]):hover::after,button[style*="border-radius:999px"]:hover::after,.nl-btn:hover::after,.nlx-btn:hover::after,.gf-btn:hover::after{animation:btnShine .7s ease forwards}
 @keyframes btnShine{to{left:130%}}
-@media (max-width:760px){.hero-pad{padding-top:74px!important}}
+@media (max-width:760px){.hero-pad{padding-top:74px!important;padding-bottom:64px!important}[data-spotlight]{min-height:0!important}}
 @media (max-width:560px){.gazda-panel{flex-direction:column;align-items:flex-start;gap:16px}.gazda-panel>span:first-of-type{align-self:center}.gazda-panel>div{flex:0 1 auto!important;min-width:0}.gazda-panel a[href="despre.html"]{margin-left:auto!important;margin-right:auto!important}}
 @media (max-width:560px){.nl-trust{flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;gap:10px!important}.nl-trust>span{text-align:left}[data-harta-btn]{margin-left:auto!important;margin-right:0!important}.harta-ex-row{text-align:center!important}.harta-btn-col{margin-left:auto!important;margin-right:0!important}}
-@media (max-width:760px){.hero-pad{padding-top:74px!important}}
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid rgba(227,192,125,.85);outline-offset:3px;border-radius:6px}
 input::placeholder,textarea::placeholder{color:rgba(245,246,247,.72)}
 #top::before{content:'';position:fixed;top:0;left:0;right:0;height:136px;z-index:-1;pointer-events:none;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:linear-gradient(180deg,rgba(15,17,19,.98),rgba(15,17,19,.58) 62%,transparent);-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
