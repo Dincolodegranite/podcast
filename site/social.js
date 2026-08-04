@@ -337,6 +337,21 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   else init();
 })();
 
+/* ── valurile aurii din footerul satelitilor (generat, nu markup) ── */
+(function(){
+  var w = document.querySelector('.pfoot-wave');
+  if(!w || w.children.length) return;
+  var row = document.createElement('div');
+  row.className = 'pfoot-wave-in';
+  for(var i = 0; i < 46; i++){
+    var sp = document.createElement('span');
+    sp.style.height = (12 + Math.round(30 * Math.abs(Math.sin(i * 0.42)))) + 'px';
+    sp.style.animationDelay = (i * 0.045).toFixed(3) + 's';
+    row.appendChild(sp);
+  }
+  w.appendChild(row);
+})();
+
 /* ── sagetile CTA devin vii: aluneca spre dreapta la hover pe buton ── */
 (function(){
   function wrap(){
