@@ -329,6 +329,16 @@ function dorQuote(){
   __lastDor = i;
   return DOR_QUOTES[i];
 }
+function updateHartaClocks(){
+  var a = window.__hcA, b = window.__hcB;
+  if(!a || !b) return;
+  var tEl = document.querySelector('[data-harta-times]');
+  var ct = cityTime(a.k, a.lat, a.lon), ht = cityTime(b.k, b.lat, b.lon);
+  if(tEl) tEl.textContent = (ct ? a.label + ' ' + ct : '') + (ct && ht ? '   ·   ' : '') + (ht ? b.label + ' ' + ht : '');
+  var ca = document.querySelector('[data-harta-clock-a]'), cb = document.querySelector('[data-harta-clock-b]');
+  if(ca){ ca.querySelector('[data-hc-time]').textContent = ct || '--:--'; ca.querySelector('[data-hc-label]').textContent = a.label; }
+  if(cb){ cb.querySelector('[data-hc-time]').textContent = ht || '--:--'; cb.querySelector('[data-hc-label]').textContent = b.label; }
+}
 function cityInRO(c){ return (typeof inRO === 'function') && inRO(c[2], c[1]); }
 function suggest(q, mode){
   var n = norm(q), out = [];
@@ -661,13 +671,11 @@ function initMap(){
     showErr(false);
     arc = { from: [city[1], city[2]], to: [h[1], h[2]], t: 0 };
     var km = haversine(city[1], city[2], h[1], h[2]);
-    var tEl = document.querySelector('[data-harta-times]');
-    if(tEl){
-      var ct = cityTime(tzKey(city), city[1], city[2]);
-      var ht = cityTime(isDefaultHome ? '__home' : tzKey(h), h[1], h[2]);
-      var hLabel = isDefaultHome ? 'ROMÂNIA' : String(h[0]).toUpperCase();
-      tEl.textContent = (ct ? String(city[0]).toUpperCase() + ' ' + ct : '') + (ct && ht ? '   ·   ' : '') + (ht ? hLabel + ' ' + ht : '');
-    }
+    var hLabel = isDefaultHome ? 'ROMÂNIA' : String(h[0]).toUpperCase();
+    window.__hcA = { k: tzKey(city), lat: city[1], lon: city[2], label: String(city[0]).toUpperCase() };
+    window.__hcB = { k: isDefaultHome ? '__home' : tzKey(h), lat: h[1], lon: h[2], label: hLabel };
+    updateHartaClocks();
+    if(!window.__hcTimer){ window.__hcTimer = setInterval(updateHartaClocks, 20000); }
     var routeEl = document.querySelector('[data-harta-route]');
     if(routeEl){
       var SEP = '<span style="display:inline-flex;align-items:center;gap:7px;margin:0 12px;vertical-align:middle">' +
