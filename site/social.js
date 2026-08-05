@@ -343,9 +343,12 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   if(!wraps.length) return;
   var H1 = [], H2 = [], N = 42;
   for(var j = 0; j < N; j++){
-    var v = Math.abs(Math.sin((j / (N - 1)) * Math.PI * 2));
-    H1.push(10 + Math.round(34 * v));
-    H2.push(4 + Math.round(14 * v));
+    /* profil de voce: purtatoare rapida modulata de doua anvelope lente — rafale si respiro, ca o inregistrare radio */
+    var carrier = Math.abs(Math.sin(j * 0.9 + 0.4));
+    var env = 0.35 + 0.65 * Math.abs(Math.sin(j * 0.21 + 1.1) * Math.sin(j * 0.47 + 2.6));
+    var v = Math.min(1, carrier * env + 0.08);
+    H1.push(6 + Math.round(38 * v));
+    H2.push(3 + Math.round(15 * v));
   }
   function row(cls, hs){
     var r = document.createElement('div');
