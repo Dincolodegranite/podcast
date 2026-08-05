@@ -337,19 +337,28 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   else init();
 })();
 
-/* ── valurile aurii din footerul satelitilor (generat, nu markup) ── */
+/* ── valurile aurii din footer (acelasi desen pe toate paginile) ── */
 (function(){
-  var w = document.querySelector('.pfoot-wave');
-  if(!w || w.children.length) return;
-  var row = document.createElement('div');
-  row.className = 'pfoot-wave-in';
-  for(var i = 0; i < 46; i++){
-    var sp = document.createElement('span');
-    sp.style.height = (12 + Math.round(30 * Math.abs(Math.sin(i * 0.42)))) + 'px';
-    sp.style.animationDelay = (i * 0.045).toFixed(3) + 's';
-    row.appendChild(sp);
+  var wraps = document.querySelectorAll('.pfoot-wave');
+  if(!wraps.length) return;
+  var H1 = [16,22,28,34,39,42,44,44,42,39,34,28,22,16];
+  var H2 = [7,9,12,14,16,18,18,18,18,16,14,12,9,7];
+  function row(cls, hs){
+    var r = document.createElement('div');
+    r.className = cls;
+    for(var i = 0; i < hs.length; i++){
+      var sp = document.createElement('span');
+      sp.style.height = hs[i] + 'px';
+      sp.style.animationDelay = (i * 0.045).toFixed(3) + 's';
+      r.appendChild(sp);
+    }
+    return r;
   }
-  w.appendChild(row);
+  for(var k = 0; k < wraps.length; k++){
+    if(wraps[k].children.length) continue;
+    wraps[k].appendChild(row('pfoot-wave-in', H1));
+    wraps[k].appendChild(row('pfoot-wave-re', H2));
+  }
 })();
 
 /* ── sagetile CTA devin vii: aluneca spre dreapta la hover pe buton ── */
