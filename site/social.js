@@ -341,8 +341,12 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
 (function(){
   var wraps = document.querySelectorAll('.pfoot-wave');
   if(!wraps.length) return;
-  var H1 = [16,22,28,34,39,42,44,44,42,39,34,28,22,16];
-  var H2 = [7,9,12,14,16,18,18,18,18,16,14,12,9,7];
+  var H1 = [], H2 = [], N = 42;
+  for(var j = 0; j < N; j++){
+    var v = Math.abs(Math.sin((j / (N - 1)) * Math.PI * 2));
+    H1.push(10 + Math.round(34 * v));
+    H2.push(4 + Math.round(14 * v));
+  }
   function row(cls, hs){
     var r = document.createElement('div');
     r.className = cls;
