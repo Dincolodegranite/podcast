@@ -157,7 +157,7 @@ function apply(map){
     var v = map[el.getAttribute('data-social')];
     if(v && /^https?:\/\//.test(v)){
       el.setAttribute('href', v);
-      el.style.display = '';
+      el.style.display = 'inline-flex';
     }
   });
   /* plain-text fields Peter can edit from /admin (e.g. the DESPRE card spec sheet) */
@@ -168,7 +168,12 @@ function apply(map){
   /* images Peter can swap from /admin (e.g. his portrait on /despre) */
   document.querySelectorAll('[data-set-img]').forEach(function(el){
     var v = map[el.getAttribute('data-set-img')];
-    if(v && (/^https?:\/\//.test(v) || /^assets\//.test(v))) el.setAttribute('src', v);
+    if(v && (/^https?:\/\//.test(v) || /^\/?assets\//.test(v))){
+      el.removeAttribute('srcset');
+      var pic = el.closest && el.closest('picture');
+      if(pic){ pic.querySelectorAll('source').forEach(function(sn){ sn.remove(); }); }
+      el.setAttribute('src', v);
+    }
   });
   /* placeholders that stop making sense once their setting is filled in */
   document.querySelectorAll('[data-hide-if]').forEach(function(el){
@@ -197,6 +202,25 @@ function apply(map){
     });
     var ps = el.querySelectorAll('p');
     if(ps.length) ps[ps.length - 1].style.marginBottom = '0';
+  });
+  /* rescrierea linkurilor sociale hardcodate — ruleaza pe TOATE paginile,
+     nu doar cand exista clipuri (era blocata in renderClips de early-return-uri) */
+  document.querySelectorAll('a[href]').forEach(function(a){
+    if(a.hasAttribute('data-ep-link') || a.hasAttribute('data-social')) return;
+    var h = a.getAttribute('href') || '';
+    for(var i = 0; i < PAIRS.length; i++){
+      if(h.indexOf(PAIRS[i][0]) !== -1){
+        var v = map[PAIRS[i][1]];
+        if(v && /^https?:\/\//.test(v)){
+          var nu = v;
+          if(PAIRS[i][0] === 'youtube.com' && h.indexOf('sub_confirmation=1') !== -1){
+            nu += (nu.indexOf('?') === -1 ? '?' : '&') + 'sub_confirmation=1';
+          }
+          a.setAttribute('href', nu);
+        }
+        return;
+      }
+    }
   });
   renderClips(map);
   goldLast(); /* hydration overwrites textContent, so re-wrap the last words */
@@ -259,23 +283,7 @@ function renderClips(map){
   });
 
   section.style.display = '';
-  document.querySelectorAll('a[href]').forEach(function(a){
-    if(a.hasAttribute('data-ep-link') || a.hasAttribute('data-social')) return;
-    var h = a.getAttribute('href') || '';
-    for(var i = 0; i < PAIRS.length; i++){
-      if(h.indexOf(PAIRS[i][0]) !== -1){
-        var v = map[PAIRS[i][1]];
-        if(v && /^https?:\/\//.test(v)){
-          var nu = v;
-          if(PAIRS[i][0] === 'youtube.com' && h.indexOf('sub_confirmation=1') !== -1){
-            nu += (nu.indexOf('?') === -1 ? '?' : '&') + 'sub_confirmation=1';
-          }
-          a.setAttribute('href', nu);
-        }
-        return;
-      }
-    }
-  });
+
 }
 
 fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey': SUPA_KEY } })
@@ -391,11 +399,10 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
     wrap();
     /* i18n rescrie textele dupa incarcare si distruge span-urile: re-ambalam
        inainte de urmatorul paint, ca butonul sa nu-si schimbe latimea vizibil */
-    var pend = false;
+    var moT = null;
     var mo = new MutationObserver(function(){
-      if(pend) return;
-      pend = true;
-      requestAnimationFrame(function(){ pend = false; wrap(); });
+      if(moT) clearTimeout(moT);
+      moT = setTimeout(function(){ moT = null; wrap(); }, 150);
     });
     mo.observe(document.body, { childList: true, subtree: true, characterData: true });
     window.addEventListener('load', function(){ setTimeout(wrap, 200); });

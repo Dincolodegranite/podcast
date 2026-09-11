@@ -322,12 +322,24 @@ var DOR_QUOTES = [
   'Nicio distanță nu e prea mare când știi de unde vii.',
   'Unele drumuri duc departe. Toate se întorc, cumva, acasă.'
 ];
+var DOR_QUOTES_EN = [
+  'Distance is measured in kilometres. Connection, in people.',
+  'Home is not a point on the map. It is something you carry with you.',
+  'Kilometres separate cities. Not people.',
+  'However far you go, a part of you always stays home.',
+  'Between two cities, longing is the shortest road.',
+  'Distance teaches you what home means.',
+  'Longing is how home sends word.',
+  'The map shows the road. The heart knows the way.',
+  'No distance is too far when you know where you come from.',
+  'Some roads lead far away. All of them, somehow, lead back home.'
+];
 var __lastDor = -1;
 function dorQuote(){
   var i;
   do { i = Math.floor(Math.random() * DOR_QUOTES.length); } while(i === __lastDor && DOR_QUOTES.length > 1);
   __lastDor = i;
-  return DOR_QUOTES[i];
+  return (window.__dgLang === 'en' ? DOR_QUOTES_EN : DOR_QUOTES)[i];
 }
 function updateHartaClocks(){
   var a = window.__hcA, b = window.__hcB;
@@ -419,6 +431,8 @@ function initMap(){
   var gcount = {};   /* normName -> cati invitati are orasul */
   var arc = null;    /* {from:[lat,lon], t:0..1} */
   var mx = -999, my = -999, lanternA = 0, lanternOn = false;
+  var REDUCED = false;
+  try { REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){}
   var spot = document.createElement('canvas');
   var band = document.createElement('canvas');
   var LR = 190; /* raza felinarului, in px CSS */
@@ -445,9 +459,9 @@ function initMap(){
       headers: { 'apikey': supa.key, 'Authorization': 'Bearer ' + supa.key }
     }).then(function(r){ return r.ok ? r.json() : []; }).then(function(rows){
       (rows || []).forEach(function(row){
-        if(row && row.city && typeof row.lat === 'number' && typeof row.lon === 'number'){
-          var k = norm(row.city);
-          if(!guests[k]) guests[k] = [row.city, row.lat, row.lon, []];
+        if(row && row.city){
+          var c2 = findCity(row.city);
+          if(c2 && !guests[norm(c2[0])]) guests[norm(c2[0])] = c2;
         }
       });
     }).catch(function(){});
@@ -574,7 +588,7 @@ function initMap(){
       var c = guests[k], p = proj(c[1], c[2]);
       var n2 = gcount[k] || 1;
       var boost = 1 + Math.min(0.9, (n2 - 1) * 0.18);
-      var pulse = 0.55 + 0.45 * Math.sin(phase * 2 + i * 1.7);
+      var pulse = REDUCED ? 0.7 : 0.55 + 0.45 * Math.sin(phase * 2 + i * 1.7);
       ctx.beginPath();
       ctx.fillStyle = 'rgba(227,192,125,' + (0.35 + 0.4 * pulse).toFixed(2) + ')';
       ctx.arc(p[0], p[1], mr * boost, 0, 6.2832);
@@ -586,7 +600,7 @@ function initMap(){
       ctx.stroke();
     });
     var hp = proj(HOME.lat, HOME.lon);
-    var hPulse = 0.5 + 0.5 * Math.sin(phase * 2.4);
+    var hPulse = REDUCED ? 0.6 : 0.5 + 0.5 * Math.sin(phase * 2.4);
     var glow = ctx.createRadialGradient(hp[0], hp[1], 0, hp[0], hp[1], mr * 7);
     glow.addColorStop(0, 'rgba(227,192,125,.26)');
     glow.addColorStop(1, 'rgba(227,192,125,0)');
@@ -600,9 +614,9 @@ function initMap(){
     if(arc){
       var p1 = proj(arc.from[0], arc.from[1]);
       var p2 = arc.to ? proj(arc.to[0], arc.to[1]) : hp;
-      var mx = (p1[0] + p2[0]) / 2, my = (p1[1] + p2[1]) / 2;
+      var amx = (p1[0] + p2[0]) / 2, amy = (p1[1] + p2[1]) / 2;
       var dist = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]);
-      var cx = mx, cy = my - Math.min(H * 0.42, dist * 0.35 + H * 0.06);
+      var cx = amx, cy = amy - Math.min(H * 0.42, dist * 0.35 + H * 0.06);
       var steps = 60, upto = Math.floor(steps * Math.min(1, arc.t));
       ctx.beginPath();
       ctx.strokeStyle = 'rgba(227,192,125,.9)';
@@ -779,25 +793,37 @@ function initMap(){
 /* ── Countdown ─────────────────────────────────────────────────── */
 function initCountdown(){
   var box = document.querySelector('[data-countdown]');
-  var fallback = new Date('2026-12-01T00:00:00+00:00').getTime();
+  var fallback = new Date('2026-12-01T00:00:00+02:00').getTime();
   var d = box.querySelector('[data-count-d]'), h = box.querySelector('[data-count-h]');
   var m = box.querySelector('[data-count-m]'), s = box.querySelector('[data-count-s]');
   function pad(n){ return n < 10 ? '0' + n : String(n); }
   var CD_MONTHS = ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'];
+  var CD_MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   function start(target){
     var dateEl = box.querySelector('[data-count-date]');
     if(dateEl){
       var dt = new Date(target);
-      dateEl.textContent = dt.getDate() + ' ' + CD_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear();
+      dateEl.textContent = dt.getDate() + ' ' + ((window.__dgLang === 'en' ? CD_MONTHS_EN : CD_MONTHS)[dt.getMonth()]) + ' ' + dt.getFullYear();
     }
     function tick(){
       var diff = target - Date.now();
       if(diff <= 0){
+        var eps = window.__dgEps || [];
+        var liveCount = 0;
+        for(var ei = 0; ei < eps.length; ei++){ if(eps[ei] && eps[ei].youtube_url) liveCount++; }
+        if(!liveCount){
+          /* a trecut ora, dar videoclipul nu e inca publicat — nu anunta "live" pe ceas */
+          d.textContent = '0'; h.textContent = '00'; m.textContent = '00'; s.textContent = '00';
+          var lbl0 = document.querySelector('[data-i18n="count_label"]');
+          if(lbl0){ lbl0.textContent = (window.__dgLang === 'en' ? 'PUBLISHING SHORTLY' : 'SE PUBLICĂ ÎN CURÂND'); }
+          setTimeout(tick, 30000);
+          return;
+        }
         box.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">' +
           '<span style="display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10.5px var(--font-body);letter-spacing:.22em;color:var(--accent-light)">EPISOD DISPONIBIL</span>' +
-          '<div style="font:var(--head-weight) clamp(26px,5vw,40px)/1.15 var(--font-head);color:#f5f6f7;letter-spacing:.01em">Primul episod este <span style="background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">acum live pe YouTube</span></div>' +
+          '<div style="font:var(--head-weight) clamp(26px,5vw,40px)/1.15 var(--font-head);color:#f5f6f7;letter-spacing:.01em">' + (liveCount > 1 ? 'Cel mai nou episod este' : 'Primul episod este') + ' <span style="background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">acum live pe YouTube</span></div>' +
           '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">' +
-          '<a href="episoade.html" style="display:inline-flex;align-items:center;padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)">Vezi episodul</a>' +
+          '<a href="/episoade" style="display:inline-flex;align-items:center;padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)">Vezi episodul</a>' +
           '<a href="#abonare-home" style="display:inline-flex;align-items:center;padding:13px 26px;border-radius:999px;border:1px solid rgba(201,162,90,.45);color:var(--accent-light);font:600 13px var(--font-body);letter-spacing:.04em;text-decoration:none">Prime\u0219te urm\u0103torul episod</a>' +
           '</div></div>';
         return;
