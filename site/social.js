@@ -113,7 +113,13 @@ if(document.readyState === 'loading'){
 /* ── Newsletter sitewide ────────────────────────────────────────
    Same subscribers table as the homepage capsule. The hidden
    "website" field is a honeypot: humans never see it, bots fill
-   it, and filled submissions are silently dropped.               */
+   it, and filled submissions are silently dropped.
+   After the insert (and on 409 = already listed) we ask the
+   announce-episode function to (re)send the double-opt-in email —
+   same call the homepage capsule makes, fire-and-forget.          */
+function sendConfirm(email){
+  fetch('https://fgwsmrwhuzkvrixcgovk.supabase.co/functions/v1/announce-episode', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ action:'send_confirm', email: email }) }).catch(function(){});
+}
 function initNewsletterForms(){
   document.querySelectorAll('[data-nl-form]').forEach(function(form){
     form.addEventListener('submit', function(e){
@@ -133,10 +139,16 @@ function initNewsletterForms(){
         body: JSON.stringify({ email: email })
       }).then(function(r){
         if(btn) btn.disabled = false;
-        if(r.status === 409){ show('Ești deja pe listă. Te anunțăm imediat ce primul episod este publicat.'); return; }
+        if(r.status === 409){
+          show('Ești deja pe listă. Dacă nu ți-ai confirmat încă adresa, ți-am retrimis emailul de confirmare.');
+          sendConfirm(email);
+          input.value = '';
+          return;
+        }
         if(!r.ok) throw new Error('HTTP ' + r.status);
         input.value = '';
-        show('Te-ai înscris cu succes. Te anunțăm imediat ce primul episod este publicat.');
+        show('Aproape gata — confirmă-ți adresa. Ți-am trimis un email de confirmare.');
+        sendConfirm(email);
       }).catch(function(){
         if(btn) btn.disabled = false;
         show('A apărut o eroare. Încearcă din nou.');
@@ -389,13 +401,30 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
         sp.className = 'cta-arr';
         sp.textContent = '→';
         sp.setAttribute('aria-hidden', 'true');
-        sp.style.cssText = 'display:inline-block;transform:translateY(-1px);transition:transform .35s cubic-bezier(.2,.8,.2,1)';
+        /* transform-ul inline ramane doar pentru alinierea optica (si tine blocata vechea
+           alunecare pe transform din CSS-ul paginilor); alunecarea la hover se face pe
+           proprietatea translate, din <style id="dg-micro"> — vezi injectMicro()      */
+        sp.style.cssText = 'display:inline-block;transform:translateY(-1px)';
         el.appendChild(sp);
         el.setAttribute('data-arr', '1');
       }
     }
   }
+  /* un singur <style id="dg-micro"> (idempotent): sageata aluneca 4px spre dreapta pe
+     proprietatea translate cand a/button-ul parinte (marcat data-arr) e in hover;
+     fara tranzitie la prefers-reduced-motion                                         */
+  function injectMicro(){
+    if(document.getElementById('dg-micro')) return;
+    var st = document.createElement('style');
+    st.id = 'dg-micro';
+    st.textContent =
+      '.cta-arr{transition:translate .3s cubic-bezier(.2,.8,.2,1)}' +
+      'a[data-arr]:hover>.cta-arr,button[data-arr]:hover>.cta-arr{translate:4px 0}' +
+      '@media (prefers-reduced-motion:reduce){.cta-arr{transition:none}}';
+    (document.head || document.documentElement).appendChild(st);
+  }
   function init(){
+    injectMicro();
     wrap();
     /* i18n rescrie textele dupa incarcare si distruge span-urile: re-ambalam
        inainte de urmatorul paint, ca butonul sa nu-si schimbe latimea vizibil */
@@ -406,6 +435,111 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
     });
     mo.observe(document.body, { childList: true, subtree: true, characterData: true });
     window.addEventListener('load', function(){ setTimeout(wrap, 200); });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+/* ── nav-ul se strange la scroll: clasa is-scrolled pe #top (acasa) si pe .pnav (sateliti) ──
+   Toggle cand scrollY > 40, listener pasiv + requestAnimationFrame, starea initiala
+   aplicata la incarcare. CSS-ul efectiv (padding vertical mai mic, logo ~84%) sta in
+   fiecare pagina; social.js doar comuta clasa.                                        */
+(function(){
+  function init(){
+    if(window.__dgNavShrinkInit) return;
+    window.__dgNavShrinkInit = true;
+    var els = [];
+    var top = document.getElementById('top');
+    if(top) els.push(top);
+    var navs = document.querySelectorAll('.pnav');
+    for(var i = 0; i < navs.length; i++) els.push(navs[i]);
+    if(!els.length) return;
+    var ticking = false, state = null;
+    function upd(){
+      ticking = false;
+      var s = (window.scrollY || window.pageYOffset || 0) > 40;
+      if(s === state) return;
+      state = s;
+      for(var k = 0; k < els.length; k++) els[k].classList.toggle('is-scrolled', s);
+    }
+    function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(upd); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('load', upd);
+    window.addEventListener('pageshow', upd);
+    upd();
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+/* ── butoane magnetice: CTA-urile urmaresc usor cursorul ──
+   Doar cu pointer fin si fara prefers-reduced-motion. Foloseste EXCLUSIV proprietatea
+   CSS translate (niciodata transform), offset = distanta fata de centru x .18, limitat
+   la ±10px, revine elastic la iesire. Delegare la nivel de document, ca elementele
+   hidratate mai tarziu (episoade, i18n) sa fie acoperite fara re-scanare. Tranzitia
+   pe translate se ADAUGA la tranzitia existenta (inline sau din foaia de stil).      */
+(function(){
+  var SEL = '.hero-btn,.sec-cta,.btn,.pfcta-gold,.pfcta-line,[data-magnetic],.nl-btn,.nlx-btn';
+  var EASE = 'translate .25s cubic-bezier(.2,.8,.2,1)';
+  var MAX = 10, K = 0.18;
+  function init(){
+    if(window.__dgMagnetInit) return;
+    window.__dgMagnetInit = true;
+    if(!window.matchMedia || !('translate' in document.documentElement.style)) return;
+    var fine = window.matchMedia('(pointer:fine)');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var active = null, lastX = 0, lastY = 0, ticking = false;
+    function enabled(){ return fine.matches && !reduce.matches; }
+    function clamp(v){ return Math.max(-MAX, Math.min(MAX, v)); }
+    function ensureTransition(el){
+      var cur = el.style.transition || '';
+      if(!cur){
+        /* fara tranzitie inline: preluam pe cea din foaia de stil ca sa n-o pierdem */
+        var cs = window.getComputedStyle(el).transition || '';
+        if(cs && cs !== 'none' && !/^all 0s/.test(cs)) cur = cs;
+      }
+      if(/(^|,)\s*translate\b/.test(cur)) return;
+      el.style.transition = cur ? cur + ',' + EASE : EASE;
+    }
+    function apply(){
+      ticking = false;
+      if(!active) return;
+      var r = active.getBoundingClientRect();
+      var dx = clamp((lastX - (r.left + r.width / 2)) * K);
+      var dy = clamp((lastY - (r.top + r.height / 2)) * K);
+      active.style.translate = dx.toFixed(1) + 'px ' + dy.toFixed(1) + 'px';
+    }
+    function release(){
+      if(!active) return;
+      active.style.translate = '0 0';
+      active = null;
+    }
+    document.addEventListener('mouseover', function(e){
+      if(!enabled()){ release(); return; }
+      var t = e.target;
+      var el = (t && t.closest) ? t.closest(SEL) : null;
+      if(el === active) return;
+      release();
+      if(!el) return;
+      ensureTransition(el);
+      active = el;
+    }, { passive: true });
+    document.addEventListener('mousemove', function(e){
+      if(!active) return;
+      lastX = e.clientX; lastY = e.clientY;
+      if(!ticking){ ticking = true; requestAnimationFrame(apply); }
+    }, { passive: true });
+    document.addEventListener('mouseout', function(e){
+      if(!active) return;
+      var to = e.relatedTarget;
+      if(to && active.contains(to)) return;      /* doar s-a mutat pe un copil */
+      if(!active.contains(e.target)) return;      /* n-a iesit din elementul activ */
+      release();
+    }, { passive: true });
+    /* daca utilizatorul comuta reduced-motion sau pointerul devine grosier, oprim efectul */
+    function onChange(){ if(!enabled()) release(); }
+    if(fine.addEventListener){ fine.addEventListener('change', onChange); reduce.addEventListener('change', onChange); }
+    else if(fine.addListener){ fine.addListener(onChange); reduce.addListener(onChange); }
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

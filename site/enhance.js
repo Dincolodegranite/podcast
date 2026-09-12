@@ -766,7 +766,7 @@ function initMap(){
         var b = document.createElement('button');
         b.type = 'button';
         b.textContent = c[0];
-        b.setAttribute('style', 'display:block;width:100%;text-align:left;padding:10px 16px;background:transparent;border:none;color:#f5f6f7;font:400 14px Inter,sans-serif;cursor:pointer');
+        b.setAttribute('style', 'display:block;width:100%;text-align:left;padding:10px 16px;background:transparent;border:none;color:#efe9dd;font:400 14px var(--font-body),sans-serif;cursor:pointer');
         b.addEventListener('mouseenter', function(){ b.style.background = 'rgba(201,162,90,.14)'; });
         b.addEventListener('mouseleave', function(){ b.style.background = 'transparent'; });
         b.addEventListener('click', function(){ inp.value = c[0]; box.style.display = 'none'; showErr(false); });
@@ -821,7 +821,7 @@ function initCountdown(){
         }
         box.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">' +
           '<span style="display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid rgba(201,162,90,.45);background:rgba(201,162,90,.1);font:700 10.5px var(--font-body);letter-spacing:.22em;color:var(--accent-light)">EPISOD DISPONIBIL</span>' +
-          '<div style="font:var(--head-weight) clamp(26px,5vw,40px)/1.15 var(--font-head);color:#f5f6f7;letter-spacing:.01em">' + (liveCount > 1 ? 'Cel mai nou episod este' : 'Primul episod este') + ' <span style="background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">acum live pe YouTube</span></div>' +
+          '<div style="font:var(--head-weight) clamp(26px,5vw,40px)/1.15 var(--font-head);color:#efe9dd;letter-spacing:.01em">' + (liveCount > 1 ? 'Cel mai nou episod este' : 'Primul episod este') + ' <span style="background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">acum live pe YouTube</span></div>' +
           '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">' +
           '<a href="/episoade" style="display:inline-flex;align-items:center;padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0f1113;font:700 13px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)">Vezi episodul</a>' +
           '<a href="#abonare-home" style="display:inline-flex;align-items:center;padding:13px 26px;border-radius:999px;border:1px solid rgba(201,162,90,.45);color:var(--accent-light);font:600 13px var(--font-body);letter-spacing:.04em;text-decoration:none">Prime\u0219te urm\u0103torul episod</a>' +
