@@ -4,8 +4,8 @@
   "description": "Podcastul despre românii care construiesc ceva în Marea Britanie.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f1113",
-  "theme_color": "#0f1113",
+  "background_color": "#0c130f",
+  "theme_color": "#0c130f",
   "icons": [
     { "src": "assets/icon-192-opt.png", "sizes": "192x192", "type": "image/png" },
     { "src": "assets/icon-512-opt.png", "sizes": "512x512", "type": "image/png" }
