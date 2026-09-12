@@ -34,9 +34,9 @@ img{max-width:100%}
 a:hover>.nl-t>span:first-child,a:focus-visible>.nl-t>span:first-child{translate:0 -105%;opacity:0}
 a:hover>.nl-t>span:last-child,a:focus-visible>.nl-t>span:last-child{translate:0 0}
 @media (prefers-reduced-motion:reduce){.nl-t>span{transition:color .2s ease}.nl-t>span:last-child{display:none}a:hover>.nl-t>span:first-child,a:focus-visible>.nl-t>span:first-child{translate:0 0;opacity:1;color:var(--accent-light)}}
-/* pagina curenta: eticheta aurie + punct auriu de 4px sub ea (rularea merge si pe ea, punctul ramane) */
+/* pagina curenta: doar eticheta aurie (rularea merge si pe ea) */
 .plinks a.on .nl-t>span:first-child{color:var(--accent-light)}
-.plinks a.on::before{content:"";display:inline-block;flex:none;width:14px;height:1px;background:var(--accent);animation:dgNavMark .6s cubic-bezier(.2,.8,.2,1) .35s both}@keyframes dgNavMark{from{width:0;opacity:0}}@media (prefers-reduced-motion:reduce){.plinks a.on::before{animation:none}}
+
 .pburger{display:none;width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,162,90,.25);background:rgba(201,162,90,.1);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:none;transition:background .25s ease;padding:0}
 .pburger:hover{background:rgba(201,162,90,.2)}
 .pburger span{width:16px;height:2px;border-radius:2px;background:#efe9dd;transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s ease}
