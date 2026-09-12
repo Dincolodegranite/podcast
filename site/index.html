@@ -216,7 +216,7 @@ a:hover>.nl-t>span:first-child,a:focus-visible>.nl-t>span:first-child{translate:
 a:hover>.nl-t>span:last-child,a:focus-visible>.nl-t>span:last-child{translate:0 0}
 @media (prefers-reduced-motion:reduce){.nl-t>span{transition:color .2s ease}.nl-t>span:last-child{display:none}a:hover>.nl-t>span:first-child,a:focus-visible>.nl-t>span:first-child{translate:0 0;opacity:1;color:var(--accent-light)}}
 [data-nav-active]>.nl-t>span:first-child{color:var(--accent-light)}
-[data-nav-active]::before{content:"";position:absolute;left:50%;bottom:4px;width:4px;height:4px;border-radius:50%;background:var(--accent);translate:-50% 0}
+[data-nav-active]::before{content:"";display:inline-block;flex:none;width:14px;height:1px;background:var(--accent);animation:dgNavMark .6s cubic-bezier(.2,.8,.2,1) .35s both}@keyframes dgNavMark{from{width:0;opacity:0}}@media (prefers-reduced-motion:reduce){[data-nav-active]::before{animation:none}}
 /* ── mobile menu: full-screen editorial overlay — sibling of the pill inside #top (the pill has a filled transform + backdrop-filter, so a fixed child would be trapped); pill z 61 keeps the burger/X clickable above the overlay (z 55) ── */
 [data-nav-mobile-menu]{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;box-sizing:border-box;padding:max(120px,18vh) clamp(24px,7vw,48px) 36px;background:rgba(12,19,15,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s;border:0;border-radius:0;box-shadow:none;transform:none;overflow-y:auto}
 html.menu-open [data-nav-mobile-menu]{opacity:1;visibility:visible;pointer-events:auto}
