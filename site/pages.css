@@ -228,3 +228,11 @@ html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
 .ep-dur{background:rgba(36,90,63,.85)!important}
 .pfcta-line:hover,.btn-line:hover,.btn-outline:hover{background:rgba(36,90,63,.5)!important}
 .wrap section:has(.nlx-cap){isolation:isolate}.wrap section:has(.nlx-cap)::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;translate:-50% 0;background:var(--green);z-index:-1;pointer-events:none}
+
+/* comutator de limbă */
+.plang{display:inline-flex;align-items:center;margin-left:10px;padding-left:14px;border-left:1px solid rgba(239,233,221,.14)}
+.plang button{border:0;background:none;cursor:pointer;padding:6px 5px;font:600 11.5px var(--font-body);letter-spacing:.14em;line-height:1;color:rgba(239,233,221,.55);transition:color .25s ease}
+.plang button:hover{color:var(--accent-light)}
+.plang-m{display:flex;justify-content:center;margin:10px 0 0;padding:12px 0 0;border-top:1px solid rgba(239,233,221,.1);border-left:0}
+.plang-top{display:flex;justify-content:flex-end;margin:0 0 14px;padding:0;border:0}
+html[lang="ro"] [data-lang-btn="ro"],html[lang="en"] [data-lang-btn="en"]{display:none}

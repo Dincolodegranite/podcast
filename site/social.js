@@ -2,6 +2,186 @@
    site_settings table, so Peter can edit them from /admin without code.
    Skips episode links (data-ep-link) so real episode URLs are never
    overwritten with the channel URL. */
+
+/* ── i18n: motorul bilingv al paginilor-satelit ─────────────────
+   Homepage-ul are propriul motor inline (window.__dgDict) — pe el
+   blocul de mai jos nu face NIMIC. Pe sateliți rulează doar când
+   pagina a definit window.DG_I18N = { en: { cheie: "English" } }
+   într-un <script> inline pus chiar înaintea tag-ului
+   <script defer src="/social.js">. Româna este DOM-ul (implicită);
+   engleza vine din dicționarul comun de mai jos + dicționarul
+   paginii (pagina câștigă la chei egale).
+   Atribute înțelese (un element poate purta mai multe):
+     data-i18n="k"          → textContent
+     data-i18n-html="k"     → innerHTML (doar unde există <b>/<a>/<br>)
+     data-i18n-ph="k"       → placeholder
+     data-i18n-aria="k"     → aria-label
+     data-i18n-alt="k"      → alt
+     data-i18n-title="k"    → title
+     data-i18n-value="k"    → value
+     data-i18n-content="k"  → content (meta)
+   Originalele românești sunt capturate O SINGURĂ DATĂ în el.__dgRo;
+   applyLang('en') scrie engleza (cheie lipsă → rămâne româna, cheia
+   intră în window.__dgI18nMissing), applyLang('ro') restaurează.
+   Textele hidratate din /admin (data-set / data-set-html) primesc în
+   engleză traducerea STATICĂ din dicționar: refresh(map), apelat la
+   finalul lui apply(map), le recaptează româna proaspăt scrisă și
+   rescrie engleza dacă limba curentă e 'en'.
+   Expune: window.__dgT(key, ro), window.__dgApplyLang(lang),
+   window.__dgLang, window.__dgI18nRefresh(map); evenimentul
+   document 'dg:lang' ({detail:{lang}}) după fiecare comutare.     */
+var DG_I18N_COMMON = { en: {
+  nav_acasa: "HOME", nav_despre: "ABOUT", nav_episoade: "EPISODES", nav_oameni: "PEOPLE",
+  nav_invitati: "BECOME A GUEST", nav_mediakit: "PARTNERSHIPS", nav_contact: "CONTACT",
+  foot_mission_html: "We invite them for what they <b>know</b>. We listen for who they <b>are</b>.",
+  foot_sub: "In-depth, well-prepared interviews with Romanians from diverse fields, in Romania or anywhere in the world.",
+  foot_cta_yt: "SUBSCRIBE ON YOUTUBE", foot_cta_guest: "PROPOSE YOURSELF AS A GUEST",
+  foot_l_acasa: "Home", foot_l_despre: "About", foot_l_episoade: "Episodes", foot_l_oameni: "People",
+  foot_l_invitati: "Become a guest", foot_l_parteneriate: "Partnerships", foot_l_contact: "Contact",
+  foot_l_termeni: "Terms", foot_l_privacy: "Privacy",
+  foot_cr: "© 2026 Dincolo de Granițe. All rights reserved.",
+  foot_credit_html: "Created and hosted by <a href=\"/despre\">Peter Baghiu</a>.",
+  nl_ok: "Almost there — confirm your address. We've sent you a confirmation email.",
+  nl_dup: "You're already on the list. If you haven't confirmed yet, we've re-sent the confirmation email.",
+  nl_err: "Something went wrong. Please try again.",
+  nl_invalid: "Please enter a valid email address.",
+  lang_to_ro: "Schimbă în română", lang_to_en: "Switch to English"
+} };
+(function(){
+  'use strict';
+  var ATTRS = [
+    ['data-i18n', 'text'], ['data-i18n-html', 'html'], ['data-i18n-ph', 'ph'], ['data-i18n-aria', 'aria'],
+    ['data-i18n-alt', 'alt'], ['data-i18n-title', 'title'], ['data-i18n-value', 'value'], ['data-i18n-content', 'content']
+  ];
+  var ATTR_NAME = { ph: 'placeholder', aria: 'aria-label', alt: 'alt', title: 'title', value: 'value', content: 'content' };
+  var SEL = ATTRS.map(function(a){ return '[' + a[0] + ']'; }).join(',');
+  var hasOwn = Object.prototype.hasOwnProperty;
+  var lang = 'ro', roTitle = null, roDesc = null;
+  var missing = window.__dgI18nMissing = window.__dgI18nMissing || [];
+
+  /* activ doar pe sateliți: pagina a definit DG_I18N și NU există motorul homepage-ului */
+  function active(){ return !!(window.DG_I18N && !window.__dgDict); }
+  function dict(){
+    var out = {}, k, c = DG_I18N_COMMON.en || {}, p = (window.DG_I18N && window.DG_I18N.en) || {};
+    for(k in c) if(hasOwn.call(c, k)) out[k] = c[k];
+    for(k in p) if(hasOwn.call(p, k)) out[k] = p[k];
+    return out;
+  }
+  function lookup(d, key){
+    if(hasOwn.call(d, key) && d[key] != null) return String(d[key]);
+    if(missing.indexOf(key) === -1) missing.push(key);
+    return null;
+  }
+  function hasI18n(el){
+    for(var i = 0; i < ATTRS.length; i++) if(el.hasAttribute(ATTRS[i][0])) return true;
+    return false;
+  }
+  function capture(el){
+    el.__dgRo = {
+      text: el.textContent, html: el.innerHTML,
+      ph: el.getAttribute('placeholder'), aria: el.getAttribute('aria-label'), alt: el.getAttribute('alt'),
+      title: el.getAttribute('title'), value: el.getAttribute('value'), content: el.getAttribute('content')
+    };
+  }
+  function setAttr(el, name, v){
+    if(v == null) el.removeAttribute(name); else el.setAttribute(name, v);
+    if(name === 'value' && /^(INPUT|BUTTON|OPTION|TEXTAREA)$/.test(el.tagName)) el.value = (v == null ? '' : v);
+  }
+  function applyEl(el, d, to){
+    if(!el.__dgRo) capture(el);
+    var ro = el.__dgRo;
+    for(var i = 0; i < ATTRS.length; i++){
+      var key = el.getAttribute(ATTRS[i][0]);
+      if(key == null) continue;
+      var kind = ATTRS[i][1], v;
+      /* toleranță la tiparul homepage-ului (data-i18n="k" data-i18n-html): markup-ul
+         inline se scrie prin innerHTML cu cheia din data-i18n, nu prin textContent */
+      if(kind === 'text' && el.hasAttribute('data-i18n-html')) continue;
+      if(kind === 'html' && key === '') key = el.getAttribute('data-i18n') || '';
+      if(to === 'en'){
+        v = lookup(d, key);
+        if(v === null) continue; /* cheie lipsă → rămâne româna */
+      } else {
+        v = ro[kind];
+      }
+      if(kind === 'text'){ if(el.textContent !== v) el.textContent = v; }
+      else if(kind === 'html'){ if(el.innerHTML !== v) el.innerHTML = v; }
+      else setAttr(el, ATTR_NAME[kind], v);
+    }
+  }
+  function applyLang(to){
+    if(!active()) return;
+    to = (to === 'en') ? 'en' : 'ro';
+    var d = dict();
+    var els = document.querySelectorAll(SEL);
+    for(var i = 0; i < els.length; i++) applyEl(els[i], d, to);
+    /* titlul și descrierea paginii — și când pagina n-a pus atributele pe <title>/<meta> */
+    if(!document.querySelector('title[data-i18n]')){
+      if(roTitle == null) roTitle = document.title;
+      if(to === 'en'){ if(d.page_title) document.title = String(d.page_title); }
+      else document.title = roTitle;
+    }
+    var meta = document.querySelector('meta[name="description"]');
+    if(meta && !meta.hasAttribute('data-i18n-content')){
+      if(roDesc == null) roDesc = meta.getAttribute('content');
+      if(to === 'en'){ if(d.page_desc) meta.setAttribute('content', String(d.page_desc)); }
+      else setAttr(meta, 'content', roDesc);
+    }
+    lang = to;
+    window.__dgLang = to;
+    document.documentElement.setAttribute('lang', to);
+    try{ localStorage.setItem('dg_lang', to); }catch(e){}
+    if(window.__goldLast) window.__goldLast(); /* rescrierea textelor a distrus span-urile gold-last */
+    try{ document.dispatchEvent(new CustomEvent('dg:lang', { detail: { lang: to } })); }catch(e){}
+  }
+  /* după hidratarea din /admin: recaptează româna scrisă de apply(map) pe elementele
+     data-set / data-set-html care poartă și data-i18n*, apoi rescrie engleza dacă e cazul.
+     map (opțional) limitează la cheile pe care hidratarea chiar le-a scris.               */
+  function refresh(map){
+    if(!active() || !window.__dgI18nInit) return;
+    var d = dict();
+    var els = document.querySelectorAll('[data-set],[data-set-html]');
+    for(var i = 0; i < els.length; i++){
+      var el = els[i];
+      if(!hasI18n(el)) continue;
+      var key = el.getAttribute('data-set') || el.getAttribute('data-set-html');
+      if(map && !map[key]) continue;
+      if(!el.__dgRo) capture(el);
+      el.__dgRo.text = el.textContent;
+      el.__dgRo.html = el.innerHTML;
+      if(lang === 'en') applyEl(el, d, 'en');
+    }
+  }
+  function init(){
+    if(window.__dgI18nInit || !active()) return;
+    window.__dgI18nInit = true;
+    var els = document.querySelectorAll(SEL);
+    for(var i = 0; i < els.length; i++) if(!els[i].__dgRo) capture(els[i]);
+    var want = 'ro';
+    try{ want = localStorage.getItem('dg_lang') || 'ro'; }catch(e){}
+    try{
+      var q = new URLSearchParams(window.location.search).get('lang');
+      if(q === 'en' || q === 'ro') want = q;
+    }catch(e){}
+    applyLang(want);
+    document.addEventListener('click', function(e){
+      var btn = (e.target && e.target.closest) ? e.target.closest('[data-lang-btn]') : null;
+      if(!btn) return;
+      applyLang(btn.getAttribute('data-lang-btn'));
+    });
+  }
+  window.__dgT = function(key, ro){
+    if(window.__dgLang !== 'en') return ro;
+    var d = dict();
+    return (hasOwn.call(d, key) && d[key] != null) ? String(d[key]) : ro;
+  };
+  window.__dgApplyLang = applyLang;
+  window.__dgI18nRefresh = refresh;
+  /* social.js e defer → readyState e deja 'interactive' aici: aplicăm imediat, ca româna să nu pâlpâie */
+  if(document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
+})();
+
 (function(){
 'use strict';
 var SUPA_URL = 'https://fgwsmrwhuzkvrixcgovk.supabase.co';
@@ -129,9 +309,11 @@ function initNewsletterForms(){
       var msg = form.querySelector('[data-nl-msg]');
       var btn = form.querySelector('button[type="submit"]');
       function show(t){ if(msg){ msg.textContent = t; msg.style.opacity = '1'; } }
-      if(hp && hp.value){ input.value = ''; show('Ești pe listă. Îți trimitem un email imediat ce primul episod este publicat.'); return; }
+      /* mesajele trec prin motorul i18n la momentul afișării (engleză doar când limba curentă e 'en') */
+      function T(k, ro){ return window.__dgT ? window.__dgT(k, ro) : ro; }
+      if(hp && hp.value){ input.value = ''; show(T('nl_ok', 'Aproape gata — confirmă-ți adresa. Ți-am trimis un email de confirmare.')); return; }
       var email = (input.value || '').trim();
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('Introdu o adresă de email validă.'); return; }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show(T('nl_invalid', 'Introdu o adresă de email validă.')); return; }
       if(btn) btn.disabled = true;
       fetch(SUPA_URL + '/rest/v1/subscribers', {
         method: 'POST',
@@ -140,18 +322,18 @@ function initNewsletterForms(){
       }).then(function(r){
         if(btn) btn.disabled = false;
         if(r.status === 409){
-          show('Ești deja pe listă. Dacă nu ți-ai confirmat încă adresa, ți-am retrimis emailul de confirmare.');
+          show(T('nl_dup', 'Ești deja pe listă. Dacă nu ți-ai confirmat încă adresa, ți-am retrimis emailul de confirmare.'));
           sendConfirm(email);
           input.value = '';
           return;
         }
         if(!r.ok) throw new Error('HTTP ' + r.status);
         input.value = '';
-        show('Aproape gata — confirmă-ți adresa. Ți-am trimis un email de confirmare.');
+        show(T('nl_ok', 'Aproape gata — confirmă-ți adresa. Ți-am trimis un email de confirmare.'));
         sendConfirm(email);
       }).catch(function(){
         if(btn) btn.disabled = false;
-        show('A apărut o eroare. Încearcă din nou.');
+        show(T('nl_err', 'A apărut o eroare. Încearcă din nou.'));
       });
     });
   });
@@ -235,6 +417,10 @@ function apply(map){
     }
   });
   renderClips(map);
+  /* i18n: hidratarea a scris româna peste elementele data-set/data-set-html — motorul
+     le recaptează originalul și rescrie engleza dacă limba curentă e 'en' (înainte de
+     re-ambalarea gold-last, ca originalul capturat să fie curat, fără span-uri) */
+  if(window.__dgI18nRefresh) window.__dgI18nRefresh(map);
   goldLast(); /* hydration overwrites textContent, so re-wrap the last words */
 }
 
