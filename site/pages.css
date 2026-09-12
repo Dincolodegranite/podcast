@@ -63,7 +63,7 @@ a:hover>.nl-t>span:last-child,a:focus-visible>.nl-t>span:last-child{translate:0 
 .mn-soc{display:flex;align-items:center;gap:8px}
 .mn-soc a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,162,90,.32);color:var(--ink);transition:color .25s ease,border-color .25s ease}
 .mn-soc a:hover,.mn-soc a:focus-visible{color:var(--accent-light);border-color:var(--accent-light);border-radius:50%}
-@media (max-width:1149px){body:has(.pnav-in.open){overflow:hidden}}
+@media (max-width:1149px){body:has(.pnav-in.open),html:has(.pnav-in.open){overflow:hidden}}
 @media (max-height:560px){.mn-l{font-size:26px}.mn-i{padding:8px 0}.pmenu{padding-top:118px}}
 @media (prefers-reduced-motion:reduce){.mn-i{transition:none;translate:0 0;opacity:1}}
 .pnav-in.open .pburger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
