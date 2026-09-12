@@ -1,6 +1,6 @@
 /* Dincolo de Granițe — shared styles for satellite pages (despre/episoade/invitati).
    Same design language as the homepage: gold-on-dark, gradient hairline borders. */
-:root{--green:#1a2f24;--velvet:#245a3f;--accent:#c9a25a;--accent-light:#e3c07d;--accent-dark:#b89350;--font-head:'Bebas Neue';--font-body:'Geist';--font-serif:'Instrument Serif';--head-weight:400;--ink:#efe9dd;--line:rgba(201,162,90,.18);--r:12px}
+:root{--green:#0f1c15;--velvet:#245a3f;--accent:#c9a25a;--accent-light:#e3c07d;--accent-dark:#b89350;--font-head:'Bebas Neue';--font-body:'Geist';--font-serif:'Instrument Serif';--head-weight:400;--ink:#efe9dd;--line:rgba(201,162,90,.18);--r:12px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--accent) #0c130f}
 body{margin:0;background:#0c130f;color:#efe9dd;font-family:var(--font-body),system-ui,sans-serif;line-height:1.65}
