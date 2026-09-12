@@ -258,7 +258,7 @@ html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
 
 /* comutator de limbă */
 .plang{display:inline-flex;align-items:center;margin-left:10px;padding-left:14px;border-left:1px solid rgba(239,233,221,.14)}
-.plang button{border:0;background:none;cursor:pointer;padding:6px 5px;font:600 11.5px var(--font-body);letter-spacing:.14em;line-height:1;color:rgba(239,233,221,.55);transition:color .25s ease}
+.plang button{border:0;background:none;cursor:pointer;padding:6px 5px;font:600 11.5px var(--font-body);letter-spacing:.14em;line-height:1;color:rgba(239,233,221,.55);transition:color .25s ease}.plang button{display:inline-flex;align-items:center;gap:6px}.plang .flag{display:inline-block;width:15px;height:15px;border-radius:50%;overflow:hidden;flex:none;opacity:.85;transition:opacity .25s ease}.plang .flag svg{display:block;width:100%;height:100%}.plang button:hover .flag{opacity:1}
 .plang button:hover{color:var(--accent-light)}
 .plang-m{display:flex;justify-content:center;margin:10px 0 0;padding:12px 0 0;border-top:1px solid rgba(239,233,221,.1);border-left:0}
 .plang-top{display:flex;justify-content:flex-end;margin:0 0 14px;padding:0;border:0}
