@@ -78,11 +78,6 @@ a:hover>.nl-t>span:last-child,a:focus-visible>.nl-t>span:last-child{translate:0 
 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
 h1{margin:14px 0 12px;font:var(--head-weight) clamp(34px,6vw,52px)/1.05 var(--font-head),var(--font-body),sans-serif;letter-spacing:.01em;color:#efe9dd}
 html{scroll-padding-top:132px}
-a[style*="border-radius:999px"]:hover,button[style*="border-radius:999px"]:hover,.nl-btn:hover,.nlx-btn:hover,.gf-btn:hover,.btn:hover,.pfcta-gold:hover,.pfcta-line:hover{outline:1px solid rgba(227,192,125,.8);outline-offset:0;filter:drop-shadow(0 0 8px rgba(227,192,125,.45))}
-a[style*="border-radius:999px"],button[style*="border-radius:999px"],.nl-btn,.nlx-btn,.gf-btn,.btn,.pfcta-gold,.pfcta-line{position:relative;overflow:hidden}
-a[style*="border-radius:999px"]::after,button[style*="border-radius:999px"]::after,.nl-btn::after,.nlx-btn::after,.gf-btn::after,.btn::after,.pfcta-gold::after,.pfcta-line::after{content:"";position:absolute;top:-4px;bottom:-4px;left:-80%;width:55%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.38) 50%,transparent);transform:skewX(-20deg);pointer-events:none}
-a[style*="border-radius:999px"]:hover::after,button[style*="border-radius:999px"]:hover::after,.nl-btn:hover::after,.nlx-btn:hover::after,.gf-btn:hover::after,.btn:hover::after,.pfcta-gold:hover::after,.pfcta-line:hover::after{animation:btnShine .7s ease forwards}
-@keyframes btnShine{to{left:130%}}
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid rgba(227,192,125,.85);outline-offset:3px;border-radius:6px}
 input::placeholder,textarea::placeholder{color:rgba(239,233,221,.62)}
 .lede{font:italic 400 clamp(18px,2.9vw,22px)/1.55 var(--font-serif),Georgia,serif;color:rgba(239,233,221,.82);max-width:62ch;margin:0}
@@ -96,8 +91,7 @@ h2{margin:0 0 14px;font:var(--head-weight) clamp(24px,4vw,32px)/1.15 var(--font-
 .nlx-ic{flex:none;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:14px;color:rgba(227,192,125,.8)}
 .nlx-cap input[type=email]{flex:1;min-width:0;padding:11px 8px 11px 2px;border:none;background:transparent;color:#efe9dd;font:400 15px var(--font-body);outline:none}
 .nlx-cap input[type=email]::placeholder{color:rgba(239,233,221,.55)}
-.nlx-btn{flex:1 1 100%;min-height:44px;padding:13px 22px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0c130f;font:700 12px var(--font-body);letter-spacing:.06em;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3);transition:filter .25s ease}
-.nlx-btn:hover{filter:brightness(1.07)}
+.nlx-btn{flex:1 1 100%;min-height:44px;padding:13px 22px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0c130f;font:700 12px var(--font-body);letter-spacing:.06em;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 12px rgba(0,0,0,.3)}
 
 p{color:rgba(239,233,221,.72);font-size:15.5px;margin:0 0 14px}
 .muted{color:rgba(239,233,221,.62)}
@@ -121,10 +115,8 @@ section{padding:clamp(36px,4.8vw,64px) 0}
 .pfoot-cr em a{color:rgba(227,192,125,.8);text-decoration:none;transition:color .25s ease}
 .pfoot-cr em a:hover{color:var(--accent-light)}
 .pfoot-cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-.pfcta-gold{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0c130f!important;font:700 12px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease}
-.pfcta-gold:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)}
+.pfcta-gold{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0c130f!important;font:700 12px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:color .25s ease,border-color .25s ease}
 .pfcta-line{display:inline-flex;align-items:center;padding:10px 22px;border-radius:999px;border:1px solid rgba(201,162,90,.45);color:var(--accent-light)!important;font:600 11.5px var(--font-body);letter-spacing:.08em;text-decoration:none;transition:all .25s ease}
-.pfcta-line:hover{background:rgba(201,162,90,.1);border-color:var(--accent-light)}
 .pfoot-wave{display:flex;flex-direction:column;gap:1px;margin:4px 0 12px;opacity:.45}
 .pfoot-wave-in{display:flex;align-items:flex-end;justify-content:space-between;gap:3px;height:44px;padding:0 2px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .pfoot-wave-in span{width:4px;border-radius:2px;background:linear-gradient(180deg,var(--accent-light),#8a6f3a);flex:none;transform-origin:bottom;animation:pfWave 1.3s ease-in-out infinite}
@@ -150,12 +142,10 @@ section{padding:clamp(36px,4.8vw,64px) 0}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 28px;border-radius:999px;font:600 13px var(--font-body);letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;border:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 28px;border-radius:999px;font:600 13px var(--font-body);letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:background .25s ease,border-color .25s ease,color .25s ease;border:none}
 .btn[hidden]{display:none!important}
 .btn-gold{background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0c130f;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)}
-.btn-gold:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4);color:#0c130f}
 .btn-ghost{border:1px solid rgba(201,162,90,.4);color:var(--accent);background:transparent}
-.btn-ghost:hover{background:rgba(201,162,90,.12);color:var(--accent-light)}
 
 /* forms */
 .field{width:100%;padding:14px 18px;border-radius:12px;border:1px solid rgba(201,162,90,.3);background:rgba(12,19,15,.6);color:#efe9dd;font:400 15px var(--font-body);outline:none;transition:border-color .25s ease}
@@ -254,7 +244,6 @@ html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
 
 /* paleta studioului: verde-catifea pe elementele active, perete verde sub newsletter */
 .ep-dur{background:rgba(36,90,63,.85)!important}
-.pfcta-line:hover,.btn-line:hover,.btn-outline:hover{background:rgba(36,90,63,.5)!important}
 .wrap section:has(.nlx-cap){isolation:isolate}.wrap section:has(.nlx-cap)::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;translate:-50% 0;background:var(--green);z-index:-1;pointer-events:none}
 
 /* comutator de limbă */
@@ -284,3 +273,34 @@ a[data-arr]:hover .cta-arr .a2,button[data-arr]:hover .cta-arr .a2,a[data-arr]:f
 .cta-inl[style*="border-bottom"] .cta-lb{border-bottom:1px solid rgba(227,192,125,.4);padding-bottom:1px;transition:border-color .25s ease}
 .cta-inl[style*="border-bottom"]:hover .cta-lb,.cta-inl[style*="border-bottom"]:focus-visible .cta-lb{border-color:var(--accent-light)}
 /* /arrow chip */
+
+/* hover fill */
+.fx{position:relative;overflow:hidden;isolation:isolate;transition:color .35s ease,border-color .35s ease!important}
+.fx::before{content:"";position:absolute;z-index:-1;top:50%;left:22px;width:26px;height:26px;border-radius:50%;background:var(--accent);translate:-50% -50%;scale:0;transition:scale .55s cubic-bezier(.76,0,.24,1);pointer-events:none}
+.fx:has(.cta-arr)::before{left:auto;right:39px;translate:50% -50%}
+.fx:hover::before,.fx:focus-visible::before{scale:18}
+.fx:hover,.fx:focus-visible{color:#0c130f!important;border-color:var(--accent)!important;background-color:transparent!important}
+.fx:hover .cta-arr,.fx:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
+.fx-gold::before{background:#0c130f}
+.fx-gold:hover,.fx-gold:focus-visible{color:var(--accent-light)!important;border-color:#0c130f!important}
+.fx-gold:hover .cta-arr,.fx-gold:focus-visible .cta-arr{background:var(--accent);border-color:var(--accent);color:#0c130f}
+.fx svg{transition:color .35s ease}
+@media (prefers-reduced-motion:reduce){.fx::before{transition:none}}
+/* /hover fill */
+
+/* hover fill — ajustari de pagina pentru sateliti (dupa blocul comun, nu in el):
+   1) culorile pastilei: a[data-arr]:hover .cta-arr (0,3,1) bate .fx:hover .cta-arr (0,3,0) — redeclarate la (0,3,1),
+      altfel pastila ramane aurie pe umplerea aurie (sau intunecata pe cea intunecata) si dispare;
+   2) pastila ramane rotunda la focus din tastatura (a:focus-visible pune border-radius:6px pe tot site-ul,
+      iar overflow:hidden ar taia umplerea la colturi de 6px);
+   3) originea cercului = padding-right + 13px la butoanele al caror padding din dreapta nu e 26px
+      (.btn 28px -> 41px; .pfcta-gold/.pfcta-line/.nlx-btn 22px -> 35px);
+   4) butoanele late fara pastila (.nlx-btn flex 100% ~420px, .btn-gold width:100% ~540px pe Parteneriate) nu erau acoperite
+      de scale:18 (raza 234px de la x=22) — cercul creste la 40 (raza 520px), ca pe Acasa; butoanele cu pastila raman la 18. */
+a.fx:hover .cta-arr,button.fx:hover .cta-arr,a.fx:focus-visible .cta-arr,button.fx:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
+a.fx-gold:hover .cta-arr,button.fx-gold:hover .cta-arr,a.fx-gold:focus-visible .cta-arr,button.fx-gold:focus-visible .cta-arr{background:var(--accent);border-color:var(--accent);color:#0c130f}
+a.fx:focus-visible,button.fx:focus-visible{border-radius:999px}
+.btn.fx:has(.cta-arr)::before{right:41px}
+.pfcta-gold.fx:has(.cta-arr)::before,.pfcta-line.fx:has(.cta-arr)::before,.nlx-btn.fx:has(.cta-arr)::before{right:35px}
+.fx:not(:has(.cta-arr)):hover::before,.fx:not(:has(.cta-arr)):focus-visible::before{scale:40}
+/* /hover fill — ajustari */

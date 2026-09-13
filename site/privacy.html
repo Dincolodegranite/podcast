@@ -50,9 +50,21 @@
   .pfoot-cr em a:hover{color:var(--accent-light)}
   .pfoot-cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
   .pfcta-gold{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0c130f!important;font:700 12px var(--font-body);letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35);transition:all .25s ease}
-  .pfcta-gold:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4)}
   .pfcta-line{display:inline-flex;align-items:center;padding:10px 22px;border-radius:999px;border:1px solid rgba(201,162,90,.45);color:var(--accent-light)!important;font:600 11.5px var(--font-body);letter-spacing:.08em;text-decoration:none;transition:all .25s ease}
-  .pfcta-line:hover{background:rgba(201,162,90,.1);border-color:var(--accent-light)}
+  /* hover fill */
+  .fx{position:relative;overflow:hidden;isolation:isolate;transition:color .35s ease,border-color .35s ease!important}
+  .fx::before{content:"";position:absolute;z-index:-1;top:50%;left:22px;width:26px;height:26px;border-radius:50%;background:var(--accent);translate:-50% -50%;scale:0;transition:scale .55s cubic-bezier(.76,0,.24,1);pointer-events:none}
+  .fx:has(.cta-arr)::before{left:auto;right:39px;translate:50% -50%}
+  .fx:hover::before,.fx:focus-visible::before{scale:18}
+  .fx:hover,.fx:focus-visible{color:#0c130f!important;border-color:var(--accent)!important;background-color:transparent!important}
+  .fx:hover .cta-arr,.fx:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
+  .fx-gold::before{background:#0c130f}
+  .fx-gold:hover,.fx-gold:focus-visible{color:var(--accent-light)!important;border-color:#0c130f!important}
+  .fx-gold:hover .cta-arr,.fx-gold:focus-visible .cta-arr{background:var(--accent);border-color:var(--accent);color:#0c130f}
+  .fx svg{transition:color .35s ease}
+  @media (prefers-reduced-motion:reduce){.fx::before{transition:none}}
+  a.fx:focus-visible,button.fx:focus-visible{border-radius:999px}
+  /* /hover fill */
   .pfoot-links{display:flex;gap:clamp(6px,1.1vw,18px);align-items:center;flex-wrap:wrap;justify-content:center;font-size:clamp(11px,1.5vw,13px)}
   .pfoot-links a{transition:color .25s ease}
   .pfoot-links a:hover{color:var(--accent-light)!important}
@@ -163,7 +175,7 @@ html[lang="ro"] [data-lang-btn="ro"],html[lang="en"] [data-lang-btn="en"]{displa
       <a href="#" data-social="social_apple" target="_blank" rel="noopener" aria-label="Apple Podcasts" class="fsoc" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="11" r="2.2" fill="currentColor" stroke="none"></circle><path d="M8.5 8.2a5 5 0 0 1 7 0"></path><path d="M6 5.6a8.4 8.4 0 0 1 12 0"></path><path d="M10.5 15.5h3l-.6 5h-1.8z"></path></svg></a>
       <a href="#" data-social="social_spotify" target="_blank" rel="noopener" aria-label="Spotify" class="fsoc" style="display:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 9.6c3-1 6.6-.8 9.1.7"></path><path d="M8 12.4c2.5-.8 5.4-.6 7.4.7"></path><path d="M8.6 15.1c1.9-.6 4-.4 5.7.6"></path></svg></a>
     </span>
-    <span class="pfoot-cta"><a class="pfcta-gold" href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#0c130f" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg><span data-i18n="foot_cta_yt">ABONEAZĂ-TE PE YOUTUBE</span></a><a class="pfcta-line" href="/invitati#aplica" data-i18n="foot_cta_guest">PROPUNE-TE CA INVITAT</a></span>
+    <span class="pfoot-cta"><a class="pfcta-gold fx fx-gold" href="https://www.youtube.com/@dincolo.de.granite?sub_confirmation=1" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"></path></svg><span data-i18n="foot_cta_yt">ABONEAZĂ-TE PE YOUTUBE</span></a><a class="pfcta-line fx" href="/invitati#aplica" data-i18n="foot_cta_guest">PROPUNE-TE CA INVITAT</a></span>
   </div>
   <div class="pfoot-wave" aria-hidden="true"></div>
   <div class="pfoot-in">
@@ -200,6 +212,6 @@ window.DG_I18N = { en: {
   privacy_summary_p_html: "We collect the data you submit through our forms: your email (episode notifications, with double opt-in confirmation), your name/email/message (guest applications, contact form, press kit), and your city (community map). Data is stored on <strong>Supabase</strong> (EU infrastructure), emails are sent via <strong>Resend</strong>, and the site is hosted on <strong>Vercel</strong> with cookieless, aggregate <strong>Vercel Web Analytics</strong> — no tracking cookies and no individual profiling. A few technical preferences are stored locally in your browser only. We never sell or share your data for marketing and delete it on request. Contact: <a href=\"mailto:contact@dincolodegranite.com\">contact@dincolodegranite.com</a>."
 } };
 </script>
-<script defer src="social.js?v=19"></script>
+<script defer src="social.js?v=20"></script>
 </body>
 </html>

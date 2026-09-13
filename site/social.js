@@ -581,6 +581,9 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
    taiem sageata din text si lipim aceeasi pastila (fara span.cta-lb — nu e nevoie la runtime).
    "↗" primeste clasa ext (sageata rotita -45deg). Pe butoanele cu fond auriu plin
    (btn-gold / pfcta-gold / nlx-btn) adaugam cta-gold, ca pastila sa fie inversata.
+   Tot aici, pastilele-buton ambalate tarziu primesc si clasa fx (+ fx-gold pe cele aurii):
+   umplerea radiala de la hover (blocul "hover fill" din pages.css / <style>-ul paginii)
+   sta pe .fx in markup, iar CTA-urile hidratate din /admin n-ar avea-o altfel.
    Idempotent: un element care are deja .cta-arr nu mai e ambalat; daca eticheta lui
    (.cta-lb sau textul dinaintea pastilei) a primit din nou o sageata, o taiem ca sa nu
    apara dubla. Tot CSS-ul pastilei sta in pages.css / <style>-ul paginii (fara #dg-micro). */
@@ -588,6 +591,8 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   var ARR = /[\s\u00a0]*([→↗])[\s\u00a0]*$/;
   var SVG = '<svg viewBox="0 0 16 16" focusable="false"><path class="a1" d="M2.5 8h10.5M8.5 3.5 13 8l-4.5 4.5"/><path class="a2" d="M2.5 8h10.5M8.5 3.5 13 8l-4.5 4.5"/></svg>';
   var GOLD = '.btn-gold,.pfcta-gold,.nlx-btn';
+  /* pastilele-buton (tintele umplerii radiale); nu si linkurile inline cu pastila (.cta-inl), nav-ul, iconitele sociale */
+  var FX = '.hero-btn,.sec-cta,.btn,.pfcta-gold,.pfcta-line,.nl-btn,.nlx-btn,.gf-btn,.mk-btn,[style*="border-radius:999px"]:not(.cta-inl)';
   function chip(ext){
     var sp = document.createElement('span');
     sp.className = 'cta-arr' + (ext ? ' ext' : '');
@@ -635,6 +640,10 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
       el.appendChild(chip(arrow === '↗'));
       el.setAttribute('data-arr', '1');
       if(el.matches && el.matches(GOLD)) el.classList.add('cta-gold');
+      if(el.matches && el.matches(FX)){
+        el.classList.add('fx');
+        if(el.matches(GOLD)) el.classList.add('fx-gold');
+      }
     }
   }
   function init(){
@@ -687,79 +696,6 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
     window.addEventListener('load', upd);
     window.addEventListener('pageshow', upd);
     upd();
-  }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
-})();
-
-/* ── butoane magnetice: CTA-urile urmaresc usor cursorul ──
-   Doar cu pointer fin si fara prefers-reduced-motion. Foloseste EXCLUSIV proprietatea
-   CSS translate (niciodata transform), offset = distanta fata de centru x .18, limitat
-   la ±10px, revine elastic la iesire. Delegare la nivel de document, ca elementele
-   hidratate mai tarziu (episoade, i18n) sa fie acoperite fara re-scanare. Tranzitia
-   pe translate se ADAUGA la tranzitia existenta (inline sau din foaia de stil).      */
-(function(){
-  var SEL = '.hero-btn,.sec-cta,.btn,.pfcta-gold,.pfcta-line,[data-magnetic],.nl-btn,.nlx-btn';
-  var EASE = 'translate .25s cubic-bezier(.2,.8,.2,1)';
-  var MAX = 10, K = 0.18;
-  function init(){
-    if(window.__dgMagnetInit) return;
-    window.__dgMagnetInit = true;
-    if(!window.matchMedia || !('translate' in document.documentElement.style)) return;
-    var fine = window.matchMedia('(pointer:fine)');
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var active = null, lastX = 0, lastY = 0, ticking = false;
-    function enabled(){ return fine.matches && !reduce.matches; }
-    function clamp(v){ return Math.max(-MAX, Math.min(MAX, v)); }
-    function ensureTransition(el){
-      var cur = el.style.transition || '';
-      if(!cur){
-        /* fara tranzitie inline: preluam pe cea din foaia de stil ca sa n-o pierdem */
-        var cs = window.getComputedStyle(el).transition || '';
-        if(cs && cs !== 'none' && !/^all 0s/.test(cs)) cur = cs;
-      }
-      if(/(^|,)\s*translate\b/.test(cur)) return;
-      el.style.transition = cur ? cur + ',' + EASE : EASE;
-    }
-    function apply(){
-      ticking = false;
-      if(!active) return;
-      var r = active.getBoundingClientRect();
-      var dx = clamp((lastX - (r.left + r.width / 2)) * K);
-      var dy = clamp((lastY - (r.top + r.height / 2)) * K);
-      active.style.translate = dx.toFixed(1) + 'px ' + dy.toFixed(1) + 'px';
-    }
-    function release(){
-      if(!active) return;
-      active.style.translate = '0 0';
-      active = null;
-    }
-    document.addEventListener('mouseover', function(e){
-      if(!enabled()){ release(); return; }
-      var t = e.target;
-      var el = (t && t.closest) ? t.closest(SEL) : null;
-      if(el === active) return;
-      release();
-      if(!el) return;
-      ensureTransition(el);
-      active = el;
-    }, { passive: true });
-    document.addEventListener('mousemove', function(e){
-      if(!active) return;
-      lastX = e.clientX; lastY = e.clientY;
-      if(!ticking){ ticking = true; requestAnimationFrame(apply); }
-    }, { passive: true });
-    document.addEventListener('mouseout', function(e){
-      if(!active) return;
-      var to = e.relatedTarget;
-      if(to && active.contains(to)) return;      /* doar s-a mutat pe un copil */
-      if(!active.contains(e.target)) return;      /* n-a iesit din elementul activ */
-      release();
-    }, { passive: true });
-    /* daca utilizatorul comuta reduced-motion sau pointerul devine grosier, oprim efectul */
-    function onChange(){ if(!enabled()) release(); }
-    if(fine.addEventListener){ fine.addEventListener('change', onChange); reduce.addEventListener('change', onChange); }
-    else if(fine.addListener){ fine.addListener(onChange); reduce.addListener(onChange); }
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
