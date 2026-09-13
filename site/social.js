@@ -581,17 +581,19 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
     for(var k = 0; k < els.length; k++){
       var el = els[k];
       var last = el.lastChild;
-      if(last && last.nodeType === 3 && /→\s*$/.test(last.nodeValue)){
-        last.nodeValue = last.nodeValue.replace(/→\s*$/, '');
+      if(last && last.nodeType === 3 && /\u2192\s*$/.test(last.nodeValue)){
+        /* tot textul intra intr-un singur span inline (un singur flex item, ca inainte de ambalare),
+           iar sageata e un inline-block in interiorul lui: layout identic cu textul brut, deci
+           nimic nu se muta la incarcare; alunecarea la hover se face pe translate (#dg-micro) */
+        var txt = document.createElement('span');
+        txt.className = 'cta-txt';
+        txt.appendChild(document.createTextNode(last.nodeValue.replace(/\u2192\s*$/, '')));
         var sp = document.createElement('span');
         sp.className = 'cta-arr';
-        sp.textContent = '→';
+        sp.textContent = '\u2192';
         sp.setAttribute('aria-hidden', 'true');
-        /* transform-ul inline ramane doar pentru alinierea optica (si tine blocata vechea
-           alunecare pe transform din CSS-ul paginilor); alunecarea la hover se face pe
-           proprietatea translate, din <style id="dg-micro"> — vezi injectMicro()      */
-        sp.style.cssText = 'display:inline-block;transform:translateY(-1px)';
-        el.appendChild(sp);
+        txt.appendChild(sp);
+        el.replaceChild(txt, last);
         el.setAttribute('data-arr', '1');
       }
     }
@@ -604,8 +606,8 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
     var st = document.createElement('style');
     st.id = 'dg-micro';
     st.textContent =
-      '.cta-arr{transition:translate .3s cubic-bezier(.2,.8,.2,1)}' +
-      'a[data-arr]:hover>.cta-arr,button[data-arr]:hover>.cta-arr{translate:4px 0}' +
+      '.cta-arr{display:inline-block;transition:translate .3s cubic-bezier(.2,.8,.2,1)}' +
+      'a[data-arr]:hover .cta-arr,button[data-arr]:hover .cta-arr{translate:4px 0}' +
       '@media (prefers-reduced-motion:reduce){.cta-arr{transition:none}}';
     (document.head || document.documentElement).appendChild(st);
   }
@@ -640,13 +642,20 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
     var navs = document.querySelectorAll('.pnav');
     for(var i = 0; i < navs.length; i++) els.push(navs[i]);
     if(!els.length) return;
-    var ticking = false, state = null;
+    var ticking = false, state = null, firstDone = false;
     function upd(){
       ticking = false;
       var s = (window.scrollY || window.pageYOffset || 0) > 40;
       if(s === state) return;
       state = s;
       for(var k = 0; k < els.length; k++) els[k].classList.toggle('is-scrolled', s);
+      if(!firstDone){
+        firstDone = true;
+        for(var q = 0; q < els.length; q++) els[q].classList.add('pnav-init');
+        var unlock = function(){ for(var q2 = 0; q2 < els.length; q2++) els[q2].classList.remove('pnav-init'); };
+        requestAnimationFrame(function(){ requestAnimationFrame(unlock); });
+        setTimeout(unlock, 120); /* fallback: rAF nu ruleaza in tab-uri ascunse */
+      }
     }
     function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(upd); } }
     window.addEventListener('scroll', onScroll, { passive: true });

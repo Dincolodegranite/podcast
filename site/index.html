@@ -29,7 +29,7 @@
 <meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","logo":"https://www.dincolodegranite.com/assets/logo.jpg","email":"contact@dincolodegranite.com","founder":{"@type":"Person","name":"Peter Baghiu"},"sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite","https://facebook.com/dincolo.de.granite","https://tiktok.com/@dincolo.de.granite"]},{"@type":"WebSite","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","inLanguage":"ro"},{"@type":"PodcastSeries","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","description":"Podcast despre românii din întreaga lume care își spun povestea: viață, antreprenoriat, carieră, investiții, familie.","inLanguage":"ro","image":"https://www.dincolodegranite.com/assets/og-banner.jpg","author":{"@type":"Person","name":"Peter Baghiu"},"publisher":{"@type":"Organization","name":"Dincolo de Granițe"},"webFeed":"https://www.youtube.com/@dincolo.de.granite"}]}</script>
 <script defer src="./enhance.js?v=3"></script>
-<script defer src="./social.js?v=17"></script>
+<script defer src="./social.js?v=18"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body style="background:#0c130f;margin:0">
@@ -197,7 +197,6 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) #0c130f}
 html{scroll-padding-top:132px}
 :focus-visible{outline:2px solid rgba(227,192,125,.9);outline-offset:2px;border-radius:4px}
 .ftr-links a+a::before{content:"";display:inline-block;width:1px;height:12px;background:rgba(239,233,221,.18);margin-right:clamp(6px,1.1vw,18px);vertical-align:middle}
-a:hover .cta-arr,button:hover .cta-arr{transform:translateY(-1px) translateX(5px)}
 .ftr-links a{transition:color .25s ease}
 .ftr-links a:hover{color:var(--accent-light)!important}
 .ftr-cr a{color:rgba(227,192,125,.8);text-decoration:none;transition:color .25s ease}
@@ -355,6 +354,7 @@ a:hover>.nl-t>span:last-child,a:focus-visible>.nl-t>span:last-child{translate:0 
 /* nav-ul se strânge la scroll (social.js pune .is-scrolled pe .pnav la scrollY > 40) */
 .pnav{min-height:88px;align-items:flex-start}
 .pnav-in{transition:padding .3s ease}
+.pnav.pnav-init *{transition:none!important}
 .pbrand-logo,.pbrand-logo img{transition:width .3s ease,height .3s ease}
 .pnav.is-scrolled .pnav-in{padding:5px 16px 5px 22px}
 .pnav.is-scrolled .pbrand-logo{width:57px;height:57px}

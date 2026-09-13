@@ -78,7 +78,6 @@ a:hover>.nl-t>span:last-child,a:focus-visible>.nl-t>span:last-child{translate:0 
 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
 h1{margin:14px 0 12px;font:var(--head-weight) clamp(34px,6vw,52px)/1.05 var(--font-head),var(--font-body),sans-serif;letter-spacing:.01em;color:#efe9dd}
 html{scroll-padding-top:132px}
-a:hover .cta-arr,button:hover .cta-arr{transform:translateY(-1px) translateX(5px)}
 a[style*="border-radius:999px"]:hover,button[style*="border-radius:999px"]:hover,.nl-btn:hover,.nlx-btn:hover,.gf-btn:hover,.btn:hover,.pfcta-gold:hover,.pfcta-line:hover{outline:1px solid rgba(227,192,125,.8);outline-offset:0;filter:drop-shadow(0 0 8px rgba(227,192,125,.45))}
 a[style*="border-radius:999px"],button[style*="border-radius:999px"],.nl-btn,.nlx-btn,.gf-btn,.btn,.pfcta-gold,.pfcta-line{position:relative;overflow:hidden}
 a[style*="border-radius:999px"]::after,button[style*="border-radius:999px"]::after,.nl-btn::after,.nlx-btn::after,.gf-btn::after,.btn::after,.pfcta-gold::after,.pfcta-line::after{content:"";position:absolute;top:-4px;bottom:-4px;left:-80%;width:55%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.38) 50%,transparent);transform:skewX(-20deg);pointer-events:none}
@@ -246,6 +245,7 @@ html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
 /* nav-ul se strânge la scroll (social.js pune .is-scrolled pe .pnav la scrollY > 40) */
 .pnav{min-height:88px;align-items:flex-start}
 .pnav-in{transition:padding .3s ease}
+.pnav.pnav-init *{transition:none!important}
 .pbrand-logo,.pbrand-logo img{transition:width .3s ease,height .3s ease}
 .pnav.is-scrolled .pnav-in{padding:5px 16px 5px 22px}
 .pnav.is-scrolled .pbrand-logo{width:57px;height:57px}
