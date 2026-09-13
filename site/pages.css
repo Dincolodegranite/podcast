@@ -151,6 +151,7 @@ section{padding:clamp(36px,4.8vw,64px) 0}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 28px;border-radius:999px;font:600 13px var(--font-body);letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;border:none}
+.btn[hidden]{display:none!important}
 .btn-gold{background:linear-gradient(135deg,var(--accent-light),var(--accent) 60%,var(--accent-dark));color:#0c130f;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(0,0,0,.35)}
 .btn-gold:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(201,162,90,.4);color:#0c130f}
 .btn-ghost{border:1px solid rgba(201,162,90,.4);color:var(--accent);background:transparent}
@@ -263,3 +264,23 @@ html.rvjs .grid3 .rv:nth-child(3){transition-delay:.24s}
 .plang-m{display:flex;justify-content:center;margin:10px 0 0;padding:12px 0 0;border-top:1px solid rgba(239,233,221,.1);border-left:0}
 .plang-top{display:flex;justify-content:flex-end;margin:0 0 14px;padding:0;border:0}
 html[lang="ro"] [data-lang-btn="ro"],html[lang="en"] [data-lang-btn="en"]{display:none}
+
+/* arrow chip */
+.cta-lb{display:inline-block}
+.cta-arr{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;border:1px solid rgba(201,162,90,.5);background:rgba(201,162,90,.12);color:var(--accent-light);flex:none;position:relative;overflow:hidden;margin-left:2px;transition:background .3s ease,border-color .3s ease,color .3s ease}
+.cta-arr svg{width:13px;height:13px;display:block;overflow:visible}
+.cta-arr path{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:translate .35s cubic-bezier(.76,0,.24,1),opacity .35s ease}
+.cta-arr .a2{translate:-16px 0;opacity:0}
+.cta-arr.ext svg{rotate:-45deg}
+a[data-arr]:hover .cta-arr,button[data-arr]:hover .cta-arr,a[data-arr]:focus-visible .cta-arr,button[data-arr]:focus-visible .cta-arr{background:var(--accent);border-color:var(--accent);color:#0c130f}
+a[data-arr]:hover .cta-arr .a1,button[data-arr]:hover .cta-arr .a1,a[data-arr]:focus-visible .cta-arr .a1,button[data-arr]:focus-visible .cta-arr .a1{translate:16px 0;opacity:0}
+a[data-arr]:hover .cta-arr .a2,button[data-arr]:hover .cta-arr .a2,a[data-arr]:focus-visible .cta-arr .a2,button[data-arr]:focus-visible .cta-arr .a2{translate:0 0;opacity:1}
+.cta-gold .cta-arr{background:rgba(12,19,15,.16);border-color:rgba(12,19,15,.28);color:#0c130f}
+.cta-gold:hover .cta-arr,.cta-gold:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
+@media (prefers-reduced-motion:reduce){.cta-arr path{transition:none}.cta-arr .a1{translate:0 0!important;opacity:1!important}.cta-arr .a2{display:none}}
+.cta-inl{display:inline-flex;align-items:center;gap:8px;vertical-align:middle}
+/* linkurile inline care aveau sublinierea pe ancora (border-bottom inline): cutia ancorei e acum inalta cat pastila (28px), asa ca mutam sublinierea pe eticheta, sub text */
+.cta-inl[style*="border-bottom"]{border-bottom:0!important}
+.cta-inl[style*="border-bottom"] .cta-lb{border-bottom:1px solid rgba(227,192,125,.4);padding-bottom:1px;transition:border-color .25s ease}
+.cta-inl[style*="border-bottom"]:hover .cta-lb,.cta-inl[style*="border-bottom"]:focus-visible .cta-lb{border-color:var(--accent-light)}
+/* /arrow chip */

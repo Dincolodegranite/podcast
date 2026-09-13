@@ -574,45 +574,70 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   }
 })();
 
-/* ── sagetile CTA devin vii: aluneca spre dreapta la hover pe buton ── */
+/* ── sageata CTA devine pastila (chip): cerc auriu cu sageata SVG care se schimba la hover ──
+   Markup-ul static il pune fiecare pagina (span.cta-lb + span.cta-arr, data-arr pe a/button);
+   aici ambalam DOAR textele care sosesc mai tarziu si inca se termina cu "→" / "↗"
+   (valori data-set hidratate din /admin, valori de dictionar ramase nedecupate):
+   taiem sageata din text si lipim aceeasi pastila (fara span.cta-lb — nu e nevoie la runtime).
+   "↗" primeste clasa ext (sageata rotita -45deg). Pe butoanele cu fond auriu plin
+   (btn-gold / pfcta-gold / nlx-btn) adaugam cta-gold, ca pastila sa fie inversata.
+   Idempotent: un element care are deja .cta-arr nu mai e ambalat; daca eticheta lui
+   (.cta-lb sau textul dinaintea pastilei) a primit din nou o sageata, o taiem ca sa nu
+   apara dubla. Tot CSS-ul pastilei sta in pages.css / <style>-ul paginii (fara #dg-micro). */
 (function(){
+  var ARR = /[\s\u00a0]*([→↗])[\s\u00a0]*$/;
+  var SVG = '<svg viewBox="0 0 16 16" focusable="false"><path class="a1" d="M2.5 8h10.5M8.5 3.5 13 8l-4.5 4.5"/><path class="a2" d="M2.5 8h10.5M8.5 3.5 13 8l-4.5 4.5"/></svg>';
+  var GOLD = '.btn-gold,.pfcta-gold,.nlx-btn';
+  function chip(ext){
+    var sp = document.createElement('span');
+    sp.className = 'cta-arr' + (ext ? ' ext' : '');
+    sp.setAttribute('aria-hidden', 'true');
+    sp.innerHTML = SVG;
+    return sp;
+  }
+  /* ultimul nod-text cu continut din el (sarind peste spatii goale) — null daca se termina intr-un element */
+  function lastText(el){
+    var n = el.lastChild;
+    while(n){
+      if(n.nodeType === 3 && /\S/.test(n.nodeValue)) return n;
+      if(n.nodeType === 1) return null;
+      n = n.previousSibling;
+    }
+    return null;
+  }
+  function stripArrow(node){
+    var m = ARR.exec(node.nodeValue);
+    if(!m) return null;
+    node.nodeValue = node.nodeValue.replace(ARR, '');
+    return m[1];
+  }
   function wrap(){
     var els = document.querySelectorAll('a, button');
     for(var k = 0; k < els.length; k++){
       var el = els[k];
-      var last = el.lastChild;
-      if(last && last.nodeType === 3 && /\u2192\s*$/.test(last.nodeValue)){
-        /* tot textul intra intr-un singur span inline (un singur flex item, ca inainte de ambalare),
-           iar sageata e un inline-block in interiorul lui: layout identic cu textul brut, deci
-           nimic nu se muta la incarcare; alunecarea la hover se face pe translate (#dg-micro) */
-        var txt = document.createElement('span');
-        txt.className = 'cta-txt';
-        txt.appendChild(document.createTextNode(last.nodeValue.replace(/\u2192\s*$/, '')));
-        var sp = document.createElement('span');
-        sp.className = 'cta-arr';
-        sp.textContent = '\u2192';
-        sp.setAttribute('aria-hidden', 'true');
-        txt.appendChild(sp);
-        el.replaceChild(txt, last);
-        el.setAttribute('data-arr', '1');
+      var has = el.querySelector('.cta-arr');
+      if(has){
+        /* are deja pastila: doar curatam o sageata re-scrisa in eticheta (i18n / hidratare) */
+        var lb = el.querySelector('.cta-lb');
+        var t = lb ? lastText(lb) : null;
+        if(!t){
+          var prev = has.previousSibling;
+          while(prev && prev.nodeType === 3 && !/\S/.test(prev.nodeValue)) prev = prev.previousSibling;
+          if(prev && prev.nodeType === 3) t = prev;
+        }
+        if(t) stripArrow(t);
+        continue;
       }
+      var last = el.lastChild;
+      if(!last || last.nodeType !== 3 || !ARR.test(last.nodeValue)) continue;
+      var arrow = stripArrow(last);
+      if(!arrow) continue;
+      el.appendChild(chip(arrow === '↗'));
+      el.setAttribute('data-arr', '1');
+      if(el.matches && el.matches(GOLD)) el.classList.add('cta-gold');
     }
   }
-  /* un singur <style id="dg-micro"> (idempotent): sageata aluneca 4px spre dreapta pe
-     proprietatea translate cand a/button-ul parinte (marcat data-arr) e in hover;
-     fara tranzitie la prefers-reduced-motion                                         */
-  function injectMicro(){
-    if(document.getElementById('dg-micro')) return;
-    var st = document.createElement('style');
-    st.id = 'dg-micro';
-    st.textContent =
-      '.cta-arr{display:inline-block;transition:translate .3s cubic-bezier(.2,.8,.2,1)}' +
-      'a[data-arr]:hover .cta-arr,button[data-arr]:hover .cta-arr{translate:4px 0}' +
-      '@media (prefers-reduced-motion:reduce){.cta-arr{transition:none}}';
-    (document.head || document.documentElement).appendChild(st);
-  }
   function init(){
-    injectMicro();
     wrap();
     /* i18n rescrie textele dupa incarcare si distruge span-urile: re-ambalam
        inainte de urmatorul paint, ca butonul sa nu-si schimbe latimea vizibil */
