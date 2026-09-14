@@ -29,7 +29,7 @@
 <meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","logo":"https://www.dincolodegranite.com/assets/logo.jpg","email":"contact@dincolodegranite.com","founder":{"@type":"Person","name":"Peter Baghiu"},"sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite","https://facebook.com/dincolo.de.granite","https://tiktok.com/@dincolo.de.granite"]},{"@type":"WebSite","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","inLanguage":"ro"},{"@type":"PodcastSeries","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","description":"Podcast despre românii din întreaga lume care își spun povestea: viață, antreprenoriat, carieră, investiții, familie.","inLanguage":"ro","image":"https://www.dincolodegranite.com/assets/og-banner.jpg","author":{"@type":"Person","name":"Peter Baghiu"},"publisher":{"@type":"Organization","name":"Dincolo de Granițe"},"webFeed":"https://www.youtube.com/@dincolo.de.granite"}]}</script>
 <script defer src="./enhance.js?v=3"></script>
-<script defer src="./social.js?v=20"></script>
+<script defer src="./social.js?v=21"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body style="background:#0c130f;margin:0">
@@ -1508,16 +1508,18 @@ document.addEventListener('click', function(e){
 }, true);
 </script>
 </body>
-</html>/* satelit pe orbita in jurul logo-ului (dincolo de granite = orbita); footer continuu, nav doar la hover */
-.pfoot-ring{position:relative}
-.pfoot-ring::after,.pfoot-ring::before{content:"";position:absolute;inset:-12px;border-radius:50%;pointer-events:none;animation:dgOrbit 14s linear infinite}
-.pfoot-ring::after{border:1px solid rgba(201,162,90,.22);background:radial-gradient(circle at 50% 5px,var(--accent-light) 0 3px,transparent 4px)}
-.pfoot-ring::before{inset:-20px;background:radial-gradient(circle at 50% 4px,var(--accent) 0 2px,transparent 3px);animation:dgOrbitRev 9s linear infinite;opacity:0;transition:opacity .4s ease}
-.pfoot-ring:hover::before{opacity:1}
-.pfoot-ring:hover::after{border-color:rgba(201,162,90,.45)}
-.pbrand-logo::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(201,162,90,.35);background:radial-gradient(circle at 50% 4px,var(--accent-light) 0 2.5px,transparent 3.5px);opacity:0;transition:opacity .3s ease;animation:dgOrbit 6s linear infinite;pointer-events:none}
-.pbrand:hover .pbrand-logo::after,.pbrand:focus-visible .pbrand-logo::after{opacity:1}
-@keyframes dgOrbit{to{rotate:360deg}}
-@keyframes dgOrbitRev{to{rotate:-360deg}}
-@media (prefers-reduced-motion:reduce){.pfoot-ring::after,.pfoot-ring::before,.pbrand-logo::after{animation:none}}
+</html>/* sistem orbital 3D in jurul logo-ului: inele inclinate (perspectiva reala), satelitii trec prin fata si prin spatele globului; footer continuu, nav la hover */
+.pfoot-ring,.pbrand-logo{transform-style:preserve-3d;perspective:520px}
+.pfoot-ring>img,.pbrand-logo>img{transform:translateZ(0)}
+.orb{position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(201,162,90,.26);pointer-events:none;transform-style:preserve-3d;animation:dgOrb3d var(--dur,12s) linear infinite;--tilt:72deg;--yaw:0deg}
+.orb::before{content:"";position:absolute;top:-3px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--accent-light)}
+.orb.o1{--yaw:0deg;--dur:12s}
+.orb.o2{--yaw:60deg;--dur:19s;animation-direction:reverse;border-color:rgba(201,162,90,.18)}
+.orb.o3{--yaw:120deg;--dur:15s;border-color:rgba(201,162,90,.14)}
+.orb.o3::before{background:var(--accent);width:4px;height:4px;margin-left:-2px}
+.pfoot-ring:hover .orb{border-color:rgba(201,162,90,.5)}
+.pbrand-logo .orb{inset:-9px;opacity:0;transition:opacity .35s ease}
+.pbrand:hover .pbrand-logo .orb,.pbrand:focus-visible .pbrand-logo .orb{opacity:1}
+@keyframes dgOrb3d{from{transform:rotateY(var(--yaw)) rotateX(var(--tilt)) rotateZ(0deg)}to{transform:rotateY(var(--yaw)) rotateX(var(--tilt)) rotateZ(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none;transform:rotateY(var(--yaw)) rotateX(var(--tilt))}}
 

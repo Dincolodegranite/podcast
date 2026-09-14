@@ -700,3 +700,27 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* ── sistem orbital 3D pe logo (footer: .pfoot-ring, nav: .pbrand-logo): inelele sunt injectate aici,
+   ca sa nu depindem de markup-ul fiecarei pagini; CSS-ul (.orb) sta in pages.css / index.html ── */
+(function(){
+  function add(host, n){
+    if(!host || host.querySelector('.orb')) return;
+    for(var i = 1; i <= n; i++){
+      var el = document.createElement('i');
+      el.className = 'orb o' + i;
+      el.setAttribute('aria-hidden', 'true');
+      host.appendChild(el);
+    }
+  }
+  function init(){
+    if(window.__dgOrbInit) return;
+    window.__dgOrbInit = true;
+    var rings = document.querySelectorAll('.pfoot-ring');
+    for(var i = 0; i < rings.length; i++) add(rings[i], 3);
+    var logos = document.querySelectorAll('.pbrand-logo');
+    for(var j = 0; j < logos.length; j++) add(logos[j], 2);
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
