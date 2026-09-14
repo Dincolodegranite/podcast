@@ -785,7 +785,8 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
       var cv = mk(rings[i], { size: 208, text: true, textR: 92 });
       if(cv) run(cv, { bars: 84, r0: 56, len: 25, w: 2.2, speed: 1 }, rings[i]);
     }
-    var logos = document.querySelectorAll('.pbrand-logo');
+    var FINE = !!(window.matchMedia && matchMedia('(hover:hover)').matches);
+    var logos = FINE ? document.querySelectorAll('.pbrand-logo') : [];
     for(var j = 0; j < logos.length; j++){
       var mv = mk(logos[j], { size: 86, mini: true });
       if(mv) run(mv, { bars: 56, r0: 35, len: 7, w: 1.4, speed: 1.2, hoverOnly: true }, logos[j].closest('.pbrand') || logos[j]);

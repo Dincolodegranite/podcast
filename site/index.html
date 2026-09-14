@@ -29,7 +29,7 @@
 <meta name="twitter:image" content="https://www.dincolodegranite.com/assets/og-banner.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","logo":"https://www.dincolodegranite.com/assets/logo.jpg","email":"contact@dincolodegranite.com","founder":{"@type":"Person","name":"Peter Baghiu"},"sameAs":["https://www.youtube.com/@dincolo.de.granite","https://instagram.com/dincolo.de.granite","https://facebook.com/dincolo.de.granite","https://tiktok.com/@dincolo.de.granite"]},{"@type":"WebSite","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","inLanguage":"ro"},{"@type":"PodcastSeries","name":"Dincolo de Granițe","url":"https://www.dincolodegranite.com/","description":"Podcast despre românii din întreaga lume care își spun povestea: viață, antreprenoriat, carieră, investiții, familie.","inLanguage":"ro","image":"https://www.dincolodegranite.com/assets/og-banner.jpg","author":{"@type":"Person","name":"Peter Baghiu"},"publisher":{"@type":"Organization","name":"Dincolo de Granițe"},"webFeed":"https://www.youtube.com/@dincolo.de.granite"}]}</script>
 <script defer src="./enhance.js?v=3"></script>
-<script defer src="./social.js?v=22"></script>
+<script defer src="./social.js?v=23"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body style="background:#0c130f;margin:0">
@@ -408,6 +408,16 @@ a.cta-inl:hover .cta-lb,a.cta-inl:focus-visible .cta-lb{border-color:var(--accen
 a.fx:hover .cta-arr,a.fx:focus-visible .cta-arr,button.fx:hover .cta-arr,button.fx:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
 a.fx-gold:hover .cta-arr,a.fx-gold:focus-visible .cta-arr,button.fx-gold:hover .cta-arr,button.fx-gold:focus-visible .cta-arr{background:var(--accent);border-color:var(--accent);color:#0c130f}
 /* /hover fill — acasă */
+/* inelul vocii: unda sonora circulara (canvas .vring) + text circular rotativ (.vtext) in jurul logo-ului; footer continuu, nav mini la hover */
+.pfoot-ring,.pbrand-logo{position:relative}
+.vring,.vtext{position:absolute;left:50%;top:50%;translate:-50% -50%;pointer-events:none}
+.vtext{width:208px;height:208px;animation:dgSpin 42s linear infinite;font:600 9.5px var(--font-body);letter-spacing:.26em;fill:rgba(227,192,125,.5);transition:fill .4s ease}
+.pfoot-ring:hover .vtext{fill:rgba(227,192,125,.92)}
+.pfoot-ring{margin:56px 0 62px!important}
+.vring-mini{opacity:0;transition:opacity .3s ease}
+@media (hover:hover){.pbrand:hover .vring-mini,.pbrand:focus-visible .vring-mini{opacity:1}}
+@keyframes dgSpin{to{rotate:360deg}}
+@media (prefers-reduced-motion:reduce){.vtext{animation:none}}
 </style>
 <script>
 (function(){
@@ -1508,14 +1518,4 @@ document.addEventListener('click', function(e){
 }, true);
 </script>
 </body>
-</html>/* inelul vocii: unda sonora circulara (canvas .vring) + text circular rotativ (.vtext) in jurul logo-ului; footer continuu, nav mini la hover */
-.pfoot-ring,.pbrand-logo{position:relative}
-.vring,.vtext{position:absolute;left:50%;top:50%;translate:-50% -50%;pointer-events:none}
-.vtext{width:208px;height:208px;animation:dgSpin 42s linear infinite;font:600 9.5px var(--font-body);letter-spacing:.26em;fill:rgba(227,192,125,.5);transition:fill .4s ease}
-.pfoot-ring:hover .vtext{fill:rgba(227,192,125,.92)}
-.pfoot-ring{margin:56px 0 62px!important}
-.vring-mini{opacity:0;transition:opacity .3s ease}
-.pbrand:hover .vring-mini,.pbrand:focus-visible .vring-mini{opacity:1}
-@keyframes dgSpin{to{rotate:360deg}}
-@media (prefers-reduced-motion:reduce){.vtext{animation:none}}
-
+</html>

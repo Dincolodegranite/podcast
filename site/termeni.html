@@ -118,7 +118,7 @@ html[lang="ro"] [data-lang-btn="ro"],html[lang="en"] [data-lang-btn="en"]{displa
 .pfoot-ring:hover .vtext{fill:rgba(227,192,125,.92)}
 .pfoot-ring{margin:56px 0 62px!important}
 .vring-mini{opacity:0;transition:opacity .3s ease}
-.pbrand:hover .vring-mini,.pbrand:focus-visible .vring-mini{opacity:1}
+@media (hover:hover){.pbrand:hover .vring-mini,.pbrand:focus-visible .vring-mini{opacity:1}}
 @keyframes dgSpin{to{rotate:360deg}}
 @media (prefers-reduced-motion:reduce){.vtext{animation:none}}
 </style>
@@ -224,6 +224,6 @@ window.DG_I18N = { en: {
   termeni_seealso_html: "See also: <a href=\"/privacy\">Privacy Policy</a>"
 } };
 </script>
-<script defer src="social.js?v=22"></script>
+<script defer src="social.js?v=23"></script>
 </body>
 </html>
