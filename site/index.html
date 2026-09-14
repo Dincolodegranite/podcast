@@ -391,9 +391,8 @@ a.cta-inl .cta-lb{border-bottom:1px solid rgba(227,192,125,.4);padding-bottom:1p
 a.cta-inl:hover .cta-lb,a.cta-inl:focus-visible .cta-lb{border-color:var(--accent-light)}
 /* hover fill */
 .fx{position:relative;overflow:hidden;isolation:isolate;transition:color .35s ease,border-color .35s ease!important}
-.fx::before{content:"";position:absolute;z-index:-1;top:50%;left:22px;width:26px;height:26px;border-radius:50%;background:var(--accent);translate:-50% -50%;scale:0;transition:scale .55s cubic-bezier(.76,0,.24,1);pointer-events:none}
-.fx:has(.cta-arr)::before{left:auto;right:39px;translate:50% -50%}
-.fx:hover::before,.fx:focus-visible::before{scale:18}
+.fx::before{content:"";position:absolute;z-index:-1;top:50%;left:50%;width:26px;height:26px;border-radius:50%;background:var(--accent);translate:-50% -50%;scale:0;transition:scale .55s cubic-bezier(.76,0,.24,1);pointer-events:none}
+.fx:hover::before,.fx:focus-visible::before{scale:28}
 .fx:hover,.fx:focus-visible{color:#0c130f!important;border-color:var(--accent)!important;background-color:transparent!important}
 .fx:hover .cta-arr,.fx:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
 .fx-gold::before{background:#0c130f}
@@ -406,7 +405,6 @@ a.cta-inl:hover .cta-lb,a.cta-inl:focus-visible .cta-lb{border-color:var(--accen
    (2) butoanele fără chip pornesc cercul din stânga (22px), iar raza (13px × scale) trebuie să ajungă la marginea din dreapta: hero / newsletter au ~300px pe desktop și 100% (≤520px) sub 560px, deci scale mai mare (aceeași durată, ușurare identică) */
 a.fx:hover .cta-arr,a.fx:focus-visible .cta-arr,button.fx:hover .cta-arr,button.fx:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
 a.fx-gold:hover .cta-arr,a.fx-gold:focus-visible .cta-arr,button.fx-gold:hover .cta-arr,button.fx-gold:focus-visible .cta-arr{background:var(--accent);border-color:var(--accent);color:#0c130f}
-.fx:not(:has(.cta-arr)):hover::before,.fx:not(:has(.cta-arr)):focus-visible::before{scale:40}
 /* /hover fill — acasă */
 </style>
 <script>

@@ -53,9 +53,8 @@
   .pfcta-line{display:inline-flex;align-items:center;padding:10px 22px;border-radius:999px;border:1px solid rgba(201,162,90,.45);color:var(--accent-light)!important;font:600 11.5px var(--font-body);letter-spacing:.08em;text-decoration:none;transition:all .25s ease}
   /* hover fill */
   .fx{position:relative;overflow:hidden;isolation:isolate;transition:color .35s ease,border-color .35s ease!important}
-  .fx::before{content:"";position:absolute;z-index:-1;top:50%;left:22px;width:26px;height:26px;border-radius:50%;background:var(--accent);translate:-50% -50%;scale:0;transition:scale .55s cubic-bezier(.76,0,.24,1);pointer-events:none}
-  .fx:has(.cta-arr)::before{left:auto;right:39px;translate:50% -50%}
-  .fx:hover::before,.fx:focus-visible::before{scale:18}
+  .fx::before{content:"";position:absolute;z-index:-1;top:50%;left:50%;width:26px;height:26px;border-radius:50%;background:var(--accent);translate:-50% -50%;scale:0;transition:scale .55s cubic-bezier(.76,0,.24,1);pointer-events:none}
+  .fx:hover::before,.fx:focus-visible::before{scale:28}
   .fx:hover,.fx:focus-visible{color:#0c130f!important;border-color:var(--accent)!important;background-color:transparent!important}
   .fx:hover .cta-arr,.fx:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
   .fx-gold::before{background:#0c130f}
