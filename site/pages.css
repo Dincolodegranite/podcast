@@ -309,7 +309,6 @@ a.fx:focus-visible,button.fx:focus-visible{border-radius:999px}
 .vtext{width:208px;height:208px;animation:dgSpin 42s linear infinite;font:600 9.5px var(--font-body);letter-spacing:.26em;fill:rgba(227,192,125,.5);transition:fill .4s ease}
 .pfoot-ring:hover .vtext{fill:rgba(227,192,125,.92)}
 .pfoot-ring{margin:56px 0 62px!important}
-.vring-mini{opacity:0;transition:opacity .3s ease}
-@media (hover:hover){.pbrand:hover .vring-mini,.pbrand:focus-visible .vring-mini{opacity:1}}
+.vring-mini{width:118%;height:118%}
 @keyframes dgSpin{to{rotate:360deg}}
 @media (prefers-reduced-motion:reduce){.vtext{animation:none}}
