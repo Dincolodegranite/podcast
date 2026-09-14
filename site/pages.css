@@ -44,6 +44,8 @@ a:hover>.nl-t>span:last-child,a:focus-visible>.nl-t>span:last-child{translate:0 
    ar face din ea containing block pentru position:fixed, iar insula (z 61) trebuie sa ramana deasupra overlay-ului (z 55) ca X-ul sa inchida */
 .pmenu{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;padding:max(120px,18vh) clamp(24px,7vw,48px) 36px;background:rgba(12,19,15,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s;border:0;border-radius:0;box-shadow:none;transform:none;overflow-y:auto}
 .pnav-in.open~.pmenu{opacity:1;visibility:visible;pointer-events:auto}
+/* iOS Safari: cu overflow:hidden pe pagina, sticky-ul nu mai sta sus; cat e meniul deschis pastila devine fixed, deasupra overlay-ului */
+.pnav:has(.pnav-in.open){position:fixed;top:18px;left:0;right:0;z-index:70;margin:0}
 .mn-i{display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid rgba(239,233,221,.08);text-decoration:none;translate:0 18px;opacity:0;transition:translate .45s cubic-bezier(.2,.8,.2,1),opacity .45s ease}
 .mn-n{font:600 11px var(--font-body);letter-spacing:.2em;color:var(--accent);min-width:26px}
 .mn-l{font:var(--head-weight) clamp(30px,8.6vw,54px)/1 var(--font-head),var(--font-body),sans-serif;letter-spacing:.02em;color:var(--ink);transition:color .25s ease}
@@ -275,13 +277,13 @@ a[data-arr]:hover .cta-arr .a2,button[data-arr]:hover .cta-arr .a2,a[data-arr]:f
 /* /arrow chip */
 
 /* hover fill */
-.fx{position:relative;overflow:hidden;isolation:isolate;transition:color .35s ease,border-color .35s ease!important}
-.fx::before{content:"";position:absolute;z-index:-1;top:50%;left:50%;width:26px;height:26px;border-radius:50%;background:var(--accent);translate:-50% -50%;scale:0;transition:scale .55s cubic-bezier(.76,0,.24,1);pointer-events:none}
+.fx{position:relative;overflow:hidden;isolation:isolate;transition:color .2s ease .2s,border-color .3s ease!important}
+.fx::before{content:"";position:absolute;z-index:-1;top:50%;left:50%;width:26px;height:26px;border-radius:50%;background:var(--accent);translate:-50% -50%;scale:0;transition:scale .45s cubic-bezier(.76,0,.24,1);pointer-events:none}
 .fx:hover::before,.fx:focus-visible::before{scale:28}
-.fx:hover,.fx:focus-visible{color:#0c130f!important;border-color:var(--accent)!important;background-color:transparent!important}
+.fx:hover,.fx:focus-visible{color:#0c130f!important;border-color:var(--accent-light)!important;background-color:transparent!important}
 .fx:hover .cta-arr,.fx:focus-visible .cta-arr{background:#0c130f;border-color:#0c130f;color:var(--accent-light)}
 .fx-gold::before{background:#0c130f}
-.fx-gold:hover,.fx-gold:focus-visible{color:var(--accent-light)!important;border-color:#0c130f!important}
+.fx-gold:hover,.fx-gold:focus-visible{color:var(--accent-light)!important;border-color:var(--accent)!important}
 .fx-gold:hover .cta-arr,.fx-gold:focus-visible .cta-arr{background:var(--accent);border-color:var(--accent);color:#0c130f}
 .fx svg{transition:color .35s ease}
 @media (prefers-reduced-motion:reduce){.fx::before{transition:none}}
@@ -300,3 +302,16 @@ a.fx:hover .cta-arr,button.fx:hover .cta-arr,a.fx:focus-visible .cta-arr,button.
 a.fx-gold:hover .cta-arr,button.fx-gold:hover .cta-arr,a.fx-gold:focus-visible .cta-arr,button.fx-gold:focus-visible .cta-arr{background:var(--accent);border-color:var(--accent);color:#0c130f}
 a.fx:focus-visible,button.fx:focus-visible{border-radius:999px}
 /* /hover fill — ajustari */
+
+/* satelit pe orbita in jurul logo-ului (dincolo de granite = orbita); footer continuu, nav doar la hover */
+.pfoot-ring{position:relative}
+.pfoot-ring::after,.pfoot-ring::before{content:"";position:absolute;inset:-12px;border-radius:50%;pointer-events:none;animation:dgOrbit 14s linear infinite}
+.pfoot-ring::after{border:1px solid rgba(201,162,90,.22);background:radial-gradient(circle at 50% 5px,var(--accent-light) 0 3px,transparent 4px)}
+.pfoot-ring::before{inset:-20px;background:radial-gradient(circle at 50% 4px,var(--accent) 0 2px,transparent 3px);animation:dgOrbitRev 9s linear infinite;opacity:0;transition:opacity .4s ease}
+.pfoot-ring:hover::before{opacity:1}
+.pfoot-ring:hover::after{border-color:rgba(201,162,90,.45)}
+.pbrand-logo::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(201,162,90,.35);background:radial-gradient(circle at 50% 4px,var(--accent-light) 0 2.5px,transparent 3.5px);opacity:0;transition:opacity .3s ease;animation:dgOrbit 6s linear infinite;pointer-events:none}
+.pbrand:hover .pbrand-logo::after,.pbrand:focus-visible .pbrand-logo::after{opacity:1}
+@keyframes dgOrbit{to{rotate:360deg}}
+@keyframes dgOrbitRev{to{rotate:-360deg}}
+@media (prefers-reduced-motion:reduce){.pfoot-ring::after,.pfoot-ring::before,.pbrand-logo::after{animation:none}}
