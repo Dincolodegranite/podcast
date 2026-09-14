@@ -701,25 +701,95 @@ fetch(SUPA_URL + '/rest/v1/site_settings?select=key,value', { headers: { 'apikey
   else init();
 })();
 
-/* ── sistem orbital 3D pe logo (footer: .pfoot-ring, nav: .pbrand-logo): inelele sunt injectate aici,
-   ca sa nu depindem de markup-ul fiecarei pagini; CSS-ul (.orb) sta in pages.css / index.html ── */
+
+/* ── inelul vocii: unda sonora circulara „vorbita” + text circular rotativ in jurul logo-ului ──
+   Footer (.pfoot-ring): 84 de bare radiale pe canvas, inaltimi din o anvelopa de voce deterministica
+   (silabe + respiratie + purtatoare), rotatie lenta, „vorbeste mai tare” la hover; text pe cerc (SVG textPath)
+   invartit din CSS. Nav (.pbrand-logo): varianta mini, desenata doar cat e hover. Se opreste cand nu e pe ecran
+   si sta static la prefers-reduced-motion.                                                              */
 (function(){
-  function add(host, n){
-    if(!host || host.querySelector('.orb')) return;
-    for(var i = 1; i <= n; i++){
-      var el = document.createElement('i');
-      el.className = 'orb o' + i;
-      el.setAttribute('aria-hidden', 'true');
-      host.appendChild(el);
+  var RM = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var TXT = 'DINCOLO DE GRANI\u021AE  \u2022  UN PODCAST DESPRE OAMENI  \u2022  ';
+  var uid = 0;
+  function mk(host, o){
+    if(!host || host.querySelector('.vring')) return null;
+    var dpr = window.devicePixelRatio || 1;
+    var cv = document.createElement('canvas');
+    cv.className = 'vring' + (o.mini ? ' vring-mini' : '');
+    cv.setAttribute('aria-hidden', 'true');
+    cv.width = Math.round(o.size * dpr); cv.height = cv.width;
+    cv.style.width = o.size + 'px'; cv.style.height = o.size + 'px';
+    host.appendChild(cv);
+    if(o.text){
+      var ns = 'http://www.w3.org/2000/svg', r = o.textR, c = o.size / 2, id = 'dg-vtp' + (++uid);
+      var svg = document.createElementNS(ns, 'svg');
+      svg.setAttribute('viewBox', '0 0 ' + o.size + ' ' + o.size);
+      svg.setAttribute('class', 'vtext'); svg.setAttribute('aria-hidden', 'true');
+      var p = document.createElementNS(ns, 'path');
+      p.setAttribute('id', id); p.setAttribute('fill', 'none');
+      p.setAttribute('d', 'M' + (c - r) + ',' + c + ' a' + r + ',' + r + ' 0 1,1 ' + (2 * r) + ',0 a' + r + ',' + r + ' 0 1,1 ' + (-2 * r) + ',0');
+      var t = document.createElementNS(ns, 'text');
+      t.setAttribute('textLength', (2 * Math.PI * r).toFixed(1)); t.setAttribute('lengthAdjust', 'spacing');
+      var tp = document.createElementNS(ns, 'textPath');
+      tp.setAttribute('href', '#' + id); tp.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + id);
+      tp.textContent = TXT + TXT;
+      t.appendChild(tp); svg.appendChild(p); svg.appendChild(t); host.appendChild(svg);
+    }
+    return cv;
+  }
+  /* anvelopa vocala: silabe (2-4 Hz), purtatoare (~11 Hz), respiratie lenta; simetrica stanga-dreapta */
+  function voice(t, i, N){
+    var m = Math.min(i, N - i) / (N / 2), a = i / N;
+    var syl = Math.max(0, Math.sin(t * 2.1 + m * 6.0));
+    var syl2 = Math.max(0, Math.sin(t * 3.7 + 1.3 + m * 3.1));
+    var car = 0.55 + 0.45 * Math.sin(t * 11 + m * 17 + Math.sin(t * 0.7) * 2);
+    var br = 0.35 + 0.65 * Math.abs(Math.sin(t * 0.45 + a * 3.14));
+    return Math.min(1, (0.18 + 0.82 * car * (0.35 * syl + 0.65 * syl2)) * br);
+  }
+  function draw(cv, o, t, amp){
+    var dpr = window.devicePixelRatio || 1, ctx = cv.getContext('2d'), S = cv.width, c = S / 2;
+    ctx.clearRect(0, 0, S, S);
+    var N = o.bars, r0 = o.r0 * dpr, len = o.len * dpr;
+    ctx.lineCap = 'round'; ctx.lineWidth = Math.max(1, o.w * dpr);
+    for(var i = 0; i < N; i++){
+      var ang = (i / N) * Math.PI * 2 - Math.PI / 2 + t * 0.05;
+      var v = Math.min(1, voice(t, i, N) * amp);
+      var L = (0.16 + 0.84 * v) * len;
+      var ca = Math.cos(ang), sa = Math.sin(ang);
+      ctx.strokeStyle = (v > 0.62 ? 'rgba(227,192,125,' : 'rgba(201,162,90,') + (0.22 + 0.78 * v).toFixed(3) + ')';
+      ctx.beginPath(); ctx.moveTo(c + ca * r0, c + sa * r0); ctx.lineTo(c + ca * (r0 + L), c + sa * (r0 + L)); ctx.stroke();
     }
   }
+  function run(cv, o, host){
+    var t0 = performance.now(), raf = null, vis = true, hot = false, amp = 1, target = 1;
+    function frame(now){
+      amp += (target - amp) * 0.08;
+      draw(cv, o, (now - t0) / 1000 * (o.speed || 1), amp);
+      var go = vis && !RM && (!o.hoverOnly || hot || amp > 1.02);
+      raf = go ? requestAnimationFrame(frame) : null;
+    }
+    function kick(){ if(!raf && !RM) raf = requestAnimationFrame(frame); }
+    host.addEventListener('mouseenter', function(){ hot = true; target = 1.9; kick(); });
+    host.addEventListener('mouseleave', function(){ hot = false; target = 1; });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ vis = !!(es[0] && es[0].isIntersecting); if(vis && !o.hoverOnly) kick(); }, { threshold: 0 }).observe(cv);
+    }
+    draw(cv, o, 3.3, 1);        /* cadru static (si pentru reduced-motion / inainte de primul frame) */
+    if(!o.hoverOnly) kick();
+  }
   function init(){
-    if(window.__dgOrbInit) return;
-    window.__dgOrbInit = true;
+    if(window.__dgVoiceInit) return;
+    window.__dgVoiceInit = true;
     var rings = document.querySelectorAll('.pfoot-ring');
-    for(var i = 0; i < rings.length; i++) add(rings[i], 3);
+    for(var i = 0; i < rings.length; i++){
+      var cv = mk(rings[i], { size: 208, text: true, textR: 92 });
+      if(cv) run(cv, { bars: 84, r0: 56, len: 25, w: 2.2, speed: 1 }, rings[i]);
+    }
     var logos = document.querySelectorAll('.pbrand-logo');
-    for(var j = 0; j < logos.length; j++) add(logos[j], 2);
+    for(var j = 0; j < logos.length; j++){
+      var mv = mk(logos[j], { size: 86, mini: true });
+      if(mv) run(mv, { bars: 56, r0: 35, len: 7, w: 1.4, speed: 1.2, hoverOnly: true }, logos[j].closest('.pbrand') || logos[j]);
+    }
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

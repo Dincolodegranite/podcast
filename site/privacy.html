@@ -112,20 +112,16 @@ body::after{content:"";position:fixed;inset:0;z-index:2147483000;pointer-events:
 .plang-m{display:flex;justify-content:center;margin:10px 0 0;padding:12px 0 0;border-top:1px solid rgba(239,233,221,.1);border-left:0}
 .plang-top{display:flex;justify-content:flex-end;margin:0 0 14px;padding:0;border:0}
 html[lang="ro"] [data-lang-btn="ro"],html[lang="en"] [data-lang-btn="en"]{display:none}
-/* sistem orbital 3D in jurul logo-ului: inele inclinate (perspectiva reala), satelitii trec prin fata si prin spatele globului; footer continuu, nav la hover */
-.pfoot-ring,.pbrand-logo{transform-style:preserve-3d;perspective:520px}
-.pfoot-ring>img,.pbrand-logo>img{transform:translateZ(0)}
-.orb{position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(201,162,90,.26);pointer-events:none;transform-style:preserve-3d;animation:dgOrb3d var(--dur,12s) linear infinite;--tilt:72deg;--yaw:0deg}
-.orb::before{content:"";position:absolute;top:-3px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--accent-light)}
-.orb.o1{--yaw:0deg;--dur:12s}
-.orb.o2{--yaw:60deg;--dur:19s;animation-direction:reverse;border-color:rgba(201,162,90,.18)}
-.orb.o3{--yaw:120deg;--dur:15s;border-color:rgba(201,162,90,.14)}
-.orb.o3::before{background:var(--accent);width:4px;height:4px;margin-left:-2px}
-.pfoot-ring:hover .orb{border-color:rgba(201,162,90,.5)}
-.pbrand-logo .orb{inset:-9px;opacity:0;transition:opacity .35s ease}
-.pbrand:hover .pbrand-logo .orb,.pbrand:focus-visible .pbrand-logo .orb{opacity:1}
-@keyframes dgOrb3d{from{transform:rotateY(var(--yaw)) rotateX(var(--tilt)) rotateZ(0deg)}to{transform:rotateY(var(--yaw)) rotateX(var(--tilt)) rotateZ(360deg)}}
-@media (prefers-reduced-motion:reduce){.orb{animation:none;transform:rotateY(var(--yaw)) rotateX(var(--tilt))}}
+/* inelul vocii: unda sonora circulara (canvas .vring) + text circular rotativ (.vtext) in jurul logo-ului; footer continuu, nav mini la hover */
+.pfoot-ring,.pbrand-logo{position:relative}
+.vring,.vtext{position:absolute;left:50%;top:50%;translate:-50% -50%;pointer-events:none}
+.vtext{width:208px;height:208px;animation:dgSpin 42s linear infinite;font:600 9.5px var(--font-body);letter-spacing:.26em;fill:rgba(227,192,125,.5);transition:fill .4s ease}
+.pfoot-ring:hover .vtext{fill:rgba(227,192,125,.92)}
+.pfoot-ring{margin:56px 0 62px!important}
+.vring-mini{opacity:0;transition:opacity .3s ease}
+.pbrand:hover .vring-mini,.pbrand:focus-visible .vring-mini{opacity:1}
+@keyframes dgSpin{to{rotate:360deg}}
+@media (prefers-reduced-motion:reduce){.vtext{animation:none}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -225,6 +221,6 @@ window.DG_I18N = { en: {
   privacy_summary_p_html: "We collect the data you submit through our forms: your email (episode notifications, with double opt-in confirmation), your name/email/message (guest applications, contact form, press kit), and your city (community map). Data is stored on <strong>Supabase</strong> (EU infrastructure), emails are sent via <strong>Resend</strong>, and the site is hosted on <strong>Vercel</strong> with cookieless, aggregate <strong>Vercel Web Analytics</strong> — no tracking cookies and no individual profiling. A few technical preferences are stored locally in your browser only. We never sell or share your data for marketing and delete it on request. Contact: <a href=\"mailto:contact@dincolodegranite.com\">contact@dincolodegranite.com</a>."
 } };
 </script>
-<script defer src="social.js?v=21"></script>
+<script defer src="social.js?v=22"></script>
 </body>
 </html>
